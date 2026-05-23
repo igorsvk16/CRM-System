@@ -8,8 +8,10 @@ function App() {
     }
   return (
     <>
-      <input id="taskText" type="text" />
-      <button onClick={addTask}>Add</button>
+        <form>
+          <input id="taskText" type="text" placeholder="Task To Be Done..." name="task_title" />
+          <button onClick={addTask} type="submit">Add</button>
+        </form>
     </>
   )
 }
