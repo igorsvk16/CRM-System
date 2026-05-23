@@ -3,6 +3,7 @@ import {addTask} from "./api/http.js";
 import './App.css'
 
 function App() {
+    let taskTitle = '';
     function addTask() {
         let taskText = taskText.target.value;
     }
@@ -19,6 +20,8 @@ function App() {
 export default App
 
 
+//  <input onInput={e => taskTitle = e.target.value} id="taskText" type="text" placeholder="Task To Be Done..." name="task_title" />
+// СДЕЛАТЬ ТАК МБ ПРОСТО ПЕРЕМЕННАЯ БУДЕМ МЕНЯТЬСЯ ПОСТОЯННО И КОГДА НЕ НАДО
 // import { useId, useState } from 'react';
 //
 // function myFunctionalComponentFunction(props) {
