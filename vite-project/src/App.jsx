@@ -1,22 +1,26 @@
 import Task from "./components/Task.jsx";
 import {fetchAddTask} from "./api/http.js";
 import './App.css'
+import {useState} from "react";
 
 function App() {
+    const [ tasks, addTask ] = useState([]);
+    const [ error, setError ] = useState();
+
     let taskTitle = '';
-    function addTask() {
+    async function handleAddTask() {
         let taskText = taskText.target.value;
         try {
-            const addPlace = await fetchAddTask(taskText);
+            await fetchAddTask(taskText);
         } catch (error) {
-
+            setError({message: error.message || "Failed"})
         }
     }
   return (
     <>
         <form>
           <input id="taskText" type="text" placeholder="Task To Be Done..." name="task_title" />
-          <button onClick={addTask} type="submit">Add</button>
+          <button onClick={handleAddTask} type="submit">Add</button>
         </form>
     </>
   )
