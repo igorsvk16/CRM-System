@@ -1,11 +1,16 @@
 import Task from "./components/Task.jsx";
-import {addTask} from "./api/http.js";
+import {fetchAddTask} from "./api/http.js";
 import './App.css'
 
 function App() {
     let taskTitle = '';
     function addTask() {
         let taskText = taskText.target.value;
+        try {
+            const addPlace = await fetchAddTask(taskText);
+        } catch (error) {
+
+        }
     }
   return (
     <>
