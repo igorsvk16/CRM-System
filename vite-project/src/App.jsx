@@ -6,22 +6,27 @@ import {useState} from "react";
 function App() {
     const [ tasks, addTask ] = useState([]);
     const [ error, setError ] = useState();
+    let taskInput = '';
+    let isDone= false;
 
-    let taskTitle = '';
     async function handleAddTask() {
-        let taskText = taskText.target.value;
+        console.log('taskText')
         try {
-            await fetchAddTask(taskText);
+            await fetchAddTask(taskInput, isDone);
+            console.log('taskText')
         } catch (error) {
-            setError({message: error.message || "Failed"})
+            setError({message: error.message || "Failed"});
         }
     }
+
+
   return (
     <>
-        <form>
-          <input id="taskText" type="text" placeholder="Task To Be Done..." name="task_title" />
-          <button onClick={handleAddTask} type="submit">Add</button>
-        </form>
+          <input
+              onChange={e => {taskInput = e.target.value}}
+              type="text"
+              placeholder="Task To Be Done..." />
+          <button onClick={handleAddTask}>Add</button>
     </>
   )
 }
@@ -40,6 +45,64 @@ export default App
 //         <div>
 //             <label htmlFor={id}>Please specify:</label>
 //             <input id={id} value={input} onInput={e => setInput(e.target.value)}/>
+//         </div>
+//     );
+// }
+
+
+
+
+// function TodoList() {
+//     const [tasks, setTasks] = useState([
+//         {
+//             id: 1,
+//             text: 'Doctor Appointment',
+//             completed: true
+//         },
+//         {
+//             id: 2,
+//             text: 'Meeting at School',
+//             completed: false
+//         }
+//     ]);
+//
+//     const [text, setText] = useState('');
+//     function addTask(text) {
+//         const newTask = {
+//             id: Date.now(),
+//             text,
+//             completed: false
+//         };
+//         setTasks([…tasks, newTask]);
+//         setText('');
+//     }
+//     function deleteTask(id) {
+//         setTasks(tasks.filter(task => task.id !== id));
+//     }
+//     function toggleCompleted(id) {
+//         setTasks(tasks.map(task => {
+//             if (task.id === id) {
+//                 return {…task, completed: !task.completed};
+//             } else {
+//                 return task;
+//             }
+//         }));
+//     }
+//     return (
+//         <div className="todo-list">
+//             {tasks.map(task => (
+//                 <TodoItem
+//                     key={task.id}
+//                     task={task}
+//                     deleteTask={deleteTask}
+//                     toggleCompleted={toggleCompleted}
+//                 />
+//             ))}
+//             <input
+//                 value={text}
+//                 onChange={e => setText(e.target.value)}
+//             />
+//             <button onClick={() => addTask(text)}>Add</button>
 //         </div>
 //     );
 // }

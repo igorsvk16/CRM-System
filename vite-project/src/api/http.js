@@ -7,6 +7,11 @@ export async function fetchAddTask(title, isDone) {
         headers: {
             'Content-Type': 'application/json'
         }
+    })
+    const resData = await response.json();
+    if (!response.ok) {
+        throw new Error('Failed to update user data');
     }
-)
+    return resData;
+
 }
