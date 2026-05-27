@@ -37,11 +37,15 @@ function App() {
 
   return (
     <>
+        <main>
+            {error && <Error title="An error " message={error.message} /> }
           <input
               onChange={e => {taskInput = e.target.value}}
               type="text"
               placeholder="Task To Be Done..." />
           <button onClick={handleAddTask}>Add</button>
+        <Task></Task>
+        </main>
     </>
   )
 }
