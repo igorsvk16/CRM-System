@@ -15,3 +15,15 @@ export async function fetchAddTask(title, isDone) {
     return resData;
 
 }
+
+export async function fetchUserTasks(){
+    const response = await fetch('easydev.club/api/v1/todos?filter=all')
+    const resData = await response.json();
+
+    if (!response.ok) {
+        throw new Error('Failed fetch tasks');
+    }
+
+    console.log(resData)
+    return resData;
+}
