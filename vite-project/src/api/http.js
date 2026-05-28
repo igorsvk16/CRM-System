@@ -26,5 +26,5 @@ export async function fetchUserTasks(){
     }
 
     // console.log(resData)
-    return resData;
+    return resData.data;
 }
