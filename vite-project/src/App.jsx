@@ -10,22 +10,17 @@ function App() {
     let taskInput = '';
     let isDone= false;
 
-    async function handleAddTask() {
-        console.log('taskText')
-        try {
-            await fetchAddTask(taskInput, isDone);
-            console.log('taskText')
-        } catch (error) {
-            setError({message: error.message || "Failed"});
-        }
-    }
 
     useEffect(() => {
+        // console.log('2')
         async function fetchTasks() {
+            // console.log('3')
             setIsFetching(true);
             try {
                 const tasks = await fetchUserTasks();
                 setUserTasks(tasks);
+                // console.log('4')
+                // console.log(tasks)
             } catch (error) {
                 setError({message: error.message} || "Failed fetch tasks")
             }
@@ -35,16 +30,33 @@ function App() {
     }, []);
 
 
+    async function handleAddTask() {
+        console.log('handleAddTask')
+        try {
+            await fetchAddTask(taskInput, isDone);
+            console.log('fetchAddTask')
+        } catch (error) {
+            setError({message: error.message || "Failed"});
+        }
+    }
+
+
+
   return (
     <>
         <main>
-            {error && <Error title="An error " message={error.message} /> }
+            {/*{error && <Error title="An error " message={error.message} /> }*/}
           <input
               onChange={e => {taskInput = e.target.value}}
               type="text"
               placeholder="Task To Be Done..." />
           <button onClick={handleAddTask}>Add</button>
-        <Task></Task>
+        <Task
+            tasks={userTasks}
+            isLoading={isFetching}
+            loadingText="Loading..."
+            fallbackText='Select the task you would like to visit below'
+        />
         </main>
     </>
   )
