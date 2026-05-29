@@ -20,7 +20,6 @@ function App() {
                 const tasks = await fetchUserTasks();
                 setUserTasks(tasks);
                 // console.log('4')
-                // console.log(tasks)
             } catch (error) {
                 setError({message: error.message} || "Failed fetch tasks")
             }
@@ -40,6 +39,11 @@ function App() {
         }
     }
 
+    async function handleChangeCategory(categoryName) {
+        const tasks = await fetchUserTasks(categoryName);
+        setUserTasks(tasks);
+    }
+
 
 
   return (
@@ -51,11 +55,19 @@ function App() {
               type="text"
               placeholder="Task To Be Done..." />
           <button onClick={handleAddTask}>Add</button>
+            <div>
+                <button>Все</button>
+            </div>
+            <div>
+                <button>В работе</button>
+            </div>
+            <div>
+                <button>Сделано</button>
+            </div>
         <Task
             tasks={userTasks}
             isLoading={isFetching}
             loadingText="Loading..."
-            fallbackText='Select the task you would like to visit below'
         />
         </main>
     </>
