@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
+    const [ filter, setFilter ] = useState("all");
     const [ error, setError ] = useState();
     const [ isFetching, setIsFetching] = useState(false);
     let taskInput = '';
@@ -66,6 +67,7 @@ function App() {
             </div>
         <Task
             tasks={userTasks}
+            filter={filter}
             isLoading={isFetching}
             loadingText="Loading..."
         />
