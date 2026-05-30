@@ -13,14 +13,12 @@ function App() {
 
 
     useEffect(() => {
-        // console.log('2')
+        console.log("useEffect");
         async function fetchTasks() {
-            // console.log('3')
             setIsFetching(true);
             try {
                 const tasks = await fetchUserTasks();
                 setUserTasks(tasks);
-                // console.log('4')
             } catch (error) {
                 setError({message: error.message} || "Failed fetch tasks")
             }

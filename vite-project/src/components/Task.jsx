@@ -2,6 +2,13 @@ import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
 
 export default function Task({ tasks, isLoading, loadingText }) {
+
+    function onSelectStatus(isDone) {
+        console.log(isDone)
+        isDone = !isDone;
+        console.log(isDone)
+    }
+
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
@@ -10,7 +17,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
                 <ul className="tasks">
                     {(tasks).map((taskData) => (
                         <li key={taskData.id} className="task">
-                            <input type={"checkbox"} onClick={() => onSelectStatus()} />
+                            <input type={"checkbox"} onClick={onSelectStatus(taskData.isDone)} />
                             <p>{taskData.title}</p>
                             <button onClick={() => onSelectEdit()}></button>
                             <button>
