@@ -33,8 +33,11 @@ function App() {
     async function handleAddTask() {
         console.log('handleAddTask')
         try {
-            await fetchAddTask(taskInput, isDone);
+            await fetchAddTask(taskInput, isDone)
+            const addNewTask = await fetchUserTasks();
+            setUserTasks(addNewTask);
             console.log('fetchAddTask')
+
         } catch (error) {
             setError({message: error.message || "Failed"});
         }

@@ -12,7 +12,7 @@ export async function fetchAddTask(title, isDone) {
     if (!response.ok) {
         throw new Error('Failed to update user data');
     }
-    return resData;
+    return resData.data;
 
 }
 
