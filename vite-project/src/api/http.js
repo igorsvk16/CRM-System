@@ -16,8 +16,8 @@ export async function fetchAddTask(title, isDone) {
 
 }
 
-export async function fetchUserTasks(fallbackText){
-    const response = await fetch('https://easydev.club/api/v1/todos?filter=all')
+export async function fetchUserTasks(status="all"){
+    const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`)
     const resData = await response.json();
 
 

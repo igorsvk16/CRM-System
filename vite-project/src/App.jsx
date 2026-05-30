@@ -41,8 +41,14 @@ function App() {
     }
 
     async function handleChangeCategory(categoryName) {
-        const tasks = await fetchUserTasks(categoryName);
-        setUserTasks(tasks);
+        console.log("handleChangeCategory")
+        try {
+            const tasks = await fetchUserTasks(categoryName);
+            setUserTasks(tasks);
+        } catch (error) {
+            setError({message: error.message || "Failed"});
+        }
+
     }
 
 
@@ -57,13 +63,13 @@ function App() {
               placeholder="Task To Be Done..." />
           <button onClick={handleAddTask}>Add</button>
             <div>
-                <button>Все</button>
+                <button onClick={() => handleChangeCategory('all')}>Все</button>
             </div>
             <div>
-                <button>В работе</button>
+                <button onClick={() => handleChangeCategory('inWork')}>В работе</button>
             </div>
             <div>
-                <button>Сделано</button>
+                <button onClick={() => handleChangeCategory('completed')}>Сделано</button>
             </div>
         <Task
             tasks={userTasks}
