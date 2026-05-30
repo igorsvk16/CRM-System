@@ -33,11 +33,16 @@ function App() {
     async function handleAddTask() {
         console.log('handleAddTask')
         try {
-            await fetchAddTask(taskInput, isDone)
-            const addNewTask = await fetchUserTasks();
-            setUserTasks(addNewTask);
-            console.log('fetchAddTask')
-
+                console.log(taskInput);
+                console.log(taskInput.length);
+                if (taskInput.length >= 2 && taskInput.length <= 64) {
+                await fetchAddTask(taskInput, isDone)
+                const addNewTask = await fetchUserTasks();
+                setUserTasks(addNewTask);
+                console.log('fetchAddTask');
+            } else {
+                alert("Task must be > 1 and < 65 symbols");
+            }
         } catch (error) {
             setError({message: error.message || "Failed"});
         }
