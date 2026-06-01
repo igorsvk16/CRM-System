@@ -28,3 +28,7 @@ export async function fetchUserTasks(status="all"){
     // console.log(resData)
     return resData.data;
 }
+
+export async function fetchTaskIsDone(id){
+    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`)
+}

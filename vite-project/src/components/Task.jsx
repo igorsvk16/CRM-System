@@ -3,10 +3,10 @@ import trashIcon from '../assets/trash-bin.png'
 
 export default function Task({ tasks, isLoading, loadingText }) {
 
-    function onSelectStatus(isDone) {
-        console.log(isDone)
-        isDone = !isDone;
-        console.log(isDone)
+    function onSelectStatus(taskData) {
+        console.log(taskData);
+        taskData.isDone = !taskData.isDone;
+        console.log(taskData);
     }
 
     return (
@@ -17,7 +17,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
                 <ul className="tasks">
                     {(tasks).map((taskData) => (
                         <li key={taskData.id} className="task">
-                            <input type={"checkbox"} onClick={onSelectStatus(taskData.isDone)} />
+                            <input type={"checkbox"} onClick={onSelectStatus(taskData)} />
                             <p>{taskData.title}</p>
                             <button onClick={() => onSelectEdit()}></button>
                             <button>
