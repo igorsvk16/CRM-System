@@ -1,20 +1,10 @@
 import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
-import {fetchTaskIsDone} from "../api/http.js";
+import { onSelectStatus } from "../App.jsx";
 
 export default function Task({ tasks, isLoading, loadingText }) {
 
-    async function onSelectStatus(taskData) {
-        let newStatus = taskData.isDone;
-        newStatus = !newStatus;
-        const taskId = +taskData.id;
-        const taskTitle = taskData.title;
-        try {
-            await fetchTaskIsDone(taskId, newStatus, taskTitle)
-        } catch (error) {
-            alert("Failed");
-        }
-    }
+
 
     return (
         <section className="tasks-category">

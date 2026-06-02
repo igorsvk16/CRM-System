@@ -2,6 +2,7 @@ import Task from "./components/Task.jsx";
 import {fetchAddTask, fetchUserTasks} from "./api/http.js";
 import './App.css'
 import {useEffect, useState} from "react";
+import {fetchTaskIsDone} from "./api/http.js";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
@@ -55,6 +56,18 @@ function App() {
             setError({message: error.message || "Failed"});
         }
 
+    }
+
+    async function onSelectStatus(taskData) {
+        let newStatus = taskData.isDone;
+        newStatus = !newStatus;
+        const taskId = +taskData.id;
+        const taskTitle = taskData.title;
+        try {
+            await fetchTaskIsDone(taskId, newStatus, taskTitle)
+        } catch (error) {
+            alert("Failed");
+        }
     }
 
 
