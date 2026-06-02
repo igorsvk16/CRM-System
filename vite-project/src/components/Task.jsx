@@ -1,12 +1,21 @@
 import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
+import {fetchTaskIsDone} from "../api/http.js";
 
 export default function Task({ tasks, isLoading, loadingText }) {
 
-    function onSelectStatus(taskData) {
+    async function onSelectStatus(taskData) {
         console.log(taskData);
-        taskData.isDone = !taskData.isDone;
-        console.log(taskData);
+        const newStatus = !taskData.isDone;
+        const taskId = +taskData.id;
+        const taskTitle = taskData.title;
+        try {
+            console.log("1", taskData.isDone)
+            await fetchTaskIsDone(taskId, newStatus, taskTitle)
+            console.log("2", taskData.isDone)
+        } catch (error) {
+            alert("Failed");
+        }
     }
 
     return (
@@ -17,7 +26,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
                 <ul className="tasks">
                     {(tasks).map((taskData) => (
                         <li key={taskData.id} className="task">
-                            <input type={"checkbox"} onClick={onSelectStatus(taskData)} />
+                            <input type={"checkbox"} onClick={() => onSelectStatus(taskData)} />
                             <p>{taskData.title}</p>
                             <button onClick={() => onSelectEdit()}></button>
                             <button>
