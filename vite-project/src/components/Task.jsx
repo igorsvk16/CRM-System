@@ -5,14 +5,12 @@ import {fetchTaskIsDone} from "../api/http.js";
 export default function Task({ tasks, isLoading, loadingText }) {
 
     async function onSelectStatus(taskData) {
-        console.log(taskData);
-        const newStatus = !taskData.isDone;
+        let newStatus = taskData.isDone;
+        newStatus = !newStatus;
         const taskId = +taskData.id;
         const taskTitle = taskData.title;
         try {
-            console.log("1", taskData.isDone)
             await fetchTaskIsDone(taskId, newStatus, taskTitle)
-            console.log("2", taskData.isDone)
         } catch (error) {
             alert("Failed");
         }
