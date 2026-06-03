@@ -1,9 +1,13 @@
 import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
 import {fetchTaskIsDone} from "../api/http.js";
+import { useEffect, useRef } from "react";
 // import './Task.css'
 
+
 export default function Task({ tasks, isLoading, loadingText }) {
+    let editable = useRef;
+
     async function onSelectStatus(taskData) {
         let newStatus = taskData.isDone;
         newStatus = !newStatus;
@@ -16,27 +20,51 @@ export default function Task({ tasks, isLoading, loadingText }) {
         }
     }
 
+    async function onSelectEdit() {
+
+    }
+
+    useEffect(() => {
+        if (editable) {
+            dialog.current.showModal();
+        } else {
+            dialog.current.close();
+        }
+    }, [open]);
+
 
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
             {!isLoading && tasks.length === 0 && <p className="fallback-text">Add your first task</p>}
             {!isLoading && tasks.length > 0 && (
-                <ul className="tasks">
+                <dialog ref={dialog} className="tasks">
                     {(tasks).map((taskData) => (
                         <li key={taskData.id} className="task">
                             <input type={"checkbox"} onClick={() => onSelectStatus(taskData)} />
-                            <p>{taskData.title}</p>
-                            <button onClick={() => onSelectEdit()}></button>
-                            <button>
-                                <img className="actionIcon" src={editIcon} />
-                            </button>
-                            <button onClick={() => onSelectDelete()}>
-                                <img className="actionIcon" src={trashIcon} />
-                            </button>
+                            {!editable &&
+                                <>
+                                    <p>{taskData.title}</p>
+                                    <button onClick={() => onSelectEdit()}></button>
+                                    <button>
+                                        <img className="actionIcon" src={editIcon} />
+                                    </button>
+                                    <button onClick={() => onSelectDelete()}>
+                                     <img className="actionIcon" src={trashIcon} />
+                                    </button>
+                                </>
+                            }
+                            {editable && <input
+                                placeholder={taskData.title}
+                                type={text}
+
+                            />
+
+                            }
+
                         </li>
                     ))}
-                </ul>
+                </dialog>
             )}
         </section>
     )
