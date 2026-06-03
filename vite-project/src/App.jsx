@@ -2,13 +2,16 @@ import Task from "./components/Task.jsx";
 import {fetchAddTask, fetchUserTasks} from "./api/http.js";
 import './App.css'
 import {useEffect, useState} from "react";
-import {fetchTaskIsDone} from "./api/http.js";
+import {getNumberOfTasks} from "./api/http.js";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
     const [ filter, setFilter ] = useState("all");
     const [ error, setError ] = useState();
     const [ isFetching, setIsFetching] = useState(false);
+    const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
+    const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
+    const [ numberOfCompletedTasks,  setNumberOfCompletedTasks] = useState();
     let taskInput = '';
     let isDone= false;
 
@@ -20,6 +23,7 @@ function App() {
             try {
                 const tasks = await fetchUserTasks();
                 setUserTasks(tasks);
+                taskCounter();
             } catch (error) {
                 setError({message: error.message} || "Failed fetch tasks")
             }
@@ -38,6 +42,7 @@ function App() {
                 await fetchAddTask(taskInput, isDone)
                 const addNewTask = await fetchUserTasks();
                 setUserTasks(addNewTask);
+                taskCounter();
                 console.log('fetchAddTask');
             } else {
                 alert("Task must be > 1 and < 65 symbols");
@@ -52,21 +57,20 @@ function App() {
         try {
             const tasks = await fetchUserTasks(categoryName);
             setUserTasks(tasks);
+            taskCounter();
         } catch (error) {
             setError({message: error.message || "Failed"});
         }
 
     }
-
-    async function onSelectStatus(taskData) {
-        let newStatus = taskData.isDone;
-        newStatus = !newStatus;
-        const taskId = +taskData.id;
-        const taskTitle = taskData.title;
+    async function taskCounter() {
         try {
-            await fetchTaskIsDone(taskId, newStatus, taskTitle)
+            const numberOfTasks = await getNumberOfTasks();
+            setNumberOfAllTasks(numberOfTasks.all)
+            setNumberOfInWorkTasks(numberOfTasks.inWork)
+            setNumberOfCompletedTasks(numberOfTasks.completed)
         } catch (error) {
-            alert("Failed");
+            setError({message: error.message || "Failed to load number of tasks"});
         }
     }
 
@@ -82,13 +86,22 @@ function App() {
               placeholder="Task To Be Done..." />
           <button onClick={handleAddTask}>Add</button>
             <div>
-                <button onClick={() => handleChangeCategory('all')}>Все</button>
+                <button onClick={() => handleChangeCategory('all')}>
+                    <p>Все</p>
+                    <p>{numberOfAllTasks}</p>
+                </button>
             </div>
             <div>
-                <button onClick={() => handleChangeCategory('inWork')}>В работе</button>
+                <button onClick={() => handleChangeCategory('inWork')}>
+                    <p>В работе</p>
+                    <p>{numberOfInWorkTasks}</p>
+                </button>
             </div>
             <div>
-                <button onClick={() => handleChangeCategory('completed')}>Сделано</button>
+                <button onClick={() => handleChangeCategory('completed')}>
+                   <p>Сделано</p>
+                    <p>{numberOfCompletedTasks}</p>
+                </button>
             </div>
         <Task
             tasks={userTasks}

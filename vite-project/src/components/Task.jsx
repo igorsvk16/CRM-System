@@ -1,9 +1,20 @@
 import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
-import { onSelectStatus } from "../App.jsx";
+import {fetchTaskIsDone} from "../api/http.js";
+// import './Task.css'
 
 export default function Task({ tasks, isLoading, loadingText }) {
-
+    async function onSelectStatus(taskData) {
+        let newStatus = taskData.isDone;
+        newStatus = !newStatus;
+        const taskId = +taskData.id;
+        const taskTitle = taskData.title;
+        try {
+            await fetchTaskIsDone(taskId, newStatus, taskTitle)
+        } catch (error) {
+            alert("Failed");
+        }
+    }
 
 
     return (
@@ -18,10 +29,10 @@ export default function Task({ tasks, isLoading, loadingText }) {
                             <p>{taskData.title}</p>
                             <button onClick={() => onSelectEdit()}></button>
                             <button>
-                                <img src={editIcon} />
+                                <img className="actionIcon" src={editIcon} />
                             </button>
                             <button onClick={() => onSelectDelete()}>
-                                <img src={trashIcon} />
+                                <img className="actionIcon" src={trashIcon} />
                             </button>
                         </li>
                     ))}

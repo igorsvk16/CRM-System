@@ -49,3 +49,12 @@ export async function fetchTaskIsDone(id, isDone, title){
     return resData.data;
 
 }
+
+export async function getNumberOfTasks() {
+    const response = await fetch(`https://easydev.club/api/v1/todos`);
+    const resData = await response.json();
+    if (!response.ok) {
+        throw new Error('Failed to load number of tasks');
+    }
+    return resData.info;
+}
