@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 
 
 export default function Task({ tasks, isLoading, loadingText }) {
-    let editable = useRef;
+    let editable = true;
 
     async function onSelectStatus(taskData) {
         let newStatus = taskData.isDone;
@@ -24,13 +24,13 @@ export default function Task({ tasks, isLoading, loadingText }) {
 
     }
 
-    useEffect(() => {
-        if (editable) {
-            dialog.current.showModal();
-        } else {
-            dialog.current.close();
-        }
-    }, [open]);
+    // useEffect(() => {
+    //     if (true) {
+    //         dialog.current.showModal();
+    //     } else {
+    //         dialog.current.close();
+    //     }
+    // }, [open]);
 
 
     return (
@@ -38,7 +38,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
             {isLoading && <p className="fallback-text">{loadingText}</p>}
             {!isLoading && tasks.length === 0 && <p className="fallback-text">Add your first task</p>}
             {!isLoading && tasks.length > 0 && (
-                <dialog ref={dialog} className="tasks">
+                <dialog className="tasks">
                     {(tasks).map((taskData) => (
                         <li key={taskData.id} className="task">
                             <input type={"checkbox"} onClick={() => onSelectStatus(taskData)} />
@@ -56,7 +56,6 @@ export default function Task({ tasks, isLoading, loadingText }) {
                             }
                             {editable && <input
                                 placeholder={taskData.title}
-                                type={text}
 
                             />
 
