@@ -29,10 +29,6 @@ export default function Task({ tasks, isLoading, loadingText }) {
         }
     }
 
-    async function onSelectEdit() {
-
-    }
-
     // useEffect(() => {
     //     if (true) {
     //         dialog.current.showModal();
@@ -50,15 +46,23 @@ export default function Task({ tasks, isLoading, loadingText }) {
                 <section className="tasks">
                     {(tasks).map((taskData) => (
                         <li key={taskData.id} className="task">
+                            <input type={"checkbox"} onClick={() => onSelectStatus(taskData)} />
                             <input
                             ref={inputRef}
-                            type={"text"}
-                            // autoFocus
+                            type="text"
+                            autoFocus
                             value={taskData.title}
                             readOnly={!isEditMode}
                             onClick={turnOnEditMode}
                             onBlur={() => setIsEditMode(false)}
                             />
+                            <button onClick={turnOnEditMode}>
+                                <img className="actionIcon" src={editIcon} />
+
+                            </button>
+                            <button onClick={() => onSelectDelete()}>
+                                <img className="actionIcon" src={trashIcon} />
+                            </button>
 
 
 
