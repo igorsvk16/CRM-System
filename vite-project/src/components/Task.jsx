@@ -37,6 +37,10 @@ export default function Task({ tasks, isLoading, loadingText }) {
     //     }
     // }, [open]);
 
+        const editTodo = id => {
+            setTodos(tasks.map(todo => todo.id === id ? {...todo,
+            idEditing: !todo.isEditing} : todo))
+        }
 
     return (
         <section className="tasks-category">
@@ -56,7 +60,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
                             onClick={turnOnEditMode}
                             onBlur={() => setIsEditMode(false)}
                             />
-                            <button onClick={turnOnEditMode}>
+                            <button onClick={() => editTodo(taskData.id)}>
                                 <img className="actionIcon" src={editIcon} />
 
                             </button>
