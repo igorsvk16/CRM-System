@@ -42,6 +42,14 @@ export default function Task({ tasks, isLoading, loadingText }) {
             idEditing: !todo.isEditing} : todo))
         }
 
+        function onTodoChange(value){
+        this.setState({
+            name: value
+        });
+
+
+    }
+
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
@@ -57,7 +65,6 @@ export default function Task({ tasks, isLoading, loadingText }) {
                             autoFocus
                             value={taskData.title}
                             readOnly={!isEditMode}
-                            onClick={turnOnEditMode}
                             onBlur={() => setIsEditMode(false)}
                             />
                             <button onClick={() => editTodo(taskData.id)}>
@@ -67,6 +74,22 @@ export default function Task({ tasks, isLoading, loadingText }) {
                             <button onClick={() => onSelectDelete()}>
                                 <img className="actionIcon" src={trashIcon} />
                             </button>
+                            <div>
+                                {/*<input*/}
+                                {/*    value={taskData.title}*/}
+                                {/*    onChange={(e) => setValue(e.target.value)}*/}
+                                {/*/>*/}
+                                {/*<input type="text" value={taskData.title} placeholder='Update task' type="text" />*/}
+                                {/*<input*/}
+                                {/*    id={taskData.id}*/}
+                                {/*    className="form-control"*/}
+                                {/*    type="text"*/}
+                                {/*    value={taskData.title}*/}
+                                {/*    onChange={e => onTodoChange(e.target.value)}*/}
+                                {/*/>*/}
+                                <input type="text" defaultValue={taskData.title} />
+
+                            </div>
 
 
 
