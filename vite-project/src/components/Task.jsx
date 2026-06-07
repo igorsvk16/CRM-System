@@ -1,21 +1,26 @@
 import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
-import {fetchTaskIsDone} from "../api/http.js";
-import {useEffect, useRef, useState} from "react";
+import saveIcon from '../assets/icons8-save-50.png'
+import { fetchTaskIsDone, saveEditedTask } from "../api/http.js";
+import { useEffect, useRef, useState } from "react";
 // import './Task.css'
-
 
 export default function Task({ tasks, isLoading, loadingText }) {
 
     const [ isEditMode, setIsEditMode ] = useState(false);
     const inputRef = useRef(null);
-    function turnOnEditMode() {
+    let taskInput = '';
+
+    function enableEditMode() {
         setIsEditMode(true);
         inputRef.current.focus();
     }
+    function disableEditMode(newTitle) {
+        console.log(newTitle)
+        setIsEditMode(false);
+        // saveEditedTask(newTitle);
+    }
 
-
-    // let editable = true;
 
     async function onSelectStatus(taskData) {
         let newStatus = taskData.isDone;
@@ -29,91 +34,60 @@ export default function Task({ tasks, isLoading, loadingText }) {
         }
     }
 
-    // useEffect(() => {
-    //     if (true) {
-    //         dialog.current.showModal();
-    //     } else {
-    //         dialog.current.close();
-    //     }
-    // }, [open]);
-
-        const editTodo = id => {
-            setTodos(tasks.map(todo => todo.id === id ? {...todo,
-            idEditing: !todo.isEditing} : todo))
-        }
-
-        function onTodoChange(value){
-        this.setState({
-            name: value
-        });
-
-
-    }
-
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
             {!isLoading && tasks.length === 0 && <p className="fallback-text">Add your first task</p>}
-            {!isLoading && tasks.length > 0 && (
+            {!isEditMode && !isLoading && tasks.length > 0 && (
                 <section className="tasks">
                     {(tasks).map((taskData) => (
                         <li key={taskData.id} className="task">
-                            <input type={"checkbox"} onClick={() => onSelectStatus(taskData)} />
                             <input
-                            ref={inputRef}
-                            type="text"
-                            autoFocus
-                            value={taskData.title}
-                            readOnly={!isEditMode}
-                            onBlur={() => setIsEditMode(false)}
+                                type={"checkbox"} onClick={() => onSelectStatus(taskData)}
                             />
-                            <button onClick={() => editTodo(taskData.id)}>
+                            <input
+                                defaultValue={taskData.title}
+                                ref={inputRef}
+                                type="text"
+                                autoFocus
+                                readOnly={true}
+                            />
+                            <button
+                                onClick={() => enableEditMode()}>
                                 <img className="actionIcon" src={editIcon} />
-
                             </button>
-                            <button onClick={() => onSelectDelete()}>
+                            <button
+                                onClick={() => onSelectDelete()}>
                                 <img className="actionIcon" src={trashIcon} />
                             </button>
-                            <div>
-                                {/*<input*/}
-                                {/*    value={taskData.title}*/}
-                                {/*    onChange={(e) => setValue(e.target.value)}*/}
-                                {/*/>*/}
-                                {/*<input type="text" value={taskData.title} placeholder='Update task' type="text" />*/}
-                                {/*<input*/}
-                                {/*    id={taskData.id}*/}
-                                {/*    className="form-control"*/}
-                                {/*    type="text"*/}
-                                {/*    value={taskData.title}*/}
-                                {/*    onChange={e => onTodoChange(e.target.value)}*/}
-                                {/*/>*/}
-                                <input type="text" defaultValue={taskData.title} />
+                        </li>
+                    ))}
+                </section>
+            )}
 
-                            </div>
-
-
-
-                            {/*<input type={"checkbox"} onClick={() => onSelectStatus(taskData)} />*/}
-                            {/*{!editable &&*/}
-                            {/*    <>*/}
-                            {/*        */}
-                            {/*        <p>{taskData.title}</p>*/}
-                            {/*        <button onClick={() => onSelectEdit()}></button>*/}
-                            {/*        <button>*/}
-                            {/*            <img className="actionIcon" src={editIcon} />*/}
-                            {/*        </button>*/}
-                            {/*        <button onClick={() => onSelectDelete()}>*/}
-                            {/*         <img className="actionIcon" src={trashIcon} />*/}
-                            {/*        </button>*/}
-                            {/*    </>*/}
-                            {/*}*/}
-                            {/*{editable && <input*/}
-                            {/*    placeholder={taskData.title}*/}
-
-                            {/*/>*/}
-
-                            {/*}*/}
-
+            {isEditMode && !isLoading && tasks.length > 0 && (
+                <section className="tasks">
+                    {(tasks).map((taskData) => (
+                        <li key={taskData.id} className="task">
+                            <input
+                                type={"checkbox"} onClick={() => onSelectStatus(taskData)}
+                            />
+                            <input
+                                defaultValue={taskData.title}
+                                ref={inputRef}
+                                type="text"
+                                autoFocus
+                                readOnly={false}
+                                onBlur={() => disableEditMode()}
+                            />
+                            <button
+                                onClick={(e) => disableEditMode(e.target.value)}>
+                                <img className="actionIcon" src={saveIcon} />
+                            </button>
+                            <button
+                                onClick={() => onSelectDelete()}>
+                                <img className="actionIcon" src={trashIcon} />
+                            </button>
                         </li>
                     ))}
                 </section>

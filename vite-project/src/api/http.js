@@ -20,7 +20,6 @@ export async function fetchUserTasks(status="all"){
     const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`)
     const resData = await response.json();
 
-
     if (!response.ok) {
         throw new Error('Failed fetch tasks');
     }
@@ -57,4 +56,21 @@ export async function getNumberOfTasks() {
         throw new Error('Failed to load number of tasks');
     }
     return resData.info;
+}
+
+export async function saveEditedTask(newTitle) {
+    const response = await fetch("https://easydev.club/api/v1/todos", {
+        method: 'POST',
+        body: JSON.stringify({
+            title: title,
+            isDone: isDone }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const resData = await response.json();
+    if (!response.ok) {
+        throw new Error('Failed to update user data');
+    }
+    return resData.data;
 }
