@@ -58,12 +58,12 @@ export async function getNumberOfTasks() {
     return resData.info;
 }
 
-export async function saveEditedTask(newTitle) {
-    const response = await fetch("https://easydev.club/api/v1/todos", {
-        method: 'POST',
+export async function saveEditedTask(id, newTitle) {
+    const response = await fetch("https://easydev.club/api/v1/todos/{id}", {
+        method: 'PUT',
         body: JSON.stringify({
-            title: title,
-            isDone: isDone }),
+            title: newTitle
+        }),
         headers: {
             'Content-Type': 'application/json'
         }

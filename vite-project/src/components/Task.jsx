@@ -15,10 +15,12 @@ export default function Task({ tasks, isLoading, loadingText }) {
         setIsEditMode(true);
         inputRef.current.focus();
     }
-    function disableEditMode(newTitle) {
-        console.log(newTitle)
+    function disableEditMode(id, taskInput) {
+        console.log("disableEditMode")
+        console.log(taskInput)
+        console.log(id)
         setIsEditMode(false);
-        // saveEditedTask(newTitle);
+        saveEditedTask(id, taskInput);
     }
 
 
@@ -51,6 +53,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
                                 type="text"
                                 autoFocus
                                 readOnly={true}
+
                             />
                             <button
                                 onClick={() => enableEditMode()}>
@@ -79,9 +82,11 @@ export default function Task({ tasks, isLoading, loadingText }) {
                                 autoFocus
                                 readOnly={false}
                                 onBlur={() => disableEditMode()}
+                                onChange={e => {taskInput = e.target.value}}
                             />
                             <button
-                                onClick={(e) => disableEditMode(e.target.value)}>
+                                onClick={(e) => disableEditMode(taskData.id, e.target.value)}
+                            >
                                 <img className="actionIcon" src={saveIcon} />
                             </button>
                             <button
