@@ -58,10 +58,11 @@ export async function getNumberOfTasks() {
     return resData.info;
 }
 
-export async function saveEditedTask(id, newTitle) {
-    const response = await fetch("https://easydev.club/api/v1/todos/{id}", {
+export async function saveEditedTask(id, isDone, newTitle) {
+    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
+            isDone: isDone,
             title: newTitle
         }),
         headers: {
@@ -70,7 +71,7 @@ export async function saveEditedTask(id, newTitle) {
     })
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Failed to update user data');
+        throw new Error('Failed to update task title');
     }
     return resData.data;
 }
