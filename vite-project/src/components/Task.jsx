@@ -1,10 +1,9 @@
 import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
 import saveIcon from '../assets/icons8-save-50.png'
-import { fetchUserTasks, fetchTaskIsDone, saveEditedTask } from "../api/http.js";
+import { fetchTaskIsDone } from "../api/http.js";
 import { useEffect, useRef, useState } from "react";
-
-// import './Task.css'
+import { disableEditMode } from "../App.jsx";
 
 export default function Task({ tasks, isLoading, loadingText }) {
 
@@ -13,25 +12,21 @@ export default function Task({ tasks, isLoading, loadingText }) {
     let taskInput = '1';
     console.log(taskInput)
 
+    // тут сделать смену едит мода и обращение к disableEditMode
+    function handleDisableEditMode(id, isDone, taskInput) {
+        setIsEditMode(false);
+        disableEditMode(id, isDone, taskInput)
+    }
+
+    function changeEditMode(bool) {
+        setIsEditMode(bool)
+    }
+
     function enableEditMode() {
         console.log("enableEditMode")
         setIsEditMode(true);
         inputRef.current.focus();
     }
-    async function disableEditMode(id, isDone, taskInput) {
-        try {
-            await saveEditedTask(id, isDone, taskInput);
-        } catch (error) {
-            alert("failed update task")
-        }
-        setIsEditMode(false);
-        try {
-            await fetchUserTasks();
-        } catch (error) {
-            alert("failed load tasks")
-        }
-    }
-
 
     async function onSelectStatus(taskData) {
         let newStatus = taskData.isDone;
@@ -96,13 +91,14 @@ export default function Task({ tasks, isLoading, loadingText }) {
                                 // onBlur={() => disableEditMode()}
                             />
                             <button
-                                onClick={(e) => disableEditMode(taskData.id, taskData.isDone, taskInput)}
+                                onClick={(e) => handleDisableEditMode(taskData.id, taskData.isDone, taskInput)}
                             >
                                 <img className="actionIcon" src={saveIcon} />
                             </button>
                             <button
-                                onClick={() => onSelectDelete()}>
-                                <img className="actionIcon" src={trashIcon} />
+                                // СДЕЛАТЬ КРЕСТИК ВЫКЛЮЧЕНИЕ ЕДИТ
+                                onClick={() => onSelectClose()}>
+                                <img className="actionIcon" src={closeIcon} />
                             </button>
                         </li>
                     ))}
