@@ -1,18 +1,25 @@
 import editIcon from '../assets/edit.png'
 import trashIcon from '../assets/trash-bin.png'
 import saveIcon from '../assets/icons8-save-50.png'
-import { fetchTaskIsDone } from "../api/http.js";
+import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from "../api/http.js";
 import { useEffect, useRef, useState } from "react";
-import { disableEditMode } from "../App.jsx";
 
 export default function Task({ tasks, isLoading, loadingText }) {
 
     const [ isEditMode, setIsEditMode ] = useState(false);
     const inputRef = useRef(null);
-    let taskInput = '1';
+    let taskInput = '';
     console.log(taskInput)
 
-    // тут сделать смену едит мода и обращение к disableEditMode
+    async function disableEditMode(id, isDone, taskInput) {
+        try {
+            await saveEditedTask(id, isDone, taskInput);
+            await fetchUserTasks();
+        } catch (error) {
+            alert("failed update task")
+        }
+    }
+
     function handleDisableEditMode(id, isDone, taskInput) {
         setIsEditMode(false);
         disableEditMode(id, isDone, taskInput)
@@ -40,6 +47,18 @@ export default function Task({ tasks, isLoading, loadingText }) {
         }
     }
 
+    async function onSelectDelete(id) {
+        try {
+            await deleteTaskById(id)
+            // как сделать обновление тасок?
+            // await fetchUserTasks();
+            // setUserTasks(tasks);
+            // taskCounter();
+        } catch (error) {
+            setError({message: error.message || "Failed to delete task"});
+        }
+    }
+
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
@@ -64,7 +83,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
                                 <img className="actionIcon" src={editIcon} />
                             </button>
                             <button
-                                onClick={() => onSelectDelete()}>
+                                onClick={() => onSelectDelete(taskData.id)}>
                                 <img className="actionIcon" src={trashIcon} />
                             </button>
                         </li>

@@ -1,5 +1,5 @@
 import Task from "./components/Task.jsx";
-import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask} from "./api/http.js";
+import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
 import './App.css'
 import {useEffect, useState} from "react";
 import {getNumberOfTasks} from "./api/http.js";
@@ -15,14 +15,7 @@ function App() {
     let taskInput = '';
     let isDone= false;
 
-    export default async function disableEditMode(id, isDone, taskInput) {
-        try {
-            await saveEditedTask(id, isDone, taskInput);
-            // await fetchUserTasks();
-        } catch (error) {
-            alert("failed update task")
-        }
-    }
+
 
     useEffect(() => {
         console.log("useEffect");
@@ -81,6 +74,7 @@ function App() {
             setError({message: error.message || "Failed to load number of tasks"});
         }
     }
+
 
 
 

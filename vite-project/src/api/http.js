@@ -75,3 +75,17 @@ export async function saveEditedTask(id, isDone, newTitle) {
     }
     return resData.data;
 }
+
+export async function deleteTaskById(id) {
+    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const resData = await response.json();
+    if (!response.ok) {
+        throw new Error('Failed to delete task');
+    }
+    return resData.data;
+}
