@@ -10,7 +10,8 @@ export default function Task({ tasks, isLoading, loadingText }) {
 
     const [ isEditMode, setIsEditMode ] = useState(false);
     const inputRef = useRef(null);
-    let taskInput = '';
+    let taskInput = '1';
+    console.log(taskInput)
 
     function enableEditMode() {
         console.log("enableEditMode")
@@ -18,20 +19,17 @@ export default function Task({ tasks, isLoading, loadingText }) {
         inputRef.current.focus();
     }
     async function disableEditMode(id, isDone, taskInput) {
-        console.log("disableEditMode")
-        console.log("taskInput")
-        console.log("----")
-        console.log(taskInput)
-        console.log("----")
-        console.log(id)
         try {
             await saveEditedTask(id, isDone, taskInput);
-            await fetchUserTasks();
         } catch (error) {
             alert("failed update task")
         }
         setIsEditMode(false);
-
+        try {
+            await fetchUserTasks();
+        } catch (error) {
+            alert("failed load tasks")
+        }
     }
 
 
@@ -98,7 +96,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
                                 // onBlur={() => disableEditMode()}
                             />
                             <button
-                                onClick={(e) => disableEditMode(taskData.id, taskData.isDone, e.target.value)}
+                                onClick={(e) => disableEditMode(taskData.id, taskData.isDone, taskInput)}
                             >
                                 <img className="actionIcon" src={saveIcon} />
                             </button>

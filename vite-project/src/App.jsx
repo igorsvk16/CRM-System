@@ -39,10 +39,10 @@ function App() {
                 console.log(taskInput);
                 console.log(taskInput.length);
                 if (taskInput.length >= 2 && taskInput.length <= 64) {
-                await fetchAddTask(taskInput, isDone)
-                const addNewTask = await fetchUserTasks();
-                setUserTasks(addNewTask);
-                taskCounter();
+                    await fetchAddTask(taskInput, isDone)
+                    const addNewTask = await fetchUserTasks();
+                    setUserTasks(addNewTask);
+                    taskCounter();
                 console.log('fetchAddTask');
             } else {
                 alert("Task must be > 1 and < 65 symbols");
