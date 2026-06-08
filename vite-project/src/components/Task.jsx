@@ -50,6 +50,7 @@ export default function Task({ tasks, isLoading, loadingText }) {
     async function onSelectDelete(id) {
         try {
             await deleteTaskById(id)
+            await fetchUserTasks();
             // как сделать обновление тасок?
             // await fetchUserTasks();
             // setUserTasks(tasks);
