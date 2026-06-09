@@ -3,6 +3,8 @@ import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTas
 import './App.css'
 import {useEffect, useState} from "react";
 import {getNumberOfTasks} from "./api/http.js";
+import editIcon from "./assets/edit.png";
+import {EditTodoForm} from "./components/EditTask.jsx";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
@@ -75,6 +77,53 @@ function App() {
         }
     }
 
+    async function disableEditMode(id, isDone, taskInput) {
+        try {
+            await saveEditedTask(id, isDone, taskInput);
+            await fetchUserTasks();
+        } catch (error) {
+            alert("failed update task")
+        }
+    }
+
+    function handleDisableEditMode(id, isDone, taskInput) {
+        setIsEditMode(false);
+        disableEditMode(id, isDone, taskInput)
+    }
+
+
+    function enableEditMode(id) {
+        console.log("enableEditMode")
+        setIsEditMode(true);
+        inputRef.current.focus();
+        id.isEditMode = true;
+    }
+
+    async function onSelectStatus(taskData) {
+        let newStatus = taskData.isDone;
+        newStatus = !newStatus;
+        const taskId = +taskData.id;
+        const taskTitle = taskData.title;
+        try {
+            await fetchTaskIsDone(taskId, newStatus, taskTitle)
+        } catch (error) {
+            alert("Failed");
+        }
+    }
+
+    async function onSelectDelete(id) {
+        try {
+            await deleteTaskById(id)
+            await fetchUserTasks();
+            // как сделать обновление тасок?
+            // await fetchUserTasks();
+            // setUserTasks(tasks);
+            // taskCounter();
+        } catch (error) {
+            setError({message: error.message || "Failed to delete task"});
+        }
+    }
+
 
 
 
@@ -111,6 +160,11 @@ function App() {
             filter={filter}
             isLoading={isFetching}
             loadingText="Loading..."
+            onHandleDisableEditMode={handleDisableEditMode}
+            onEnableEditMode={enableEditMode}
+            onSelectStatus={onSelectStatus}
+            onSelectDelete={onSelectDelete}
+            taskInput={taskInput}
         />
         </main>
     </>
