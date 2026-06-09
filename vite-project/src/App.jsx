@@ -3,8 +3,12 @@ import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTas
 import './App.css'
 import {useEffect, useState} from "react";
 import {getNumberOfTasks} from "./api/http.js";
-import editIcon from "./assets/edit.png";
-import {EditTodoForm} from "./components/EditTask.jsx";
+// import editIcon from "../assets/edit.png";
+// import trashIcon from '../assets/trash-bin.png'
+// import saveIcon from '../assets/icons8-save-50.png'
+// import closeIcon from '../src/assets/close.png'
+
+// import {EditTodoForm} from "./components/EditTask.jsx";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
