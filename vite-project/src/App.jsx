@@ -89,10 +89,7 @@ function App() {
         } catch (error) {
             alert("failed update task")
         }
-    }
-
-    function handleDisableEditMode(id, isDone, taskInput) {
-        disableEditMode(id, isDone, taskInput)
+        setEditTaskIs('');
     }
 
 
@@ -173,7 +170,7 @@ function App() {
             filter={filter}
             isLoading={isFetching}
             loadingText="Loading..."
-            onHandleDisableEditMode={handleDisableEditMode}
+            onHandleDisableEditMode={disableEditMode}
             onEnableEditMode={enableEditMode}
             onSelectStatus={onSelectStatus}
             onSelectDelete={onSelectDelete}

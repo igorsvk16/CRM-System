@@ -4,6 +4,7 @@ import saveIcon from '../assets/icons8-save-50.png';
 // import closeIcon from '../src/assets/close.png';
 import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from "../api/http.js";
 import { useEffect, useRef, useState } from "react";
+import styles from './Task.module.css';
 
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs}) {
 
@@ -55,7 +56,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                 />
                                 <button
                                     onClick={() => onEnableEditMode(taskData.id)}>
-                                    <img className="actionIcon" src={editIcon} />
+                                    <img style={ width: 24px } className="actionIcon" src={editIcon} />
                                 </button>
                                 <button
                                     onClick={() => onSelectDelete(taskData.id)}>
