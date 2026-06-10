@@ -5,19 +5,18 @@ import saveIcon from '../assets/icons8-save-50.png';
 import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from "../api/http.js";
 import { useEffect, useRef, useState } from "react";
 
-export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput }) {
+export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs}) {
 
-    const [ isEditMode, setIsEditMode ] = useState(false);
     const inputRef = useRef(null);
 
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
             {!isLoading && tasks.length === 0 && <p className="fallback-text">Add your first task</p>}
-            {!isEditMode && !isLoading && tasks.length > 0 && (
+            {!isLoading && tasks.length > 0 && (
                 <section className="tasks">
                     {(tasks).map((taskData) => (
-                        taskData.isEditMode ?
+                        (+editTaskIs === taskData.id) ?
                             (
                                 <li key={taskData.id} className="task">
                                     <input

@@ -18,6 +18,7 @@ function App() {
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
     const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
     const [ numberOfCompletedTasks,  setNumberOfCompletedTasks] = useState();
+    const [ editTaskIs, setEditTaskIs ] = useState();
     let taskInput = '';
     let isDone= false;
 
@@ -91,16 +92,24 @@ function App() {
     }
 
     function handleDisableEditMode(id, isDone, taskInput) {
-        setIsEditMode(false);
         disableEditMode(id, isDone, taskInput)
     }
 
 
-    function enableEditMode(id) {
+    async function enableEditMode(task) {
         console.log("enableEditMode")
-        setIsEditMode(true);
-        inputRef.current.focus();
-        id.isEditMode = true;
+        // inputRef.current.focus();
+        setEditTaskIs(task);
+
+        setIsFetching(true);
+        try {
+            const tasks = await fetchUserTasks();
+            setUserTasks(tasks);
+            taskCounter();
+        } catch (error) {
+            setError({message: error.message} || "Failed fetch tasks")
+        }
+        setIsFetching(false);
     }
 
     async function onSelectStatus(taskData) {
@@ -169,6 +178,7 @@ function App() {
             onSelectStatus={onSelectStatus}
             onSelectDelete={onSelectDelete}
             taskInput={taskInput}
+            editTaskIs={editTaskIs}
         />
         </main>
     </>
