@@ -56,11 +56,11 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                 />
                                 <button
                                     onClick={() => onEnableEditMode(taskData.id)}>
-                                    <img style={ width: 24px } className="actionIcon" src={editIcon} />
+                                    <img className={styles.actionIcon} src={editIcon} />
                                 </button>
                                 <button
                                     onClick={() => onSelectDelete(taskData.id)}>
-                                    <img className="actionIcon" src={trashIcon} alt="trashIcon"/>
+                                    <img className={styles.actionIcon} src={trashIcon} alt="trashIcon"/>
                                 </button>
                             </li>
                             )
