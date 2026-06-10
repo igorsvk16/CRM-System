@@ -98,7 +98,7 @@ function App() {
         // inputRef.current.focus();
         setEditTaskIs(task);
 
-        setIsFetching(true);
+        // setIsFetching(true);
         try {
             const tasks = await fetchUserTasks();
             setUserTasks(tasks);
