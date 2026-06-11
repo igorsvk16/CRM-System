@@ -1,7 +1,7 @@
 import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
-// import closeIcon from '../src/assets/close.png';
+import closeIcon from '../assets/close.png'
 import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from "../api/http.js";
 import { useEffect, useRef, useState } from "react";
 import styles from './Task.module.css';
@@ -15,11 +15,11 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
             {isLoading && <p className="fallback-text">{loadingText}</p>}
             {!isLoading && tasks.length === 0 && <p className="fallback-text">Add your first task</p>}
             {!isLoading && tasks.length > 0 && (
-                <section className="tasks">
+                <section className={styles.tasks}>
                     {(tasks).map((taskData) => (
                         (+editTaskIs === taskData.id) ?
                             (
-                                <li key={taskData.id} className="task">
+                                <li key={taskData.id} className={styles.task}>
                                     <input
                                         type={"checkbox"} onClick={() => onSelectStatus(taskData)}
                                     />
@@ -28,19 +28,18 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         defaultValue={taskData.title}
                                         ref={inputRef}
                                         type="text"
-                                        autoFocus
                                         readOnly={false}
+                                        autoFocus
                                     />
                                     <button
                                         onClick={(e) => onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput)}
                                     >
                                         <img className="actionIcon" src={saveIcon} />
                                     </button>
-                                    {/*<button*/}
-                                    {/*    // СДЕЛАТЬ КРЕСТИК ВЫКЛЮЧЕНИЕ ЕДИТ*/}
-                                    {/*    onClick={() => onSelectClose()}>*/}
-                                    {/*    <img className="actionIcon" src={closeIcon} alt="closeIcon" />*/}
-                                    {/*</button>*/}
+                                    <button>
+                                        {/*// onClick={() => onSelectClose()}>*/}
+                                        <img className={styles.closeIcon} src={closeIcon} />
+                                    </button>
                                 </li>
                             ) : (
                             <li key={taskData.id} className="task">
@@ -51,7 +50,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     defaultValue={taskData.title}
                                     ref={inputRef}
                                     type="text"
-                                    autoFocus
                                     readOnly={true}
                                 />
                                 <button

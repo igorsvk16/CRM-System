@@ -2,3 +2,11 @@
     width: 30px;
     height: auto;
 }
+
+.closeIcon {
+    width: 50px;
+    height: auto;
+}
+.tasks {
+    list-style: none;
+}

@@ -19,7 +19,7 @@ function App() {
     const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
     const [ numberOfCompletedTasks,  setNumberOfCompletedTasks] = useState();
     const [ editTaskIs, setEditTaskIs ] = useState();
-    let taskInput = '';
+    const [ taskInput, setTaskInput ] = useState('')
     let isDone= false;
 
 
@@ -44,19 +44,20 @@ function App() {
     async function handleAddTask() {
         console.log('handleAddTask')
         try {
-                console.log(taskInput);
-                console.log(taskInput.length);
                 if (taskInput.length >= 2 && taskInput.length <= 64) {
-                    await fetchAddTask(taskInput, isDone)
+                    await fetchAddTask(taskInput, isDone);
                     const addNewTask = await fetchUserTasks();
                     setUserTasks(addNewTask);
                     taskCounter();
+                    setTaskInput('');
+                    console.log('taskInput clear');
                 console.log('fetchAddTask');
             } else {
                 alert("Task must be > 1 and < 65 symbols");
             }
         } catch (error) {
             setError({message: error.message || "Failed"});
+            alert("Failed");
         }
     }
 
@@ -123,26 +124,29 @@ function App() {
 
     async function onSelectDelete(id) {
         try {
-            await deleteTaskById(id)
-            await fetchUserTasks();
-            // как сделать обновление тасок?
-            // await fetchUserTasks();
-            // setUserTasks(tasks);
+            await deleteTaskById(id);
+            console.log("deleteTaskById+")
+        } catch (error) {
+            setError({message: error.message || "Failed to delete task"});
+            // alert("cant delete task");
+        }
+        try {
+            const tasks = await fetchUserTasks();
+            console.log("fetchUserTasks+")
+            setUserTasks(tasks);
             // taskCounter();
         } catch (error) {
             setError({message: error.message || "Failed to delete task"});
+            alert("cant delete task 2");
         }
     }
-
-
-
 
   return (
     <>
         <main>
-            {/*{error && <Error title="An error " message={error.message} /> }*/}
           <input
-              onChange={e => {taskInput = e.target.value}}
+              value={taskInput}
+              onChange={e => {setTaskInput(e.target.value)}}
               type="text"
               placeholder="Task To Be Done..."
           />
