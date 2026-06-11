@@ -93,13 +93,11 @@ function App() {
         setEditTaskIs('');
     }
 
-
     async function enableEditMode(task) {
         console.log("enableEditMode")
-        // inputRef.current.focus();
         setEditTaskIs(task);
 
-        // setIsFetching(true);
+        setIsFetching(true);
         try {
             const tasks = await fetchUserTasks();
             setUserTasks(tasks);
@@ -108,6 +106,9 @@ function App() {
             setError({message: error.message} || "Failed fetch tasks")
         }
         setIsFetching(false);
+    }
+    function onSelectEditModeCloseNoSave() {
+        setEditTaskIs('');
     }
 
     async function onSelectStatus(taskData) {
@@ -180,6 +181,7 @@ function App() {
             onSelectDelete={onSelectDelete}
             taskInput={taskInput}
             editTaskIs={editTaskIs}
+            onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
         />
         </main>
     </>

@@ -6,7 +6,7 @@ import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from ".
 import { useEffect, useRef, useState } from "react";
 import styles from './Task.module.css';
 
-export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs}) {
+export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave }) {
 
     const inputRef = useRef(null);
 
@@ -36,8 +36,10 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     >
                                         <img className="actionIcon" src={saveIcon} />
                                     </button>
-                                    <button>
-                                        {/*// onClick={() => onSelectClose()}>*/}
+                                    <button
+                                        onClick={() => onSelectEditModeCloseNoSave()}
+                                    >
+
                                         <img className={styles.closeIcon} src={closeIcon} />
                                     </button>
                                 </li>
