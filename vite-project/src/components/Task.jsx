@@ -23,7 +23,9 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                             (
                                 <li key={taskData.id} className={styles.task}>
                                     <input
-                                        type={"checkbox"} onClick={() => onSelectStatus(taskData)}
+                                        type={"checkbox"}
+                                        onClick={() => onSelectStatus(taskData)}
+                                        ref={checkboxRef}
                                     />
                                     <input
                                         onChange={e => {taskInput = e.target.value}}

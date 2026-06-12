@@ -1,7 +1,7 @@
 import Task from "./components/Task.jsx";
 import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
 import './App.css'
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef } from "react";
 import {getNumberOfTasks} from "./api/http.js";
 // import editIcon from "../assets/edit.png";
 // import trashIcon from '../assets/trash-bin.png'
@@ -112,6 +112,8 @@ function App() {
     }
 
     async function onSelectStatus(taskData) {
+        const checkboxRef = useRef(null);
+        console.log(checkboxRef.current.checked)
         let newStatus = taskData.isDone;
         newStatus = !newStatus;
         const taskId = +taskData.id;
