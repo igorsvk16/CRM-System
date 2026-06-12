@@ -118,8 +118,18 @@ function App() {
         const taskTitle = taskData.title;
         try {
             await fetchTaskIsDone(taskId, newStatus, taskTitle)
+
         } catch (error) {
             alert("Failed");
+        }
+        try {
+            const tasks = await fetchUserTasks();
+            console.log("fetchUserTasks+")
+            setUserTasks(tasks);
+            // taskCounter();
+        } catch (error) {
+            setError({message: error.message || "Failed to delete task"});
+            alert("cant delete task 2");
         }
     }
 

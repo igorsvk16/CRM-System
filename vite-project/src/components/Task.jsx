@@ -10,6 +10,8 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
 
     const inputRef = useRef(null);
 
+
+
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
