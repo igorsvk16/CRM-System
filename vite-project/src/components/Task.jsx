@@ -6,7 +6,7 @@ import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from ".
 import { useEffect, useRef, useState } from "react";
 import styles from './Task.module.css';
 
-export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave }) {
+export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave, ifChecked }) {
 
     const inputRef = useRef(null);
 
@@ -22,11 +22,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                         (+editTaskIs === taskData.id) ?
                             (
                                 <li key={taskData.id} className={styles.task}>
-                                    <input
-                                        type={"checkbox"}
-                                        onClick={() => onSelectStatus(taskData)}
-                                        ref={checkboxRef}
-                                    />
                                     <input
                                         onChange={e => {taskInput = e.target.value}}
                                         defaultValue={taskData.title}
@@ -50,7 +45,9 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                             ) : (
                             <li key={taskData.id} className="task">
                                 <input
-                                    type={"checkbox"} onClick={() => onSelectStatus(taskData)}
+                                    type={"checkbox"}
+                                    onClick={() => onSelectStatus(taskData)}
+                                    checked={ifChecked(taskData.isDone)}
                                 />
                                 <input
                                     defaultValue={taskData.title}

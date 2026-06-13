@@ -20,6 +20,7 @@ function App() {
     const [ numberOfCompletedTasks,  setNumberOfCompletedTasks] = useState();
     const [ editTaskIs, setEditTaskIs ] = useState();
     const [ taskInput, setTaskInput ] = useState('')
+    const [ isChecked, setIsChecked ] = useState();
     let isDone= false;
 
 
@@ -153,6 +154,15 @@ function App() {
             alert("cant delete task 2");
         }
     }
+    function ifChecked(taskIsDone) {
+        if (!taskIsDone) {
+            setIsChecked(false);
+        } else {
+            setIsChecked(true);
+        }
+        return isChecked;
+    }
+
 
   return (
     <>
@@ -194,6 +204,7 @@ function App() {
             taskInput={taskInput}
             editTaskIs={editTaskIs}
             onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
+            ifChecked={ifChecked}
         />
         </main>
     </>
