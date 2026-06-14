@@ -2,8 +2,7 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from "../api/http.js";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import styles from './Task.module.css';
 
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave }) {
@@ -46,7 +45,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                 <input
                                     type={"checkbox"}
                                     onChange={() => onSelectStatus(taskData)}
-                                    // onClick={() => onSelectStatus(taskData)}
                                     checked={taskData.isDone}
                                 />
                                 <input
