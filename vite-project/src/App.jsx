@@ -6,7 +6,6 @@ import {getNumberOfTasks} from "./api/http.js";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
-    const [ error, setError ] = useState();
     const [ isFetching, setIsFetching] = useState(false);
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
     const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
@@ -27,7 +26,7 @@ function App() {
                 setUserTasks(tasks);
                 taskCounter();
             } catch (error) {
-                setError({message: error.message} || "Failed fetch tasks")
+                alert("Failed fetch tasks")
             }
             setIsFetching(false);
         }
@@ -50,7 +49,6 @@ function App() {
                 alert("Task must be > 1 and < 65 symbols");
             }
         } catch (error) {
-            setError({message: error.message || "Failed"});
             alert("Failed");
         }
     }
@@ -65,7 +63,7 @@ function App() {
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            setError({message: error.message || "Failed"});
+            alert("Failed");
         }
 
     }
@@ -76,7 +74,7 @@ function App() {
             setNumberOfInWorkTasks(numberOfTasks.inWork)
             setNumberOfCompletedTasks(numberOfTasks.completed)
         } catch (error) {
-            setError({message: error.message || "Failed to load number of tasks"});
+            alert("Failed to load number of tasks");
         }
     }
 
@@ -102,7 +100,7 @@ function App() {
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            setError({message: error.message} || "Failed fetch tasks")
+            alert("Failed fetch tasks")
         }
         setIsFetching(false);
     }
@@ -127,7 +125,7 @@ function App() {
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            setError({message: error.message || "Failed to delete task"});
+            alert("Failed to delete task");
             alert("cant delete task 2");
         }
     }
@@ -137,16 +135,14 @@ function App() {
             await deleteTaskById(id);
             console.log("deleteTaskById+")
         } catch (error) {
-            setError({message: error.message || "Failed to delete task"});
-            // alert("cant delete task");
+            alert("Failed to delete task");
         }
         try {
             const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            setError({message: error.message || "Failed to delete task"});
-            alert("cant delete task 2");
+            alert("Failed to delete task 2");
         }
     }
 
