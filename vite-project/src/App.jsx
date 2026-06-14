@@ -147,13 +147,22 @@ function App() {
   return (
     <>
         <main>
+            <div id="task-add">
           <input
+              className="input-new-task"
               value={taskInput}
               onChange={e => {setTaskInput(e.target.value)}}
               type="text"
               placeholder="Task To Be Done..."
           />
-          <button onClick={handleAddTask}>Add</button>
+          <button
+              onClick={handleAddTask}
+              className="add-button"
+          >
+              <p>Add</p>
+          </button>
+                <div>
+            </div>
             <div>
                 <button onClick={() => handleChangeCategory('all')}>
                     <p>Все</p>
@@ -171,6 +180,7 @@ function App() {
                    <p>Сделано</p>
                     <p>{numberOfCompletedTasks}</p>
                 </button>
+            </div>
             </div>
         <Task
             tasks={userTasks}
