@@ -46,8 +46,9 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                             <li key={taskData.id} className="task">
                                 <input
                                     type={"checkbox"}
-                                    onClick={() => onSelectStatus(taskData)}
-                                    checked={ifChecked(taskData.isDone)}
+                                    onChange={() => onSelectStatus(taskData)}
+                                    // onClick={() => onSelectStatus(taskData)}
+                                    checked={taskData.isDone}
                                 />
                                 <input
                                     defaultValue={taskData.title}

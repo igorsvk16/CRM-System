@@ -113,8 +113,6 @@ function App() {
     }
 
     async function onSelectStatus(taskData) {
-        const checkboxRef = useRef(null);
-        console.log(checkboxRef.current.checked)
         let newStatus = taskData.isDone;
         newStatus = !newStatus;
         const taskId = +taskData.id;
@@ -129,11 +127,19 @@ function App() {
             const tasks = await fetchUserTasks();
             console.log("fetchUserTasks+")
             setUserTasks(tasks);
-            // taskCounter();
+            taskCounter();
         } catch (error) {
             setError({message: error.message || "Failed to delete task"});
             alert("cant delete task 2");
         }
+    }
+    function ifChecked(taskIsDone) {
+        // if (!taskIsDone) {
+        //     setIsChecked(false);
+        // } else {
+        //     setIsChecked(true);
+        // }
+        // return isChecked;
     }
 
     async function onSelectDelete(id) {
@@ -154,14 +160,7 @@ function App() {
             alert("cant delete task 2");
         }
     }
-    function ifChecked(taskIsDone) {
-        if (!taskIsDone) {
-            setIsChecked(false);
-        } else {
-            setIsChecked(true);
-        }
-        return isChecked;
-    }
+
 
 
   return (
