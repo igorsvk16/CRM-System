@@ -1,14 +1,8 @@
 import Task from "./components/Task.jsx";
 import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
 import './App.css'
-import {useEffect, useState, useRef } from "react";
+import {useEffect, useState } from "react";
 import {getNumberOfTasks} from "./api/http.js";
-// import editIcon from "../assets/edit.png";
-// import trashIcon from '../assets/trash-bin.png'
-// import saveIcon from '../assets/icons8-save-50.png'
-// import closeIcon from '../src/assets/close.png'
-
-// import {EditTodoForm} from "./components/EditTask.jsx";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
@@ -136,14 +130,6 @@ function App() {
             setError({message: error.message || "Failed to delete task"});
             alert("cant delete task 2");
         }
-    }
-    function ifChecked(taskIsDone) {
-        // if (!taskIsDone) {
-        //     setIsChecked(false);
-        // } else {
-        //     setIsChecked(true);
-        // }
-        // return isChecked;
     }
 
     async function onSelectDelete(id) {

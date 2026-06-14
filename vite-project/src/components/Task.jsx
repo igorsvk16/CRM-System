@@ -6,10 +6,9 @@ import {fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById} from ".
 import { useEffect, useRef, useState } from "react";
 import styles from './Task.module.css';
 
-export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave, ifChecked }) {
+export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave }) {
 
     const inputRef = useRef(null);
-
 
 
     return (
