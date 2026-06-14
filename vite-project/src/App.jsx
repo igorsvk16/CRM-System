@@ -15,8 +15,6 @@ function App() {
     const [ currentCategory, setCurrentCategory ] = useState('all');
     let isDone= false;
 
-
-
     useEffect(() => {
         console.log("useEffect");
         async function fetchTasks() {
@@ -146,8 +144,6 @@ function App() {
         }
     }
 
-
-
   return (
     <>
         <main>
@@ -187,7 +183,6 @@ function App() {
             taskInput={taskInput}
             editTaskIs={editTaskIs}
             onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
-            ifChecked={ifChecked}
         />
         </main>
     </>
