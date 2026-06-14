@@ -12,7 +12,6 @@ import {getNumberOfTasks} from "./api/http.js";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
-    const [ filter, setFilter ] = useState("all");
     const [ error, setError ] = useState();
     const [ isFetching, setIsFetching] = useState(false);
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
@@ -20,7 +19,7 @@ function App() {
     const [ numberOfCompletedTasks,  setNumberOfCompletedTasks] = useState();
     const [ editTaskIs, setEditTaskIs ] = useState();
     const [ taskInput, setTaskInput ] = useState('')
-    const [ isChecked, setIsChecked ] = useState();
+    const [ currentCategory, setCurrentCategory ] = useState('all');
     let isDone= false;
 
 
@@ -30,7 +29,7 @@ function App() {
         async function fetchTasks() {
             setIsFetching(true);
             try {
-                const tasks = await fetchUserTasks();
+                const tasks = await fetchUserTasks(currentCategory);
                 setUserTasks(tasks);
                 taskCounter();
             } catch (error) {
@@ -47,7 +46,7 @@ function App() {
         try {
                 if (taskInput.length >= 2 && taskInput.length <= 64) {
                     await fetchAddTask(taskInput, isDone);
-                    const addNewTask = await fetchUserTasks();
+                    const addNewTask = await fetchUserTasks(currentCategory);
                     setUserTasks(addNewTask);
                     taskCounter();
                     setTaskInput('');
@@ -64,6 +63,9 @@ function App() {
 
     async function handleChangeCategory(categoryName) {
         console.log("handleChangeCategory")
+        console.log("categoryName")
+        console.log(categoryName)
+        setCurrentCategory(categoryName)
         try {
             const tasks = await fetchUserTasks(categoryName);
             setUserTasks(tasks);
@@ -86,8 +88,10 @@ function App() {
 
     async function disableEditMode(id, isDone, taskInput) {
         try {
+            console.log('--saveEditedTask--')
             await saveEditedTask(id, isDone, taskInput);
-            await fetchUserTasks();
+            const tasks = await fetchUserTasks(currentCategory);
+            setUserTasks(tasks);
         } catch (error) {
             alert("failed update task")
         }
@@ -100,7 +104,7 @@ function App() {
 
         setIsFetching(true);
         try {
-            const tasks = await fetchUserTasks();
+            const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
@@ -124,7 +128,7 @@ function App() {
             alert("Failed");
         }
         try {
-            const tasks = await fetchUserTasks();
+            const tasks = await fetchUserTasks(currentCategory);
             console.log("fetchUserTasks+")
             setUserTasks(tasks);
             taskCounter();
@@ -151,10 +155,9 @@ function App() {
             // alert("cant delete task");
         }
         try {
-            const tasks = await fetchUserTasks();
-            console.log("fetchUserTasks+")
+            const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
-            // taskCounter();
+            taskCounter();
         } catch (error) {
             setError({message: error.message || "Failed to delete task"});
             alert("cant delete task 2");
@@ -193,7 +196,6 @@ function App() {
             </div>
         <Task
             tasks={userTasks}
-            filter={filter}
             isLoading={isFetching}
             loadingText="Loading..."
             onHandleDisableEditMode={disableEditMode}
