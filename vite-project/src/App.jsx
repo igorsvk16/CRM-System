@@ -163,24 +163,21 @@ function App() {
                   </button>
                 </div>
             <div className="tasks-categories">
-            <div>
-                <button onClick={() => handleChangeCategory('all')}>
-                    <p>Все</p>
-                    <p>{numberOfAllTasks}</p>
-                </button>
-            </div>
-            <div>
-                <button onClick={() => handleChangeCategory('inWork')}>
-                    <p>В работе</p>
-                    <p>{numberOfInWorkTasks}</p>
-                </button>
-            </div>
-            <div>
-                <button onClick={() => handleChangeCategory('completed')}>
-                   <p>Сделано</p>
-                    <p>{numberOfCompletedTasks}</p>
-                </button>
-            </div>
+                <div className="task-category">
+                    <button onClick={() => handleChangeCategory('all')}>
+                        <p>Все ({numberOfAllTasks})</p>
+                    </button>
+                </div>
+                <div className="task-category">
+                    <button onClick={() => handleChangeCategory('inWork')}>
+                        <p>В работе ({numberOfInWorkTasks})</p>
+                    </button>
+                </div>
+                <div className="task-category">
+                    <button onClick={() => handleChangeCategory('completed')}>
+                       <p>Сделано ({numberOfCompletedTasks})</p>
+                    </button>
+                </div>
             </div>
 
         <Task
