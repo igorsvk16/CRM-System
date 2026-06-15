@@ -41,27 +41,30 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     </button>
                                 </li>
                             ) : (
-                            <li key={taskData.id} className="task">
-                                <input
-                                    type={"checkbox"}
-                                    onChange={() => onSelectStatus(taskData)}
-                                    checked={taskData.isDone}
-                                />
-                                <input
-                                    defaultValue={taskData.title}
-                                    ref={inputRef}
-                                    type="text"
-                                    readOnly={true}
-                                />
-                                <button
-                                    onClick={() => onEnableEditMode(taskData.id)}>
-                                    <img className={styles.actionIcon} src={editIcon} />
-                                </button>
-                                <button
-                                    onClick={() => onSelectDelete(taskData.id)}>
-                                    <img className={styles.actionIcon} src={trashIcon} alt="trashIcon"/>
-                                </button>
-                            </li>
+                                <div className={styles.taskDiv}>
+                                    <li key={taskData.id} className={styles.task}>
+                                        <input
+                                            type="checkbox"
+                                            onChange={() => onSelectStatus(taskData)}
+                                            checked={taskData.isDone}
+                                            className={styles.checkboxStatusTask}
+                                        />
+                                        <input
+                                            defaultValue={taskData.title}
+                                            ref={inputRef}
+                                            type="text"
+                                            readOnly={true}
+                                        />
+                                        <button
+                                            onClick={() => onEnableEditMode(taskData.id)}>
+                                            <img className={styles.actionIcon} src={editIcon} />
+                                        </button>
+                                        <button
+                                            onClick={() => onSelectDelete(taskData.id)}>
+                                            <img className={styles.actionIcon} src={trashIcon} alt="trashIcon"/>
+                                        </button>
+                                    </li>
+                                </div>
                             )
                     ))}
                 </section>
