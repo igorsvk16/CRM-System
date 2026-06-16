@@ -57,13 +57,23 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             checked={taskData.isDone}
                                             className={styles.checkboxStatusTask}
                                         />
-                                        <input
-                                            defaultValue={taskData.title}
-                                            ref={inputRef}
-                                            type="text"
-                                            readOnly={true}
-                                            className={styles.taskTitle}
-                                        />
+                                        {taskData.isDone ?
+                                            <input
+                                                defaultValue={taskData.title}
+                                                ref={inputRef}
+                                                type="text"
+                                                readOnly={true}
+                                                className={styles.taskTitleDone}
+                                            />
+                                            : <input
+                                                defaultValue={taskData.title}
+                                                ref={inputRef}
+                                                type="text"
+                                                readOnly={true}
+                                                className={styles.taskTitleUndone}
+                                            />
+                                        }
+
                                         <button
                                             className={styles.editBtn}
                                             onClick={() => onEnableEditMode(taskData.id)}>
