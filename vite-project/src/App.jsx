@@ -16,7 +16,6 @@ function App() {
     let isDone= false;
 
     useEffect(() => {
-        console.log("useEffect");
         async function fetchTasks() {
             setIsFetching(true);
             try {
@@ -24,7 +23,7 @@ function App() {
                 setUserTasks(tasks);
                 taskCounter();
             } catch (error) {
-                alert("Failed fetch tasks")
+                alert("Не получилось получить задачи")
             }
             setIsFetching(false);
         }
@@ -33,7 +32,6 @@ function App() {
 
 
     async function handleAddTask() {
-        console.log('handleAddTask')
         try {
                 if (taskInput.length >= 2 && taskInput.length <= 64) {
                     await fetchAddTask(taskInput, isDone);
@@ -41,10 +39,12 @@ function App() {
                     setUserTasks(addNewTask);
                     taskCounter();
                     setTaskInput('');
-                    console.log('taskInput clear');
-                console.log('fetchAddTask');
             } else {
-                alert("Task must be > 1 and < 65 symbols");
+                    if (taskInput.length >= 2) {
+                        alert("Максимальная длина текста 64 символа")
+                    } else {
+                        alert("Минимальная длина текста 2 символа")
+                    }
             }
         } catch (error) {
             alert("Failed");
@@ -52,16 +52,13 @@ function App() {
     }
 
     async function handleChangeCategory(categoryName) {
-        console.log("handleChangeCategory")
-        console.log("categoryName")
-        console.log(categoryName)
         setCurrentCategory(categoryName)
         try {
             const tasks = await fetchUserTasks(categoryName);
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            alert("Failed");
+            alert("Не получилось сменить категорию");
         }
 
     }
@@ -72,14 +69,13 @@ function App() {
             setNumberOfInWorkTasks(numberOfTasks.inWork)
             setNumberOfCompletedTasks(numberOfTasks.completed)
         } catch (error) {
-            alert("Failed to load number of tasks");
+            alert("Не получилось посчитать количество задач");
         }
     }
 
     async function disableEditMode(id, isDone, taskInput) {
         if (taskInput.length >= 2 && taskInput.length <= 64) {
             try {
-                console.log('--saveEditedTask--')
                 await saveEditedTask(id, isDone, taskInput);
                 const tasks = await fetchUserTasks(currentCategory);
                 setUserTasks(tasks);
@@ -89,44 +85,38 @@ function App() {
             setEditTaskIs("");
         } else {
             if (taskInput.length >= 2) {
-                alert("Минимальная длина текста 2 символа")
-            } else {
                 alert("Максимальная длина текста 64 символа")
+            } else {
+                alert("Минимальная длина текста 2 символа")
             }
         }
-
     }
 
     async function enableEditMode(task) {
-        console.log("enableEditMode")
         setEditTaskIs(task);
-
         setIsFetching(true);
         try {
             const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            alert("Failed fetch tasks")
+            alert("Не получилось загрузить задачи")
         }
         setIsFetching(false);
     }
     function onSelectEditModeCloseNoSave() {
-        console.log("setEditTaskIs")
         setEditTaskIs("");
         setTaskInput("");
     }
 
     async function onSelectStatus(taskData) {
-        let newStatus = taskData.isDone;
-        newStatus = !newStatus;
+        let newStatus = !taskData.isDone;
         const taskId = +taskData.id;
         const taskTitle = taskData.title;
         try {
             await fetchTaskIsDone(taskId, newStatus, taskTitle)
-
         } catch (error) {
-            alert("Failed");
+            alert("Ошибка обновления статуса задачи");
         }
         try {
             const tasks = await fetchUserTasks(currentCategory);
@@ -134,8 +124,7 @@ function App() {
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            alert("Failed to delete task");
-            alert("cant delete task 2");
+            alert("Не получилось удалить задачу");
         }
     }
 
