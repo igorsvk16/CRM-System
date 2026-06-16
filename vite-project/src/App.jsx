@@ -77,15 +77,24 @@ function App() {
     }
 
     async function disableEditMode(id, isDone, taskInput) {
-        try {
-            console.log('--saveEditedTask--')
-            await saveEditedTask(id, isDone, taskInput);
-            const tasks = await fetchUserTasks(currentCategory);
-            setUserTasks(tasks);
-        } catch (error) {
-            alert("failed update task")
+        if (taskInput.length >= 2 && taskInput.length <= 64) {
+            try {
+                console.log('--saveEditedTask--')
+                await saveEditedTask(id, isDone, taskInput);
+                const tasks = await fetchUserTasks(currentCategory);
+                setUserTasks(tasks);
+            } catch (error) {
+                alert("failed update task")
+            }
+            setEditTaskIs("");
+        } else {
+            if (taskInput.length >= 2) {
+                alert("Минимальная длина текста 2 символа")
+            } else {
+                alert("Максимальная длина текста 64 символа")
+            }
         }
-        setEditTaskIs("");
+
     }
 
     async function enableEditMode(task) {
