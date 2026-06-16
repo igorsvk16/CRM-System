@@ -1,7 +1,42 @@
-.actionIcon {
-    width: 30px;
+.editBtn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 0.5rem;
+    background-color: #4b8df7;
+    border-radius: 0.3rem;
+    margin: 0.5rem 0;
+
+}
+.delBtn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 0.5rem;
+    background-color: #ff5a52;
+    border-radius: 0.3rem;
+    margin: 0.5rem;
+}
+
+.editIcon {
+    width: 20px;
+    height: auto;
+    display: flex;
+
+}
+.deleteIcon {
+    width: 20px;
     height: auto;
 }
+
 
 .closeIcon {
     width: 50px;
@@ -24,8 +59,13 @@
     margin: 1rem;
     background-color: #ffffff;
     width: 20rem;
+    border-radius: 0.4rem;
 }
-
+.task input {
+    font-weight: 500;
+    font-size: 0.8rem;
+    font-family: Montserrat, serif;
+}
 
 .checkboxStatusTask {
     appearance: none;
@@ -38,10 +78,22 @@
     background-color: #fff;
     cursor: pointer;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    margin: 0;
+    margin: 1rem;
 }
 .checkboxStatusTask:checked {
     background-color: #0d6efd;
     border-color: #0d6efd;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.taskTitle {
+    border: none;
+    background-color: #ffffff;
+    margin-right: 1rem;
+    font-weight: 200;
+
+}
+
+.notCheckbox {
+    padding: 1.5rem;
 }

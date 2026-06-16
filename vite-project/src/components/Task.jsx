@@ -19,7 +19,9 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                     {(tasks).map((taskData) => (
                         (+editTaskIs === taskData.id) ?
                             (
+                                <div className={styles.taskDiv}>
                                 <li key={taskData.id} className={styles.task}>
+                                    <div className={styles.notCheckbox}></div>
                                     <input
                                         onChange={e => {taskInput = e.target.value}}
                                         defaultValue={taskData.title}
@@ -27,19 +29,25 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         type="text"
                                         readOnly={false}
                                         autoFocus
+                                        className={styles.taskTitle}
                                     />
                                     <button
+                                        className={styles.editBtn}
                                         onClick={(e) => onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput)}
-                                    >
-                                        <img className="actionIcon" src={saveIcon} />
+                                        >
+                                        <img className={styles.editIcon} src={saveIcon} />
                                     </button>
                                     <button
+                                        className={styles.delBtn}
                                         onClick={() => onSelectEditModeCloseNoSave()}
                                     >
-
-                                        <img className={styles.closeIcon} src={closeIcon} />
+                                        <img
+                                            src={closeIcon}
+                                            className={styles.deleteIcon}
+                                        />
                                     </button>
                                 </li>
+                                </div>
                             ) : (
                                 <div className={styles.taskDiv}>
                                     <li key={taskData.id} className={styles.task}>
@@ -54,14 +62,17 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             ref={inputRef}
                                             type="text"
                                             readOnly={true}
+                                            className={styles.taskTitle}
                                         />
                                         <button
+                                            className={styles.editBtn}
                                             onClick={() => onEnableEditMode(taskData.id)}>
-                                            <img className={styles.actionIcon} src={editIcon} />
+                                            <img className={styles.editIcon} src={editIcon} />
                                         </button>
                                         <button
+                                            className={styles.delBtn}
                                             onClick={() => onSelectDelete(taskData.id)}>
-                                            <img className={styles.actionIcon} src={trashIcon} alt="trashIcon"/>
+                                            <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
                                         </button>
                                     </li>
                                 </div>
@@ -69,8 +80,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                     ))}
                 </section>
             )}
-
-
         </section>
     )
 }
