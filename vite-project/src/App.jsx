@@ -85,7 +85,7 @@ function App() {
         } catch (error) {
             alert("failed update task")
         }
-        setEditTaskIs('');
+        setEditTaskIs("");
     }
 
     async function enableEditMode(task) {
@@ -103,7 +103,9 @@ function App() {
         setIsFetching(false);
     }
     function onSelectEditModeCloseNoSave() {
-        setEditTaskIs('');
+        console.log("setEditTaskIs")
+        setEditTaskIs("");
+        setTaskInput("");
     }
 
     async function onSelectStatus(taskData) {
@@ -163,21 +165,49 @@ function App() {
                   </button>
                 </div>
             <div className="tasks-categories">
-                <div className="task-category">
-                    <button onClick={() => handleChangeCategory('all')}>
-                        <p>Все ({numberOfAllTasks})</p>
-                    </button>
-                </div>
-                <div className="task-category">
-                    <button onClick={() => handleChangeCategory('inWork')}>
-                        <p>В работе ({numberOfInWorkTasks})</p>
-                    </button>
-                </div>
-                <div className="task-category">
-                    <button onClick={() => handleChangeCategory('completed')}>
-                       <p>Сделано ({numberOfCompletedTasks})</p>
-                    </button>
-                </div>
+                {currentCategory === 'all' ? (
+                    <div className="task-category-active">
+                        <button onClick={() => handleChangeCategory('all')}>
+                            <p>Все ({numberOfAllTasks})</p>
+                        </button>
+                    </div>
+                ) : (
+                    <div className="task-category">
+                        <button onClick={() => handleChangeCategory('all')}>
+                            <p>Все ({numberOfAllTasks})</p>
+                        </button>
+                    </div>
+                )}
+
+
+                {currentCategory === 'inWork' ? (
+                    <div className="task-category-active">
+                        <button onClick={() => handleChangeCategory('inWork')}>
+                            <p>В работе ({numberOfInWorkTasks})</p>
+                        </button>
+                    </div>
+                ) : (
+                    <div className="task-category">
+                        <button onClick={() => handleChangeCategory('inWork')}>
+                            <p>В работе ({numberOfInWorkTasks})</p>
+                        </button>
+                    </div>
+                )}
+
+                {currentCategory === 'completed' ? (
+                    <div className="task-category-active">
+                        <button onClick={() => handleChangeCategory('completed')}>
+                            <p>Сделано ({numberOfCompletedTasks})</p>
+                        </button>
+                    </div>
+                ) : (
+                    <div className="task-category">
+                        <button onClick={() => handleChangeCategory('completed')}>
+                            <p>Сделано ({numberOfCompletedTasks})</p>
+                        </button>
+                    </div>
+                )}
+
             </div>
 
         <Task

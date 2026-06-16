@@ -73,6 +73,19 @@ html, body {
   font-weight: 600;
   border-bottom: 2px solid #f3f7fb;
 }
+.task-category-active button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin: 0.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid #f3f7fb;
+  color: #4b8df7;
+  border-bottom: 2px solid #4b8df7;
+}
 .task-category button:hover {
   color: #4b8df7;
   border-bottom: 2px solid #4b8df7;

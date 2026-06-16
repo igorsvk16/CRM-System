@@ -19,7 +19,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                     {(tasks).map((taskData) => (
                         (+editTaskIs === taskData.id) ?
                             (
-                                <div className={styles.taskDiv}>
+                                <div className={styles.taskDiv} key={taskData.id}>
                                 <li key={taskData.id} className={styles.task}>
                                     <div className={styles.notCheckbox}></div>
                                     <input
@@ -33,7 +33,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     />
                                     <button
                                         className={styles.editBtn}
-                                        onClick={(e) => onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput)}
+                                        onClick={() => onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput)}
                                         >
                                         <img className={styles.editIcon} src={saveIcon} />
                                     </button>
@@ -49,7 +49,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                 </li>
                                 </div>
                             ) : (
-                                <div className={styles.taskDiv}>
+                                <div className={styles.taskDiv} key={taskData.id}>
                                     <li key={taskData.id} className={styles.task}>
                                         <input
                                             type="checkbox"
