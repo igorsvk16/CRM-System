@@ -1,8 +1,9 @@
 import Task from "./components/Task.jsx";
 import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
-import './App.css'
+import './App.module.css'
 import {useEffect, useState } from "react";
 import {getNumberOfTasks} from "./api/http.js";
+import styles from "./App.module.css";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
@@ -55,7 +56,6 @@ function App() {
         try {
             const tasks = await fetchUserTasks(categoryName);
             setUserTasks(tasks);
-            taskCounter();
         } catch (error) {
             alert("Не получилось сменить категорию");
         }
@@ -74,7 +74,7 @@ function App() {
     }
 
     async function disableEditMode(id, isDone, taskInput) {
-        if (taskInput.length > 0) {
+        if (taskInput.length) {
             if (taskInput.length >= 2 && taskInput.length <= 64) {
                 try {
                     await saveEditedTask(id, isDone, taskInput);
@@ -104,15 +104,6 @@ function App() {
 
     async function enableEditMode(task) {
         setEditTaskIs(task);
-        setIsFetching(true);
-        try {
-            const tasks = await fetchUserTasks(currentCategory);
-            setUserTasks(tasks);
-            taskCounter();
-        } catch (error) {
-            alert("Не получилось загрузить задачи")
-        }
-        setIsFetching(false);
     }
 
     async function onSelectStatus(taskData) {
@@ -151,9 +142,9 @@ function App() {
   return (
     <>
         <main>
-            <div id="task-add">
+            <div className={styles.taskAdd}>
                   <input
-                      className="input-new-task"
+                      className={styles.inputNewTask}
                       value={taskInput}
                       onChange={e => {setTaskInput(e.target.value)}}
                       type="text"
@@ -161,20 +152,20 @@ function App() {
                   />
                   <button
                       onClick={handleAddTask}
-                      className="add-button"
+                      className={styles.addButton}
                   >
                       <p>Add</p>
                   </button>
                 </div>
-            <div className="tasks-categories">
+            <div className={styles.tasksСategories}>
                 {currentCategory === 'all' ? (
-                    <div className="task-category-active">
+                    <div className={styles.taskCategoryActive}>
                         <button onClick={() => handleChangeCategory('all')}>
                             <p>Все ({numberOfAllTasks})</p>
                         </button>
                     </div>
                 ) : (
-                    <div className="task-category">
+                    <div className={styles.taskCategory}>
                         <button onClick={() => handleChangeCategory('all')}>
                             <p>Все ({numberOfAllTasks})</p>
                         </button>
@@ -183,13 +174,13 @@ function App() {
 
 
                 {currentCategory === 'inWork' ? (
-                    <div className="task-category-active">
+                    <div className={styles.taskCategoryActive}>
                         <button onClick={() => handleChangeCategory('inWork')}>
                             <p>В работе ({numberOfInWorkTasks})</p>
                         </button>
                     </div>
                 ) : (
-                    <div className="task-category">
+                    <div className={styles.taskCategory}>
                         <button onClick={() => handleChangeCategory('inWork')}>
                             <p>В работе ({numberOfInWorkTasks})</p>
                         </button>
@@ -197,13 +188,13 @@ function App() {
                 )}
 
                 {currentCategory === 'completed' ? (
-                    <div className="task-category-active">
+                    <div className={styles.taskCategoryActive}>
                         <button onClick={() => handleChangeCategory('completed')}>
                             <p>Сделано ({numberOfCompletedTasks})</p>
                         </button>
                     </div>
                 ) : (
-                    <div className="task-category">
+                    <div className={styles.taskCategory}>
                         <button onClick={() => handleChangeCategory('completed')}>
                             <p>Сделано ({numberOfCompletedTasks})</p>
                         </button>

@@ -11,7 +11,7 @@ html, body {
   background-color: #f3f7fb;
 }
 
-.add-button {
+.addButton {
   display: flex;
   background-color: #4b8df7;
   border: none;
@@ -26,10 +26,10 @@ html, body {
   align-content: center;
   vertical-align: middle;
 }
-.add-button:hover {
+.addButton:hover {
   background-color: #347bf0;
 }
-.add-button p {
+.addButton p {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -38,7 +38,7 @@ html, body {
   line-height: 0px;
 }
 
-.input-new-task {
+.inputNewTask {
   border: none;
   background-color: #f3f7fb;
   border-bottom: 1px solid #d7dde5;
@@ -46,7 +46,7 @@ html, body {
   font-weight: 200;
 }
 
-#task-add {
+.taskAdd {
   display: flex;
   justify-content: center;
   margin: 1rem;
@@ -54,14 +54,14 @@ html, body {
   align-content: center;
 }
 
-.tasks-categories {
+.tasksСategories {
   display: flex;
   flex-direction: row;
   justify-content: center;
   background-color: #f3f7fb;
   border: none;
 }
-.task-category button {
+.taskCategory button {
   background: none;
   color: inherit;
   border: none;
@@ -73,7 +73,12 @@ html, body {
   font-weight: 600;
   border-bottom: 2px solid #f3f7fb;
 }
-.task-category-active button {
+.taskCategory button:hover {
+  color: #4b8df7;
+  border-bottom: 2px solid #4b8df7;
+}
+
+.taskCategoryActive button {
   background: none;
   border: none;
   padding: 0;
@@ -83,10 +88,6 @@ html, body {
   margin: 0.5rem;
   font-weight: 600;
   border-bottom: 2px solid #f3f7fb;
-  color: #4b8df7;
-  border-bottom: 2px solid #4b8df7;
-}
-.task-category button:hover {
   color: #4b8df7;
   border-bottom: 2px solid #4b8df7;
 }

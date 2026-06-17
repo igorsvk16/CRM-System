@@ -72,7 +72,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                                 className={styles.taskTitleUndone}
                                             />
                                         }
-
                                         <button
                                             className={styles.editBtn}
                                             onClick={() => onEnableEditMode(taskData.id)}>
