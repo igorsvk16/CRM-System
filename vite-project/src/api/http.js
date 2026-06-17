@@ -29,7 +29,6 @@ export async function fetchUserTasks(status="all"){
 }
 
 export async function fetchTaskIsDone(id, isDone, title){
-    console.log(isDone)
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -42,7 +41,7 @@ export async function fetchTaskIsDone(id, isDone, title){
     })
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Failed to update task status');
+        throw new Error('Не получилось обновить статус');
     }
 
     return resData.data;

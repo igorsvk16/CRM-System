@@ -2,12 +2,14 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import styles from './Task.module.css';
 
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave }) {
 
     const inputRef = useRef(null);
+    const [ taskStatus, setTaskStatus ] = useState();
+
 
     return (
         <section className="tasks-category">
@@ -52,7 +54,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     <li key={taskData.id} className={styles.task}>
                                         <input
                                             type="checkbox"
-                                            onChange={() => onSelectStatus(taskData)}
+                                            onChange={() => onSelectStatus(taskData.isDone, taskData.id, taskData.title)}
                                             checked={taskData.isDone}
                                             className={styles.checkboxStatusTask}
                                         />

@@ -10,7 +10,7 @@ function App() {
     const [ isFetching, setIsFetching] = useState(false);
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
     const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
-    const [ numberOfCompletedTasks,  setNumberOfCompletedTasks] = useState();
+    const [ numberOfCompletedTasks, setNumberOfCompletedTasks] = useState();
     const [ editTaskIs, setEditTaskIs ] = useState();
     const [ taskInput, setTaskInput ] = useState('')
     const [ currentCategory, setCurrentCategory ] = useState('all');
@@ -106,12 +106,10 @@ function App() {
         setEditTaskIs(task);
     }
 
-    async function onSelectStatus(taskData) {
-        let newStatus = !taskData.isDone;
-        const taskId = +taskData.id;
-        const taskTitle = taskData.title;
+    async function onSelectStatus(isDone, id, title) {
+        let newStatus = !isDone;
         try {
-            await fetchTaskIsDone(taskId, newStatus, taskTitle)
+            await fetchTaskIsDone(id, newStatus, title);
         } catch (error) {
             alert("Ошибка обновления статуса задачи");
         }
@@ -120,7 +118,7 @@ function App() {
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            alert("Не получилось удалить задачу");
+            alert("Не получилось обновить статус задачи");
         }
     }
 
