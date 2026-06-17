@@ -30,7 +30,6 @@ function App() {
         fetchTasks();
     }, []);
 
-
     async function handleAddTask() {
         try {
                 if (taskInput.length >= 2 && taskInput.length <= 64) {
@@ -47,7 +46,7 @@ function App() {
                     }
             }
         } catch (error) {
-            alert("Failed");
+            alert("Не получилось добавить задачу");
         }
     }
 
@@ -62,6 +61,7 @@ function App() {
         }
 
     }
+
     async function taskCounter() {
         try {
             const numberOfTasks = await getNumberOfTasks();
@@ -74,22 +74,32 @@ function App() {
     }
 
     async function disableEditMode(id, isDone, taskInput) {
-        if (taskInput.length >= 2 && taskInput.length <= 64) {
-            try {
-                await saveEditedTask(id, isDone, taskInput);
-                const tasks = await fetchUserTasks(currentCategory);
-                setUserTasks(tasks);
-            } catch (error) {
-                alert("failed update task")
-            }
-            setEditTaskIs("");
-        } else {
-            if (taskInput.length >= 2) {
-                alert("Максимальная длина текста 64 символа")
+        if (taskInput.length > 0) {
+            if (taskInput.length >= 2 && taskInput.length <= 64) {
+                try {
+                    await saveEditedTask(id, isDone, taskInput);
+                    const tasks = await fetchUserTasks(currentCategory);
+                    setUserTasks(tasks);
+                    setEditTaskIs("");
+                    setTaskInput("");
+                } catch (error) {
+                    alert("Не получилось отредактировать задачу")
+                }
             } else {
-                alert("Минимальная длина текста 2 символа")
+                if (taskInput.length > 64) {
+                    alert("Максимальная длина текста 64 символа")
+                } else {
+                    alert("Минимальная длина текста 2 символа")
+                }
+            }
+        } else {
+                setEditTaskIs("");
+                setTaskInput("");
             }
         }
+    function onSelectEditModeCloseNoSave() {
+        setEditTaskIs("");
+        setTaskInput("");
     }
 
     async function enableEditMode(task) {
@@ -104,10 +114,6 @@ function App() {
         }
         setIsFetching(false);
     }
-    function onSelectEditModeCloseNoSave() {
-        setEditTaskIs("");
-        setTaskInput("");
-    }
 
     async function onSelectStatus(taskData) {
         let newStatus = !taskData.isDone;
@@ -120,7 +126,6 @@ function App() {
         }
         try {
             const tasks = await fetchUserTasks(currentCategory);
-            console.log("fetchUserTasks+")
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
@@ -131,16 +136,15 @@ function App() {
     async function onSelectDelete(id) {
         try {
             await deleteTaskById(id);
-            console.log("deleteTaskById+")
         } catch (error) {
-            alert("Failed to delete task");
+            // alert("Не получилось удалить задачу");
         }
         try {
             const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {
-            alert("Failed to delete task 2");
+            // alert("Не получилось удалить задачу");
         }
     }
 

@@ -9,7 +9,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
 
     const inputRef = useRef(null);
 
-
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
@@ -33,7 +32,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     />
                                     <button
                                         className={styles.editBtn}
-                                        onClick={() => onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput)}
+                                        onClick={() => onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput, taskData.title)}
                                         >
                                         <img className={styles.editIcon} src={saveIcon} />
                                     </button>
