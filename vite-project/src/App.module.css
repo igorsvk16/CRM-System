@@ -44,6 +44,7 @@ html, body {
   border-bottom: 1px solid #d7dde5;
   margin-right: 1rem;
   font-weight: 200;
+  color: #201f23;
 }
 
 .taskAdd {
