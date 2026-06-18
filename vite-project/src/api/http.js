@@ -24,7 +24,6 @@ export async function fetchUserTasks(status="all"){
         throw new Error('Failed fetch tasks');
     }
 
-    // console.log(resData)
     return resData.data;
 }
 
@@ -88,3 +87,4 @@ export async function deleteTaskById(id) {
     }
     return resData.data;
 }
+

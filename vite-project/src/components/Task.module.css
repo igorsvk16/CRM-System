@@ -78,7 +78,7 @@
     background-color: #fff;
     cursor: pointer;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    margin: 1rem;
+    margin: 1.2rem;
 }
 .checkboxStatusTask:checked {
     background-color: #0d6efd;

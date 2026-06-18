@@ -1,5 +1,5 @@
 import Task from "./components/Task.jsx";
-import {fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
+import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
 import './App.module.css'
 import {useEffect, useState } from "react";
 import {getNumberOfTasks} from "./api/http.js";
@@ -19,25 +19,27 @@ function App() {
     useEffect(() => {
         async function fetchTasks() {
             setIsFetching(true);
-            try {
-                const tasks = await fetchUserTasks(currentCategory);
-                setUserTasks(tasks);
-                taskCounter();
-            } catch (error) {
-                alert("Не получилось получить задачи")
-            }
+            updateTasks(currentCategory);
             setIsFetching(false);
         }
         fetchTasks();
     }, []);
 
+    async function updateTasks(currentCategory='all') {
+        try {
+            const tasks = await fetchUserTasks(currentCategory);
+            setUserTasks(tasks);
+            taskCounter();
+        } catch (error) {
+            alert('Ошибка при обновлении задач');
+        }
+    }
+
     async function handleAddTask() {
         try {
                 if (taskInput.length >= 2 && taskInput.length <= 64) {
                     await fetchAddTask(taskInput, isDone);
-                    const addNewTask = await fetchUserTasks(currentCategory);
-                    setUserTasks(addNewTask);
-                    taskCounter();
+                    updateTasks(currentCategory);
                     setTaskInput('');
             } else {
                     if (taskInput.length >= 2) {
@@ -92,6 +94,7 @@ function App() {
                     alert("Минимальная длина текста 2 символа")
                 }
             }
+        //     если задача сохранена без изменений
         } else {
                 setEditTaskIs("");
                 setTaskInput("");
@@ -113,13 +116,7 @@ function App() {
         } catch (error) {
             alert("Ошибка обновления статуса задачи");
         }
-        try {
-            const tasks = await fetchUserTasks(currentCategory);
-            setUserTasks(tasks);
-            taskCounter();
-        } catch (error) {
-            alert("Не получилось обновить статус задачи");
-        }
+        updateTasks(currentCategory);
     }
 
     async function onSelectDelete(id) {
@@ -128,13 +125,7 @@ function App() {
         } catch (error) {
             // alert("Не получилось удалить задачу");
         }
-        try {
-            const tasks = await fetchUserTasks(currentCategory);
-            setUserTasks(tasks);
-            taskCounter();
-        } catch (error) {
-            // alert("Не получилось удалить задачу");
-        }
+        updateTasks(currentCategory);
     }
 
   return (
