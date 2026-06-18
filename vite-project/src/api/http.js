@@ -10,7 +10,7 @@ export async function fetchAddTask(title, isDone) {
     })
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Failed to update user data');
+        throw new Error('Ошибка обновления данных');
     }
     return resData.data;
 
@@ -21,7 +21,7 @@ export async function fetchUserTasks(status="all"){
     const resData = await response.json();
 
     if (!response.ok) {
-        throw new Error('Failed fetch tasks');
+        throw new Error('Ошибка загрузки задач');
     }
 
     return resData.data;
@@ -40,7 +40,7 @@ export async function fetchTaskIsDone(id, isDone, title){
     })
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Не получилось обновить статус');
+        throw new Error('Ошибка обновления статуса');
     }
 
     return resData.data;
@@ -51,7 +51,7 @@ export async function getNumberOfTasks() {
     const response = await fetch(`https://easydev.club/api/v1/todos`);
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Failed to load number of tasks');
+        throw new Error('Ошибка загрузки количества задач');
     }
     return resData.info;
 }
@@ -69,7 +69,7 @@ export async function saveEditedTask(id, isDone, newTitle) {
     })
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Failed to update task title');
+        throw new Error('Ошибка загрузки задачи');
     }
     return resData.data;
 }
@@ -83,7 +83,7 @@ export async function deleteTaskById(id) {
     })
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Failed to delete task');
+        throw new Error('Ошибка удаления задачи');
     }
     return resData.data;
 }

@@ -54,22 +54,16 @@ function App() {
     }
 
     async function handleChangeCategory(categoryName) {
-        setCurrentCategory(categoryName)
-        try {
-            const tasks = await fetchUserTasks(categoryName);
-            setUserTasks(tasks);
-        } catch (error) {
-            alert("Не получилось сменить категорию");
-        }
-
+        setCurrentCategory(categoryName);
+        updateTasks(currentCategory);
     }
 
     async function taskCounter() {
         try {
             const numberOfTasks = await getNumberOfTasks();
-            setNumberOfAllTasks(numberOfTasks.all)
-            setNumberOfInWorkTasks(numberOfTasks.inWork)
-            setNumberOfCompletedTasks(numberOfTasks.completed)
+            setNumberOfAllTasks(numberOfTasks.all);
+            setNumberOfInWorkTasks(numberOfTasks.inWork);
+            setNumberOfCompletedTasks(numberOfTasks.completed);
         } catch (error) {
             alert("Не получилось посчитать количество задач");
         }
@@ -80,8 +74,7 @@ function App() {
             if (taskInput.length >= 2 && taskInput.length <= 64) {
                 try {
                     await saveEditedTask(id, isDone, taskInput);
-                    const tasks = await fetchUserTasks(currentCategory);
-                    setUserTasks(tasks);
+                    updateTasks(currentCategory);
                     setEditTaskIs("");
                     setTaskInput("");
                 } catch (error) {
@@ -100,6 +93,7 @@ function App() {
                 setTaskInput("");
             }
         }
+
     function onSelectEditModeCloseNoSave() {
         setEditTaskIs("");
         setTaskInput("");
@@ -147,6 +141,7 @@ function App() {
                   </button>
                 </div>
             <div className={styles.tasksСategories}>
+
                 {currentCategory === 'all' ? (
                     <div className={styles.taskCategoryActive}>
                         <button onClick={() => handleChangeCategory('all')}>
@@ -160,7 +155,6 @@ function App() {
                         </button>
                     </div>
                 )}
-
 
                 {currentCategory === 'inWork' ? (
                     <div className={styles.taskCategoryActive}>
