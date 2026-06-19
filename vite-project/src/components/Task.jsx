@@ -38,7 +38,10 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             </button>
                                             <button
                                                 className={styles.delBtn}
-                                                onClick={() => onSelectEditModeCloseNoSave()}
+                                                onClick={() => {
+                                                    onSelectEditModeCloseNoSave(taskData.id, taskData.isDone, taskData.title, inputRef);
+                                                }
+                                                }
                                             >
                                                 <img
                                                     src={closeIcon}

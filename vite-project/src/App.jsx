@@ -11,7 +11,7 @@ function App() {
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
     const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
     const [ numberOfCompletedTasks, setNumberOfCompletedTasks] = useState();
-    const [ editTaskIs, setEditTaskIs ] = useState();
+    const [ editTaskIs, setEditTaskIs ] = useState('');
     const [ taskInput, setTaskInput ] = useState('')
     const [ currentCategory, setCurrentCategory ] = useState('all');
     let isDone= false;
@@ -25,11 +25,13 @@ function App() {
         fetchTasks();
     }, []);
 
-    async function updateTasks(currentCategory='all') {
+    async function updateTasks(currentCategory) {
+        console.log("1!!!updateTasks(currentCategory")
         try {
             const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
             taskCounter();
+            console.log("2!!!updateTasks(currentCategory")
         } catch (error) {
             alert('Ошибка при обновлении задач');
         }
@@ -55,7 +57,7 @@ function App() {
 
     async function handleChangeCategory(categoryName) {
         setCurrentCategory(categoryName);
-        updateTasks(currentCategory);
+        updateTasks(categoryName);
     }
 
     async function taskCounter() {
@@ -67,6 +69,10 @@ function App() {
         } catch (error) {
             alert("Не получилось посчитать количество задач");
         }
+    }
+
+    async function enableEditMode(task) {
+        setEditTaskIs(task);
     }
 
     async function disableEditMode(id, isDone, taskInput) {
@@ -94,13 +100,38 @@ function App() {
             }
         }
 
-    function onSelectEditModeCloseNoSave() {
+    async function onSelectEditModeCloseNoSave(id, isDone, value, title, inputRef) {
+        console.log("onSelectEditModeCloseNoSave");
         setEditTaskIs("");
-        setTaskInput("");
-    }
+        console.log("setEditTaskIs");
 
-    async function enableEditMode(task) {
-        setEditTaskIs(task);
+        setTaskInput("");
+        console.log("setTaskInput");
+
+        updateTasks("all");
+        console.log("updateTasks");
+
+        // console.log(id);
+        // console.log(newInput);
+        // console.log(title);
+        //
+        // setEditTaskIs();
+        //
+        // await updateTasks(currentCategory);
+        // value = "";
+        // inputRef = null;
+        // setTaskInput("");
+        // inputRef = null;
+        // try {
+        //     await saveEditedTask(id, isDone, title);
+        //     updateTasks(currentCategory);
+        //     setEditTaskIs("");
+        //     setTaskInput("");
+        // } catch (error) {
+        //     alert("Не получилось отредактировать задачу")
+        // }
+
+
     }
 
     async function onSelectStatus(isDone, id, title) {
