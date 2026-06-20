@@ -76,6 +76,7 @@ function App() {
     }
 
     async function disableEditMode(id, isDone, taskInput) {
+        console.log("disableEditMode")
         if (taskInput.length) {
             if (taskInput.length >= 2 && taskInput.length <= 64) {
                 try {
@@ -100,16 +101,20 @@ function App() {
             }
         }
 
-    async function onSelectEditModeCloseNoSave(id, isDone, value, title, inputRef) {
-        console.log("onSelectEditModeCloseNoSave");
-        setEditTaskIs("");
-        console.log("setEditTaskIs");
-
-        setTaskInput("");
-        console.log("setTaskInput");
-
-        updateTasks("all");
-        console.log("updateTasks");
+    async function onSelectEditModeCloseNoSave() {
+        try {
+            // await saveEditedTask(id, isDone, taskInput);
+            await updateTasks(currentCategory);
+            setEditTaskIs("");
+            setTaskInput("");
+        } catch (error) {
+            alert("Не получилось отредактировать задачу")
+        }
+        // console.log("onSelectEditModeCloseNoSave");
+        // setEditTaskIs("");
+        // setTaskInput("7777");
+        // // updateTasks(currentCategory);
+        // console.log("updateTasks");
 
         // console.log(id);
         // console.log(newInput);
