@@ -40,6 +40,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                                 className={styles.delBtn}
                                                 onClick={() => {
                                                     onSelectEditModeCloseNoSave(taskData.id, taskData.isDone, taskData.title, inputRef);
+                                                    this.refs.inputRef.value="";
                                                 }
                                                 }
                                             >

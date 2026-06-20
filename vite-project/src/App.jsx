@@ -11,7 +11,7 @@ function App() {
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
     const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
     const [ numberOfCompletedTasks, setNumberOfCompletedTasks] = useState();
-    const [ editTaskIs, setEditTaskIs ] = useState('');
+    const [ editTaskIs, setEditTaskIs ] = useState();
     const [ taskInput, setTaskInput ] = useState('')
     const [ currentCategory, setCurrentCategory ] = useState('all');
     let isDone= false;
@@ -103,13 +103,8 @@ function App() {
     async function onSelectEditModeCloseNoSave(id, isDone, value, title, inputRef) {
         console.log("onSelectEditModeCloseNoSave");
         setEditTaskIs("");
-        console.log("setEditTaskIs");
-
         setTaskInput("");
-        console.log("setTaskInput");
-
-        updateTasks("all");
-        console.log("updateTasks");
+        // updateTasks("all");
 
         // console.log(id);
         // console.log(newInput);
