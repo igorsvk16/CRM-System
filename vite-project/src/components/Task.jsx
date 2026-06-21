@@ -8,9 +8,7 @@ import styles from './Task.module.css';
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave, updateTasks }) {
 
     const inputRef = useRef(null);
-
-    const [editableValue, setEditableValue] = useState("");
-
+    const [ editableValue, setEditableValue ] = useState('');
 
     return (
         <section className="tasks-category">
@@ -29,19 +27,18 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                                 // defaultValue={taskData.title}
                                                 // onChange={e => {taskInput = e.target.value}}
                                                 type="text"
-                                                value={taskData.title}
-                                                onChange={({ target: { value } }) =>
-                                                    updateTasks((prev) => ({ ...prev, title: value }))
-                                                }
+                                                // value={taskData.title}
+                                                value={editableValue}
                                                 ref={inputRef}
-
                                                 readOnly={false}
                                                 autoFocus
                                                 className={styles.taskTitle}
+                                                onChange={(e) => setEditableValue(e.target.value)}
                                             />
                                             <button
                                                 className={styles.editBtn}
-                                                onClick={() => onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput, taskData.title)}
+                                                onClick={() => {onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput, taskData.title);
+                                                    setEditableValue(taskInput)}}
                                                 >
                                                 <img className={styles.editIcon} src={saveIcon} />
                                             </button>
@@ -86,7 +83,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         }
                                         <button
                                             className={styles.editBtn}
-                                            onClick={() => onEnableEditMode(taskData.id)}>
+                                            onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title)}}>
                                             <img className={styles.editIcon} src={editIcon} />
                                         </button>
                                         <button

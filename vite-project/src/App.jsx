@@ -73,6 +73,7 @@ function App() {
 
     async function enableEditMode(task) {
         setEditTaskIs(task);
+
     }
 
     async function disableEditMode(id, isDone, taskInput) {
