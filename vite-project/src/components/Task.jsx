@@ -2,12 +2,15 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styles from './Task.module.css';
 
-export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave }) {
+export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave, updateTasks }) {
 
     const inputRef = useRef(null);
+
+    const [editableValue, setEditableValue] = useState("");
+
 
     return (
         <section className="tasks-category">
@@ -22,10 +25,16 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     <li key={taskData.id} className={styles.task}>
                                         <div className={styles.notCheckbox}></div>
                                             <input
-                                                onChange={e => {taskInput = e.target.value}}
-                                                defaultValue={taskData.title}
-                                                ref={inputRef}
+                                                // onChange={e => {taskInput = e.target.value}}
+                                                // defaultValue={taskData.title}
+                                                // onChange={e => {taskInput = e.target.value}}
                                                 type="text"
+                                                value={taskData.title}
+                                                onChange={({ target: { value } }) =>
+                                                    updateTasks((prev) => ({ ...prev, title: value }))
+                                                }
+                                                ref={inputRef}
+
                                                 readOnly={false}
                                                 autoFocus
                                                 className={styles.taskTitle}
@@ -61,7 +70,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         />
                                         {taskData.isDone ?
                                             <input
-                                                defaultValue={taskData.title}
+                                                value={taskData.title}
                                                 ref={inputRef}
                                                 type="text"
                                                 readOnly={true}

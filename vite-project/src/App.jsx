@@ -19,7 +19,7 @@ function App() {
     useEffect(() => {
         async function fetchTasks() {
             setIsFetching(true);
-            updateTasks(currentCategory);
+            await updateTasks(currentCategory);
             setIsFetching(false);
         }
         fetchTasks();
@@ -228,6 +228,7 @@ function App() {
             taskInput={taskInput}
             editTaskIs={editTaskIs}
             onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
+            updateTasks={updateTasks}
         />
         </main>
     </>
