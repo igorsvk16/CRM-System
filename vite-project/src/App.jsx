@@ -193,7 +193,6 @@ function App() {
             onSelectDelete={onSelectDelete}
             editTaskIs={editTaskIs}
             onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
-            updateTasks={updateTasks}
         />
         </main>
     </>
