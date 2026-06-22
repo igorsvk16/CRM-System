@@ -37,8 +37,9 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             />
                                             <button
                                                 className={styles.editBtn}
-                                                onClick={() => {onHandleDisableEditMode(taskData.id, taskData.isDone, taskInput, taskData.title);
-                                                    setEditableValue(taskInput)}}
+                                                onClick={() => {onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData.title);
+                                                }
+                                            }
                                                 >
                                                 <img className={styles.editIcon} src={saveIcon} />
                                             </button>
@@ -74,7 +75,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                                 className={styles.taskTitleDone}
                                             />
                                             : <input
-                                                defaultValue={taskData.title}
+                                                value={taskData.title}
                                                 ref={inputRef}
                                                 type="text"
                                                 readOnly={true}
