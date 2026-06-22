@@ -2,12 +2,13 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from './Task.module.css';
 
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave }) {
 
-    const [ editableValue, setEditableValue ] = useState('');
+    const [ editableValue, setEditableValue ] = useState("");
+    const inputRef = useRef(null);
 
     return (
         <section className="tasks-category">
@@ -22,14 +23,17 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         <div className={styles.notCheckbox}></div>
                                             <input
                                                 type="text"
-                                                value={editableValue}
+                                                // value={editableValue}
+                                                ref={inputRef}
                                                 readOnly={false}
                                                 autoFocus
-                                                onChange={(e) => setEditableValue(e.target.value)}
+                                                // onChange={(e) => setEditableValue(e.target.value)}
+                                                onChange={(e) => inputRef(e.target.value)}
+
                                             />
                                             <button
                                                 className={styles.editBtn}
-                                                onClick={() => {onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData.title);
+                                                onClick={() => {onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue);
                                                 }
                                             }
                                                 >
@@ -55,20 +59,14 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             checked={taskData.isDone}
                                             className={styles.checkboxStatusTask}
                                         />
-                                        {taskData.isDone ?
-                                            <input
-                                                value={taskData.title}
-                                                type="text"
-                                                readOnly={true}
-                                                className={styles.taskTitleDone}
-                                            />
-                                            : <input
-                                                value={taskData.title}
-                                                type="text"
-                                                readOnly={true}
-                                                className={styles.taskTitleUndone}
-                                            />
-                                        }
+                                        <input
+                                            // defaultValue={taskData.title}
+                                            // value={taskData.title}
+                                            ref={inputRef}
+                                            type="text"
+                                            readOnly={true}
+                                            className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+                                        />
                                         <button
                                             className={styles.editBtn}
                                             onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title)}}>
