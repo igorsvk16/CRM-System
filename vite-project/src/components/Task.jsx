@@ -5,7 +5,7 @@ import closeIcon from '../assets/close.png'
 import { useRef, useState } from "react";
 import styles from './Task.module.css';
 
-export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, taskInput, editTaskIs, onSelectEditModeCloseNoSave, updateTasks }) {
+export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave, updateTasks }) {
 
     const inputRef = useRef(null);
     const [ editableValue, setEditableValue ] = useState('');
@@ -23,11 +23,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                     <li key={taskData.id} className={styles.task}>
                                         <div className={styles.notCheckbox}></div>
                                             <input
-                                                // onChange={e => {taskInput = e.target.value}}
-                                                // defaultValue={taskData.title}
-                                                // onChange={e => {taskInput = e.target.value}}
                                                 type="text"
-                                                // value={taskData.title}
                                                 value={editableValue}
                                                 ref={inputRef}
                                                 readOnly={false}
@@ -46,7 +42,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             <button
                                                 className={styles.delBtn}
                                                 onClick={() => {
-                                                    onSelectEditModeCloseNoSave(taskData.id, taskData.isDone, taskData.title, inputRef);
+                                                    onSelectEditModeCloseNoSave();
                                                 }
                                                 }
                                             >

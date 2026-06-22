@@ -1,8 +1,8 @@
 import Task from "./components/Task.jsx";
 import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
 import './App.module.css'
-import {useEffect, useState } from "react";
-import {getNumberOfTasks} from "./api/http.js";
+import { useEffect, useState } from "react";
+import { getNumberOfTasks } from "./api/http.js";
 import styles from "./App.module.css";
 
 function App() {
@@ -19,39 +19,37 @@ function App() {
     useEffect(() => {
         async function fetchTasks() {
             setIsFetching(true);
-            await updateTasks(currentCategory);
+            updateTasks(currentCategory);
             setIsFetching(false);
         }
         fetchTasks();
     }, []);
 
     async function updateTasks(currentCategory) {
-        console.log("1!!!updateTasks(currentCategory")
         try {
             const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
             taskCounter();
-            console.log("2!!!updateTasks(currentCategory")
         } catch (error) {
             alert('Ошибка при обновлении задач');
         }
     }
 
     async function handleAddTask() {
-        try {
-                if (taskInput.length >= 2 && taskInput.length <= 64) {
-                    await fetchAddTask(taskInput, isDone);
-                    updateTasks(currentCategory);
-                    setTaskInput('');
-            } else {
-                    if (taskInput.length >= 2) {
-                        alert("Максимальная длина текста 64 символа")
-                    } else {
-                        alert("Минимальная длина текста 2 символа")
-                    }
+        if (taskInput.length >= 2 && taskInput.length <= 64) {
+            try {
+                await fetchAddTask(taskInput, isDone);
+            } catch (error) {
+                alert("Ошибка при добавлении задачи");
             }
-        } catch (error) {
-            alert("Не получилось добавить задачу");
+            updateTasks(currentCategory);
+            setTaskInput('');
+        } else {
+            if (taskInput.length >= 2) {
+                alert("Максимальная длина текста 64 символа")
+            } else {
+                alert("Минимальная длина текста 2 символа")
+            }
         }
     }
 
@@ -67,13 +65,12 @@ function App() {
             setNumberOfInWorkTasks(numberOfTasks.inWork);
             setNumberOfCompletedTasks(numberOfTasks.completed);
         } catch (error) {
-            alert("Не получилось посчитать количество задач");
+            alert("Ошибка подсчёта количества задач");
         }
     }
 
     async function enableEditMode(task) {
         setEditTaskIs(task);
-
     }
 
     async function disableEditMode(id, isDone, taskInput) {
@@ -83,7 +80,6 @@ function App() {
                     await saveEditedTask(id, isDone, taskInput);
                     updateTasks(currentCategory);
                     setEditTaskIs("");
-                    setTaskInput("");
                 } catch (error) {
                     alert("Не получилось отредактировать задачу")
                 }
@@ -97,42 +93,12 @@ function App() {
         //     если задача сохранена без изменений
         } else {
                 setEditTaskIs("");
-                setTaskInput("");
             }
         }
 
-    async function onSelectEditModeCloseNoSave(id, isDone, value, title, inputRef) {
-        console.log("onSelectEditModeCloseNoSave");
+    async function onSelectEditModeCloseNoSave() {
         setEditTaskIs("");
-        console.log("setEditTaskIs");
-
-        setTaskInput("");
-        console.log("setTaskInput");
-
         updateTasks("all");
-        console.log("updateTasks");
-
-        // console.log(id);
-        // console.log(newInput);
-        // console.log(title);
-        //
-        // setEditTaskIs();
-        //
-        // await updateTasks(currentCategory);
-        // value = "";
-        // inputRef = null;
-        // setTaskInput("");
-        // inputRef = null;
-        // try {
-        //     await saveEditedTask(id, isDone, title);
-        //     updateTasks(currentCategory);
-        //     setEditTaskIs("");
-        //     setTaskInput("");
-        // } catch (error) {
-        //     alert("Не получилось отредактировать задачу")
-        // }
-
-
     }
 
     async function onSelectStatus(isDone, id, title) {
@@ -173,7 +139,6 @@ function App() {
                   </button>
                 </div>
             <div className={styles.tasksСategories}>
-
                 {currentCategory === 'all' ? (
                     <div className={styles.taskCategoryActive}>
                         <button onClick={() => handleChangeCategory('all')}>
@@ -226,7 +191,6 @@ function App() {
             onEnableEditMode={enableEditMode}
             onSelectStatus={onSelectStatus}
             onSelectDelete={onSelectDelete}
-            taskInput={taskInput}
             editTaskIs={editTaskIs}
             onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
             updateTasks={updateTasks}
