@@ -9,7 +9,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
 
     const [ editableValue, setEditableValue ] = useState("");
     const inputRef = useRef(null);
-    const [taskTitle, setTaskTitle] = useState();
 
     return (
         <section className="tasks-category">
@@ -28,10 +27,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                                 ref={inputRef}
                                                 readOnly={false}
                                                 autoFocus
-
                                                 onChange={(e) => setEditableValue(e.target.value)}
-                                                // onChange={(e) => inputRef = e.target.value}
-
                                             />
                                             <button
                                                 className={styles.editBtn}
@@ -62,11 +58,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             className={styles.checkboxStatusTask}
                                         />
                                         <input
-                                            // defaultValue={taskData.title}
-
-                                            value={taskData.title || ""}
-                                            // value={taskTitle}
-                                            // onChange={e => setTaskTitle(e.target.value)}
+                                            defaultValue={taskData.title || ""}
                                             ref={inputRef}
                                             type="text"
                                             readOnly={true}
