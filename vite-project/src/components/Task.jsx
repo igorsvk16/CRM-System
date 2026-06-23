@@ -2,13 +2,14 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import styles from './Task.module.css';
 
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave }) {
 
     const [ editableValue, setEditableValue ] = useState("");
     const inputRef = useRef(null);
+    const [taskTitle, setTaskTitle] = useState();
 
     return (
         <section className="tasks-category">
@@ -23,12 +24,13 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         <div className={styles.notCheckbox}></div>
                                             <input
                                                 type="text"
-                                                // value={editableValue}
+                                                defaultValue={editableValue}
                                                 ref={inputRef}
                                                 readOnly={false}
                                                 autoFocus
-                                                // onChange={(e) => setEditableValue(e.target.value)}
-                                                onChange={(e) => inputRef(e.target.value)}
+
+                                                onChange={(e) => setEditableValue(e.target.value)}
+                                                // onChange={(e) => inputRef = e.target.value}
 
                                             />
                                             <button
@@ -61,7 +63,10 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         />
                                         <input
                                             // defaultValue={taskData.title}
-                                            // value={taskData.title}
+
+                                            value={taskData.title || ""}
+                                            // value={taskTitle}
+                                            // onChange={e => setTaskTitle(e.target.value)}
                                             ref={inputRef}
                                             type="text"
                                             readOnly={true}
