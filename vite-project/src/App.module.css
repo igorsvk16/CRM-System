@@ -27,7 +27,17 @@ html, body {
   justify-content: center;
   align-content: center;
   vertical-align: middle;
+
 }
+.addButton p {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin: 0;
+}
+
+
 .addButton:hover {
   background-color: #347bf0;
 }
@@ -56,6 +66,14 @@ html, body {
   flex-direction: row;
   align-content: center;
 }
+
+/*.taskAdd p {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-content: center;*/
+/*  text-align: center;*/
+/*  padding-bottom: 2rem;*/
+/*}*/
 
 .tasksСategories {
   display: flex;
