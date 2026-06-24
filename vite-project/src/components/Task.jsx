@@ -2,13 +2,12 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import {useEffect, useRef, useState} from "react";
+import { useState } from "react";
 import styles from './Task.module.css';
 
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave }) {
 
     const [ editableValue, setEditableValue ] = useState("");
-    const inputRef = useRef(null);
 
     return (
         <section className="tasks-category">
@@ -23,8 +22,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         <div className={styles.notCheckbox}></div>
                                             <input
                                                 type="text"
-                                                defaultValue={editableValue}
-                                                ref={inputRef}
+                                                value={editableValue}
                                                 readOnly={false}
                                                 autoFocus
                                                 onChange={(e) => setEditableValue(e.target.value)}
@@ -58,8 +56,8 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             className={styles.checkboxStatusTask}
                                         />
                                         <input
-                                            defaultValue={taskData.title || ""}
-                                            ref={inputRef}
+                                            //defaultValue не даёт менять потом значение
+                                            value={taskData.title}
                                             type="text"
                                             readOnly={true}
                                             className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
