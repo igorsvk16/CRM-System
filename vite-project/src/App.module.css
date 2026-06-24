@@ -9,8 +9,6 @@ html, body {
   padding: 0;
   margin: 0;
   background-color: #f3f7fb;
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  font: 18px/145% var(--sans);
 }
 
 .addButton {
