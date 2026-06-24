@@ -74,8 +74,6 @@ function App() {
     }
 
     async function disableEditMode(id, isDone, taskInput) {
-        console.log(taskInput);
-        console.log("------")
         if (taskInput.length) {
             if (taskInput.length >= 2 && taskInput.length <= 64) {
                 try {

@@ -56,7 +56,6 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             className={styles.checkboxStatusTask}
                                         />
                                         <input
-                                            //defaultValue не даёт менять потом значение
                                             value={taskData.title}
                                             type="text"
                                             readOnly={true}
