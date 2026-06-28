@@ -22,7 +22,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                         <div className={styles.notCheckbox}></div>
                                             <input
                                                 type="text"
-                                                value={editableValue}
+                                                defaultValue={editableValue}
                                                 readOnly={false}
                                                 autoFocus
                                                 onChange={(e) => setEditableValue(e.target.value)}
@@ -56,7 +56,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             className={styles.checkboxStatusTask}
                                         />
                                         <input
-                                            value={taskData.title}
+                                            defaultValue={"" || taskData.title}
                                             type="text"
                                             readOnly={true}
                                             className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
