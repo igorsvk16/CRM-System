@@ -115,7 +115,7 @@ function App() {
         try {
             await deleteTaskById(id);
         } catch (error) {
-            // alert("Не получилось удалить задачу");
+            alert("Не получилось удалить задачу");
         }
         updateTasks(currentCategory);
     }

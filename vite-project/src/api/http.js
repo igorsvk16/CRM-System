@@ -67,10 +67,14 @@ export async function saveEditedTask(id, isDone, newTitle) {
             'Content-Type': 'application/json'
         }
     })
+    console.log(response);
+
     const resData = await response.json();
+    console.log(resData);
     if (!response.ok) {
         throw new Error('Ошибка загрузки задачи');
     }
+    console.log("savedET")
     return resData.data;
 }
 
@@ -81,10 +85,7 @@ export async function deleteTaskById(id) {
             'Content-Type': 'application/json'
         }
     })
-    const resData = await response.json();
     if (!response.ok) {
         throw new Error('Ошибка удаления задачи');
     }
-    return resData.data;
 }
-
