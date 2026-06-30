@@ -81,7 +81,7 @@ function App() {
                 } catch (error) {
                     alert("Не получилось отредактировать задачу")
                 }
-                setEditTaskIs("");
+                setEditTaskIs(null);
                 updateTasks(currentCategory);
             } else {
                 if (taskInput.length > 64) {
@@ -97,8 +97,7 @@ function App() {
         }
 
     async function onSelectEditModeCloseNoSave() {
-        setEditTaskIs("");
-        updateTasks("all");
+        setEditTaskIs(null);
     }
 
     async function onSelectStatus(isDone, id, title) {
