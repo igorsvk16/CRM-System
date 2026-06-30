@@ -8,7 +8,6 @@ import styles from './Task.module.css';
 export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave }) {
 
     const [ editableValue, setEditableValue ] = useState(null);
-    const [ currentTaskTitle, setCurrentTaskTitle] = useState(null);
 
     return (
         <section className="tasks-category">
@@ -30,10 +29,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             />
                                             <button
                                                 className={styles.editBtn}
-                                                onClick={() => {setCurrentTaskTitle(undefined);
-                                                    onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue);
-
-                                                }
+                                                onClick={() => {onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue)}
                                             }
                                                 >
                                                 <img className={styles.editIcon} src={saveIcon} />
@@ -59,15 +55,14 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             className={styles.checkboxStatusTask}
                                         />
                                         <input
-                                            // если оставить только taskData.title, то при сохранении или отмене будет на одну секунду мелькать старое значение
-                                            value={currentTaskTitle || editableValue || taskData.title}
+                                            value={taskData.title}
                                             type="text"
                                             readOnly={true}
                                             className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
                                         />
                                         <button
                                             className={styles.editBtn}
-                                            onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title); setCurrentTaskTitle(taskData.title)}}>
+                                            onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title)}}>
                                             <img className={styles.editIcon} src={editIcon} />
                                         </button>
                                         <button
