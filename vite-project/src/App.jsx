@@ -74,21 +74,19 @@ function App() {
     }
 
     async function disableEditMode(id, isDone, taskInput) {
+        console.log(editTaskIs)
         if (taskInput.length) {
             console.log("---")
             console.log(taskInput)
             console.log("---")
             if (taskInput.length >= 2 && taskInput.length <= 64) {
-                console.log("GG")
                 try {
-                    console.log("WP")
                     await saveEditedTask(id, isDone, taskInput);
                 } catch (error) {
                     alert("Не получилось отредактировать задачу")
                 }
                 console.log("WHY")
                 setEditTaskIs(null);
-                console.log("LOL")
                 updateTasks(currentCategory);
                 console.log("end")
             } else {
@@ -199,6 +197,7 @@ function App() {
             onSelectDelete={onSelectDelete}
             editTaskIs={editTaskIs}
             onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
+            editedTask={editTaskIs}
         />
         </main>
     </>

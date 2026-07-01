@@ -5,9 +5,10 @@ import closeIcon from '../assets/close.png'
 import { useState } from "react";
 import styles from './Task.module.css';
 
-export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave }) {
+export default function Task({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave, editedTask }) {
 
     const [ editableValue, setEditableValue ] = useState(null);
+    // const [ editedTask, setEditedTask ] = useState('');
 
     return (
         <section className="tasks-category">
@@ -29,7 +30,10 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             />
                                             <button
                                                 className={styles.editBtn}
-                                                onClick={() => {onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue)}
+                                                onClick={() => {{
+                                                    onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue);
+                                                    taskData.title = editableValue;
+                                                }}
                                             }
                                                 >
                                                 <img className={styles.editIcon} src={saveIcon} />
