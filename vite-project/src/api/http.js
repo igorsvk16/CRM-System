@@ -57,6 +57,7 @@ export async function getNumberOfTasks() {
 }
 
 export async function saveEditedTask(id, isDone, newTitle) {
+    // console.log("start")
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
