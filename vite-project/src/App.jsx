@@ -74,21 +74,15 @@ function App() {
     }
 
     async function disableEditMode(id, isDone, taskInput) {
-        console.log(editTaskIs)
         if (taskInput.length) {
-            console.log("---")
-            console.log(taskInput)
-            console.log("---")
             if (taskInput.length >= 2 && taskInput.length <= 64) {
                 try {
                     await saveEditedTask(id, isDone, taskInput);
                 } catch (error) {
                     alert("Не получилось отредактировать задачу")
                 }
-                console.log("WHY")
                 setEditTaskIs(null);
                 updateTasks(currentCategory);
-                console.log("end")
             } else {
                 if (taskInput.length > 64) {
                     alert("Максимальная длина текста 64 символа")
@@ -98,7 +92,6 @@ function App() {
             }
         //     если задача сохранена без изменений
         } else {
-                console.log("setEditTaskIs(\"\");")
                 setEditTaskIs("");
             }
         }

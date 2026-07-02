@@ -57,7 +57,6 @@ export async function getNumberOfTasks() {
 }
 
 export async function saveEditedTask(id, isDone, newTitle) {
-    // console.log("start")
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -68,14 +67,11 @@ export async function saveEditedTask(id, isDone, newTitle) {
             'Content-Type': 'application/json'
         }
     })
-    console.log(response);
 
     const resData = await response.json();
-    console.log(resData);
     if (!response.ok) {
         throw new Error('Ошибка загрузки задачи');
     }
-    console.log("savedET")
     return resData.data;
 }
 
