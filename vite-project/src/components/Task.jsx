@@ -29,15 +29,17 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                             />
                                             <button
                                                 className={styles.editBtn}
-                                                onClick={() => {{
-                                                    onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue);
-                                                    taskData.title = editableValue;
+                                                onClick={() =>{{
+                                                        onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData);
                                                 }}
-                                            }
+                                                }
                                                 >
                                                 <img className={styles.editIcon} src={saveIcon} />
                                             </button>
-                                            <button className={styles.delBtn} onClick={() => onSelectEditModeCloseNoSave()}>
+                                            <button className={styles.delBtn} onClick={() =>
+                                                onSelectEditModeCloseNoSave()
+
+                                            }>
                                                 <img
                                                     src={closeIcon}
                                                     className={styles.deleteIcon}

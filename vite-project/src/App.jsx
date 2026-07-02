@@ -73,14 +73,14 @@ function App() {
         setEditTaskIs(task);
     }
 
-    async function disableEditMode(id, isDone, taskInput) {
-        if (taskInput.length) {
+    async function disableEditMode(id, isDone, taskInput, taskData) {
             if (taskInput.length >= 2 && taskInput.length <= 64) {
                 try {
                     await saveEditedTask(id, isDone, taskInput);
                 } catch (error) {
                     alert("Не получилось отредактировать задачу")
                 }
+                taskData.title = taskInput;
                 setEditTaskIs(null);
                 updateTasks(currentCategory);
             } else {
@@ -89,10 +89,6 @@ function App() {
                 } else {
                     alert("Минимальная длина текста 2 символа")
                 }
-            }
-        //     если задача сохранена без изменений
-        } else {
-                setEditTaskIs("");
             }
         }
 
