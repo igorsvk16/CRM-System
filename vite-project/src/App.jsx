@@ -36,7 +36,8 @@ function App() {
     }
 
     async function handleAddTask() {
-        if (taskInput.length >= 2 && taskInput.length <= 64) {
+        console.log()
+        if ((taskInput.trim().length) >= 2 && taskInput.trim().length <= 64) {
             try {
                 await fetchAddTask(taskInput, isDone);
             } catch (error) {
@@ -45,10 +46,13 @@ function App() {
             updateTasks(currentCategory);
             setTaskInput('');
         } else {
-            if (taskInput.length >= 2) {
+            if (taskInput.trim().length >= 2) {
                 alert("Максимальная длина текста 64 символа")
+            } else if (taskInput.trim().length === 1) {
+                alert("Минимальная длина текста 2 символа");
             } else {
-                alert("Минимальная длина текста 2 символа")
+                alert("Введите текст, не пробелы")
+                setTaskInput('')
             }
         }
     }
