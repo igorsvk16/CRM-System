@@ -4,6 +4,7 @@ import './App.module.css'
 import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "./api/http.js";
 import styles from "./App.module.css";
+import TaskAdd from "./components/TaskAdd.jsx";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
@@ -122,21 +123,11 @@ function App() {
   return (
     <>
         <main>
-            <div className={styles.taskAdd}>
-                  <input
-                      className={styles.inputNewTask}
-                      value={taskInput}
-                      onChange={e => {setTaskInput(e.target.value)}}
-                      type="text"
-                      placeholder="Task To Be Done..."
-                  />
-                  <button
-                      onClick={handleAddTask}
-                      className={styles.addButton}
-                  >
-                      <p>Add</p>
-                  </button>
-                </div>
+            <TaskAdd
+            taskInput={taskInput}
+            handleAddTask={handleAddTask}
+            setTaskInput={setTaskInput}
+            />
             <div className={styles.tasksСategories}>
                 {currentCategory === 'all' ? (
                     <div className={styles.taskCategoryActive}>
