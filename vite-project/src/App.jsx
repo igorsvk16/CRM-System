@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "./api/http.js";
 import styles from "./App.module.css";
 import TaskAdd from "./components/TaskAdd.jsx";
+import TodosFilter from "./components/TodosFilter.jsx";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
@@ -128,49 +129,14 @@ function App() {
             handleAddTask={handleAddTask}
             setTaskInput={setTaskInput}
             />
-            <div className={styles.tasksСategories}>
-                {currentCategory === 'all' ? (
-                    <div className={styles.taskCategoryActive}>
-                        <button onClick={() => handleChangeCategory('all')}>
-                            <p>Все ({numberOfAllTasks})</p>
-                        </button>
-                    </div>
-                ) : (
-                    <div className={styles.taskCategory}>
-                        <button onClick={() => handleChangeCategory('all')}>
-                            <p>Все ({numberOfAllTasks})</p>
-                        </button>
-                    </div>
-                )}
+            <TodosFilter
+                currentCategory={currentCategory}
+                handleChangeCategory={handleChangeCategory}
+                numberOfAllTasks={numberOfAllTasks}
+                numberOfInWorkTasks={numberOfInWorkTasks}
+                numberOfCompletedTasks={numberOfCompletedTasks}
 
-                {currentCategory === 'inWork' ? (
-                    <div className={styles.taskCategoryActive}>
-                        <button onClick={() => handleChangeCategory('inWork')}>
-                            <p>В работе ({numberOfInWorkTasks})</p>
-                        </button>
-                    </div>
-                ) : (
-                    <div className={styles.taskCategory}>
-                        <button onClick={() => handleChangeCategory('inWork')}>
-                            <p>В работе ({numberOfInWorkTasks})</p>
-                        </button>
-                    </div>
-                )}
-
-                {currentCategory === 'completed' ? (
-                    <div className={styles.taskCategoryActive}>
-                        <button onClick={() => handleChangeCategory('completed')}>
-                            <p>Сделано ({numberOfCompletedTasks})</p>
-                        </button>
-                    </div>
-                ) : (
-                    <div className={styles.taskCategory}>
-                        <button onClick={() => handleChangeCategory('completed')}>
-                            <p>Сделано ({numberOfCompletedTasks})</p>
-                        </button>
-                    </div>
-                )}
-            </div>
+            />
         <Task
             tasks={userTasks}
             isLoading={isFetching}
