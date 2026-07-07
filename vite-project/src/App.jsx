@@ -1,4 +1,4 @@
-import Task from "./components/Task.jsx";
+import TaskList from "./components/TaskList.jsx";
 import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
 import './App.module.css'
 import { useEffect, useState } from "react";
@@ -137,7 +137,7 @@ function App() {
                 numberOfCompletedTasks={numberOfCompletedTasks}
 
             />
-        <Task
+        <TaskList
             tasks={userTasks}
             isLoading={isFetching}
             loadingText="Loading..."

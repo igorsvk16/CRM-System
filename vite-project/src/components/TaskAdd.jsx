@@ -8,7 +8,7 @@ export default function TaskAdd({ taskInput, setTaskInput, handleAddTask }) {
             value={taskInput}
             onChange={e => {setTaskInput(e.target.value)}}
             type="text"
-            placeholder="Task To Be Done..."
+            placeholder="TaskList To Be Done..."
         />
         <button
             onClick={handleAddTask}
