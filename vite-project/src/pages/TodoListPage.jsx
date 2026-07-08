@@ -3,7 +3,6 @@ import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTa
 import '../App.module.css'
 import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "../api/http.js";
-import styles from "../App.module.css";
 import TaskAdd from "../components/TaskAdd.jsx";
 import TodosFilter from "../components/TodosFilter.jsx";
 
@@ -38,7 +37,6 @@ function TodoListPage() {
     }
 
     async function handleAddTask() {
-        console.log()
         if ((taskInput.trim().length) >= 2 && taskInput.trim().length <= 64) {
             try {
                 await fetchAddTask(taskInput, isDone);
@@ -76,6 +74,7 @@ function TodoListPage() {
     }
 
     async function enableEditMode(task) {
+        updateTasks();
         setEditTaskIs(task);
     }
 
@@ -100,6 +99,7 @@ function TodoListPage() {
 
     async function onSelectEditModeCloseNoSave() {
         setEditTaskIs(null);
+        updateTasks();
     }
 
     async function onSelectStatus(isDone, id, title) {
@@ -122,28 +122,6 @@ function TodoListPage() {
     }
 
   return (
-    // <>
-
-    //     <TodoListPage
-    //         taskInput={taskInput}
-    //         handleAddTask={handleAddTask}
-    //         setTaskInput={setTaskInput}
-    //         currentCategory={currentCategory}
-    //         handleChangeCategory={handleChangeCategory}
-    //         numberOfAllTasks={numberOfAllTasks}
-    //         numberOfInWorkTasks={numberOfInWorkTasks}
-    //         numberOfCompletedTasks={numberOfCompletedTasks}
-    //         tasks={userTasks}
-    //         isFetching={isFetching}
-    //         disableEditMode={disableEditMode}
-    //         enableEditMode={enableEditMode}
-    //         onSelectStatus={onSelectStatus}
-    //         onSelectDelete={onSelectDelete}
-    //         editTaskIs={editTaskIs}
-    //         onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
-    //
-    //     />
-    // </>
       <main>
           <TaskAdd
               taskInput={taskInput}
