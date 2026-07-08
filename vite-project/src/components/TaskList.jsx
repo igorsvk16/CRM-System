@@ -6,7 +6,6 @@ import TodoItem from "./TodoItem.jsx";
 export default function TaskList({ tasks, isLoading, loadingText, onHandleDisableEditMode, onEnableEditMode, onSelectStatus, onSelectDelete, editTaskIs, onSelectEditModeCloseNoSave }) {
 
     const [ editableValue, setEditableValue ] = useState(null);
-    console.log(tasks)
 
     return (
         <section className="tasks-category">

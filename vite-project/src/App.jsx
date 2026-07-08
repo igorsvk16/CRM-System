@@ -1,8 +1,11 @@
+import TaskList from "./components/TaskList.jsx";
 import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
 import './App.module.css'
 import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "./api/http.js";
-import TodoListPage from "./pages/TodoListPage.jsx";
+import styles from "./App.module.css";
+import TaskAdd from "./components/TaskAdd.jsx";
+import TodosFilter from "./components/TodosFilter.jsx";
 
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
@@ -16,26 +19,19 @@ function App() {
     let isDone= false;
 
     useEffect(() => {
-
         async function fetchTasks() {
-            console.log("---")
             setIsFetching(true);
-            await updateTasks(currentCategory);
+            updateTasks(currentCategory);
             setIsFetching(false);
-            console.log("---")
         }
         fetchTasks();
     }, []);
 
     async function updateTasks(currentCategory) {
         try {
-            console.log("---")
             const tasks = await fetchUserTasks(currentCategory);
             setUserTasks(tasks);
-            await taskCounter();
-            console.log("---")
-            console.log(tasks)
-            console.log("---")
+            taskCounter();
         } catch (error) {
             alert('Ошибка при обновлении задач');
         }
@@ -124,32 +120,35 @@ function App() {
         }
         updateTasks(currentCategory);
     }
-    console.log(userTasks)
 
   return (
     <>
         <main>
-            <TodoListPage
-                taskInput={taskInput}
-                handleAddTask={handleAddTask}
-                setTaskInput={setTaskInput}
+            <TaskAdd
+            taskInput={taskInput}
+            handleAddTask={handleAddTask}
+            setTaskInput={setTaskInput}
+            />
+            <TodosFilter
                 currentCategory={currentCategory}
                 handleChangeCategory={handleChangeCategory}
                 numberOfAllTasks={numberOfAllTasks}
                 numberOfInWorkTasks={numberOfInWorkTasks}
                 numberOfCompletedTasks={numberOfCompletedTasks}
-                tasks={userTasks}
-                isLoading={isFetching}
-                onHandleDisableEditMode={disableEditMode}
-                onEnableEditMode={enableEditMode}
-                onSelectStatus={onSelectStatus}
-                onSelectDelete={onSelectDelete}
-                editTaskIs={editTaskIs}
-                onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
-                editedTask={editTaskIs}
 
             />
-
+        <TaskList
+            tasks={userTasks}
+            isLoading={isFetching}
+            loadingText="Loading..."
+            onHandleDisableEditMode={disableEditMode}
+            onEnableEditMode={enableEditMode}
+            onSelectStatus={onSelectStatus}
+            onSelectDelete={onSelectDelete}
+            editTaskIs={editTaskIs}
+            onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
+            editedTask={editTaskIs}
+        />
         </main>
     </>
   )
