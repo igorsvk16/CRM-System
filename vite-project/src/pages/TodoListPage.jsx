@@ -1,13 +1,13 @@
-import TaskList from "./components/TaskList.jsx";
-import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "./api/http.js";
-import './App.module.css'
+import TaskList from "../components/TaskList.jsx";
+import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "../api/http.js";
+import '../App.module.css'
 import { useEffect, useState } from "react";
-import { getNumberOfTasks } from "./api/http.js";
-import styles from "./App.module.css";
-import TaskAdd from "./components/TaskAdd.jsx";
-import TodosFilter from "./components/TodosFilter.jsx";
+import { getNumberOfTasks } from "../api/http.js";
+import styles from "../App.module.css";
+import TaskAdd from "../components/TaskAdd.jsx";
+import TodosFilter from "../components/TodosFilter.jsx";
 
-function App() {
+function TodoListPage() {
     const [ userTasks, setUserTasks ] = useState([]);
     const [ isFetching, setIsFetching] = useState(false);
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
@@ -122,36 +122,56 @@ function App() {
     }
 
   return (
-    <>
-        <main>
-            <TaskAdd
-            taskInput={taskInput}
-            handleAddTask={handleAddTask}
-            setTaskInput={setTaskInput}
-            />
-            <TodosFilter
-                currentCategory={currentCategory}
-                handleChangeCategory={handleChangeCategory}
-                numberOfAllTasks={numberOfAllTasks}
-                numberOfInWorkTasks={numberOfInWorkTasks}
-                numberOfCompletedTasks={numberOfCompletedTasks}
+    // <>
 
-            />
-        <TaskList
-            tasks={userTasks}
-            isLoading={isFetching}
-            loadingText="Loading..."
-            onHandleDisableEditMode={disableEditMode}
-            onEnableEditMode={enableEditMode}
-            onSelectStatus={onSelectStatus}
-            onSelectDelete={onSelectDelete}
-            editTaskIs={editTaskIs}
-            onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
-            editedTask={editTaskIs}
-        />
-        </main>
-    </>
+    //     <TodoListPage
+    //         taskInput={taskInput}
+    //         handleAddTask={handleAddTask}
+    //         setTaskInput={setTaskInput}
+    //         currentCategory={currentCategory}
+    //         handleChangeCategory={handleChangeCategory}
+    //         numberOfAllTasks={numberOfAllTasks}
+    //         numberOfInWorkTasks={numberOfInWorkTasks}
+    //         numberOfCompletedTasks={numberOfCompletedTasks}
+    //         tasks={userTasks}
+    //         isFetching={isFetching}
+    //         disableEditMode={disableEditMode}
+    //         enableEditMode={enableEditMode}
+    //         onSelectStatus={onSelectStatus}
+    //         onSelectDelete={onSelectDelete}
+    //         editTaskIs={editTaskIs}
+    //         onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
+    //
+    //     />
+    // </>
+      <main>
+          <TaskAdd
+              taskInput={taskInput}
+              handleAddTask={handleAddTask}
+              setTaskInput={setTaskInput}
+          />
+          <TodosFilter
+              currentCategory={currentCategory}
+              handleChangeCategory={handleChangeCategory}
+              numberOfAllTasks={numberOfAllTasks}
+              numberOfInWorkTasks={numberOfInWorkTasks}
+              numberOfCompletedTasks={numberOfCompletedTasks}
+
+          />
+          <TaskList
+              tasks={userTasks}
+              isLoading={isFetching}
+              loadingText="Loading..."
+              onHandleDisableEditMode={disableEditMode}
+              onEnableEditMode={enableEditMode}
+              onSelectStatus={onSelectStatus}
+              onSelectDelete={onSelectDelete}
+              editTaskIs={editTaskIs}
+              onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
+              editedTask={editTaskIs}
+          />
+      </main>
   )
 }
 
-export default App
+export default TodoListPage
