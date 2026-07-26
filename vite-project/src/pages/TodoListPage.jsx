@@ -1,5 +1,5 @@
 import TaskList from "../components/TaskList.jsx";
-import { fetchAddTask, fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "../api/http.js";
+import { fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "../api/http.js";
 import '../App.module.css'
 import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "../api/http.js";
@@ -36,26 +36,7 @@ function TodoListPage() {
         }
     }
 
-    async function handleAddTask() {
-        if ((taskInput.trim().length) >= 2 && taskInput.trim().length <= 64) {
-            try {
-                await fetchAddTask(taskInput, isDone);
-            } catch (error) {
-                alert("Ошибка при добавлении задачи");
-            }
-            updateTasks(currentCategory);
-            setTaskInput('');
-        } else {
-            if (taskInput.trim().length >= 2) {
-                alert("Максимальная длина текста 64 символа")
-            } else if (taskInput.trim().length === 1) {
-                alert("Минимальная длина текста 2 символа");
-            } else {
-                alert("Введите текст, не пробелы")
-                setTaskInput('')
-            }
-        }
-    }
+
 
     async function handleChangeCategory(categoryName) {
         setCurrentCategory(categoryName);
@@ -126,7 +107,9 @@ function TodoListPage() {
           <TaskAdd
               taskInput={taskInput}
               handleAddTask={handleAddTask}
-              setTaskInput={setTaskInput}
+              updateTasks={updateTasks}
+              currentCategory={currentCategory}
+              isDone={isDone}
           />
           <TodosFilter
               currentCategory={currentCategory}
