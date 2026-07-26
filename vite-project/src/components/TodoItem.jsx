@@ -3,9 +3,18 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
+import {deleteTaskById} from "../api/http.js";
 
 export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue, onHandleDisableEditMode, onSelectEditModeCloseNoSave,
-                                 onSelectStatus, onEnableEditMode, onSelectDelete}) {
+                                 onSelectStatus, onEnableEditMode, updateTasks, currentCategory}) {
+    async function (id) {
+        try {
+            await deleteTaskById(id);
+        } catch (error) {
+            alert("Не получилось удалить задачу");
+        }
+        updateTasks(currentCategory);
+    }
     return (
         (+editTaskIs === taskData.id) ?
             (<div className={styles.taskDiv} key={taskData.id}>

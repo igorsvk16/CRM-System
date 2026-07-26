@@ -1,5 +1,5 @@
 import TaskList from "../components/TaskList.jsx";
-import { fetchTaskIsDone, fetchUserTasks, saveEditedTask, deleteTaskById } from "../api/http.js";
+import { fetchTaskIsDone, fetchUserTasks, saveEditedTask } from "../api/http.js";
 import '../App.module.css'
 import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "../api/http.js";
@@ -93,14 +93,14 @@ function TodoListPage() {
         updateTasks(currentCategory);
     }
 
-    async function onSelectDelete(id) {
-        try {
-            await deleteTaskById(id);
-        } catch (error) {
-            alert("Не получилось удалить задачу");
-        }
-        updateTasks(currentCategory);
-    }
+    // async function onSelectDelete(id) {
+    //     try {
+    //         await deleteTaskById(id);
+    //     } catch (error) {
+    //         alert("Не получилось удалить задачу");
+    //     }
+    //     updateTasks(currentCategory);
+    // }
 
   return (
       <main>
@@ -130,6 +130,8 @@ function TodoListPage() {
               editTaskIs={editTaskIs}
               onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
               editedTask={editTaskIs}
+              updateTasks={updateTasks}
+              currentCategory={currentCategory}
           />
       </main>
   )
