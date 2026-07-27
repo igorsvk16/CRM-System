@@ -47,11 +47,6 @@ function TodoListPage() {
         }
     }
 
-    // async function enableEditMode(task) {
-    //     updateTasks();
-    //     setEditTaskIs(task);
-    // }
-
     async function disableEditMode(id, isDone, taskInput, taskData) {
             if (taskInput.length >= 2 && taskInput.length <= 64) {
                 try {
@@ -71,10 +66,10 @@ function TodoListPage() {
             }
         }
 
-    async function onSelectEditModeCloseNoSave() {
-        setEditTaskIs(null);
-        updateTasks();
-    }
+    // async function onSelectEditModeCloseNoSave() {
+    //     setEditTaskIs(null);
+    //     updateTasks();
+    // }
 
     async function onSelectStatus(isDone, id, title) {
         let newStatus = !isDone;
@@ -110,7 +105,6 @@ function TodoListPage() {
               onHandleDisableEditMode={disableEditMode}
               onSelectStatus={onSelectStatus}
               editTaskIs={editTaskIs}
-              onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
               editedTask={editTaskIs}
               updateTasks={updateTasks}
               currentCategory={currentCategory}

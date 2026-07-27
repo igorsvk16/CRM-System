@@ -5,7 +5,7 @@ import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
 import {deleteTaskById} from "../api/http.js";
 
-export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue, onHandleDisableEditMode, onSelectEditModeCloseNoSave,
+export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue, onHandleDisableEditMode,
                                  onSelectStatus, updateTasks, currentCategory, setEditTaskIs}) {
     async function onSelectDelete(id) {
         try {
@@ -20,6 +20,12 @@ export default function TodoItem({editTaskIs, taskData, editableValue, setEditab
         updateTasks();
         setEditTaskIs(task);
     }
+
+    async function onSelectEditModeCloseNoSave() {
+        setEditTaskIs(null);
+        updateTasks();
+    }
+
 
     return (
         (+editTaskIs === taskData.id) ?
