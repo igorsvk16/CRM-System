@@ -1,8 +1,12 @@
 import styles from '../App.module.css';
 
-export default function TodosFilter({currentCategory, handleChangeCategory, numberOfAllTasks,
-                                    numberOfInWorkTasks, numberOfCompletedTasks}) {
-
+export default function TodosFilter({currentCategory, numberOfAllTasks,
+                                    numberOfInWorkTasks, numberOfCompletedTasks,
+                                        setCurrentCategory, updateTasks}) {
+    async function handleChangeCategory(categoryName) {
+        setCurrentCategory(categoryName);
+        updateTasks(categoryName);
+    }
 
     return (
         <div className={styles.tasksСategories}>

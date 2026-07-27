@@ -6,8 +6,8 @@ import closeIcon from '../assets/close.png'
 import {deleteTaskById} from "../api/http.js";
 
 export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue, onHandleDisableEditMode, onSelectEditModeCloseNoSave,
-                                 onSelectStatus, onEnableEditMode, updateTasks, currentCategory}) {
-    async function (id) {
+                                 onSelectStatus, updateTasks, currentCategory, setEditTaskIs}) {
+    async function onSelectDelete(id) {
         try {
             await deleteTaskById(id);
         } catch (error) {
@@ -15,6 +15,12 @@ export default function TodoItem({editTaskIs, taskData, editableValue, setEditab
         }
         updateTasks(currentCategory);
     }
+
+    async function onEnableEditMode(task) {
+        updateTasks();
+        setEditTaskIs(task);
+    }
+
     return (
         (+editTaskIs === taskData.id) ?
             (<div className={styles.taskDiv} key={taskData.id}>

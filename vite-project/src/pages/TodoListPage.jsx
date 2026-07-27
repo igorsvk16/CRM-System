@@ -36,13 +36,6 @@ function TodoListPage() {
         }
     }
 
-
-
-    async function handleChangeCategory(categoryName) {
-        setCurrentCategory(categoryName);
-        updateTasks(categoryName);
-    }
-
     async function taskCounter() {
         try {
             const numberOfTasks = await getNumberOfTasks();
@@ -54,10 +47,10 @@ function TodoListPage() {
         }
     }
 
-    async function enableEditMode(task) {
-        updateTasks();
-        setEditTaskIs(task);
-    }
+    // async function enableEditMode(task) {
+    //     updateTasks();
+    //     setEditTaskIs(task);
+    // }
 
     async function disableEditMode(id, isDone, taskInput, taskData) {
             if (taskInput.length >= 2 && taskInput.length <= 64) {
@@ -93,45 +86,35 @@ function TodoListPage() {
         updateTasks(currentCategory);
     }
 
-    // async function onSelectDelete(id) {
-    //     try {
-    //         await deleteTaskById(id);
-    //     } catch (error) {
-    //         alert("Не получилось удалить задачу");
-    //     }
-    //     updateTasks(currentCategory);
-    // }
-
   return (
       <main>
           <TaskAdd
               taskInput={taskInput}
-              handleAddTask={handleAddTask}
+              setTaskInput={setTaskInput}
               updateTasks={updateTasks}
               currentCategory={currentCategory}
               isDone={isDone}
           />
           <TodosFilter
               currentCategory={currentCategory}
-              handleChangeCategory={handleChangeCategory}
               numberOfAllTasks={numberOfAllTasks}
               numberOfInWorkTasks={numberOfInWorkTasks}
               numberOfCompletedTasks={numberOfCompletedTasks}
-
+              setCurrentCategory={setCurrentCategory}
+              updateTasks={updateTasks}
           />
           <TaskList
               tasks={userTasks}
               isLoading={isFetching}
               loadingText="Loading..."
               onHandleDisableEditMode={disableEditMode}
-              onEnableEditMode={enableEditMode}
               onSelectStatus={onSelectStatus}
-              onSelectDelete={onSelectDelete}
               editTaskIs={editTaskIs}
               onSelectEditModeCloseNoSave={onSelectEditModeCloseNoSave}
               editedTask={editTaskIs}
               updateTasks={updateTasks}
               currentCategory={currentCategory}
+              setEditTaskIs={setEditTaskIs}
           />
       </main>
   )
