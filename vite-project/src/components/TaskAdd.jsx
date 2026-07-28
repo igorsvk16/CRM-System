@@ -27,7 +27,6 @@ export default function TaskAdd({ updateTasks, currentCategory}) {
             }
         }
     }
-
     return (
     <div className={styles.taskAdd}>
         <input

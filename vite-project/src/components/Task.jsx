@@ -34,7 +34,7 @@ export default function Task({ tasks, isLoading, loadingText, onHandleDisableEdi
                                                 }}
                                                 }
                                                 >
-                                                <img className={styles.editIcon} src={saveIcon} />
+                                                <img className={styles.editIcon} src={saveIcon} alt="saveIcon" />
                                             </button>
                                             <button className={styles.delBtn} onClick={() =>
                                                 onSelectEditModeCloseNoSave()

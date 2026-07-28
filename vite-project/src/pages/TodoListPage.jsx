@@ -1,10 +1,10 @@
-import TaskList from "../components/TaskList.jsx";
-import { fetchUserTasks } from "../api/http.js";
-import '../App.module.css'
+import '../App.module.css';
 import { useEffect, useState } from "react";
-import { getNumberOfTasks } from "../api/http.js";
+import TaskList from "../components/TaskList.jsx";
 import TaskAdd from "../components/TaskAdd.jsx";
 import TodosFilter from "../components/TodosFilter.jsx";
+import { getNumberOfTasks, fetchUserTasks } from "../api/http.js";
+
 
 function TodoListPage() {
     const [ userTasks, setUserTasks ] = useState([]);

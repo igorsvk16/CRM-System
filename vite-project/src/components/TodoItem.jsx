@@ -79,7 +79,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
                             }}
                             }
                         >
-                            <img className={styles.editIcon} src={saveIcon} />
+                            <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
                         </button>
                         <button className={styles.delBtn} onClick={() =>
                             onSelectEditModeCloseNoSave()
@@ -87,6 +87,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
                             <img
                                 src={closeIcon}
                                 className={styles.deleteIcon}
+                                alt="closeIcon"
                             />
                         </button>
                     </li>
@@ -109,7 +110,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
                         <button
                             className={styles.editBtn}
                             onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title)}}>
-                            <img className={styles.editIcon} src={editIcon} />
+                            <img className={styles.editIcon} src={editIcon} alt="editIcon" />
                         </button>
                         <button
                             className={styles.delBtn}
