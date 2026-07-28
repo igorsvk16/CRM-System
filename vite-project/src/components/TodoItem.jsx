@@ -28,7 +28,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
 
     async function onSelectEditModeCloseNoSave() {
         setEditTaskIs(null);
-        updateTasks();
+        updateTasks(currentCategory);
     }
 
     async function onSelectStatus(isDone, id, title) {
