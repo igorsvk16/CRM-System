@@ -22,7 +22,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
     }
 
     async function onEnableEditMode(task) {
-        updateTasks();
+        updateTasks(currentCategory);
         setEditTaskIs(task);
     }
 
