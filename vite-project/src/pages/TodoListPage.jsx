@@ -1,5 +1,5 @@
 import TaskList from "../components/TaskList.jsx";
-import { fetchUserTasks, saveEditedTask } from "../api/http.js";
+import { fetchUserTasks } from "../api/http.js";
 import '../App.module.css'
 import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "../api/http.js";
@@ -61,7 +61,6 @@ function TodoListPage() {
           <TaskList
               tasks={userTasks}
               isLoading={isFetching}
-              loadingText="Loading..."
               updateTasks={updateTasks}
               currentCategory={currentCategory}
           />

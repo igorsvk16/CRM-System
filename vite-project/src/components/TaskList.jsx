@@ -1,9 +1,11 @@
 
-import { useState } from "react";
 import styles from './Task.module.css';
 import TodoItem from "./TodoItem.jsx";
 
-export default function TaskList({ tasks, isLoading, loadingText, updateTasks, currentCategory }) {
+export default function TaskList({ tasks, isLoading, updateTasks, currentCategory }) {
+
+    const loadingText="Loading...";
+
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
