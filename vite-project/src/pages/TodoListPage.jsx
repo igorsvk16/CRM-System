@@ -1,5 +1,5 @@
 import TaskList from "../components/TaskList.jsx";
-import { fetchTaskIsDone, fetchUserTasks, saveEditedTask } from "../api/http.js";
+import { fetchUserTasks, saveEditedTask } from "../api/http.js";
 import '../App.module.css'
 import { useEffect, useState } from "react";
 import { getNumberOfTasks } from "../api/http.js";
@@ -66,20 +66,16 @@ function TodoListPage() {
             }
         }
 
-    // async function onSelectEditModeCloseNoSave() {
-    //     setEditTaskIs(null);
-    //     updateTasks();
-    // }
 
-    async function onSelectStatus(isDone, id, title) {
-        let newStatus = !isDone;
-        try {
-            await fetchTaskIsDone(id, newStatus, title);
-        } catch (error) {
-            alert("Ошибка обновления статуса задачи");
-        }
-        updateTasks(currentCategory);
-    }
+    // async function onSelectStatus(isDone, id, title) {
+    //     let newStatus = !isDone;
+    //     try {
+    //         await fetchTaskIsDone(id, newStatus, title);
+    //     } catch (error) {
+    //         alert("Ошибка обновления статуса задачи");
+    //     }
+    //     updateTasks(currentCategory);
+    // }
 
   return (
       <main>
@@ -103,7 +99,6 @@ function TodoListPage() {
               isLoading={isFetching}
               loadingText="Loading..."
               onHandleDisableEditMode={disableEditMode}
-              onSelectStatus={onSelectStatus}
               editTaskIs={editTaskIs}
               editedTask={editTaskIs}
               updateTasks={updateTasks}

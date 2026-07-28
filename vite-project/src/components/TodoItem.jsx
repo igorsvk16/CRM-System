@@ -3,10 +3,10 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import {deleteTaskById} from "../api/http.js";
+import {deleteTaskById, fetchTaskIsDone} from "../api/http.js";
 
 export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue, onHandleDisableEditMode,
-                                 onSelectStatus, updateTasks, currentCategory, setEditTaskIs}) {
+                                     updateTasks, currentCategory, setEditTaskIs}) {
     async function onSelectDelete(id) {
         try {
             await deleteTaskById(id);
@@ -24,6 +24,16 @@ export default function TodoItem({editTaskIs, taskData, editableValue, setEditab
     async function onSelectEditModeCloseNoSave() {
         setEditTaskIs(null);
         updateTasks();
+    }
+
+    async function onSelectStatus(isDone, id, title) {
+        let newStatus = !isDone;
+        try {
+            await fetchTaskIsDone(id, newStatus, title);
+        } catch (error) {
+            alert("Ошибка обновления статуса задачи");
+        }
+        updateTasks(currentCategory);
     }
 
 
