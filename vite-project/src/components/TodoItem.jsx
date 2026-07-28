@@ -3,9 +3,9 @@ import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import {deleteTaskById, fetchTaskIsDone} from "../api/http.js";
+import {deleteTaskById, fetchTaskIsDone, saveEditedTask} from "../api/http.js";
 
-export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue, onHandleDisableEditMode,
+export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue,
                                      updateTasks, currentCategory, setEditTaskIs}) {
     async function onSelectDelete(id) {
         try {
@@ -36,6 +36,24 @@ export default function TodoItem({editTaskIs, taskData, editableValue, setEditab
         updateTasks(currentCategory);
     }
 
+    async function onHandleDisableEditMode(id, isDone, taskInput, taskData) {
+        if (taskInput.length >= 2 && taskInput.length <= 64) {
+            try {
+                await saveEditedTask(id, isDone, taskInput);
+            } catch (error) {
+                alert("Не получилось отредактировать задачу")
+            }
+            taskData.title = taskInput;
+            setEditTaskIs(null);
+            updateTasks(currentCategory);
+        } else {
+            if (taskInput.length > 64) {
+                alert("Максимальная длина текста 64 символа")
+            } else {
+                alert("Минимальная длина текста 2 символа")
+            }
+        }
+    }
 
     return (
         (+editTaskIs === taskData.id) ?

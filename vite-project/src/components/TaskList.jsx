@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from './Task.module.css';
 import TodoItem from "./TodoItem.jsx";
 
-export default function TaskList({ tasks, isLoading, loadingText, onHandleDisableEditMode, editTaskIs, updateTasks, currentCategory, setEditTaskIs }) {
+export default function TaskList({ tasks, isLoading, loadingText, editTaskIs, updateTasks, currentCategory, setEditTaskIs }) {
 
     const [ editableValue, setEditableValue ] = useState(null);
 
@@ -19,7 +19,6 @@ export default function TaskList({ tasks, isLoading, loadingText, onHandleDisabl
                             editTaskIs={editTaskIs}
                             editableValue={editableValue}
                             setEditableValue={setEditableValue}
-                            onHandleDisableEditMode={onHandleDisableEditMode}
                             key={taskData.id}
                             updateTasks={updateTasks}
                             currentCategory={currentCategory}

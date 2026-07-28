@@ -47,36 +47,6 @@ function TodoListPage() {
         }
     }
 
-    async function disableEditMode(id, isDone, taskInput, taskData) {
-            if (taskInput.length >= 2 && taskInput.length <= 64) {
-                try {
-                    await saveEditedTask(id, isDone, taskInput);
-                } catch (error) {
-                    alert("Не получилось отредактировать задачу")
-                }
-                taskData.title = taskInput;
-                setEditTaskIs(null);
-                updateTasks(currentCategory);
-            } else {
-                if (taskInput.length > 64) {
-                    alert("Максимальная длина текста 64 символа")
-                } else {
-                    alert("Минимальная длина текста 2 символа")
-                }
-            }
-        }
-
-
-    // async function onSelectStatus(isDone, id, title) {
-    //     let newStatus = !isDone;
-    //     try {
-    //         await fetchTaskIsDone(id, newStatus, title);
-    //     } catch (error) {
-    //         alert("Ошибка обновления статуса задачи");
-    //     }
-    //     updateTasks(currentCategory);
-    // }
-
   return (
       <main>
           <TaskAdd
@@ -98,7 +68,6 @@ function TodoListPage() {
               tasks={userTasks}
               isLoading={isFetching}
               loadingText="Loading..."
-              onHandleDisableEditMode={disableEditMode}
               editTaskIs={editTaskIs}
               editedTask={editTaskIs}
               updateTasks={updateTasks}
