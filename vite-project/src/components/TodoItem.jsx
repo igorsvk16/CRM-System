@@ -4,9 +4,14 @@ import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
 import {deleteTaskById, fetchTaskIsDone, saveEditedTask} from "../api/http.js";
+import {useState} from "react";
 
-export default function TodoItem({editTaskIs, taskData, editableValue, setEditableValue,
-                                     updateTasks, currentCategory, setEditTaskIs}) {
+export default function TodoItem({taskData, updateTasks, currentCategory}) {
+
+    const [ editTaskIs, setEditTaskIs ] = useState('');
+    const [ editableValue, setEditableValue ] = useState(null);
+
+
     async function onSelectDelete(id) {
         try {
             await deleteTaskById(id);

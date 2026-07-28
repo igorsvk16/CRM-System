@@ -3,10 +3,7 @@ import { useState } from "react";
 import styles from './Task.module.css';
 import TodoItem from "./TodoItem.jsx";
 
-export default function TaskList({ tasks, isLoading, loadingText, editTaskIs, updateTasks, currentCategory, setEditTaskIs }) {
-
-    const [ editableValue, setEditableValue ] = useState(null);
-
+export default function TaskList({ tasks, isLoading, loadingText, updateTasks, currentCategory }) {
     return (
         <section className="tasks-category">
             {isLoading && <p className="fallback-text">{loadingText}</p>}
@@ -16,13 +13,9 @@ export default function TaskList({ tasks, isLoading, loadingText, editTaskIs, up
                     {(tasks).map((taskData) => (
                         <TodoItem
                             taskData={taskData}
-                            editTaskIs={editTaskIs}
-                            editableValue={editableValue}
-                            setEditableValue={setEditableValue}
                             key={taskData.id}
                             updateTasks={updateTasks}
                             currentCategory={currentCategory}
-                            setEditTaskIs={setEditTaskIs}
                         />
                     ))}
                 </section>

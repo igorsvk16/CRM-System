@@ -1,7 +1,12 @@
 import styles from "../App.module.css";
 import {fetchAddTask} from "../api/http.js";
+import {useState} from "react";
 
-export default function TaskAdd({ taskInput, setTaskInput, updateTasks, currentCategory, isDone}) {
+export default function TaskAdd({ updateTasks, currentCategory}) {
+    let isDone= false;
+
+    const [ taskInput, setTaskInput ] = useState('')
+
     async function handleAddTask() {
         if ((taskInput.trim().length) >= 2 && taskInput.trim().length <= 64) {
             try {

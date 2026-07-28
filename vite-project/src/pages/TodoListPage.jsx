@@ -12,10 +12,7 @@ function TodoListPage() {
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
     const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
     const [ numberOfCompletedTasks, setNumberOfCompletedTasks] = useState();
-    const [ editTaskIs, setEditTaskIs ] = useState('');
-    const [ taskInput, setTaskInput ] = useState('')
     const [ currentCategory, setCurrentCategory ] = useState('all');
-    let isDone= false;
 
     useEffect(() => {
         async function fetchTasks() {
@@ -50,11 +47,8 @@ function TodoListPage() {
   return (
       <main>
           <TaskAdd
-              taskInput={taskInput}
-              setTaskInput={setTaskInput}
               updateTasks={updateTasks}
               currentCategory={currentCategory}
-              isDone={isDone}
           />
           <TodosFilter
               currentCategory={currentCategory}
@@ -68,11 +62,8 @@ function TodoListPage() {
               tasks={userTasks}
               isLoading={isFetching}
               loadingText="Loading..."
-              editTaskIs={editTaskIs}
-              editedTask={editTaskIs}
               updateTasks={updateTasks}
               currentCategory={currentCategory}
-              setEditTaskIs={setEditTaskIs}
           />
       </main>
   )
