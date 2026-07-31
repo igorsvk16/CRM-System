@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {fetchAddTask} from "../api/http.js";
+import {addTodo} from "../api/http.js";
 import styles from "../App.module.css";
 
 export default function TaskAdd({ updateTasks, currentCategory}) {
@@ -10,7 +10,7 @@ export default function TaskAdd({ updateTasks, currentCategory}) {
     async function handleAddTask() {
         if ((taskInput.trim().length) >= 2 && taskInput.trim().length <= 64) {
             try {
-                await fetchAddTask(taskInput, isDone);
+                await addTodo(taskInput, isDone);
             } catch (error) {
                 alert("Ошибка при добавлении задачи");
             }
