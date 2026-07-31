@@ -1,10 +1,11 @@
+import {useState} from "react";
+import {deleteTaskById, fetchTaskIsDone, saveEditedTask} from "../api/http.js";
 import styles from './Task.module.css';
 import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
 import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
-import {deleteTaskById, fetchTaskIsDone, saveEditedTask} from "../api/http.js";
-import {useState} from "react";
+
 
 export default function TodoItem({taskData, updateTasks, currentCategory}) {
 

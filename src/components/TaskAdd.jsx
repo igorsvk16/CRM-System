@@ -1,6 +1,6 @@
-import styles from "../App.module.css";
-import {fetchAddTask} from "../api/http.js";
 import {useState} from "react";
+import {fetchAddTask} from "../api/http.js";
+import styles from "../App.module.css";
 
 export default function TaskAdd({ updateTasks, currentCategory}) {
     let isDone= false;

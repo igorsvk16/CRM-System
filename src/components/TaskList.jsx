@@ -1,6 +1,5 @@
-
-import styles from './Task.module.css';
 import TodoItem from "./TodoItem.jsx";
+import styles from './Task.module.css';
 
 export default function TaskList({ tasks, isLoading, updateTasks, currentCategory }) {
 

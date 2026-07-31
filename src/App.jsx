@@ -1,12 +1,11 @@
-import '../App.module.css';
 import { useEffect, useState } from "react";
-import TaskList from "../components/TaskList.jsx";
-import TaskAdd from "../components/TaskAdd.jsx";
-import TodosFilter from "../components/TodosFilter.jsx";
-import { getNumberOfTasks, fetchUserTasks } from "../api/http.js";
+import { getNumberOfTasks, fetchUserTasks } from "./api/http.js";
+import TaskList from "./components/TaskList.jsx";
+import TaskAdd from "./components/TaskAdd.jsx";
+import TodosFilter from "./components/TodosFilter.jsx";
+import './App.module.css';
 
-
-function TodoListPage() {
+function App() {
     const [ userTasks, setUserTasks ] = useState([]);
     const [ isFetching, setIsFetching] = useState(false);
     const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
@@ -43,29 +42,28 @@ function TodoListPage() {
             alert("Ошибка подсчёта количества задач");
         }
     }
-
-  return (
-      <main>
-          <TaskAdd
-              updateTasks={updateTasks}
-              currentCategory={currentCategory}
-          />
-          <TodosFilter
-              currentCategory={currentCategory}
-              numberOfAllTasks={numberOfAllTasks}
-              numberOfInWorkTasks={numberOfInWorkTasks}
-              numberOfCompletedTasks={numberOfCompletedTasks}
-              setCurrentCategory={setCurrentCategory}
-              updateTasks={updateTasks}
-          />
-          <TaskList
-              tasks={userTasks}
-              isLoading={isFetching}
-              updateTasks={updateTasks}
-              currentCategory={currentCategory}
-          />
-      </main>
-  )
+    return (
+        <main>
+            <TaskAdd
+                updateTasks={updateTasks}
+                currentCategory={currentCategory}
+            />
+            <TodosFilter
+                currentCategory={currentCategory}
+                numberOfAllTasks={numberOfAllTasks}
+                numberOfInWorkTasks={numberOfInWorkTasks}
+                numberOfCompletedTasks={numberOfCompletedTasks}
+                setCurrentCategory={setCurrentCategory}
+                updateTasks={updateTasks}
+            />
+            <TaskList
+                tasks={userTasks}
+                isLoading={isFetching}
+                updateTasks={updateTasks}
+                currentCategory={currentCategory}
+            />
+        </main>
+    )
 }
 
-export default TodoListPage
+export default App
