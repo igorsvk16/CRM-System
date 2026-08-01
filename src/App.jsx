@@ -12,15 +12,15 @@ function App() {
     const [ currentCategory, setCurrentCategory ] = useState('all');
 
     useEffect(() => {
-        async function fetchTasks() {
+        async function fetchTodos() {
             setIsFetching(true);
-            updateTasks(currentCategory);
+            updateTodos(currentCategory);
             setIsFetching(false);
         }
-        fetchTasks();
+        fetchTodos();
     }, []);
 
-    async function updateTasks(currentCategory) {
+    async function updateTodos(currentCategory) {
         try {
             const tasks = await getTodos(currentCategory);
             setTodos(tasks.data);
@@ -33,19 +33,19 @@ function App() {
     return (
         <main>
             <TaskAdd
-                updateTasks={updateTasks}
+                updateTodos={updateTodos}
                 currentCategory={currentCategory}
             />
             <TodosFilter
                 currentCategory={currentCategory}
                 todoCounter={todoCounter}
                 setCurrentCategory={setCurrentCategory}
-                updateTasks={updateTasks}
+                updateTodos={updateTodos}
             />
             <TaskList
                 tasks={todos}
                 isLoading={isFetching}
-                updateTasks={updateTasks}
+                updateTodos={updateTodos}
                 currentCategory={currentCategory}
             />
         </main>
