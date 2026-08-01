@@ -1,4 +1,4 @@
-import {use, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import { getTodos } from "./api/http.js";
 import TaskList from "./components/TaskList.jsx";
 import TaskAdd from "./components/TaskAdd.jsx";
@@ -6,7 +6,7 @@ import TodosFilter from "./components/TodosFilter.jsx";
 import './App.module.css';
 
 function App() {
-    const [ userTasks, setUserTasks ] = useState([]);
+    const [ todos, setTodos ] = useState([]);
     const [ isFetching, setIsFetching] = useState(false);
     const [ todoCounter, setTodoCounter ] = useState([]);
     const [ currentCategory, setCurrentCategory ] = useState('all');
@@ -23,7 +23,7 @@ function App() {
     async function updateTasks(currentCategory) {
         try {
             const tasks = await getTodos(currentCategory);
-            setUserTasks(tasks.data);
+            setTodos(tasks.data);
             setTodoCounter(tasks.info);
         } catch (error) {
             alert('Ошибка при обновлении задач');
@@ -43,7 +43,7 @@ function App() {
                 updateTasks={updateTasks}
             />
             <TaskList
-                tasks={userTasks}
+                tasks={todos}
                 isLoading={isFetching}
                 updateTasks={updateTasks}
                 currentCategory={currentCategory}
