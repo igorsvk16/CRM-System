@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getNumberOfTasks, getTodos } from "./api/http.js";
+import { getTodos } from "./api/http.js";
 import TaskList from "./components/TaskList.jsx";
 import TaskAdd from "./components/TaskAdd.jsx";
 import TodosFilter from "./components/TodosFilter.jsx";
@@ -25,7 +25,7 @@ function App() {
     async function updateTasks(currentCategory) {
         try {
             const tasks = await getTodos(currentCategory);
-            setUserTasks(tasks);
+            setUserTasks(tasks.data);
             taskCounter();
         } catch (error) {
             alert('Ошибка при обновлении задач');
@@ -34,10 +34,11 @@ function App() {
 
     async function taskCounter() {
         try {
-            const numberOfTasks = await getNumberOfTasks();
-            setNumberOfAllTasks(numberOfTasks.all);
-            setNumberOfInWorkTasks(numberOfTasks.inWork);
-            setNumberOfCompletedTasks(numberOfTasks.completed);
+            const numberOfTasks = await getTodos();
+            setNumberOfAllTasks(numberOfTasks.info.all);
+            setNumberOfInWorkTasks(numberOfTasks.info.inWork);
+            setNumberOfCompletedTasks(numberOfTasks.info.completed);
+
         } catch (error) {
             alert("Ошибка подсчёта количества задач");
         }

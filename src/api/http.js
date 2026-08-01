@@ -24,7 +24,7 @@ export async function getTodos(status="all"){
         throw new Error('Ошибка загрузки задач');
     }
 
-    return resData.data;
+    return resData;
 }
 
 export async function changeTodo(id, isDone, title){
@@ -45,15 +45,6 @@ export async function changeTodo(id, isDone, title){
 
     return resData.data;
 
-}
-
-export async function getNumberOfTasks() {
-    const response = await fetch(`https://easydev.club/api/v1/todos`);
-    const resData = await response.json();
-    if (!response.ok) {
-        throw new Error('Ошибка загрузки количества задач');
-    }
-    return resData.info;
 }
 
 export async function saveEditedTask(id, isDone, newTitle) {
