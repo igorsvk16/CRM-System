@@ -7,7 +7,7 @@ import saveIcon from '../assets/icons8-save-50.png';
 import closeIcon from '../assets/close.png'
 
 
-export default function TodoItem({taskData, updateTasks, currentCategory}) {
+export default function TodoItem({taskData, updateTodos, currentCategory}) {
 
     const [ editTaskIs, setEditTaskIs ] = useState('');
     const [ editableValue, setEditableValue ] = useState(null);
@@ -19,17 +19,17 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
         } catch (error) {
             alert("Не получилось удалить задачу");
         }
-        updateTasks(currentCategory);
+        updateTodos(currentCategory);
     }
 
     async function onEnableEditMode(task) {
-        updateTasks(currentCategory);
+        updateTodos(currentCategory);
         setEditTaskIs(task);
     }
 
     async function onSelectEditModeCloseNoSave() {
         setEditTaskIs(null);
-        updateTasks(currentCategory);
+        updateTodos(currentCategory);
     }
 
     async function onSelectStatus(isDone, id, title) {
@@ -39,7 +39,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
         } catch (error) {
             alert("Ошибка обновления статуса задачи");
         }
-        updateTasks(currentCategory);
+        updateTodos(currentCategory);
     }
 
     async function onHandleDisableEditMode(id, isDone, taskInput, taskData) {
@@ -51,7 +51,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
             }
             taskData.title = taskInput;
             setEditTaskIs(null);
-            updateTasks(currentCategory);
+            updateTodos(currentCategory);
         } else {
             if (taskInput.trim().length >= 2) {
                 alert("Максимальная длина текста 64 символа")

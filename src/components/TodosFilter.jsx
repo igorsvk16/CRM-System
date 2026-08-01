@@ -1,10 +1,10 @@
 import styles from '../App.module.css';
 
-export default function TodosFilter({currentCategory, todoCounter, setCurrentCategory, updateTasks}) {
+export default function TodosFilter({currentCategory, todoCounter, setCurrentCategory, updateTodos}) {
 
     async function handleChangeCategory(categoryName) {
         setCurrentCategory(categoryName);
-        updateTasks(categoryName);
+        updateTodos(categoryName);
     }
 
     return (

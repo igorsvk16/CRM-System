@@ -2,7 +2,7 @@ import {useState} from "react";
 import {addTodo} from "../api/http.js";
 import styles from "../App.module.css";
 
-export default function TaskAdd({ updateTasks, currentCategory}) {
+export default function TaskAdd({ updateTodos, currentCategory}) {
     let isDone= false;
 
     const [ taskInput, setTaskInput ] = useState('')
@@ -14,7 +14,7 @@ export default function TaskAdd({ updateTasks, currentCategory}) {
             } catch (error) {
                 alert("Ошибка при добавлении задачи");
             }
-            updateTasks(currentCategory);
+            updateTodos(currentCategory);
             setTaskInput('');
         } else {
             if (taskInput.trim().length >= 2) {

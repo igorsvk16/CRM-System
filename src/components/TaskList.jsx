@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem.jsx";
 import styles from './Task.module.css';
 
-export default function TaskList({ tasks, isLoading, updateTasks, currentCategory }) {
+export default function TaskList({ tasks, isLoading, updateTodos, currentCategory }) {
 
     const loadingText="Loading...";
 
@@ -15,7 +15,7 @@ export default function TaskList({ tasks, isLoading, updateTasks, currentCategor
                         <TodoItem
                             taskData={taskData}
                             key={taskData.id}
-                            updateTasks={updateTasks}
+                            updateTodos={updateTodos}
                             currentCategory={currentCategory}
                         />
                     ))}
