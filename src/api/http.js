@@ -40,30 +40,11 @@ export async function changeTodo(id, isDone, title){
     })
     const resData = await response.json();
     if (!response.ok) {
-        throw new Error('Ошибка обновления статуса');
+        throw new Error('Ошибка обновления задачи');
     }
 
     return resData.data;
 
-}
-
-export async function saveEditedTask(id, isDone, newTitle) {
-    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            isDone: isDone,
-            title: newTitle
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-
-    const resData = await response.json();
-    if (!response.ok) {
-        throw new Error('Ошибка загрузки задачи');
-    }
-    return resData.data;
 }
 
 export async function deleteTaskById(id) {

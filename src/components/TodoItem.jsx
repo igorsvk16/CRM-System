@@ -1,5 +1,5 @@
-import {useState} from "react";
-import {changeTodo, deleteTaskById, saveEditedTask} from "../api/http.js";
+import { useState } from "react";
+import { changeTodo, deleteTaskById } from "../api/http.js";
 import styles from './Task.module.css';
 import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
@@ -45,7 +45,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
     async function onHandleDisableEditMode(id, isDone, taskInput, taskData) {
         if (taskInput.length >= 2 && taskInput.length <= 64) {
             try {
-                await saveEditedTask(id, isDone, taskInput);
+                await changeTodo(id, isDone, taskInput);
             } catch (error) {
                 alert("Не получилось отредактировать задачу")
             }
