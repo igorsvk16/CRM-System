@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {use, useEffect, useState} from "react";
 import { getTodos } from "./api/http.js";
 import TaskList from "./components/TaskList.jsx";
 import TaskAdd from "./components/TaskAdd.jsx";
@@ -8,9 +8,7 @@ import './App.module.css';
 function App() {
     const [ userTasks, setUserTasks ] = useState([]);
     const [ isFetching, setIsFetching] = useState(false);
-    const [ numberOfAllTasks,  setNumberOfAllTasks] = useState();
-    const [ numberOfInWorkTasks,  setNumberOfInWorkTasks] = useState();
-    const [ numberOfCompletedTasks, setNumberOfCompletedTasks] = useState();
+    const [ todoCounter, setTodoCounter ] = useState([]);
     const [ currentCategory, setCurrentCategory ] = useState('all');
 
     useEffect(() => {
@@ -26,23 +24,12 @@ function App() {
         try {
             const tasks = await getTodos(currentCategory);
             setUserTasks(tasks.data);
-            taskCounter();
+            setTodoCounter(tasks.info);
         } catch (error) {
             alert('Ошибка при обновлении задач');
         }
     }
 
-    async function taskCounter() {
-        try {
-            const numberOfTasks = await getTodos();
-            setNumberOfAllTasks(numberOfTasks.info.all);
-            setNumberOfInWorkTasks(numberOfTasks.info.inWork);
-            setNumberOfCompletedTasks(numberOfTasks.info.completed);
-
-        } catch (error) {
-            alert("Ошибка подсчёта количества задач");
-        }
-    }
     return (
         <main>
             <TaskAdd
@@ -51,9 +38,7 @@ function App() {
             />
             <TodosFilter
                 currentCategory={currentCategory}
-                numberOfAllTasks={numberOfAllTasks}
-                numberOfInWorkTasks={numberOfInWorkTasks}
-                numberOfCompletedTasks={numberOfCompletedTasks}
+                todoCounter={todoCounter}
                 setCurrentCategory={setCurrentCategory}
                 updateTasks={updateTasks}
             />

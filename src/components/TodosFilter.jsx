@@ -1,7 +1,6 @@
 import styles from '../App.module.css';
 
-export default function TodosFilter({currentCategory, numberOfAllTasks, numberOfInWorkTasks,
-                                        numberOfCompletedTasks, setCurrentCategory, updateTasks}) {
+export default function TodosFilter({currentCategory, todoCounter, setCurrentCategory, updateTasks}) {
 
     async function handleChangeCategory(categoryName) {
         setCurrentCategory(categoryName);
@@ -13,13 +12,13 @@ export default function TodosFilter({currentCategory, numberOfAllTasks, numberOf
             {currentCategory === 'all' ? (
                 <div className={styles.taskCategoryActive}>
                     <button onClick={() => handleChangeCategory('all')}>
-                        <p>Все ({numberOfAllTasks})</p>
+                        <p>Все ({todoCounter.all})</p>
                     </button>
                 </div>
             ) : (
                 <div className={styles.taskCategory}>
                     <button onClick={() => handleChangeCategory('all')}>
-                        <p>Все ({numberOfAllTasks})</p>
+                        <p>Все ({todoCounter.all})</p>
                     </button>
                 </div>
             )}
@@ -27,13 +26,13 @@ export default function TodosFilter({currentCategory, numberOfAllTasks, numberOf
             {currentCategory === 'inWork' ? (
                 <div className={styles.taskCategoryActive}>
                     <button onClick={() => handleChangeCategory('inWork')}>
-                        <p>В работе ({numberOfInWorkTasks})</p>
+                        <p>В работе ({todoCounter.inWork})</p>
                     </button>
                 </div>
             ) : (
                 <div className={styles.taskCategory}>
                     <button onClick={() => handleChangeCategory('inWork')}>
-                        <p>В работе ({numberOfInWorkTasks})</p>
+                        <p>В работе ({todoCounter.inWork})</p>
                     </button>
                 </div>
             )}
@@ -41,13 +40,13 @@ export default function TodosFilter({currentCategory, numberOfAllTasks, numberOf
             {currentCategory === 'completed' ? (
                 <div className={styles.taskCategoryActive}>
                     <button onClick={() => handleChangeCategory('completed')}>
-                        <p>Сделано ({numberOfCompletedTasks})</p>
+                        <p>Сделано ({todoCounter.completed})</p>
                     </button>
                 </div>
             ) : (
                 <div className={styles.taskCategory}>
                     <button onClick={() => handleChangeCategory('completed')}>
-                        <p>Сделано ({numberOfCompletedTasks})</p>
+                        <p>Сделано ({todoCounter.completed})</p>
                     </button>
                 </div>
             )}
