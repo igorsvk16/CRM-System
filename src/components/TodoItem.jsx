@@ -43,7 +43,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
     }
 
     async function onHandleDisableEditMode(id, isDone, taskInput, taskData) {
-        if (taskInput.length >= 2 && taskInput.length <= 64) {
+        if (taskInput.trim().length >= 2 && taskInput.trim().length <= 64) {
             try {
                 await changeTodo(id, isDone, taskInput);
             } catch (error) {
@@ -53,10 +53,12 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
             setEditTaskIs(null);
             updateTasks(currentCategory);
         } else {
-            if (taskInput.length > 64) {
+            if (taskInput.trim().length >= 2) {
                 alert("Максимальная длина текста 64 символа")
+            } else if (taskInput.trim().length === 1) {
+                alert("Минимальная длина текста 2 символа");
             } else {
-                alert("Минимальная длина текста 2 символа")
+                alert("Введите текст, не пробелы")
             }
         }
     }
