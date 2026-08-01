@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getNumberOfTasks, fetchUserTasks } from "./api/http.js";
+import { getNumberOfTasks, getTodos } from "./api/http.js";
 import TaskList from "./components/TaskList.jsx";
 import TaskAdd from "./components/TaskAdd.jsx";
 import TodosFilter from "./components/TodosFilter.jsx";
@@ -24,7 +24,7 @@ function App() {
 
     async function updateTasks(currentCategory) {
         try {
-            const tasks = await fetchUserTasks(currentCategory);
+            const tasks = await getTodos(currentCategory);
             setUserTasks(tasks);
             taskCounter();
         } catch (error) {

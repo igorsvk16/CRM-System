@@ -16,7 +16,7 @@ export async function addTodo(title, isDone) {
 
 }
 
-export async function fetchUserTasks(status="all"){
+export async function getTodos(status="all"){
     const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`)
     const resData = await response.json();
 
