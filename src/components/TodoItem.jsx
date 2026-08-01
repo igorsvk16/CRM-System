@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {deleteTaskById, fetchTaskIsDone, saveEditedTask} from "../api/http.js";
+import {changeTodo, deleteTaskById, saveEditedTask} from "../api/http.js";
 import styles from './Task.module.css';
 import editIcon from '../assets/edit.png';
 import trashIcon from '../assets/trash-bin.png';
@@ -35,7 +35,7 @@ export default function TodoItem({taskData, updateTasks, currentCategory}) {
     async function onSelectStatus(isDone, id, title) {
         let newStatus = !isDone;
         try {
-            await fetchTaskIsDone(id, newStatus, title);
+            await changeTodo(id, newStatus, title);
         } catch (error) {
             alert("Ошибка обновления статуса задачи");
         }

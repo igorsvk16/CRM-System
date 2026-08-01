@@ -27,7 +27,7 @@ export async function getTodos(status="all"){
     return resData.data;
 }
 
-export async function fetchTaskIsDone(id, isDone, title){
+export async function changeTodo(id, isDone, title){
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
