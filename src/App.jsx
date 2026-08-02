@@ -19,9 +19,9 @@ function App() {
 
     async function updateTodos(currentCategory) {
         try {
-            const tasks = await getTodos(currentCategory);
-            setTodos(tasks.data);
-            setTodoCounter(tasks.info);
+            const todos = await getTodos(currentCategory);
+            setTodos(todos.data);
+            setTodoCounter(todos.info);
         } catch (error) {
             alert('Ошибка при обновлении задач');
         }
