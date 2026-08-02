@@ -7,15 +7,12 @@ import './App.module.css';
 
 function App() {
     const [ todos, setTodos ] = useState([]);
-    const [ isFetching, setIsFetching] = useState(false);
     const [ todoCounter, setTodoCounter ] = useState([]);
     const [ currentCategory, setCurrentCategory ] = useState('all');
 
     useEffect(() => {
         async function fetchTodos() {
-            setIsFetching(true);
             updateTodos(currentCategory);
-            setIsFetching(false);
         }
         fetchTodos();
     }, []);
@@ -44,7 +41,6 @@ function App() {
             />
             <TaskList
                 tasks={todos}
-                isLoading={isFetching}
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
             />
