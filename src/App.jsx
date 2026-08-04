@@ -9,19 +9,23 @@ function App() {
     const [ todos, setTodos ] = useState([]);
     const [ todoCounter, setTodoCounter ] = useState([]);
     const [ currentCategory, setCurrentCategory ] = useState('all');
+    const [ isLoading, setIsLoading ] = useState(true);
 
     useEffect(() => {
-        async function fetchTodos() {
+        function fetchTodos() {
             updateTodos(currentCategory);
         }
         fetchTodos();
     }, []);
 
+
     async function updateTodos(currentCategory) {
         try {
+            setIsLoading(true)
             const todos = await getTodos(currentCategory);
-            setTodos(todos.data);
-            setTodoCounter(todos.info);
+            setTodos(todos.data)
+            setTodoCounter(todos.info)
+            setIsLoading(false)
         } catch (error) {
             alert('Ошибка при обновлении задач');
         }
@@ -43,6 +47,7 @@ function App() {
                 tasks={todos}
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
+                isLoading={isLoading}
             />
         </main>
     )
