@@ -42,9 +42,6 @@
     width: 50px;
     height: auto;
 }
-.tasks {
-    list-style: none;
-}
 
 .taskDiv {
     display: flex;
