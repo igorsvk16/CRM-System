@@ -7,7 +7,7 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
 
     const [ taskInput, setTaskInput ] = useState('')
 
-    async function handleAddTask() {
+    async function fetchAddTask() {
         if ((taskInput.trim().length) >= 2 && taskInput.trim().length <= 64) {
             try {
                 await addTodo(taskInput, isDone);
@@ -37,7 +37,7 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
             placeholder="TaskList To Be Done..."
         />
         <button
-            onClick={handleAddTask}
+            onClick={fetchAddTask}
             className={styles.addButton}
         >
             <p>Add</p>
