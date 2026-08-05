@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {addTodo} from "../api/http.js";
-import styles from "../App.module.css";
+import {addTodo} from "../../api/http.js";
+import styles from "./TaskAdd.module.css";
 
 export default function TaskAdd({ updateTodos, currentCategory}) {
     let isDone= false;
