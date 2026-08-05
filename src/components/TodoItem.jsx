@@ -9,7 +9,7 @@ import closeIcon from '../assets/close.png'
 
 export default function TodoItem({taskData, updateTodos, currentCategory}) {
 
-    const [ editTaskIs, setEditTaskIs ] = useState('');
+    const [ editTaskIs, setEditTaskIs ] = useState("");
     const [ editableValue, setEditableValue ] = useState(null);
 
 
@@ -23,8 +23,10 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
     }
 
     async function onEnableEditMode(task) {
-        updateTodos(currentCategory);
-        setEditTaskIs(task);
+        // если обновлять задачу - не работает
+        updateTodos(currentCategory)
+        setEditTaskIs(task)
+
     }
 
     async function onSelectEditModeCloseNoSave() {

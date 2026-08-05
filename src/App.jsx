@@ -13,7 +13,9 @@ function App() {
 
     useEffect(() => {
         function fetchTodos() {
-            updateTodos(currentCategory);
+            updateTodos(currentCategory).then(() =>
+                setIsLoading(false));
+
         }
         fetchTodos();
     }, []);
@@ -21,11 +23,9 @@ function App() {
 
     async function updateTodos(currentCategory) {
         try {
-            setIsLoading(true)
             const todos = await getTodos(currentCategory);
-            setTodos(todos.data)
+            setTodos(todos.data);
             setTodoCounter(todos.info)
-            setIsLoading(false)
         } catch (error) {
             alert('Ошибка при обновлении задач');
         }
