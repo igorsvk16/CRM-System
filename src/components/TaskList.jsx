@@ -1,4 +1,4 @@
-import TodoItem from "./TodoItem.jsx";
+import TodoItem from "./TodoItem/TodoItem.jsx";
 
 export default function TaskList({ tasks, updateTodos, currentCategory, isLoading }) {
     return (
