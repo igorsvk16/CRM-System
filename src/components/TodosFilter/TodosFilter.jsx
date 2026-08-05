@@ -8,7 +8,7 @@ export default function TodosFilter({currentCategory, todoCounter, setCurrentCat
     }
 
     return (
-        <div className={styles.tasksСategories}>
+        <div className={styles.tasksCategories}>
             {currentCategory === 'all' ? (
                 <div className={styles.taskCategoryActive}>
                     <button onClick={() => handleChangeCategory('all')}>

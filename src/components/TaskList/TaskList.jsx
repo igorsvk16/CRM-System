@@ -1,10 +1,11 @@
-import TodoItem from "./TodoItem/TodoItem.jsx";
+import TodoItem from "../TodoItem/TodoItem.jsx";
+import styles from "./TaskList.module.css"
 
 export default function TaskList({ tasks, updateTodos, currentCategory, isLoading }) {
     return (
             <section className="tasks-category">
-                {isLoading && <p className="fallback-text">Загрузка задач...</p>}
-                {!isLoading && tasks.length === 0 && <p className="fallback-text">Добавьте свою первую задачу</p>}
+                {isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
+                {!isLoading && tasks.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
                 {!isLoading && tasks.length > 0 && (
                     <section>
                         {(tasks).map((taskData) => (
