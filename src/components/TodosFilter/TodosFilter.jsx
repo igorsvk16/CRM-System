@@ -1,4 +1,4 @@
-import styles from '../App.module.css';
+import styles from './TodosFilter.module.css';
 
 export default function TodosFilter({currentCategory, todoCounter, setCurrentCategory, updateTodos}) {
 

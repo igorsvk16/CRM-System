@@ -2,7 +2,7 @@ import { useEffect, useState} from "react";
 import { getTodos } from "./api/http.js";
 import TaskList from "./components/TaskList.jsx";
 import TaskAdd from "./components/addTask/TaskAdd.jsx";
-import TodosFilter from "./components/TodosFilter.jsx";
+import TodosFilter from "./components/TodosFilter/TodosFilter.jsx";
 import './App.module.css';
 
 function App() {
