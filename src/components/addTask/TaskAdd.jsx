@@ -3,12 +3,31 @@ import {addTodo} from "../../api/http.js";
 import styles from "./TaskAdd.module.css";
 
 export default function TaskAdd({ updateTodos, currentCategory}) {
+
+    const MIN_LENGTH = 2;
+    const MAX_LENGTH = 64;
     let isDone= false;
 
-    const [ taskInput, setTaskInput ] = useState('')
+    const [ taskInput, setTaskInput ] = useState('');
+
+    function checkValidation(taskInput) {
+        if (taskInput.trim().length > MAX_LENGTH) {
+            alert("Максимальная длина текста 64 символа");
+            return false;
+        } else if (taskInput.trim().length === MIN_LENGTH - 1) {
+            alert("Минимальная длина текста 2 символа");
+            return false;
+        } else if (taskInput.trim().length === 0) {
+            setTaskInput('');
+            alert("Введите текст, не пробелы");
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     async function fetchAddTask() {
-        if ((taskInput.trim().length) >= 2 && taskInput.trim().length <= 64) {
+        if (checkValidation(taskInput)) {
             try {
                 await addTodo(taskInput, isDone);
             } catch (error) {
@@ -16,15 +35,6 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
             }
             updateTodos(currentCategory);
             setTaskInput('');
-        } else {
-            if (taskInput.trim().length >= 2) {
-                alert("Максимальная длина текста 64 символа")
-            } else if (taskInput.trim().length === 1) {
-                alert("Минимальная длина текста 2 символа");
-            } else {
-                alert("Введите текст, не пробелы")
-                setTaskInput('')
-            }
         }
     }
     return (
