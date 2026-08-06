@@ -9,7 +9,7 @@ import closeIcon from '../../assets/close.png'
 
 export default function TodoItem({taskData, updateTodos, currentCategory}) {
 
-    const [ editTaskIs, setEditTaskIs ] = useState("");
+    const [ currentTodoId, setCurrentTodoId ] = useState("");
     const [ editableValue, setEditableValue ] = useState(null);
 
 
@@ -24,11 +24,11 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
 
     async function onEnableEditMode(task) {
         updateTodos(currentCategory)
-        setEditTaskIs(task)
+        setCurrentTodoId(task)
     }
 
     async function onSelectEditModeCloseNoSave() {
-        setEditTaskIs(null);
+        setCurrentTodoId(null);
         updateTodos(currentCategory);
     }
 
@@ -50,7 +50,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
                 alert("Не получилось отредактировать задачу")
             }
             taskData.title = taskInput;
-            setEditTaskIs(null);
+            setCurrentTodoId(null);
             updateTodos(currentCategory);
         } else {
             if (taskInput.trim().length >= 2) {
@@ -63,65 +63,89 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
         }
     }
 
-    return (
-        (+editTaskIs === taskData.id) ?
-            (<div className={styles.taskDiv} key={taskData.id}>
-                    <li key={taskData.id} className={styles.task}>
-                        <div className={styles.notCheckbox}></div>
-                        <input
-                            type="text"
-                            value={editableValue}
-                            readOnly={false}
-                            autoFocus
-                            onChange={(e) => setEditableValue(e.target.value)}
+    return +currentTodoId === taskData.id ?
+        <div className={styles.taskDiv} key={taskData.id}>
+                {/*<li key={taskData.id} className={styles.task}>*/}
+                {/*    <form action={onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData)}>*/}
+                {/*        <label>*/}
+                {/*        <input*/}
+                {/*            type="text"*/}
+                {/*            value={editableValue}*/}
+                {/*            readOnly={false}*/}
+                {/*            autoFocus*/}
+                {/*            onChange={(e) => setEditableValue(e.target.value)}*/}
+                {/*            className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}*/}
+                {/*        />*/}
+                {/*        <button*/}
+                {/*            type="submit"*/}
+                {/*            className={styles.editBtn}*/}
+                {/*        >*/}
+                {/*            <img className={styles.editIcon} src={saveIcon} alt="editIcon" />*/}
+                {/*        </button>*/}
+                {/*        </label>*/}
+                {/*    </form>*/}
+                {/*    <button className={styles.delBtn} onClick={() =>*/}
+                {/*        onSelectEditModeCloseNoSave()*/}
+                {/*    }>*/}
+                {/*        <img*/}
+                {/*            src={closeIcon}*/}
+                {/*            className={styles.deleteIcon}*/}
+                {/*            alt="closeIcon"*/}
+                {/*        />*/}
+                {/*    </button>*/}
+                {/*</li>*/}
+                <li key={taskData.id} className={styles.task}>
+                    <input
+                        type="text"
+                        value={editableValue}
+                        readOnly={false}
+                        autoFocus
+                        onChange={(e) => setEditableValue(e.target.value)}
+                        className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+                    />
+                    <button
+                        className={styles.editBtn}
+                        onClick={() =>{{
+                            onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData);
+                        }}
+                        }
+                    >
+                        <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
+                    </button>
+                    <button className={styles.delBtn} onClick={() =>
+                        onSelectEditModeCloseNoSave()
+                    }>
+                        <img
+                            src={closeIcon}
+                            className={styles.deleteIcon}
+                            alt="closeIcon"
                         />
-                        <button
-                            className={styles.editBtn}
-                            onClick={() =>{{
-                                onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData);
-                            }}
-                            }
-                        >
-                            <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
-                        </button>
-                        <button className={styles.delBtn} onClick={() =>
-                            onSelectEditModeCloseNoSave()
-                        }>
-                            <img
-                                src={closeIcon}
-                                className={styles.deleteIcon}
-                                alt="closeIcon"
-                            />
-                        </button>
-                    </li>
-                </div>
-            ) : (
-                <div className={styles.taskDiv} key={taskData.id}>
-                    <li key={taskData.id} className={styles.task}>
-                        <input
-                            type="checkbox"
-                            onChange={() => onSelectStatus(taskData.isDone, taskData.id, taskData.title)}
-                            checked={taskData.isDone}
-                            className={styles.checkboxStatusTask}
-                        />
-                        <input
-                            value={taskData.title}
-                            type="text"
-                            readOnly={true}
-                            className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
-                        />
-                        <button
-                            className={styles.editBtn}
-                            onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title)}}>
-                            <img className={styles.editIcon} src={editIcon} alt="editIcon" />
-                        </button>
-                        <button
-                            className={styles.delBtn}
-                            onClick={() => onSelectDelete(taskData.id)}>
-                            <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
-                        </button>
-                    </li>
-                </div>
-            )
-    )
+                    </button>
+                </li>
+            </div> : <div className={styles.taskDiv} key={taskData.id}>
+                <li key={taskData.id} className={styles.task}>
+                    <input
+                        type="checkbox"
+                        onChange={() => onSelectStatus(taskData.isDone, taskData.id, taskData.title)}
+                        checked={taskData.isDone}
+                        className={styles.checkboxStatusTask}
+                    />
+                    <input
+                        value={taskData.title}
+                        type="text"
+                        readOnly={true}
+                        className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+                    />
+                    <button
+                        className={styles.editBtn}
+                        onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title)}}>
+                        <img className={styles.editIcon} src={editIcon} alt="editIcon" />
+                    </button>
+                    <button
+                        className={styles.delBtn}
+                        onClick={() => onSelectDelete(taskData.id)}>
+                        <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
+                    </button>
+                </li>
+            </div>
 }

@@ -52,7 +52,9 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
             <button
                 type="submit"
                 className={styles.addButton}
-            >Add</button>
+            >
+                Add
+            </button>
         </form>
     )
 }
