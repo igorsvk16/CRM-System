@@ -10,7 +10,7 @@ import closeIcon from '../../assets/close.png'
 export default function TodoItem({taskData, updateTodos, currentCategory}) {
 
     const [ currentTodoId, setCurrentTodoId ] = useState("");
-    const [ editableValue, setEditableValue ] = useState(null);
+    const [ editedTodoTitle, setEditedTodoTitle ] = useState(null);
 
 
     async function onSelectDelete(id) {
@@ -66,14 +66,14 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
     return +currentTodoId === taskData.id ?
         <div className={styles.taskDiv} key={taskData.id}>
                 {/*<li key={taskData.id} className={styles.task}>*/}
-                {/*    <form action={onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData)}>*/}
+                {/*    <form action={onHandleDisableEditMode(taskData.id, taskData.isDone, editedTodoTitle, taskData)}>*/}
                 {/*        <label>*/}
                 {/*        <input*/}
                 {/*            type="text"*/}
-                {/*            value={editableValue}*/}
+                {/*            value={editedTodoTitle}*/}
                 {/*            readOnly={false}*/}
                 {/*            autoFocus*/}
-                {/*            onChange={(e) => setEditableValue(e.target.value)}*/}
+                {/*            onChange={(e) => setEditedTodoTitle(e.target.value)}*/}
                 {/*            className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}*/}
                 {/*        />*/}
                 {/*        <button*/}
@@ -97,16 +97,16 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
                 <li key={taskData.id} className={styles.task}>
                     <input
                         type="text"
-                        value={editableValue}
+                        value={editedTodoTitle}
                         readOnly={false}
                         autoFocus
-                        onChange={(e) => setEditableValue(e.target.value)}
+                        onChange={(e) => setEditedTodoTitle(e.target.value)}
                         className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
                     />
                     <button
                         className={styles.editBtn}
                         onClick={() =>{{
-                            onHandleDisableEditMode(taskData.id, taskData.isDone, editableValue, taskData);
+                            onHandleDisableEditMode(taskData.id, taskData.isDone, editedTodoTitle, taskData);
                         }}
                         }
                     >
@@ -138,7 +138,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
                     />
                     <button
                         className={styles.editBtn}
-                        onClick={() => {onEnableEditMode(taskData.id); setEditableValue(taskData.title)}}>
+                        onClick={() => {onEnableEditMode(taskData.id); setEditedTodoTitle(taskData.title)}}>
                         <img className={styles.editIcon} src={editIcon} alt="editIcon" />
                     </button>
                     <button
