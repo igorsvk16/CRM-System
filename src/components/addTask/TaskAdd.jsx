@@ -50,7 +50,7 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
             onClick={fetchAddTask}
             className={styles.addButton}
         >
-            <p>Add</p>
+            Add
         </button>
     </div>
     )
