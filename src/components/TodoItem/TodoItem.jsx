@@ -18,6 +18,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
             await deleteTodo(id);
         } catch (error) {
             alert("Не получилось удалить задачу");
+            alert(error);
         }
         updateTodos(currentCategory);
     }
@@ -38,6 +39,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
             await changeTodo(id, newStatus, title);
         } catch (error) {
             alert("Ошибка обновления статуса задачи");
+            alert(error);
         }
         updateTodos(currentCategory);
     }
@@ -47,7 +49,8 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
             try {
                 await changeTodo(id, isDone, taskInput);
             } catch (error) {
-                alert("Не получилось отредактировать задачу")
+                alert("Не получилось отредактировать задачу");
+                alert(error);
             }
             taskData.title = taskInput;
             setCurrentTodoId(null);

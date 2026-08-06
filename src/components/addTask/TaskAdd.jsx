@@ -27,12 +27,12 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
     }
 
     async function fetchAddTask() {
-        console.log(taskInput)
         if (checkValidation(taskInput)) {
             try {
                 await addTodo(taskInput, isDone);
             } catch (error) {
                 alert("Ошибка при добавлении задачи");
+                alert(error)
             }
             updateTodos(currentCategory);
             setTaskInput('');

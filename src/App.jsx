@@ -28,6 +28,7 @@ function App() {
             setTodoCounter(todos.info)
         } catch (error) {
             alert('Ошибка при обновлении задач');
+            alert(error);
         }
     }
 
