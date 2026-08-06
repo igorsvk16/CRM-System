@@ -64,37 +64,8 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
     }
 
     return +currentTodoId === taskData.id ?
-        <div className={styles.taskDiv} key={taskData.id}>
-                {/*<li key={taskData.id} className={styles.task}>*/}
-                {/*    <form action={onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData)}>*/}
-                {/*        <label>*/}
-                {/*        <input*/}
-                {/*            type="text"*/}
-                {/*            value={editedTodoTitle}*/}
-                {/*            readOnly={false}*/}
-                {/*            autoFocus*/}
-                {/*            onChange={(e) => setEditedTodoTitle(e.target.value)}*/}
-                {/*            className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}*/}
-                {/*        />*/}
-                {/*        <button*/}
-                {/*            type="submit"*/}
-                {/*            className={styles.editBtn}*/}
-                {/*        >*/}
-                {/*            <img className={styles.editIcon} src={saveIcon} alt="editIcon" />*/}
-                {/*        </button>*/}
-                {/*        </label>*/}
-                {/*    </form>*/}
-                {/*    <button className={styles.delBtn} onClick={() =>*/}
-                {/*        onSelectEditModeCloseNoSave()*/}
-                {/*    }>*/}
-                {/*        <img*/}
-                {/*            src={closeIcon}*/}
-                {/*            className={styles.deleteIcon}*/}
-                {/*            alt="closeIcon"*/}
-                {/*        />*/}
-                {/*    </button>*/}
-                {/*</li>*/}
-                <li key={taskData.id} className={styles.task}>
+        <div className={styles.taskContainer}>
+            <div className={styles.task} key={taskData.id}>
                     <input
                         type="text"
                         value={editedTodoTitle}
@@ -121,9 +92,11 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
                             alt="closeIcon"
                         />
                     </button>
-                </li>
-            </div> : <div className={styles.taskDiv} key={taskData.id}>
-                <li key={taskData.id} className={styles.task}>
+            </div>
+        </div>
+        :
+        <div className={styles.taskContainer}>
+        <div className={styles.task} key={taskData.id}>
                     <input
                         type="checkbox"
                         onChange={() => onSelectStatus(taskData.isDone, taskData.id, taskData.title)}
@@ -146,6 +119,95 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
                         onClick={() => onSelectDelete(taskData.id)}>
                         <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
                     </button>
-                </li>
             </div>
+        </div>
+    // <div className={styles.task} key={taskData.id}>
+    //     <li key={taskData.id} className={styles.task}>
+    //         <input
+    //             type="text"
+    //             value={editedTodoTitle}
+    //             readOnly={false}
+    //             autoFocus
+    //             onChange={(e) => setEditedTodoTitle(e.target.value)}
+    //             className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+    //         />
+    //         <button
+    //             className={styles.editBtn}
+    //             onClick={() =>{{
+    //                 onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData);
+    //             }}
+    //             }
+    //         >
+    //             <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
+    //         </button>
+    //         <button className={styles.delBtn} onClick={() =>
+    //             onSelectEditModeCloseNoSave()
+    //         }>
+    //             <img
+    //                 src={closeIcon}
+    //                 className={styles.deleteIcon}
+    //                 alt="closeIcon"
+    //             />
+    //         </button>
+    //     </li>
+    // </div> : <div className={styles.task} key={taskData.id}>
+    //     <li key={taskData.id} className={styles.task}>
+    //         <input
+    //             type="checkbox"
+    //             onChange={() => onSelectStatus(taskData.isDone, taskData.id, taskData.title)}
+    //             checked={taskData.isDone}
+    //             className={styles.checkboxStatusTask}
+    //         />
+    //         <input
+    //             value={taskData.title}
+    //             type="text"
+    //             readOnly={true}
+    //             className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+    //         />
+    //         <button
+    //             className={styles.editBtn}
+    //             onClick={() => {onEnableEditMode(taskData.id); setEditedTodoTitle(taskData.title)}}>
+    //             <img className={styles.editIcon} src={editIcon} alt="editIcon" />
+    //         </button>
+    //         <button
+    //             className={styles.delBtn}
+    //             onClick={() => onSelectDelete(taskData.id)}>
+    //             <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
+    //         </button>
+    //     </li>
+    // </div>
+
+
+    // <div className={styles.task} key={taskData.id}>
+    {/*<li key={taskData.id} className={styles.task}>*/}
+    {/*    <form action={onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData)}>*/}
+    {/*        <label>*/}
+    {/*        <input*/}
+    {/*            type="text"*/}
+    {/*            value={editedTodoTitle}*/}
+    {/*            readOnly={false}*/}
+    {/*            autoFocus*/}
+    {/*            onChange={(e) => setEditedTodoTitle(e.target.value)}*/}
+    {/*            className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}*/}
+    {/*        />*/}
+    {/*        <button*/}
+    {/*            type="submit"*/}
+    {/*            className={styles.editBtn}*/}
+    {/*        >*/}
+    {/*            <img className={styles.editIcon} src={saveIcon} alt="editIcon" />*/}
+    {/*        </button>*/}
+    {/*        </label>*/}
+    {/*    </form>*/}
+    {/*    <button className={styles.delBtn} onClick={() =>*/}
+    {/*        onSelectEditModeCloseNoSave()*/}
+    {/*    }>*/}
+    {/*        <img*/}
+    {/*            src={closeIcon}*/}
+    {/*            className={styles.deleteIcon}*/}
+    {/*            alt="closeIcon"*/}
+    {/*        />*/}
+    {/*    </button>*/}
+    {/*</li>*/}
+// </div>
+
 }
