@@ -9,47 +9,21 @@ export default function TodosFilter({currentCategory, todoCounter, setCurrentCat
 
     return (
         <div className={styles.tasksCategories}>
-            {currentCategory === 'all' ? (
-                <div className={styles.taskCategoryActive}>
+                <div className={currentCategory === 'all' ? styles.taskCategoryActive : styles.taskCategory}>
                     <button onClick={() => handleChangeCategory('all')}>
                         Все ({todoCounter.all})
                     </button>
                 </div>
-            ) : (
-                <div className={styles.taskCategory}>
-                    <button onClick={() => handleChangeCategory('all')}>
-                        Все ({todoCounter.all})
-                    </button>
-                </div>
-            )}
-
-            {currentCategory === 'inWork' ? (
-                <div className={styles.taskCategoryActive}>
+                <div className={currentCategory === 'inWork' ? styles.taskCategoryActive : styles.taskCategory}>
                     <button onClick={() => handleChangeCategory('inWork')}>
                         В работе ({todoCounter.inWork})
                     </button>
                 </div>
-            ) : (
-                <div className={styles.taskCategory}>
-                    <button onClick={() => handleChangeCategory('inWork')}>
-                        В работе ({todoCounter.inWork})
-                    </button>
-                </div>
-            )}
-
-            {currentCategory === 'completed' ? (
-                <div className={styles.taskCategoryActive}>
+                <div className={currentCategory === 'completed' ? styles.taskCategoryActive : styles.taskCategory}>
                     <button onClick={() => handleChangeCategory('completed')}>
                         Сделано ({todoCounter.completed})
                     </button>
                 </div>
-            ) : (
-                <div className={styles.taskCategory}>
-                    <button onClick={() => handleChangeCategory('completed')}>
-                        Сделано ({todoCounter.completed})
-                    </button>
-                </div>
-            )}
         </div>
     )
 }
