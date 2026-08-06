@@ -42,7 +42,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
         updateTodos(currentCategory);
     }
 
-    async function onHandleDisableEditMode(id, isDone, taskInput, taskData) {
+    async function onUpdateTodo(id, isDone, taskInput, taskData) {
         if (taskInput.trim().length >= 2 && taskInput.trim().length <= 64) {
             try {
                 await changeTodo(id, isDone, taskInput);
@@ -66,7 +66,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
     return +currentTodoId === taskData.id ?
         <div className={styles.taskDiv} key={taskData.id}>
                 {/*<li key={taskData.id} className={styles.task}>*/}
-                {/*    <form action={onHandleDisableEditMode(taskData.id, taskData.isDone, editedTodoTitle, taskData)}>*/}
+                {/*    <form action={onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData)}>*/}
                 {/*        <label>*/}
                 {/*        <input*/}
                 {/*            type="text"*/}
@@ -106,7 +106,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
                     <button
                         className={styles.editBtn}
                         onClick={() =>{{
-                            onHandleDisableEditMode(taskData.id, taskData.isDone, editedTodoTitle, taskData);
+                            onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData);
                         }}
                         }
                     >
