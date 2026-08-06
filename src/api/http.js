@@ -1,3 +1,13 @@
+export async function getTodos(status="all"){
+    const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`)
+    const resData = await response.json();
+
+    if (!response.ok) {
+        throw new Error('Ошибка загрузки задач');
+    }
+    return resData;
+}
+
 export async function addTodo(title, isDone) {
     const response = await fetch("https://easydev.club/api/v1/todos", {
         method: 'POST',
@@ -13,18 +23,6 @@ export async function addTodo(title, isDone) {
         throw new Error('Ошибка обновления данных');
     }
     return resData.data;
-
-}
-
-export async function getTodos(status="all"){
-    const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`)
-    const resData = await response.json();
-
-    if (!response.ok) {
-        throw new Error('Ошибка загрузки задач');
-    }
-
-    return resData;
 }
 
 export async function changeTodo(id, isDone, title){
@@ -42,12 +40,10 @@ export async function changeTodo(id, isDone, title){
     if (!response.ok) {
         throw new Error('Ошибка обновления задачи');
     }
-
     return resData.data;
-
 }
 
-export async function deleteTaskById(id) {
+export async function deleteTodo(id) {
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'DELETE',
         headers: {

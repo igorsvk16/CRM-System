@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { changeTodo, deleteTaskById } from "../../api/http.js";
+import {changeTodo, deleteTodo} from "../../api/http.js";
 import styles from './TodoItem.module.css';
 import editIcon from '../../assets/edit.png';
 import trashIcon from '../../assets/trash-bin.png';
@@ -15,7 +15,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
 
     async function onSelectDelete(id) {
         try {
-            await deleteTaskById(id);
+            await deleteTodo(id);
         } catch (error) {
             alert("Не получилось удалить задачу");
         }
