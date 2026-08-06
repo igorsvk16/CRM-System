@@ -47,13 +47,13 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
                     setTaskInput(e.target.value)
                 }}
                 type="text"
-                placeholder="TaskList To Be Done..."
+                placeholder="Новая задача..."
             />
             <button
                 type="submit"
                 className={styles.addButton}
             >
-                Add
+                Добавить
             </button>
         </form>
     )
