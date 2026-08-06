@@ -13,7 +13,7 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    margin: 0.5rem;
+    margin: 0.7rem;
     font-weight: 600;
     border-bottom: 2px solid #f3f7fb;
     color: #4b8df7;
@@ -28,9 +28,9 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    margin: 0.5rem;
     font-weight: 600;
     border-bottom: 2px solid #f3f7fb;
+    margin: 0.7rem;
 }
 
 .taskCategory button:hover {
