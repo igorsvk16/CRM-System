@@ -23,10 +23,8 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
     }
 
     async function onEnableEditMode(task) {
-        // если обновлять задачу - не работает
         updateTodos(currentCategory)
         setEditTaskIs(task)
-
     }
 
     async function onSelectEditModeCloseNoSave() {

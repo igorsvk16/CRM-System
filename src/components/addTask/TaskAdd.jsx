@@ -27,6 +27,7 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
     }
 
     async function fetchAddTask() {
+        console.log(taskInput)
         if (checkValidation(taskInput)) {
             try {
                 await addTodo(taskInput, isDone);
@@ -38,20 +39,20 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
         }
     }
     return (
-    <div className={styles.taskAdd}>
-        <input
-            className={styles.inputNewTask}
-            value={taskInput}
-            onChange={e => {setTaskInput(e.target.value)}}
-            type="text"
-            placeholder="TaskList To Be Done..."
-        />
-        <button
-            onClick={fetchAddTask}
-            className={styles.addButton}
-        >
-            Add
-        </button>
-    </div>
+        <form className={styles.taskAdd} action={fetchAddTask}>
+            <input
+                className={styles.inputNewTask}
+                value={taskInput}
+                onChange={e => {
+                    setTaskInput(e.target.value)
+                }}
+                type="text"
+                placeholder="TaskList To Be Done..."
+            />
+            <button
+                type="submit"
+                className={styles.addButton}
+            >Add</button>
+        </form>
     )
 }
