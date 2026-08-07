@@ -1,14 +1,14 @@
 import TodoItem from "../TodoItem/TodoItem.jsx";
 import styles from "./TodoList.module.css"
 
-export default function TodoList({ tasks, updateTodos, currentCategory, isLoading, checkValidation }) {
+export default function TodoList({ todos, updateTodos, currentCategory, isLoading, checkValidation }) {
     return (
-            <section className="tasks-category">
+            <section>
                 {isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
-                {!isLoading && tasks.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
-                {!isLoading && tasks.length > 0 && (
+                {!isLoading && todos.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
+                {!isLoading && todos.length > 0 && (
                     <section>
-                        {(tasks).map((todoData) => (
+                        {(todos).map((todoData) => (
                             <TodoItem
                                 todoData={todoData}
                                 updateTodos={updateTodos}
@@ -20,5 +20,4 @@ export default function TodoList({ tasks, updateTodos, currentCategory, isLoadin
                 )}
             </section>
     )
-
 }

@@ -63,7 +63,7 @@ function App() {
                 updateTodos={updateTodos}
             />
             <TodoList
-                tasks={todos}
+                todos={todos}
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
                 isLoading={isLoading}
