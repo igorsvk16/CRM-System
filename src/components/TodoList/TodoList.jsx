@@ -8,10 +8,9 @@ export default function TodoList({ tasks, updateTodos, currentCategory, isLoadin
                 {!isLoading && tasks.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
                 {!isLoading && tasks.length > 0 && (
                     <section>
-                        {(tasks).map((taskData) => (
+                        {(tasks).map((todoData) => (
                             <TodoItem
-                                taskData={taskData}
-                                key={taskData.id}
+                                todoData={todoData}
                                 updateTodos={updateTodos}
                                 currentCategory={currentCategory}
                             />

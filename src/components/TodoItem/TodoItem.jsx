@@ -7,7 +7,7 @@ import saveIcon from '../../assets/icons8-save-50.png';
 import closeIcon from '../../assets/close.png'
 
 
-export default function TodoItem({taskData, updateTodos, currentCategory}) {
+export default function TodoItem({todoData, updateTodos, currentCategory}) {
 
     const [ currentTodoId, setCurrentTodoId ] = useState("");
     const [ editedTodoTitle, setEditedTodoTitle ] = useState(null);
@@ -44,7 +44,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
         updateTodos(currentCategory);
     }
 
-    async function onUpdateTodo(id, isDone, taskInput, taskData) {
+    async function onUpdateTodo(id, isDone, taskInput, todoData) {
         if (taskInput.trim().length >= 2 && taskInput.trim().length <= 64) {
             try {
                 await changeTodo(id, isDone, taskInput);
@@ -52,7 +52,7 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
                 alert("Не получилось отредактировать задачу");
                 alert(error);
             }
-            taskData.title = taskInput;
+            todoData.title = taskInput;
             setCurrentTodoId(null);
             updateTodos(currentCategory);
         } else {
@@ -66,21 +66,21 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
         }
     }
 
-    return +currentTodoId === taskData.id ?
+    return +currentTodoId === todoData.id ?
         <div className={styles.taskContainer}>
-            <div className={styles.task} key={taskData.id}>
+            <div className={styles.task} key={todoData.id}>
                     <input
                         type="text"
                         value={editedTodoTitle}
                         readOnly={false}
                         autoFocus
                         onChange={(e) => setEditedTodoTitle(e.target.value)}
-                        className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+                        className={todoData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
                     />
                     <button
                         className={styles.editBtn}
                         onClick={() =>{{
-                            onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData);
+                            onUpdateTodo(todoData.id, todoData.isDone, editedTodoTitle, todoData);
                         }}
                         }
                     >
@@ -99,118 +99,29 @@ export default function TodoItem({taskData, updateTodos, currentCategory}) {
         </div>
         :
         <div className={styles.taskContainer}>
-        <div className={styles.task} key={taskData.id}>
+        <div className={styles.task} key={todoData.id}>
                     <input
                         type="checkbox"
-                        onChange={() => onSelectStatus(taskData.isDone, taskData.id, taskData.title)}
-                        checked={taskData.isDone}
+                        onChange={() => onSelectStatus(todoData.isDone, todoData.id, todoData.title)}
+                        checked={todoData.isDone}
                         className={styles.checkboxStatusTask}
                     />
                     <input
-                        value={taskData.title}
+                        value={todoData.title}
                         type="text"
                         readOnly={true}
-                        className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+                        className={todoData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
                     />
                     <button
                         className={styles.editBtn}
-                        onClick={() => {onEnableEditMode(taskData.id); setEditedTodoTitle(taskData.title)}}>
+                        onClick={() => {onEnableEditMode(todoData.id); setEditedTodoTitle(todoData.title)}}>
                         <img className={styles.editIcon} src={editIcon} alt="editIcon" />
                     </button>
                     <button
                         className={styles.delBtn}
-                        onClick={() => onSelectDelete(taskData.id)}>
+                        onClick={() => onSelectDelete(todoData.id)}>
                         <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
                     </button>
             </div>
         </div>
-    // <div className={styles.task} key={taskData.id}>
-    //     <li key={taskData.id} className={styles.task}>
-    //         <input
-    //             type="text"
-    //             value={editedTodoTitle}
-    //             readOnly={false}
-    //             autoFocus
-    //             onChange={(e) => setEditedTodoTitle(e.target.value)}
-    //             className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
-    //         />
-    //         <button
-    //             className={styles.editBtn}
-    //             onClick={() =>{{
-    //                 onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData);
-    //             }}
-    //             }
-    //         >
-    //             <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
-    //         </button>
-    //         <button className={styles.delBtn} onClick={() =>
-    //             onSelectEditModeCloseNoSave()
-    //         }>
-    //             <img
-    //                 src={closeIcon}
-    //                 className={styles.deleteIcon}
-    //                 alt="closeIcon"
-    //             />
-    //         </button>
-    //     </li>
-    // </div> : <div className={styles.task} key={taskData.id}>
-    //     <li key={taskData.id} className={styles.task}>
-    //         <input
-    //             type="checkbox"
-    //             onChange={() => onSelectStatus(taskData.isDone, taskData.id, taskData.title)}
-    //             checked={taskData.isDone}
-    //             className={styles.checkboxStatusTask}
-    //         />
-    //         <input
-    //             value={taskData.title}
-    //             type="text"
-    //             readOnly={true}
-    //             className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
-    //         />
-    //         <button
-    //             className={styles.editBtn}
-    //             onClick={() => {onEnableEditMode(taskData.id); setEditedTodoTitle(taskData.title)}}>
-    //             <img className={styles.editIcon} src={editIcon} alt="editIcon" />
-    //         </button>
-    //         <button
-    //             className={styles.delBtn}
-    //             onClick={() => onSelectDelete(taskData.id)}>
-    //             <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
-    //         </button>
-    //     </li>
-    // </div>
-
-
-    // <div className={styles.task} key={taskData.id}>
-    {/*<li key={taskData.id} className={styles.task}>*/}
-    {/*    <form action={onUpdateTodo(taskData.id, taskData.isDone, editedTodoTitle, taskData)}>*/}
-    {/*        <label>*/}
-    {/*        <input*/}
-    {/*            type="text"*/}
-    {/*            value={editedTodoTitle}*/}
-    {/*            readOnly={false}*/}
-    {/*            autoFocus*/}
-    {/*            onChange={(e) => setEditedTodoTitle(e.target.value)}*/}
-    {/*            className={taskData.isDone? styles.taskTitleDone : styles.taskTitleUndone}*/}
-    {/*        />*/}
-    {/*        <button*/}
-    {/*            type="submit"*/}
-    {/*            className={styles.editBtn}*/}
-    {/*        >*/}
-    {/*            <img className={styles.editIcon} src={saveIcon} alt="editIcon" />*/}
-    {/*        </button>*/}
-    {/*        </label>*/}
-    {/*    </form>*/}
-    {/*    <button className={styles.delBtn} onClick={() =>*/}
-    {/*        onSelectEditModeCloseNoSave()*/}
-    {/*    }>*/}
-    {/*        <img*/}
-    {/*            src={closeIcon}*/}
-    {/*            className={styles.deleteIcon}*/}
-    {/*            alt="closeIcon"*/}
-    {/*        />*/}
-    {/*    </button>*/}
-    {/*</li>*/}
-// </div>
-
 }
