@@ -1,4 +1,4 @@
-.tasksCategories {
+.todosCategories {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -6,7 +6,7 @@
     border: none;
 }
 
-.taskCategoryActive button {
+.todoCategoryActive button {
     background: none;
     border: none;
     padding: 0;
@@ -20,7 +20,7 @@
     border-bottom: 2px solid #4b8df7;
 }
 
-.taskCategory button {
+.todoCategory button {
     background: none;
     color: inherit;
     border: none;
@@ -33,7 +33,7 @@
     margin: 0.7rem;
 }
 
-.taskCategory button:hover {
+.todoCategory button:hover {
     color: #4b8df7;
     border-bottom: 2px solid #4b8df7;
 }

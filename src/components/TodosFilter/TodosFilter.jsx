@@ -8,18 +8,18 @@ export default function TodosFilter({currentCategory, todoCounter, setCurrentCat
     }
 
     return (
-        <div className={styles.tasksCategories}>
-                <div className={currentCategory === 'all' ? styles.taskCategoryActive : styles.taskCategory}>
+        <div className={styles.todosCategories}>
+                <div className={currentCategory === 'all' ? styles.todoCategoryActive : styles.todoCategory}>
                     <button onClick={() => handleChangeCategory('all')}>
                         Все ({todoCounter.all})
                     </button>
                 </div>
-                <div className={currentCategory === 'inWork' ? styles.taskCategoryActive : styles.taskCategory}>
+                <div className={currentCategory === 'inWork' ? styles.todoCategoryActive : styles.todoCategory}>
                     <button onClick={() => handleChangeCategory('inWork')}>
                         В работе ({todoCounter.inWork})
                     </button>
                 </div>
-                <div className={currentCategory === 'completed' ? styles.taskCategoryActive : styles.taskCategory}>
+                <div className={currentCategory === 'completed' ? styles.todoCategoryActive : styles.todoCategory}>
                     <button onClick={() => handleChangeCategory('completed')}>
                         Сделано ({todoCounter.completed})
                     </button>
