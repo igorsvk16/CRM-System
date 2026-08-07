@@ -8,8 +8,8 @@ import closeIcon from '../../assets/close.png'
 
 export default function TodoItem({todoData, updateTodos, currentCategory, checkValidation}) {
 
-    const [ currentTodoId, setCurrentTodoId ] = useState("");
-    const [ editedTodoTitle, setEditedTodoTitle ] = useState(null);
+    const [ editedTodoId, setEditedTodoId ] = useState("");
+    const [ editedTodoTitle, setEditedTodoTitle ] = useState("");
 
     async function onSelectDelete(id) {
         try {
@@ -23,11 +23,11 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
 
     async function onEnableEditMode(todo) {
         updateTodos(currentCategory)
-        setCurrentTodoId(todo)
+        setEditedTodoId(todo)
     }
 
-    async function onSelectEditModeCloseNoSave() {
-        setCurrentTodoId(null);
+    async function cancelEditTask() {
+        setEditedTodoId(null);
         updateTodos(currentCategory);
     }
 
@@ -51,11 +51,11 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
                 alert(error);
             }
             todoData.title = todoInput;
-            setCurrentTodoId(null);
+            setEditedTodoId(null);
             updateTodos(currentCategory);
         }
     }
-return +currentTodoId === todoData.id ?
+return +editedTodoId === todoData.id ?
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={todoData.id}>
             <input
@@ -76,7 +76,7 @@ return +currentTodoId === todoData.id ?
                 <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
             </button>
             <button className={styles.delBtn} onClick={() =>
-                onSelectEditModeCloseNoSave()
+                cancelEditTask()
             }>
                 <img
                     src={closeIcon}
