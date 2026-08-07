@@ -20,7 +20,7 @@ function App() {
 
         }
         fetchTodos();
-    }, []);
+    }, [currentCategory]);
 
     async function updateTodos(currentCategory) {
         try {
