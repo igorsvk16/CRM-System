@@ -42,16 +42,16 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
         updateTodos(currentCategory);
     }
 
-    async function onUpdateTodo(id, isDone, todoInput, todoData) {
-        if (checkValidation(todoInput, setEditedTodoTitle)) {
+    async function onUpdateTodo(editedTodoTitle, todoData) {
+        if (checkValidation(editedTodoTitle, setEditedTodoTitle)) {
             try {
-                await changeTodo(id, isDone, todoInput);
+                await changeTodo(todoData.id, todoData.isDone, editedTodoTitle);
             } catch (error) {
                 alert("Не получилось отредактировать задачу");
                 alert(error);
             }
-            todoData.title = todoInput;
-            setEditedTodoId(null);
+            todoData.title = editedTodoTitle;
+            setEditedTodoId("");
             updateTodos(currentCategory);
         }
     }
@@ -68,10 +68,7 @@ return +editedTodoId === todoData.id ?
             />
             <button
                 className={styles.editBtn}
-                onClick={() =>{{
-                    onUpdateTodo(todoData.id, todoData.isDone, editedTodoTitle, todoData);
-                }}
-                }
+                onClick={() => onUpdateTodo(editedTodoTitle, todoData)}
             >
                 <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
             </button>
