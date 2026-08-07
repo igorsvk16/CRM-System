@@ -1,24 +1,24 @@
 import {useState} from "react";
 import {addTodo} from "../../api/http.js";
-import styles from "./TaskAdd.module.css";
+import styles from "./TodoAdd.module.css";
 
-export default function TaskAdd({ updateTodos, currentCategory}) {
+export default function TodoAdd({ updateTodos, currentCategory}) {
 
     const MIN_LENGTH = 2;
     const MAX_LENGTH = 64;
     let isDone= false;
 
-    const [ taskInput, setTaskInput ] = useState('');
+    const [ todoInput, setTodoInput ] = useState('');
 
-    function checkValidation(taskInput) {
-        if (taskInput.trim().length > MAX_LENGTH) {
+    function checkValidation(todoInput) {
+        if (todoInput.trim().length > MAX_LENGTH) {
             alert("Максимальная длина текста 64 символа");
             return false;
-        } else if (taskInput.trim().length === MIN_LENGTH - 1) {
+        } else if (todoInput.trim().length === MIN_LENGTH - 1) {
             alert("Минимальная длина текста 2 символа");
             return false;
-        } else if (taskInput.trim().length === 0) {
-            setTaskInput('');
+        } else if (todoInput.trim().length === 0) {
+            setTodoInput('');
             alert("Введите текст, не пробелы");
             return false;
         } else {
@@ -26,25 +26,25 @@ export default function TaskAdd({ updateTodos, currentCategory}) {
         }
     }
 
-    async function fetchAddTask() {
-        if (checkValidation(taskInput)) {
+    async function fetchAddTodo() {
+        if (checkValidation(todoInput)) {
             try {
-                await addTodo(taskInput, isDone);
+                await addTodo(todoInput, isDone);
             } catch (error) {
                 alert("Ошибка при добавлении задачи");
                 alert(error)
             }
             updateTodos(currentCategory);
-            setTaskInput('');
+            setTodoInput('');
         }
     }
     return (
-        <form className={styles.taskAdd} action={fetchAddTask}>
+        <form className={styles.todoAdd} action={fetchAddTodo}>
             <input
-                className={styles.inputNewTask}
-                value={taskInput}
+                className={styles.inputNewTodo}
+                value={todoInput}
                 onChange={e => {
-                    setTaskInput(e.target.value)
+                    setTodoInput(e.target.value);
                 }}
                 type="text"
                 placeholder="Новая задача..."

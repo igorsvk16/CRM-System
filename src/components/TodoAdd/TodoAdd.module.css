@@ -1,4 +1,4 @@
-.taskAdd {
+.todoAdd {
     display: flex;
     justify-content: center;
     margin: 1rem;
@@ -6,7 +6,7 @@
     align-content: center;
 }
 
-.inputNewTask {
+.inputNewTodo {
     border: none;
     background-color: #f3f7fb;
     border-bottom: 1px solid #d7dde5;

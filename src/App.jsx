@@ -1,7 +1,7 @@
 import { useEffect, useState} from "react";
 import { getTodos } from "./api/http.js";
-import TaskList from "./components/TaskList/TaskList.jsx";
-import TaskAdd from "./components/addTask/TaskAdd.jsx";
+import TodoList from "./components/TodoList/TodoList.jsx";
+import TodoAdd from "./components/TodoAdd/TodoAdd.jsx";
 import TodosFilter from "./components/TodosFilter/TodosFilter.jsx";
 import './App.module.css';
 
@@ -34,7 +34,7 @@ function App() {
 
     return (
         <main>
-            <TaskAdd
+            <TodoAdd
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
             />
@@ -44,7 +44,7 @@ function App() {
                 setCurrentCategory={setCurrentCategory}
                 updateTodos={updateTodos}
             />
-            <TaskList
+            <TodoList
                 tasks={todos}
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}

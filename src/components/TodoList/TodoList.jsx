@@ -1,7 +1,7 @@
 import TodoItem from "../TodoItem/TodoItem.jsx";
-import styles from "./TaskList.module.css"
+import styles from "./TodoList.module.css"
 
-export default function TaskList({ tasks, updateTodos, currentCategory, isLoading }) {
+export default function TodoList({ tasks, updateTodos, currentCategory, isLoading }) {
     return (
             <section className="tasks-category">
                 {isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
