@@ -1,7 +1,7 @@
 import TodoItem from "../TodoItem/TodoItem.jsx";
 import styles from "./TodoList.module.css"
 
-export default function TodoList({ tasks, updateTodos, currentCategory, isLoading }) {
+export default function TodoList({ tasks, updateTodos, currentCategory, isLoading, checkValidation }) {
     return (
             <section className="tasks-category">
                 {isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
@@ -13,6 +13,7 @@ export default function TodoList({ tasks, updateTodos, currentCategory, isLoadin
                                 todoData={todoData}
                                 updateTodos={updateTodos}
                                 currentCategory={currentCategory}
+                                checkValidation={checkValidation}
                             />
                         ))}
                     </section>

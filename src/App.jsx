@@ -67,6 +67,7 @@ function App() {
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
                 isLoading={isLoading}
+                checkValidation={checkValidation}
             />
         </main>
     )

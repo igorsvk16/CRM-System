@@ -7,11 +7,10 @@ import saveIcon from '../../assets/icons8-save-50.png';
 import closeIcon from '../../assets/close.png'
 
 
-export default function TodoItem({todoData, updateTodos, currentCategory}) {
+export default function TodoItem({todoData, updateTodos, currentCategory, checkValidation}) {
 
     const [ currentTodoId, setCurrentTodoId ] = useState("");
     const [ editedTodoTitle, setEditedTodoTitle ] = useState(null);
-
 
     async function onSelectDelete(id) {
         try {
@@ -45,7 +44,7 @@ export default function TodoItem({todoData, updateTodos, currentCategory}) {
     }
 
     async function onUpdateTodo(id, isDone, todoInput, todoData) {
-        if (todoInput.trim().length >= 2 && todoInput.trim().length <= 64) {
+        if (checkValidation(todoInput, setEditedTodoTitle)) {
             try {
                 await changeTodo(id, isDone, todoInput);
             } catch (error) {
@@ -55,14 +54,6 @@ export default function TodoItem({todoData, updateTodos, currentCategory}) {
             todoData.title = todoInput;
             setCurrentTodoId(null);
             updateTodos(currentCategory);
-        } else {
-            if (todoInput.trim().length >= 2) {
-                alert("Максимальная длина текста 64 символа")
-            } else if (todoInput.trim().length === 1) {
-                alert("Минимальная длина текста 2 символа");
-            } else {
-                alert("Введите текст, не пробелы")
-            }
         }
     }
 
