@@ -6,7 +6,6 @@ import trashIcon from '../../assets/trash-bin.png';
 import saveIcon from '../../assets/icons8-save-50.png';
 import closeIcon from '../../assets/close.png'
 
-
 export default function TodoItem({todoData, updateTodos, currentCategory, checkValidation}) {
 
     const [ currentTodoId, setCurrentTodoId ] = useState("");
@@ -58,15 +57,15 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
     }
 
     return +currentTodoId === todoData.id ?
-        <div className={styles.taskContainer}>
-            <div className={styles.task} key={todoData.id}>
+        <div className={styles.todoContainer}>
+            <div className={styles.todo} key={todoData.id}>
                     <input
                         type="text"
                         value={editedTodoTitle}
                         readOnly={false}
                         autoFocus
                         onChange={(e) => setEditedTodoTitle(e.target.value)}
-                        className={todoData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+                        className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
                     />
                     <button
                         className={styles.editBtn}
@@ -89,19 +88,19 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
             </div>
         </div>
         :
-        <div className={styles.taskContainer}>
-        <div className={styles.task} key={todoData.id}>
+        <div className={styles.todoContainer}>
+        <div className={styles.todo} key={todoData.id}>
                     <input
                         type="checkbox"
                         onChange={() => onSelectStatus(todoData.isDone, todoData.id, todoData.title)}
                         checked={todoData.isDone}
-                        className={styles.checkboxStatusTask}
+                        className={styles.checkboxStatusTodo}
                     />
                     <input
                         value={todoData.title}
                         type="text"
                         readOnly={true}
-                        className={todoData.isDone? styles.taskTitleDone : styles.taskTitleUndone}
+                        className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
                     />
                     <button
                         className={styles.editBtn}
