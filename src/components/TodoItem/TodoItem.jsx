@@ -23,9 +23,9 @@ export default function TodoItem({todoData, updateTodos, currentCategory}) {
         updateTodos(currentCategory);
     }
 
-    async function onEnableEditMode(task) {
+    async function onEnableEditMode(todo) {
         updateTodos(currentCategory)
-        setCurrentTodoId(task)
+        setCurrentTodoId(todo)
     }
 
     async function onSelectEditModeCloseNoSave() {
@@ -44,21 +44,21 @@ export default function TodoItem({todoData, updateTodos, currentCategory}) {
         updateTodos(currentCategory);
     }
 
-    async function onUpdateTodo(id, isDone, taskInput, todoData) {
-        if (taskInput.trim().length >= 2 && taskInput.trim().length <= 64) {
+    async function onUpdateTodo(id, isDone, todoInput, todoData) {
+        if (todoInput.trim().length >= 2 && todoInput.trim().length <= 64) {
             try {
-                await changeTodo(id, isDone, taskInput);
+                await changeTodo(id, isDone, todoInput);
             } catch (error) {
                 alert("Не получилось отредактировать задачу");
                 alert(error);
             }
-            todoData.title = taskInput;
+            todoData.title = todoInput;
             setCurrentTodoId(null);
             updateTodos(currentCategory);
         } else {
-            if (taskInput.trim().length >= 2) {
+            if (todoInput.trim().length >= 2) {
                 alert("Максимальная длина текста 64 символа")
-            } else if (taskInput.trim().length === 1) {
+            } else if (todoInput.trim().length === 1) {
                 alert("Минимальная длина текста 2 символа");
             } else {
                 alert("Введите текст, не пробелы")

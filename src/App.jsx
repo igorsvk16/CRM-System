@@ -10,6 +10,8 @@ function App() {
     const [ todoCounter, setTodoCounter ] = useState([]);
     const [ currentCategory, setCurrentCategory ] = useState('all');
     const [ isLoading, setIsLoading ] = useState(true);
+    const MIN_LENGTH = 2;
+    const MAX_LENGTH = 64;
 
     useEffect(() => {
         function fetchTodos() {
@@ -19,7 +21,6 @@ function App() {
         }
         fetchTodos();
     }, []);
-
 
     async function updateTodos(currentCategory) {
         try {
@@ -32,11 +33,28 @@ function App() {
         }
     }
 
+    function checkValidation(todoInput, setTodoInput) {
+        if (todoInput.trim().length > MAX_LENGTH) {
+            alert("Максимальная длина текста 64 символа");
+            return false;
+        } else if (todoInput.trim().length === MIN_LENGTH - 1) {
+            alert("Минимальная длина текста 2 символа");
+            return false;
+        } else if (todoInput.trim().length === 0) {
+            setTodoInput('');
+            alert("Введите текст, не пробелы");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     return (
         <main>
             <TodoAdd
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
+                checkValidation={checkValidation}
             />
             <TodosFilter
                 currentCategory={currentCategory}
