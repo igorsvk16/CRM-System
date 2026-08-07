@@ -55,123 +55,62 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
             updateTodos(currentCategory);
         }
     }
-
-    return currentTodoId === todoData.id ?
-        <div className={styles.todoContainer}>
-            <div className={styles.todo} key={todoData.id}>
-                    <input
-                        type="text"
-                        value={editedTodoTitle}
-                        readOnly={false}
-                        autoFocus
-                        onChange={(e) => setEditedTodoTitle(e.target.value)}
-                        className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
-                    />
-                    <button
-                        className={styles.editBtn}
-                        onClick={() =>{{
-                            onUpdateTodo(todoData.id, todoData.isDone, editedTodoTitle, todoData);
-                        }}
-                        }
-                    >
-                        <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
-                    </button>
-                    <button className={styles.delBtn} onClick={() =>
-                        onSelectEditModeCloseNoSave()
-                    }>
-                        <img
-                            src={closeIcon}
-                            className={styles.deleteIcon}
-                            alt="closeIcon"
-                        />
-                    </button>
-            </div>
-        </div>
-        :
-        <div className={styles.todoContainer}>
+return +currentTodoId === todoData.id ?
+    <div className={styles.todoContainer}>
         <div className={styles.todo} key={todoData.id}>
-                    {if (currentTodoId === todoData.id) <input
-                        type="checkbox"
-                        onChange={() => onSelectStatus(todoData.isDone, todoData.id, todoData.title)}
-                        checked={todoData.isDone}
-                        className={styles.checkboxStatusTodo}
-                    />}
-                    <input
-                        value={todoData.title}
-                        type="text"
-                        readOnly={true}
-                        className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
-                    />
-                    <button
-                        className={styles.editBtn}
-                        onClick={() => {onEnableEditMode(todoData.id); setEditedTodoTitle(todoData.title)}}>
-                        <img className={styles.editIcon} src={editIcon} alt="editIcon" />
-                    </button>
-                    <button
-                        className={styles.delBtn}
-                        onClick={() => onSelectDelete(todoData.id)}>
-                        <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
-                    </button>
-            </div>
+            <input
+                type="text"
+                value={editedTodoTitle}
+                readOnly={false}
+                autoFocus
+                onChange={(e) => setEditedTodoTitle(e.target.value)}
+                className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
+            />
+            <button
+                className={styles.editBtn}
+                onClick={() =>{{
+                    onUpdateTodo(todoData.id, todoData.isDone, editedTodoTitle, todoData);
+                }}
+                }
+            >
+                <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
+            </button>
+            <button className={styles.delBtn} onClick={() =>
+                onSelectEditModeCloseNoSave()
+            }>
+                <img
+                    src={closeIcon}
+                    className={styles.deleteIcon}
+                    alt="closeIcon"
+                />
+            </button>
         </div>
+    </div>
+    :
+    <div className={styles.todoContainer}>
+        <div className={styles.todo} key={todoData.id}>
+            <input
+                type="checkbox"
+                onChange={() => onSelectStatus(todoData.isDone, todoData.id, todoData.title)}
+                checked={todoData.isDone}
+                className={styles.checkboxStatusTodo}
+            />
+            <input
+                value={todoData.title}
+                type="text"
+                readOnly={true}
+                className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
+            />
+            <button
+                className={styles.editBtn}
+                onClick={() => {onEnableEditMode(todoData.id); setEditedTodoTitle(todoData.title)}}>
+                <img className={styles.editIcon} src={editIcon} alt="editIcon" />
+            </button>
+            <button
+                className={styles.delBtn}
+                onClick={() => onSelectDelete(todoData.id)}>
+                <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
+            </button>
+        </div>
+    </div>
 }
-
-// return +currentTodoId === todoData.id ?
-//     <div className={styles.todoContainer}>
-//         <div className={styles.todo} key={todoData.id}>
-//             <input
-//                 type="text"
-//                 value={editedTodoTitle}
-//                 readOnly={false}
-//                 autoFocus
-//                 onChange={(e) => setEditedTodoTitle(e.target.value)}
-//                 className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
-//             />
-//             <button
-//                 className={styles.editBtn}
-//                 onClick={() =>{{
-//                     onUpdateTodo(todoData.id, todoData.isDone, editedTodoTitle, todoData);
-//                 }}
-//                 }
-//             >
-//                 <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
-//             </button>
-//             <button className={styles.delBtn} onClick={() =>
-//                 onSelectEditModeCloseNoSave()
-//             }>
-//                 <img
-//                     src={closeIcon}
-//                     className={styles.deleteIcon}
-//                     alt="closeIcon"
-//                 />
-//             </button>
-//         </div>
-//     </div>
-//     :
-//     <div className={styles.todoContainer}>
-//         <div className={styles.todo} key={todoData.id}>
-//             <input
-//                 type="checkbox"
-//                 onChange={() => onSelectStatus(todoData.isDone, todoData.id, todoData.title)}
-//                 checked={todoData.isDone}
-//                 className={styles.checkboxStatusTodo}
-//             />
-//             <input
-//                 value={todoData.title}
-//                 type="text"
-//                 readOnly={true}
-//                 className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
-//             />
-//             <button
-//                 className={styles.editBtn}
-//                 onClick={() => {onEnableEditMode(todoData.id); setEditedTodoTitle(todoData.title)}}>
-//                 <img className={styles.editIcon} src={editIcon} alt="editIcon" />
-//             </button>
-//             <button
-//                 className={styles.delBtn}
-//                 onClick={() => onSelectDelete(todoData.id)}>
-//                 <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
-//             </button>
-//         </div>
-//     </div>
-// }
