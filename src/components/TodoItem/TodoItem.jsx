@@ -11,9 +11,9 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
     const [ editedTodoId, setEditedTodoId ] = useState("");
     const [ editedTodoTitle, setEditedTodoTitle ] = useState("");
 
-    async function onSelectDelete(id) {
+    async function onSelectDelete() {
         try {
-            await deleteTodo(id);
+            await deleteTodo(todoData.id);
         } catch (error) {
             alert("Не получилось удалить задачу");
             alert(error);
@@ -21,18 +21,18 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
         updateTodos(currentCategory);
     }
 
-    async function onEnableEditMode(todo, currentCategory) {
+    async function onEnableEditMode() {
         updateTodos(currentCategory);
-        setEditedTodoId(todo.id);
+        setEditedTodoId(todoData.id);
         setEditedTodoTitle(todoData.title);
     }
 
-    async function cancelEditTask(currentCategory) {
+    async function cancelEditTask() {
         setEditedTodoId(null);
         updateTodos(currentCategory);
     }
 
-    async function onSelectStatus(todoData) {
+    async function onSelectStatus() {
         let newStatus = !todoData.isDone;
         try {
             await changeTodo(todoData.id, newStatus, todoData.title);
@@ -74,7 +74,7 @@ return +editedTodoId === todoData.id ?
                 <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
             </button>
             <button className={styles.delBtn} onClick={() =>
-                cancelEditTask(currentCategory)
+                cancelEditTask()
             }>
                 <img
                     src={closeIcon}
@@ -89,7 +89,7 @@ return +editedTodoId === todoData.id ?
         <div className={styles.todo} key={todoData.id}>
             <input
                 type="checkbox"
-                onChange={() => onSelectStatus(todoData)}
+                onChange={() => onSelectStatus()}
                 checked={todoData.isDone}
                 className={styles.checkboxStatusTodo}
             />
@@ -101,12 +101,12 @@ return +editedTodoId === todoData.id ?
             />
             <button
                 className={styles.editBtn}
-                onClick={() => onEnableEditMode(todoData, currentCategory)}>
+                onClick={() => onEnableEditMode()}>
                 <img className={styles.editIcon} src={editIcon} alt="editIcon" />
             </button>
             <button
                 className={styles.delBtn}
-                onClick={() => onSelectDelete(todoData.id)}>
+                onClick={() => onSelectDelete()}>
                 <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
             </button>
         </div>
