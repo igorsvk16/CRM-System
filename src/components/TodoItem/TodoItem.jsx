@@ -2,9 +2,11 @@ import { useState } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import styles from './TodoItem.module.css';
 import editIcon from '../../assets/edit.png';
-import trashIcon from '../../assets/trash-bin.png';
+// import trashIcon from '../../assets/trash-bin.png';
 import saveIcon from '../../assets/icons8-save-50.png';
 import closeIcon from '../../assets/close.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function TodoItem({todoData, updateTodos, currentCategory, checkValidation}) {
 
@@ -111,7 +113,7 @@ return isEdit ?
             <button
                 className={styles.delBtn}
                 onClick={() => onSelectDelete()}>
-                <img className={styles.deleteIcon} src={trashIcon} alt="trashIcon"/>
+                <FontAwesomeIcon icon={faTrash} />
             </button>
         </div>
     </div>

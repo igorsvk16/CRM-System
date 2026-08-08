@@ -4,6 +4,7 @@ import TodoList from "./components/TodoList/TodoList.jsx";
 import TodoAdd from "./components/TodoAdd/TodoAdd.jsx";
 import TodosFilter from "./components/TodosFilter/TodosFilter.jsx";
 
+
 function App() {
     const [ todos, setTodos ] = useState([]);
     const [ todoCounter, setTodoCounter ] = useState([]);
