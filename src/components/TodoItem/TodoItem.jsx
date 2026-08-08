@@ -21,13 +21,13 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
         updateTodos(currentCategory);
     }
 
-    async function onEnableEditMode(todo) {
+    async function onEnableEditMode(todo, currentCategory) {
         updateTodos(currentCategory);
         setEditedTodoId(todo.id);
         setEditedTodoTitle(todoData.title);
     }
 
-    async function cancelEditTask() {
+    async function cancelEditTask(currentCategory) {
         setEditedTodoId(null);
         updateTodos(currentCategory);
     }
@@ -74,7 +74,7 @@ return +editedTodoId === todoData.id ?
                 <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
             </button>
             <button className={styles.delBtn} onClick={() =>
-                cancelEditTask()
+                cancelEditTask(currentCategory)
             }>
                 <img
                     src={closeIcon}
@@ -101,7 +101,7 @@ return +editedTodoId === todoData.id ?
             />
             <button
                 className={styles.editBtn}
-                onClick={() => onEnableEditMode(todoData)}>
+                onClick={() => onEnableEditMode(todoData, currentCategory)}>
                 <img className={styles.editIcon} src={editIcon} alt="editIcon" />
             </button>
             <button

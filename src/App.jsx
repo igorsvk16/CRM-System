@@ -17,7 +17,6 @@ function App() {
         function fetchTodos() {
             updateTodos(currentCategory).then(() =>
                 setIsLoading(false));
-
         }
         fetchTodos();
     }, [currentCategory]);
