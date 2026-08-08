@@ -9,21 +9,21 @@ export default function TodosFilter({currentCategory, todoCounter, setCurrentCat
 
     return (
         <div className={styles.todosCategories}>
-                <div className={currentCategory === 'all' ? styles.todoCategoryActive : styles.todoCategory}>
-                    <button onClick={() => handleChangeCategory('all')}>
+                    <button
+                        className={currentCategory === 'all' ? styles.todoCategoryActive : styles.todoCategory}
+                        onClick={() => handleChangeCategory('all')}>
                         Все ({todoCounter.all})
                     </button>
-                </div>
-                <div className={currentCategory === 'inWork' ? styles.todoCategoryActive : styles.todoCategory}>
-                    <button onClick={() => handleChangeCategory('inWork')}>
+                    <button
+                        className={currentCategory === 'inWork' ? styles.todoCategoryActive : styles.todoCategory}
+                        onClick={() => handleChangeCategory('inWork')}>
                         В работе ({todoCounter.inWork})
                     </button>
-                </div>
-                <div className={currentCategory === 'completed' ? styles.todoCategoryActive : styles.todoCategory}>
-                    <button onClick={() => handleChangeCategory('completed')}>
+                    <button
+                        className={currentCategory === 'completed' ? styles.todoCategoryActive : styles.todoCategory}
+                        onClick={() => handleChangeCategory('completed')}>
                         Сделано ({todoCounter.completed})
                     </button>
-                </div>
         </div>
     )
 }
