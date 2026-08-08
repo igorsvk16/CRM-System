@@ -22,8 +22,9 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
     }
 
     async function onEnableEditMode(todo) {
-        updateTodos(currentCategory)
-        setEditedTodoId(todo)
+        updateTodos(currentCategory);
+        setEditedTodoId(todo.id);
+        setEditedTodoTitle(todoData.title);
     }
 
     async function cancelEditTask() {
@@ -31,10 +32,10 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
         updateTodos(currentCategory);
     }
 
-    async function onSelectStatus(isDone, id, title) {
-        let newStatus = !isDone;
+    async function onSelectStatus(todoData) {
+        let newStatus = !todoData.isDone;
         try {
-            await changeTodo(id, newStatus, title);
+            await changeTodo(todoData.id, newStatus, todoData.title);
         } catch (error) {
             alert("Ошибка обновления статуса задачи");
             alert(error);
@@ -88,7 +89,7 @@ return +editedTodoId === todoData.id ?
         <div className={styles.todo} key={todoData.id}>
             <input
                 type="checkbox"
-                onChange={() => onSelectStatus(todoData.isDone, todoData.id, todoData.title)}
+                onChange={() => onSelectStatus(todoData)}
                 checked={todoData.isDone}
                 className={styles.checkboxStatusTodo}
             />
@@ -100,7 +101,7 @@ return +editedTodoId === todoData.id ?
             />
             <button
                 className={styles.editBtn}
-                onClick={() => {onEnableEditMode(todoData.id); setEditedTodoTitle(todoData.title)}}>
+                onClick={() => onEnableEditMode(todoData)}>
                 <img className={styles.editIcon} src={editIcon} alt="editIcon" />
             </button>
             <button
