@@ -4,7 +4,6 @@ import styles from "./TodoAdd.module.css";
 
 export default function TodoAdd({ updateTodos, currentCategory, checkValidation}) {
 
-
     let isDone= false;
 
     const [ todoInput, setTodoInput ] = useState('');

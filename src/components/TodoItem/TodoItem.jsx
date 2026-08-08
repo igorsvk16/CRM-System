@@ -8,7 +8,7 @@ import closeIcon from '../../assets/close.png'
 
 export default function TodoItem({todoData, updateTodos, currentCategory, checkValidation}) {
 
-    const [ editedTodoId, setEditedTodoId ] = useState("");
+    const [ isEdit, setIsEdit ] = useState(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState("");
 
     async function onSelectDelete() {
@@ -22,13 +22,13 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
     }
 
     async function onEnableEditMode() {
-        updateTodos(currentCategory);
-        setEditedTodoId(todoData.id);
+        setIsEdit(true);
         setEditedTodoTitle(todoData.title);
+        updateTodos(currentCategory);
     }
 
     async function cancelEditTask() {
-        setEditedTodoId(null);
+        setIsEdit(false);
         updateTodos(currentCategory);
     }
 
@@ -52,11 +52,13 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
                 alert(error);
             }
             todoData.title = editedTodoTitle;
-            setEditedTodoId("");
+            setIsEdit(false);
             updateTodos(currentCategory);
         }
     }
-return +editedTodoId === todoData.id ?
+
+return isEdit ?
+
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={todoData.id}>
             <input
@@ -84,7 +86,9 @@ return +editedTodoId === todoData.id ?
             </button>
         </div>
     </div>
+
     :
+
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={todoData.id}>
             <input
