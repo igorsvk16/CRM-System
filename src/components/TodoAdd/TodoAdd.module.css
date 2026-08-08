@@ -4,6 +4,7 @@
     margin: 1rem;
     flex-direction: row;
     align-content: center;
+    background-color: #f3f7fb;
 }
 
 .inputNewTodo {

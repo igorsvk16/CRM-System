@@ -3,7 +3,7 @@ import { getTodos } from "./api/http.js";
 import TodoList from "./components/TodoList/TodoList.jsx";
 import TodoAdd from "./components/TodoAdd/TodoAdd.jsx";
 import TodosFilter from "./components/TodosFilter/TodosFilter.jsx";
-import './App.module.css';
+import styles from './App.module.css';
 
 function App() {
     const [ todos, setTodos ] = useState([]);
