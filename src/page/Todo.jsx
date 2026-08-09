@@ -6,8 +6,8 @@ import TodosFilter from "../components/TodosFilter/TodosFilter.jsx";
 import { MIN_LENGTH, MAX_LENGTH } from "../constants.jsx";
 
 export default function Todo() {
-    const [ todos, setTodos ] = useState();
-    const [ todoCounter, setTodoCounter ] = useState();
+    const [ todos, setTodos ] = useState({});
+    const [ todoCounter, setTodoCounter ] = useState({});
     const [ currentCategory, setCurrentCategory ] = useState('all');
     const [ isLoading, setIsLoading ] = useState(true);
 
