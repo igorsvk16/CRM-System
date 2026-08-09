@@ -10,6 +10,7 @@ export default function TodoList({ todos, updateTodos, currentCategory, isLoadin
                     <section>
                         {(todos).map((todoData) => (
                             <TodoItem
+                                key={todoData.id}
                                 todoData={todoData}
                                 updateTodos={updateTodos}
                                 currentCategory={currentCategory}
