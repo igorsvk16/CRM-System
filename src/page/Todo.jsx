@@ -6,33 +6,28 @@ import TodosFilter from "../components/TodosFilter/TodosFilter.jsx";
 import { MIN_LENGTH, MAX_LENGTH } from "../constants.jsx";
 
 export default function Todo() {
-    const [ todos, setTodos ] = useState({});
-    const [ todoCounter, setTodoCounter ] = useState({});
-    const [ currentCategory, setCurrentCategory ] = useState('all');
-    const [ isLoading, setIsLoading ] = useState(true);
+    const [todos, setTodos] = useState({});
+    const [todoCounter, setTodoCounter] = useState({});
+    const [currentCategory, setCurrentCategory] = useState('all');
+    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect((updateTodos) => {
+    useEffect(() => {
         function fetchTodos() {
-            console.log(updateTodos())
-            updateTodos(currentCategory).then(
-                setIsLoading(false)
-        );
+            updateTodos(currentCategory).then(() =>
+                setIsLoading(false));
         }
         fetchTodos();
     }, [currentCategory]);
 
-    function updateTodos(currentCategory) {
-            const todos = getTodos(currentCategory);
-            todos.then(
-                (todos) => {
-                    setTodos(todos.data);
-                    setTodoCounter(todos.info)
-                },
-                // (reason) => {
-                //     alert('Ошибка при обновлении задач');
-                //     alert(reason);
-                // },
-                );
+    async function updateTodos(currentCategory) {
+        try {
+            const todos = await getTodos(currentCategory);
+            setTodos(todos.data);
+            setTodoCounter(todos.info)
+        } catch (error) {
+            alert('Ошибка при обновлении задач');
+            alert(error);
+        }
     }
 
     function checkValidation(todoInput, setTodoInput) {
