@@ -3,6 +3,7 @@ import { getTodos } from "./api/http.js";
 import TodoList from "./components/TodoList/TodoList.jsx";
 import TodoAdd from "./components/TodoAdd/TodoAdd.jsx";
 import TodosFilter from "./components/TodosFilter/TodosFilter.jsx";
+import { MIN_LENGTH, MAX_LENGTH } from "./constants.jsx";
 
 
 function App() {
@@ -10,8 +11,6 @@ function App() {
     const [ todoCounter, setTodoCounter ] = useState([]);
     const [ currentCategory, setCurrentCategory ] = useState('all');
     const [ isLoading, setIsLoading ] = useState(true);
-    const MIN_LENGTH = 2;
-    const MAX_LENGTH = 64;
 
     useEffect(() => {
         function fetchTodos() {
