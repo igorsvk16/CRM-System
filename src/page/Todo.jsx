@@ -11,23 +11,28 @@ export default function Todo() {
     const [ currentCategory, setCurrentCategory ] = useState('all');
     const [ isLoading, setIsLoading ] = useState(true);
 
-    useEffect(() => {
+    useEffect((updateTodos) => {
         function fetchTodos() {
-            updateTodos(currentCategory).then(() =>
-                setIsLoading(false));
+            console.log(updateTodos())
+            updateTodos(currentCategory).then(
+                setIsLoading(false)
+        );
         }
         fetchTodos();
     }, [currentCategory]);
 
-    async function updateTodos(currentCategory) {
-        try {
-            const todos = await getTodos(currentCategory);
-            setTodos(todos.data);
-            setTodoCounter(todos.info)
-        } catch (error) {
-            alert('Ошибка при обновлении задач');
-            alert(error);
-        }
+    function updateTodos(currentCategory) {
+            const todos = getTodos(currentCategory);
+            todos.then(
+                (todos) => {
+                    setTodos(todos.data);
+                    setTodoCounter(todos.info)
+                },
+                // (reason) => {
+                //     alert('Ошибка при обновлении задач');
+                //     alert(reason);
+                // },
+                );
     }
 
     function checkValidation(todoInput, setTodoInput) {
