@@ -1,10 +1,9 @@
 import { useState } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import styles from './TodoItem.module.css';
-import editIcon from '../../assets/edit.png';
-// import trashIcon from '../../assets/trash-bin.png';
-import saveIcon from '../../assets/icons8-save-50.png';
-import closeIcon from '../../assets/close.png'
+import editIcon from '../../assets/edit.svg';
+import saveIcon from '../../assets/save.svg';
+import closeIcon from '../../assets/close.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
