@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {addTodo} from "../../api/http.js";
 import styles from "./TodoAdd.module.css";
-import checkValidation from "../../utils/helpers/checkValidation.jsx";
+import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
 
 export default function TodoAdd({ updateTodos, currentCategory}) {
 
@@ -10,18 +10,35 @@ export default function TodoAdd({ updateTodos, currentCategory}) {
     const [ todoInput, setTodoInput ] = useState('');
 
     function fetchAddTodo() {
-        if (checkValidation(todoInput, setTodoInput)) {
+        const validateTitle = checkTitleValidation(todoInput);
+        if (validateTitle) {
+            alert(validateTitle);
+        } else {
             addTodo(todoInput, isDone)
                 .then(() => {
                     updateTodos(currentCategory);
                     setTodoInput('');
                 }, reason => {
                     alert("Ошибка при добавлении задачи");
-                    alert(reason)
+                    alert(reason);
                 }
             )
         }
     }
+
+    // function fetchAddTodo() {
+    //     if (checkTitleValidation(todoInput)) {
+    //         addTodo(todoInput, isDone)
+    //             .then(() => {
+    //                     updateTodos(currentCategory);
+    //                     setTodoInput('');
+    //                 }, reason => {
+    //                     alert("Ошибка при добавлении задачи");
+    //                     alert(reason);
+    //                 }
+    //             )
+    //     }
+    // }
 
     return (
         <form className={styles.todoAdd} action={fetchAddTodo}>

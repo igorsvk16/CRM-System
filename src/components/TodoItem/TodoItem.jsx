@@ -6,7 +6,7 @@ import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import checkValidation from "../../utils/helpers/checkValidation.jsx";
+import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
 
 export default function TodoItem({todoData, updateTodos, currentCategory}) {
 
@@ -46,12 +46,16 @@ export default function TodoItem({todoData, updateTodos, currentCategory}) {
     }
 
     function onUpdateTodo(editedTodoTitle, todoData) {
-        if (checkValidation(editedTodoTitle, setEditedTodoTitle)) {
+        const validateTitle = checkTitleValidation(editedTodoTitle);
+        if (validateTitle) {
+            alert(validateTitle);
+        } else {
             changeTodo(todoData.id, todoData.isDone, editedTodoTitle)
                 .then(() => {
                     todoData.title = editedTodoTitle;
                     setIsEdit(false);
                     updateTodos(currentCategory);
+                    setEditedTodoTitle('');
                 }, reason => {
                     alert("Не получилось отредактировать задачу");
                     alert(reason);
