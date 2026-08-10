@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {addTodo} from "../../api/http.js";
-import styles from "./TodoAdd.module.css";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
+import styles from "./TodoAdd.module.css";
 
 export default function TodoAdd({ updateTodos, currentCategory}) {
 
