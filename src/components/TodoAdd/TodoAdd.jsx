@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {addTodo} from "../../api/http.js";
 import styles from "./TodoAdd.module.css";
+import checkValidation from "../../utils/helpers/checkValidation.jsx";
 
-export default function TodoAdd({ updateTodos, currentCategory, checkValidation}) {
+export default function TodoAdd({ updateTodos, currentCategory}) {
 
     let isDone= false;
 

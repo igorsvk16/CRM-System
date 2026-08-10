@@ -6,8 +6,9 @@ import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import checkValidation from "../../utils/helpers/checkValidation.jsx";
 
-export default function TodoItem({todoData, updateTodos, currentCategory, checkValidation}) {
+export default function TodoItem({todoData, updateTodos, currentCategory}) {
 
     const [ isEdit, setIsEdit ] = useState(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState("");
