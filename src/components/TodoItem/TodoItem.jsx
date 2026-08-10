@@ -1,12 +1,13 @@
 import { useState } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
+import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import styles from './TodoItem.module.css';
 import editIcon from '../../assets/edit.svg';
 import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
+
 
 export default function TodoItem({todoData, updateTodos, currentCategory}) {
 

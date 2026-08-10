@@ -7,7 +7,7 @@ import TodosFilter from "../components/TodosFilter/TodosFilter.jsx";
 export default function Todo() {
     const [todos, setTodos] = useState({});
     const [todoCounter, setTodoCounter] = useState({});
-    const [currentCategory, setCurrentCategory] = useState('all');
+    const [currentCategory, setCurrentCategory] = useState("all");
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {

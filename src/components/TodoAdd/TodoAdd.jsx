@@ -7,7 +7,7 @@ export default function TodoAdd({ updateTodos, currentCategory}) {
 
     let isDone= false;
 
-    const [ todoInput, setTodoInput ] = useState('');
+    const [ todoInput, setTodoInput ] = useState("");
 
     function fetchAddTodo() {
         const validateTitle = checkTitleValidation(todoInput);
