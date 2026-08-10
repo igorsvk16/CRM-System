@@ -64,23 +64,24 @@ export default function TodoItem({todoData, updateTodos, currentCategory}) {
     }
 
 return isEdit ?
-
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={todoData.id}>
-            <input
-                type="text"
-                value={editedTodoTitle}
-                readOnly={false}
-                autoFocus
-                onChange={(e) => setEditedTodoTitle(e.target.value)}
-                className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
-            />
-            <button
-                className={styles.editBtn}
-                onClick={() => onUpdateTodo(editedTodoTitle, todoData)}
-            >
-                <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
-            </button>
+            <form action={() => onUpdateTodo(editedTodoTitle, todoData)}>
+                <input
+                    type="text"
+                    value={editedTodoTitle}
+                    readOnly={false}
+                    autoFocus
+                    onChange={(e) => setEditedTodoTitle(e.target.value)}
+                    className={todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
+                />
+                <button
+                    type="submit"
+                    className={styles.editBtn}
+                >
+                    <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
+                </button>
+            </form>
             <button className={styles.delBtn} onClick={() =>
                 cancelEditTask()
             }>

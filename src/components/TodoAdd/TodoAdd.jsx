@@ -26,20 +26,6 @@ export default function TodoAdd({ updateTodos, currentCategory}) {
         }
     }
 
-    // function fetchAddTodo() {
-    //     if (checkTitleValidation(todoInput)) {
-    //         addTodo(todoInput, isDone)
-    //             .then(() => {
-    //                     updateTodos(currentCategory);
-    //                     setTodoInput('');
-    //                 }, reason => {
-    //                     alert("Ошибка при добавлении задачи");
-    //                     alert(reason);
-    //                 }
-    //             )
-    //     }
-    // }
-
     return (
         <form className={styles.todoAdd} action={fetchAddTodo}>
             <input
