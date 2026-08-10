@@ -13,22 +13,44 @@ export default function Todo() {
 
     useEffect(() => {
         function fetchTodos() {
-            updateTodos(currentCategory).then(() =>
-                setIsLoading(false));
+            updateTodos(currentCategory);
         }
         fetchTodos();
     }, [currentCategory]);
 
-    async function updateTodos(currentCategory) {
-        try {
-            const todos = await getTodos(currentCategory);
-            setTodos(todos.data);
-            setTodoCounter(todos.info)
-        } catch (error) {
-            alert('Ошибка при обновлении задач');
-            alert(error);
-        }
+    function updateTodos(currentCategory) {
+        getTodos(currentCategory).then(r => {
+                setTodos(r.data);
+                setTodoCounter(r.info);
+                setIsLoading(false);
+            }
+
+        )
     }
+
+    // async function updateTodos(currentCategory) {
+    //     try {
+    //         const todos = await getTodos(currentCategory);
+    //         setTodos(todos.data);
+    //         setTodoCounter(todos.info)
+    //     } catch (error) {
+    //         alert('Ошибка при обновлении задач');
+    //         alert(error);
+    //     }
+    // }
+
+    // async function updateTodos(currentCategory) {
+    //     try {
+    //         const todos = await getTodos(currentCategory);
+    //         setTodos(todos.data);
+    //         setTodoCounter(todos.info)
+    //     } catch (error) {
+    //         alert('Ошибка при обновлении задач');
+    //         alert(error);
+    //     }
+    // }
+
+
 
     function checkValidation(todoInput, setTodoInput) {
         if (todoInput.trim().length > MAX_LENGTH) {
