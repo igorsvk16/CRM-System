@@ -22,13 +22,13 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
         updateTodos(currentCategory);
     }
 
-    async function onEnableEditMode() {
+    function onEnableEditMode() {
         setIsEdit(true);
         setEditedTodoTitle(todoData.title);
         updateTodos(currentCategory);
     }
 
-    async function cancelEditTask() {
+    function cancelEditTask() {
         setIsEdit(false);
         updateTodos(currentCategory);
     }
