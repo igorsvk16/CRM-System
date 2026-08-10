@@ -19,15 +19,14 @@ export default function Todo() {
 
     function updateTodos(currentCategory) {
         getTodos(currentCategory)
-            .then(r => {
-                setTodos(r.data);
-                setTodoCounter(r.info);
+            .then(todos => {
+                setTodos(todos.data);
+                setTodoCounter(todos.info);
                 setIsLoading(false);
             }, reason => {
                 alert('Ошибка при обновлении задач');
                 alert(reason);
             }
-
         )
     }
 
@@ -51,5 +50,4 @@ export default function Todo() {
             />
         </main>
     )
-
 }
