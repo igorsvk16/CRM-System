@@ -12,15 +12,15 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
     const [ isEdit, setIsEdit ] = useState(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState("");
 
-    async function onSelectDelete() {
-        try {
-            await deleteTodo(todoData.id);
-        } catch (error) {
+    function onSelectDelete() {
+        deleteTodo(todoData.id).then(() => {
+            updateTodos(currentCategory);
+        }, reason => {
             alert("Не получилось удалить задачу");
-            alert(error);
-        }
-        updateTodos(currentCategory);
+            alert(reason);
+        })
     }
+
 
     function onEnableEditMode() {
         setIsEdit(true);
