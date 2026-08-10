@@ -2,7 +2,7 @@ import styles from './TodosFilter.module.css';
 
 export default function TodosFilter({currentCategory, todoCounter, setCurrentCategory, updateTodos}) {
 
-    async function handleChangeCategory(categoryName) {
+    function handleChangeCategory(categoryName) {
         setCurrentCategory(categoryName);
         updateTodos(categoryName);
     }
