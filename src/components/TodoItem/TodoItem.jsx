@@ -44,17 +44,17 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
             })
     }
 
-    async function onUpdateTodo(editedTodoTitle, todoData) {
+    function onUpdateTodo(editedTodoTitle, todoData) {
         if (checkValidation(editedTodoTitle, setEditedTodoTitle)) {
-            try {
-                await changeTodo(todoData.id, todoData.isDone, editedTodoTitle);
-            } catch (error) {
-                alert("Не получилось отредактировать задачу");
-                alert(error);
-            }
-            todoData.title = editedTodoTitle;
-            setIsEdit(false);
-            updateTodos(currentCategory);
+            changeTodo(todoData.id, todoData.isDone, editedTodoTitle)
+                .then(() => {
+                    todoData.title = editedTodoTitle;
+                    setIsEdit(false);
+                    updateTodos(currentCategory);
+                }, reason => {
+                    alert("Не получилось отредактировать задачу");
+                    alert(reason);
+                })
         }
     }
 
