@@ -13,14 +13,14 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
     const [ editedTodoTitle, setEditedTodoTitle ] = useState("");
 
     function onSelectDelete() {
-        deleteTodo(todoData.id).then(() => {
+        deleteTodo(todoData.id)
+            .then(() => {
             updateTodos(currentCategory);
         }, reason => {
             alert("Не получилось удалить задачу");
             alert(reason);
         })
     }
-
 
     function onEnableEditMode() {
         setIsEdit(true);
@@ -33,15 +33,15 @@ export default function TodoItem({todoData, updateTodos, currentCategory, checkV
         updateTodos(currentCategory);
     }
 
-    async function onSelectStatus() {
+    function onSelectStatus() {
         let newStatus = !todoData.isDone;
-        try {
-            await changeTodo(todoData.id, newStatus, todoData.title);
-        } catch (error) {
+        changeTodo(todoData.id, newStatus, todoData.title)
+            .then(() => {
+            updateTodos(currentCategory);
+        }, reason => {
             alert("Ошибка обновления статуса задачи");
-            alert(error);
-        }
-        updateTodos(currentCategory);
+            alert(reason);
+            })
     }
 
     async function onUpdateTodo(editedTodoTitle, todoData) {
