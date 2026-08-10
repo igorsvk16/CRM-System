@@ -8,18 +8,20 @@ export default function TodoAdd({ updateTodos, currentCategory, checkValidation}
 
     const [ todoInput, setTodoInput ] = useState('');
 
-    async function fetchAddTodo() {
+    function fetchAddTodo() {
         if (checkValidation(todoInput, setTodoInput)) {
-            try {
-                await addTodo(todoInput, isDone);
-            } catch (error) {
-                alert("Ошибка при добавлении задачи");
-                alert(error)
-            }
-            updateTodos(currentCategory);
-            setTodoInput('');
+            addTodo(todoInput, isDone)
+                .then(() => {
+                    updateTodos(currentCategory);
+                    setTodoInput('');
+                }, reason => {
+                    alert("Ошибка при добавлении задачи");
+                    alert(reason)
+                }
+            )
         }
     }
+
     return (
         <form className={styles.todoAdd} action={fetchAddTodo}>
             <input

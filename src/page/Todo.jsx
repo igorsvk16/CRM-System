@@ -19,38 +19,18 @@ export default function Todo() {
     }, [currentCategory]);
 
     function updateTodos(currentCategory) {
-        getTodos(currentCategory).then(r => {
+        getTodos(currentCategory)
+            .then(r => {
                 setTodos(r.data);
                 setTodoCounter(r.info);
                 setIsLoading(false);
+            }, reason => {
+                alert('Ошибка при обновлении задач');
+                alert(reason);
             }
 
         )
     }
-
-    // async function updateTodos(currentCategory) {
-    //     try {
-    //         const todos = await getTodos(currentCategory);
-    //         setTodos(todos.data);
-    //         setTodoCounter(todos.info)
-    //     } catch (error) {
-    //         alert('Ошибка при обновлении задач');
-    //         alert(error);
-    //     }
-    // }
-
-    // async function updateTodos(currentCategory) {
-    //     try {
-    //         const todos = await getTodos(currentCategory);
-    //         setTodos(todos.data);
-    //         setTodoCounter(todos.info)
-    //     } catch (error) {
-    //         alert('Ошибка при обновлении задач');
-    //         alert(error);
-    //     }
-    // }
-
-
 
     function checkValidation(todoInput, setTodoInput) {
         if (todoInput.trim().length > MAX_LENGTH) {
