@@ -9,20 +9,3 @@ export default function checkTitleValidation(todoInput) {
         return "Введите текст, не пробелы";
     }
 }
-
-
-
-// export default function checkValidation(todoInput) {
-//     if (todoInput.trim().length > MAX_LENGTH) {
-//         alert("Максимальная длина текста 64 символа");
-//         return false;
-//     } else if (todoInput.trim().length === MIN_LENGTH - 1) {
-//         alert("Минимальная длина текста 2 символа");
-//         return false;
-//     } else if (todoInput.trim().length === 0) {
-//         alert("Введите текст, не пробелы");
-//         return false;
-//     } else {
-//         return true;
-//     }
-// }
