@@ -1,0 +1,7 @@
+.centeredText {
+    display: flex;
+    justify-content: center;
+}
+.todoListContainer {
+    background-color: #f3f7fb;
+}
