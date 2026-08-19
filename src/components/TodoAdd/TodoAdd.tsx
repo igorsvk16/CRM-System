@@ -1,18 +1,18 @@
-import React, {useState, useRef, SetStateAction} from "react";
+import React, {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
 import styles from "./TodoAdd.module.css";
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
-    // const todoTextInputRef = useRef<HTMLInputElement>(null);
 
     let isDone = false;
 
     const [todoInput, setTodoInput] = useState<string>("");
 
-
     const fetchAddTodo = (event: React.FormEvent) => {
+        event.preventDefault();
         const validateTitle = checkTitleValidation(todoInput);
+        console.log("validateTitle")
         if (validateTitle) {
             alert(validateTitle);
         } else {
