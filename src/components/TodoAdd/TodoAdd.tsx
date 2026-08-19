@@ -1,7 +1,7 @@
 import React, {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
-import styles from "./TodoAdd.module.css";
+import classes from "./TodoAdd.module.css";
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
 
@@ -29,7 +29,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
         }
     }
     return (
-        <form onSubmit={fetchAddTodo} className={styles.todoAdd}>
+        <form onSubmit={fetchAddTodo} className={classes.todoAdd}>
             <input
                 type="text"
                 id="text"
@@ -38,10 +38,10 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                     setTodoInput(e.target.value);
                 }}
                 placeholder="Новая задача..."
-                className={styles.inputNewTodo}
+                className={classes.inputNewTodo}
             />
             <button
-                className={styles.addButton}
+                className={classes.addButton}
             >
                 Добавить
             </button>

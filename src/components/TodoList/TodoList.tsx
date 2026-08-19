@@ -1,4 +1,4 @@
-import TodoItem from "../TodoItem/TodoItem.jsx";
+import TodoItem from "../TodoItem/TodoItem.js";
 import styles from "./TodoList.module.css"
 
 export default function TodoList({ todos, updateTodos, currentCategory, isLoading }) {
