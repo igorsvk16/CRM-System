@@ -1,7 +1,9 @@
-import React, {useState, SetStateAction} from "react";
+import {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
-import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
+import checkTitleValidation from '../../utils/helpers/checkTitleValidation.tsx';
 import classes from "./TodoAdd.module.css";
+import React = require("react");
+
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
 

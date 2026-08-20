@@ -8,7 +8,6 @@ import editIcon from '../../assets/edit.svg';
 import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg';
 
-
 const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: boolean; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
 
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
