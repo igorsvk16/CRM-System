@@ -1,6 +1,6 @@
 import React, {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
-import checkTitleValidation from "../../utils/helpers/checkTitleValidation.jsx";
+import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import classes from "./TodoAdd.module.css";
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {

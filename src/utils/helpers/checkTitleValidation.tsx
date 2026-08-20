@@ -1,4 +1,4 @@
-import {MAX_LENGTH, MIN_LENGTH} from "../../constants.jsx";
+import {MAX_LENGTH, MIN_LENGTH} from "../../constants.tsx";
 
 export default function checkTitleValidation(todoInput) {
     if (todoInput.trim().length > MAX_LENGTH) {
