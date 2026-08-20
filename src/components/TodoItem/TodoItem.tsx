@@ -14,7 +14,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: boolean
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
 
-    const onSelectDelete() {
+    const onSelectDelete = () => {
         deleteTodo(props.todoData.id)
             .then(() => {
             props.updateTodos(props.currentCategory);
@@ -24,18 +24,18 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: boolean
         })
     }
 
-    function onEnableEditMode() {
+    const onEnableEditMode = () => {
         setIsEdit(true);
         setEditedTodoTitle(props.todoData.title);
         props.updateTodos(props.currentCategory);
     }
 
-    function cancelEditTask() {
+    const cancelEditTask = () => {
         setIsEdit(false);
         props.updateTodos(props.currentCategory);
     }
 
-    function onSelectStatus() {
+    const onSelectStatus = () => {
         let newStatus = !props.todoData.isDone;
         changeTodo(props.todoData.id, newStatus, props.todoData.title)
             .then(() => {
@@ -46,7 +46,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: boolean
             })
     }
 
-    function onUpdateTodo(editedTodoTitle, todoData) {
+    const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: boolean; }) => {
         const validateTitle = checkTitleValidation(editedTodoTitle);
         if (validateTitle) {
             alert(validateTitle);
@@ -63,61 +63,6 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: boolean
                 })
         }
     }
-
-    // export default function TodoItem({todoData, updateTodos, currentCategory}) {
-    //
-    //     const [ isEdit, setIsEdit ] = useState(false);
-    //     const [ editedTodoTitle, setEditedTodoTitle ] = useState("");
-    //
-    //     function onSelectDelete() {
-    //         deleteTodo(todoData.id)
-    //             .then(() => {
-    //                 updateTodos(currentCategory);
-    //             }, reason => {
-    //                 alert("Не получилось удалить задачу");
-    //                 alert(reason);
-    //             })
-    //     }
-    //
-    //     function onEnableEditMode() {
-    //         setIsEdit(true);
-    //         setEditedTodoTitle(todoData.title);
-    //         updateTodos(currentCategory);
-    //     }
-    //
-    //     function cancelEditTask() {
-    //         setIsEdit(false);
-    //         updateTodos(currentCategory);
-    //     }
-    //
-    //     function onSelectStatus() {
-    //         let newStatus = !todoData.isDone;
-    //         changeTodo(todoData.id, newStatus, todoData.title)
-    //             .then(() => {
-    //                 updateTodos(currentCategory);
-    //             }, reason => {
-    //                 alert("Ошибка обновления статуса задачи");
-    //                 alert(reason);
-    //             })
-    //     }
-    //
-    //     function onUpdateTodo(editedTodoTitle, todoData) {
-    //         const validateTitle = checkTitleValidation(editedTodoTitle);
-    //         if (validateTitle) {
-    //             alert(validateTitle);
-    //         } else {
-    //             changeTodo(todoData.id, todoData.isDone, editedTodoTitle)
-    //                 .then(() => {
-    //                     todoData.title = editedTodoTitle;
-    //                     setIsEdit(false);
-    //                     updateTodos(currentCategory);
-    //                     setEditedTodoTitle('');
-    //                 }, reason => {
-    //                     alert("Не получилось отредактировать задачу");
-    //                     alert(reason);
-    //                 })
-    //         }
-    //     }
 
 return isEdit ?
     <div className={styles.todoContainer}>
@@ -179,3 +124,5 @@ return isEdit ?
         </div>
     </div>
 }
+
+export default TodoItem;
