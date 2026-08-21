@@ -3,15 +3,8 @@ import { getTodos } from "../api/http.js";
 import TodoList from "../components/TodoList/TodoList.tsx";
 import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
 import TodosFilter from "../components/TodosFilter/TodosFilter.js";
-import {type} from "node:os";
 
 export default function Todo() {
-
-    // type TodoCounter = {
-    //     all: number;
-    //     inWork: number;
-    //     completed: number;
-    // }
 
     const [todos, setTodos] = useState({});
     const [todoCounter, setTodoCounter] = useState<object>({
