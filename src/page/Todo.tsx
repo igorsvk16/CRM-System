@@ -7,15 +7,14 @@ import {type} from "node:os";
 
 export default function Todo() {
 
-    type TodoCounter = {
-        all: number;
-        inWork: number;
-        completed: number;
-    }
-
+    // type TodoCounter = {
+    //     all: number;
+    //     inWork: number;
+    //     completed: number;
+    // }
 
     const [todos, setTodos] = useState({});
-    const [todoCounter, setTodoCounter] = useState<TodoCounter>({
+    const [todoCounter, setTodoCounter] = useState<object>({
         all: 0,
         inWork: 0,
         completed: 0,

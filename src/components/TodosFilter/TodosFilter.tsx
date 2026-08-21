@@ -1,10 +1,10 @@
 import styles from './TodosFilter.module.css';
 import React from "react";
 
-const TodosFilter: React.FC<{currentCategory: string, todoCounter, setCurrentCategory, updateTodos: (text: string) => void}> = (props) => {
+const TodosFilter: React.FC<{currentCategory: string, todoCounter: {all: number; inWork: number; completed: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void}> = (props) => {
 
-    function handleChangeCategory(categoryName) {
-        setCurrentCategory(categoryName);
+    function handleChangeCategory(categoryName: string) {
+        props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
     }
 
@@ -13,17 +13,17 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter, setCurrentCat
                     <button
                         className={props.currentCategory === 'all' ? styles.todoCategoryActive : styles.todoCategory}
                         onClick={() => handleChangeCategory('all')}>
-                        Все ({todoCounter.all})
+                        Все ({props.todoCounter.all})
                     </button>
                     <button
                         className={props.currentCategory === 'inWork' ? styles.todoCategoryActive : styles.todoCategory}
                         onClick={() => handleChangeCategory('inWork')}>
-                        В работе ({todoCounter.inWork})
+                        В работе ({props.todoCounter.inWork})
                     </button>
                     <button
                         className={props.currentCategory === 'completed' ? styles.todoCategoryActive : styles.todoCategory}
                         onClick={() => handleChangeCategory('completed')}>
-                        Сделано ({todoCounter.completed})
+                        Сделано ({props.todoCounter.completed})
                     </button>
         </div>
     )
