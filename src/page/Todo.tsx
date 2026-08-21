@@ -22,7 +22,7 @@ export default function Todo() {
         fetchTodos();
     }, [currentCategory]);
 
-    function updateTodos(currentCategory) {
+    function updateTodos(currentCategory: string) {
         getTodos(currentCategory)
             .then(todos => {
                 setTodos(todos.data);

@@ -1,6 +1,6 @@
-import {MAX_LENGTH, MIN_LENGTH} from "../../constants.tsx";
+import {MAX_LENGTH, MIN_LENGTH} from "../../constants.ts";
 
-export default function checkTitleValidation(todoInput) {
+export default function checkTitleValidation(todoInput: string) {
     if (todoInput.trim().length > MAX_LENGTH) {
         return "Максимальная длина текста 64 символа";
     } else if (todoInput.trim().length === MIN_LENGTH - 1) {

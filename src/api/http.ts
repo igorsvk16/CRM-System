@@ -8,7 +8,7 @@ export async function getTodos(status="all"){
     return resData;
 }
 
-export async function addTodo(title, isDone) {
+export async function addTodo(title: string, isDone: boolean) {
     const response = await fetch("https://easydev.club/api/v1/todos", {
         method: 'POST',
         body: JSON.stringify({
@@ -25,7 +25,7 @@ export async function addTodo(title, isDone) {
     return resData.data;
 }
 
-export async function changeTodo(id, isDone, title){
+export async function changeTodo(id: number, isDone: boolean, title: string){
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -43,7 +43,7 @@ export async function changeTodo(id, isDone, title){
     return resData.data;
 }
 
-export async function deleteTodo(id) {
+export async function deleteTodo(id: number) {
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'DELETE',
         headers: {
