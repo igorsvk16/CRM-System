@@ -19,6 +19,7 @@ export async function addTodo(title: string, isDone: boolean) {
         }
     })
     const resData = await response.json();
+    console.log(resData)
     if (!response.ok) {
         throw new Error('Ошибка обновления данных');
     }

@@ -1,8 +1,8 @@
 import { useEffect, useState} from "react";
-import { getTodos } from "../api/http.js";
+import { getTodos } from "../api/http.ts";
 import TodoList from "../components/TodoList/TodoList.tsx";
 import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
-import TodosFilter from "../components/TodosFilter/TodosFilter.js";
+import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 
 export default function Todo() {
 
