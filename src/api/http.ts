@@ -8,7 +8,7 @@ export async function getTodos(status="all"){
     return resData;
 }
 
-export async function addTodo(title: string, isDone: boolean) {
+export async function addTodo(title: string, isDone: boolean){
     const response = await fetch("https://easydev.club/api/v1/todos", {
         method: 'POST',
         body: JSON.stringify({
@@ -23,10 +23,10 @@ export async function addTodo(title: string, isDone: boolean) {
     if (!response.ok) {
         throw new Error('Ошибка обновления данных');
     }
-    return resData.data;
+    return resData;
 }
 
-export async function changeTodo(id: number, isDone: boolean, title: string){
+export async function changeTodo(id: number, isDone: boolean, title: string) {
     const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -37,11 +37,11 @@ export async function changeTodo(id: number, isDone: boolean, title: string){
             'Content-Type': 'application/json'
         }
     })
-    const resData = await response.json();
+    const resData = response.json;
     if (!response.ok) {
         throw new Error('Ошибка обновления задачи');
     }
-    return resData.data;
+    return resData;
 }
 
 export async function deleteTodo(id: number) {

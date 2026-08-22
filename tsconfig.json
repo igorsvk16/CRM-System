@@ -12,7 +12,7 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["DOM"],
+//    "lib": ["DOM"],
     "allowImportingTsExtensions": true,
   },
   "include": ["src/**/*"]
