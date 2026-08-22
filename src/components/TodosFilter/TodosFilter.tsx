@@ -1,7 +1,7 @@
 import styles from './TodosFilter.module.css';
 import React from "react";
 
-const TodosFilter: React.FC<{currentCategory: string, todoCounter: {all: number; inWork: number; completed: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void}> = (props) => {
+const TodosFilter: React.FC<{currentCategory: string, todoCounter: {all: number, inWork: number, completed: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void}> = (props) => {
 
     function handleChangeCategory(categoryName: string) {
         props.setCurrentCategory(categoryName);

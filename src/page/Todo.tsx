@@ -6,12 +6,14 @@ import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 
 export default function Todo() {
 
+    type TodoCounterState = {
+        all: number;
+        inWork: number;
+        completed: number;
+    }
+
     const [todos, setTodos] = useState({});
-    const [todoCounter, setTodoCounter] = useState<object>({
-        all: 0,
-        inWork: 0,
-        completed: 0,
-    });
+    const [todoCounter, setTodoCounter] = useState<TodoCounterState>();
     const [currentCategory, setCurrentCategory] = useState<string>("all");
     const [isLoading, setIsLoading] = useState(true);
 
