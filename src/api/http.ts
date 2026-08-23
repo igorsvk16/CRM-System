@@ -1,5 +1,5 @@
-export async function getTodos(status="all"){
-    const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`)
+export async function getTodos(){
+    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks`)
     const resData = await response.json();
 
     if (!response.ok) {
@@ -9,7 +9,7 @@ export async function getTodos(status="all"){
 }
 
 export async function addTodo(title: string, isDone: boolean){
-    const response = await fetch("https://easydev.club/api/v1/todos", {
+    const response = await fetch("https://tech-mindset.ru/api/v1/tasks", {
         method: 'POST',
         body: JSON.stringify({
             title: title,
@@ -27,7 +27,7 @@ export async function addTodo(title: string, isDone: boolean){
 }
 
 export async function changeTodo(id: number, isDone: boolean, title: string) {
-    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
+    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             isDone: isDone,
@@ -45,7 +45,7 @@ export async function changeTodo(id: number, isDone: boolean, title: string) {
 }
 
 export async function deleteTodo(id: number) {
-    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
+    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

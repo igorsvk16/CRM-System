@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SmartRating.css";
-import { SmartRatingProps } from "./SmartRating.types";
+import { SmartRatingProps } from "./SmartRating.types.ts";
 
 const SmartRating: React.FC<SmartRatingProps> = (props) => {
     const stars = Array.from({ length: 5 }, (_, i) => i + 1);

@@ -13,17 +13,17 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {all: number,
                     <button
                         className={props.currentCategory === 'all' ? styles.todoCategoryActive : styles.todoCategory}
                         onClick={() => handleChangeCategory('all')}>
-                        Все ({props.todoCounter.all})
+                        {/*Все ({props.todoCounter.all})*/}
                     </button>
                     <button
                         className={props.currentCategory === 'inWork' ? styles.todoCategoryActive : styles.todoCategory}
                         onClick={() => handleChangeCategory('inWork')}>
-                        В работе ({props.todoCounter.inWork})
+                        {/*В работе ({props.todoCounter.inWork})*/}
                     </button>
                     <button
                         className={props.currentCategory === 'completed' ? styles.todoCategoryActive : styles.todoCategory}
                         onClick={() => handleChangeCategory('completed')}>
-                        Сделано ({props.todoCounter.completed})
+                        {/*Сделано ({props.todoCounter.completed})*/}
                     </button>
         </div>
     )
