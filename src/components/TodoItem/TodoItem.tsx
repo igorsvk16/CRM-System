@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

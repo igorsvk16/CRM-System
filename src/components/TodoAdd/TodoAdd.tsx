@@ -11,7 +11,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
 
     const [todoInput, setTodoInput] = useState<string>("");
 
-    const fetchAddTodo = (event: React.FormEvent) => {
+    const fetchAddTodo = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         const validateTitle = checkTitleValidation(todoInput);
         console.log("validateTitle")
