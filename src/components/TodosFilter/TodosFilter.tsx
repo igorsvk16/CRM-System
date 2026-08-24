@@ -7,13 +7,11 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
     }
-    console.log(props.todoCounter.todo)
-
     return (
         <div className={styles.todosCategories}>
                     <button
-                        className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
-                        onClick={() => handleChangeCategory('todo')}>
+                        className={props.currentCategory === 'all' ? styles.todoCategoryActive : styles.todoCategory}
+                        onClick={() => handleChangeCategory('all')}>
                         Все ({props.todoCounter.todo})
                     </button>
                     <button

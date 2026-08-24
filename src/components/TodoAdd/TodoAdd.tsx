@@ -7,8 +7,6 @@ import React = require("react");
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
 
-    let isDone = false;
-
     const [todoInput, setTodoInput] = useState<string>("");
 
     const fetchAddTodo = (event: React.SubmitEvent<HTMLFormElement>) => {
@@ -19,7 +17,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
             alert(validateTitle);
         } else {
             console.log(todoInput);
-            addTodo(todoInput, isDone)
+            addTodo(todoInput)
                 .then(() => {
                         props.updateTodos(props.currentCategory);
                         setTodoInput('');

@@ -8,7 +8,7 @@ import editIcon from '../../assets/edit.svg';
 import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg';
 
-const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: boolean; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
+const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
 
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
@@ -35,7 +35,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: boolean
     }
 
     const onSelectStatus = () => {
-        let newStatus = !props.todoData.isDone;
+        let newStatus = (props.todoData.isDone === "inProgress" ? "done" : "inProgress");
         changeTodo(props.todoData.id, newStatus, props.todoData.title)
             .then(() => {
             props.updateTodos(props.currentCategory);

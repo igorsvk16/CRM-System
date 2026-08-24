@@ -7,9 +7,9 @@ import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 export default function Todo() {
 
     type TodoCounterState = {
-        all: number;
-        inWork: number;
-        completed: number;
+        todo: number;
+        inProgress: number;
+        done: number;
     }
 
     const [todos, setTodos] = useState({});
