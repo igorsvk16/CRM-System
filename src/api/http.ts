@@ -1,6 +1,8 @@
-export async function getTodos(){
-    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks`)
-    const resData = await response.json();
+export async function getTodos(status="todo"){
+    const newSt = "inProgress";
+    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/?limit=20&offset=0&statuses=${status}%2CinProgress&orderBy=createdAt&orderDir=desc`)
+    // исправить any
+    const resData: any = await response.json();
 
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');

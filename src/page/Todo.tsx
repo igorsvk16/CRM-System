@@ -14,7 +14,7 @@ export default function Todo() {
 
     const [todos, setTodos] = useState({});
     const [todoCounter, setTodoCounter] = useState<TodoCounterState>({});
-    const [currentCategory, setCurrentCategory] = useState<string>("all");
+    const [currentCategory, setCurrentCategory] = useState<string>("todo");
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function Todo() {
         getTodos(currentCategory)
             .then(todos => {
                 setTodos(todos.data);
-                setTodoCounter(todos.info);
+                setTodoCounter(todos.meta.statusCounts);
                 setIsLoading(false);
             }, reason => {
                 alert('Ошибка при обновлении задач');
