@@ -7,9 +7,9 @@ import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 export default function Todo() {
 
     type TodoCounterState = {
-        all: number;
-        inWork: number;
-        completed: number;
+        todo: number;
+        inProgress: number;
+        done: number;
     }
 
     const [todos, setTodos] = useState({});
@@ -28,7 +28,7 @@ export default function Todo() {
         getTodos(currentCategory)
             .then(todos => {
                 setTodos(todos.data);
-                setTodoCounter(todos.info);
+                setTodoCounter(todos.meta.statusCounts);
                 setIsLoading(false);
             }, reason => {
                 alert('Ошибка при обновлении задач');
