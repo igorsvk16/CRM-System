@@ -8,12 +8,14 @@ export async function getTodos(){
     return resData;
 }
 
-export async function addTodo(title: string, isDone: boolean){
+export async function addTodo(title: string){
     const response = await fetch("https://tech-mindset.ru/api/v1/tasks", {
         method: 'POST',
         body: JSON.stringify({
             title: title,
-            isDone: isDone }),
+            executorId: 1,
+            status: "todo"
+        }),
         headers: {
             'Content-Type': 'application/json'
         }
