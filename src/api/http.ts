@@ -6,6 +6,8 @@ export async function getTodos(currentCategory = "todo"){
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');
     }
+    console.log("resData")
+    console.log(resData)
     return resData;
 }
 

@@ -7,16 +7,17 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
     }
+    console.log(props.todoCounter)
     return (
         <div className={styles.todosCategories}>
                     <button
-                        className={props.currentCategory === 'all' ? styles.todoCategoryActive : styles.todoCategory}
-                        onClick={() => handleChangeCategory('all')}>
-                        Все ({props.todoCounter.todo})
+                        className={props.currentCategory === 'inProgress' ? styles.todoCategoryActive : styles.todoCategory}
+                        onClick={() => handleChangeCategory('inProgress')}>
+                        Все ({props.todoCounter.inProgress})
                     </button>
                     <button
                         className={props.currentCategory === 'inProgress' ? styles.todoCategoryActive : styles.todoCategory}
-                        onClick={() => handleChangeCategory('inProgress')}>
+                        onClick={() => handleChangeCategory('inProgress ')}>
                         В работе ({props.todoCounter.inProgress})
                     </button>
                     <button

@@ -45,7 +45,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string;
             })
     }
 
-    const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: boolean; }) => {
+    const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: string; }) => {
         const validateTitle = checkTitleValidation(editedTodoTitle);
         if (validateTitle) {
             alert(validateTitle);
@@ -73,7 +73,7 @@ return isEdit ?
                     readOnly={false}
                     autoFocus
                     onChange={(e) => setEditedTodoTitle(e.target.value)}
-                    className={props.todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
+                    className={props.todoData.isDone === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
                 <button
                     type="submit"
