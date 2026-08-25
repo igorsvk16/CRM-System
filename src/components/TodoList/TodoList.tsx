@@ -3,8 +3,8 @@ import styles from "./TodoList.module.css"
 import React from "react";
 
 const TodoList: React.FC<{ todos: any, updateTodos: (text: string) => void, currentCategory: string, isLoading: boolean }> = (props) => {
-    console.log("props.todos")
-    console.log(props.todos)
+    // console.log("props.todos")
+    // console.log(props.todos)
     return (
             <section className={styles.todoListContainer}>
                 {props.isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}

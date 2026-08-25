@@ -1,4 +1,3 @@
-// доделать получение правильных туду
 export async function getTodos(currentCategory = "todo"){
     const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/?statuses=${currentCategory}`)
     const resData = await response.json();
@@ -6,8 +5,8 @@ export async function getTodos(currentCategory = "todo"){
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');
     }
-    // console.log("resData")
-    // console.log(resData)
+    console.log("resData")
+    console.log(resData)
     return resData;
 }
 

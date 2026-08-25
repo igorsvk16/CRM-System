@@ -9,7 +9,8 @@ import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg';
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
-
+    console.log("props.todoData.status")
+    console.log(props.todoData.status)
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
     const onSelectDelete = () => {
@@ -102,14 +103,14 @@ return isEdit ?
             <input
                 type="checkbox"
                 onChange={() => onSelectStatus()}
-                checked={props.todoData.status}
+                checked={props.todoData.status === "done"}
                 className={styles.checkboxStatusTodo}
             />
             <input
                 value={props.todoData.title}
                 type="text"
                 readOnly={true}
-                className={props.todoData.status? styles.todoTitleDone : styles.todoTitleUndone}
+                className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
             />
             <button
                 className={styles.editBtn}
