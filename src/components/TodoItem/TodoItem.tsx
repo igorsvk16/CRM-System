@@ -8,11 +8,10 @@ import editIcon from '../../assets/edit.svg';
 import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg';
 
-const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
+const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
 
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
-
     const onSelectDelete = () => {
         deleteTodo(props.todoData.id)
             .then(() => {
@@ -35,7 +34,9 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string;
     }
 
     const onSelectStatus = () => {
-        let newStatus = (props.todoData.isDone === "inProgress" ? "done" : "inProgress");
+        console.log("props.todoData")
+        console.log(props.todoData.status)
+        let newStatus = (props.todoData.status === "inProgress" ? "done" : "inProgress");
         changeTodo(props.todoData.id, newStatus, props.todoData.title)
             .then(() => {
             props.updateTodos(props.currentCategory);
@@ -73,7 +74,7 @@ return isEdit ?
                     readOnly={false}
                     autoFocus
                     onChange={(e) => setEditedTodoTitle(e.target.value)}
-                    className={props.todoData.isDone === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
+                    className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
                 <button
                     type="submit"
@@ -101,14 +102,14 @@ return isEdit ?
             <input
                 type="checkbox"
                 onChange={() => onSelectStatus()}
-                checked={props.todoData.isDone}
+                checked={props.todoData.status}
                 className={styles.checkboxStatusTodo}
             />
             <input
                 value={props.todoData.title}
                 type="text"
                 readOnly={true}
-                className={props.todoData.isDone? styles.todoTitleDone : styles.todoTitleUndone}
+                className={props.todoData.status? styles.todoTitleDone : styles.todoTitleUndone}
             />
             <button
                 className={styles.editBtn}

@@ -3,6 +3,7 @@ import styles from "./TodoList.module.css"
 import React from "react";
 
 const TodoList: React.FC<{ todos: any, updateTodos: (text: string) => void, currentCategory: string, isLoading: boolean }> = (props) => {
+    console.log("props.todos")
     console.log(props.todos)
     return (
             <section className={styles.todoListContainer}>
@@ -10,7 +11,7 @@ const TodoList: React.FC<{ todos: any, updateTodos: (text: string) => void, curr
                 {!props.isLoading && props.todos.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
                 {!props.isLoading && props.todos.length > 0 && (
                     <section>
-                        {(props.todos).map((todoData: { id: any; title: string; isDone: boolean; }) => (
+                        {(props.todos).map((todoData: { id: number; title: string; status: string; }) => (
                             <TodoItem
                                 key={todoData.id}
                                 todoData={todoData}
