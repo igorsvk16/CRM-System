@@ -10,9 +10,9 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
     return (
         <div className={styles.todosCategories}>
                     <button
-                        className={props.currentCategory === 'inProgress' ? styles.todoCategoryActive : styles.todoCategory}
-                        onClick={() => handleChangeCategory('inProgress ')}>
-                        В работе ({props.todoCounter.inProgress})
+                        className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
+                        onClick={() => handleChangeCategory('todo')}>
+                        В работе ({props.todoCounter.todo})
                     </button>
                     <button
                         className={props.currentCategory === 'done' ? styles.todoCategoryActive : styles.todoCategory}

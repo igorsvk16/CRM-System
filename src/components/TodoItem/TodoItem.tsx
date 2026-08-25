@@ -37,7 +37,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     const onSelectStatus = () => {
         console.log("props.todoData")
         console.log(props.todoData.status)
-        let newStatus = (props.todoData.status === "inProgress" ? "done" : "inProgress");
+        let newStatus = (props.todoData.status === "todo" ? "done" : "todo");
         changeTodo(props.todoData.id, newStatus, props.todoData.title)
             .then(() => {
             props.updateTodos(props.currentCategory);
