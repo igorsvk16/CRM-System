@@ -4,6 +4,7 @@ import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
 import React = require("react");
 import AddButton from "../../ui/AddButton/AddButton.tsx";
+import NewInput from "../../ui/NewInput/NewInput.tsx";
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
 
@@ -28,6 +29,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
     }
     return (
         <form onSubmit={fetchAddTodo} className={classes.todoAdd}>
+
             <input
                 type="text"
                 id="text"

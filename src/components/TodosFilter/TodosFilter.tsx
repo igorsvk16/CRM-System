@@ -9,16 +9,24 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
     }
     return (
         <div className={styles.todosCategories}>
-                    <button
-                        className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
-                        onClick={() => handleChangeCategory('todo')}>
-                        В работе ({props.todoCounter.todo})
-                    </button>
-                    <button
-                        className={props.currentCategory === 'done' ? styles.todoCategoryActive : styles.todoCategory}
-                        onClick={() => handleChangeCategory('done')}>
-                        Сделано ({props.todoCounter.done})
-                    </button>
+            <button
+                onClick={() => handleChangeCategory('todo')}>
+                В работе ({props.todoCounter.todo})
+            </button>
+            <button
+                onClick={() => handleChangeCategory('done')}>
+                Сделано ({props.todoCounter.done})
+            </button>
+                    {/*<button*/}
+                    {/*    className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}*/}
+                    {/*    onClick={() => handleChangeCategory('todo')}>*/}
+                    {/*    В работе ({props.todoCounter.todo})*/}
+                    {/*</button>*/}
+                    {/*<button*/}
+                    {/*    className={props.currentCategory === 'done' ? styles.todoCategoryActive : styles.todoCategory}*/}
+                    {/*    onClick={() => handleChangeCategory('done')}>*/}
+                    {/*    Сделано ({props.todoCounter.done})*/}
+                    {/*</button>*/}
         </div>
     )
 }
