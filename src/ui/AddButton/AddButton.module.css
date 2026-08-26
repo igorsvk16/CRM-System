@@ -1,0 +1,17 @@
+.addButton {
+    display: flex;
+    background-color: #4b8df7;
+    border: none;
+    padding: 20px;
+    width: 5rem;
+    height: 1rem;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    justify-content: center;
+    align-content: center;
+    vertical-align: middle;
+    margin: 0;
+    line-height: 0;
+}
