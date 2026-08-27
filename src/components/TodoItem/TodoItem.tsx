@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
-import editIcon from '../../assets/edit.svg';
 import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg';
 import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
+import EditButton from "../../ui/EditButton/EditButton.tsx";
+// import editIcon from "../../assets/edit.svg";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
@@ -107,11 +108,7 @@ return isEdit ?
                 readOnly={true}
                 className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
             />
-            <button
-                className={styles.editBtn}
-                onClick={() => onEnableEditMode()}>
-                <img className={styles.editIcon} src={editIcon} alt="editIcon" />
-            </button>
+            <EditButton onEdit={onEnableEditMode} />
             <DeleteButton onDelete={onSelectDelete} />
         </div>
     </div>

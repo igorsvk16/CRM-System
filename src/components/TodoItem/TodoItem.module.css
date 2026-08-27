@@ -23,25 +23,6 @@
     padding: 1.5rem;
 }
 
-.editBtn {
-    color: inherit;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-    padding: 0.5rem;
-    background-color: #4b8df7;
-    border-radius: 0.3rem;
-    margin: 0.5rem 0;
-}
-
-.editIcon {
-    width: 20px;
-    height: auto;
-    display: flex;
-}
-
-
 .deleteIcon {
     width: 20px;
     height: auto;
@@ -81,4 +62,34 @@
     margin-right: 1rem;
     font-weight: 200;
     color: #201f23;
+}
+
+.editBtn {
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 0.5rem;
+    background-color: #4b8df7;
+    border-radius: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+.editIcon {
+    width: 20px;
+    height: auto;
+    display: flex;
+}
+
+.delBtn {
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 0.5rem;
+    background-color: #ff5a52;
+    border-radius: 0.3rem;
+    margin: 0.5rem;
 }
