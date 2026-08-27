@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Mark.module.css";
+import classes from "./MarkButton.module.css";
 
-const Mark: React.FC<({onSelectStatus: () => void, checked: boolean})> = (props) => {
+const MarkButton: React.FC<({onSelectStatus: () => void, checked: boolean})> = (props) => {
     return (
         <input
             type="checkbox"
@@ -12,4 +12,4 @@ const Mark: React.FC<({onSelectStatus: () => void, checked: boolean})> = (props)
     )
 };
 
-export default Mark;
+export default MarkButton;
