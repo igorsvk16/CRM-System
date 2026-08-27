@@ -6,6 +6,7 @@ import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg';
 import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
 import EditButton from "../../ui/EditButton/EditButton.tsx";
+import Mark from "../../ui/Mark/Mark.tsx";
 // import editIcon from "../../assets/edit.svg";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
@@ -96,11 +97,9 @@ return isEdit ?
 
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={props.todoData.id}>
-            <input
-                type="checkbox"
-                onChange={() => onSelectStatus()}
+            <Mark
+                onSelectStatus={onSelectStatus}
                 checked={props.todoData.status === "done"}
-                className={styles.checkboxStatusTodo}
             />
             <input
                 value={props.todoData.title}
