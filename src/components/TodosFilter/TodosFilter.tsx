@@ -1,5 +1,6 @@
 import styles from './TodosFilter.module.css';
 import React from "react";
+import TodoCategory from "../../ui/TodoCategory/TodoCategory.tsx";
 
 const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void}> = (props) => {
 
@@ -9,14 +10,23 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
     }
     return (
         <div className={styles.todosCategories}>
-            <button
-                onClick={() => handleChangeCategory('todo')}>
+            <TodoCategory
+            currentCategory={props.currentCategory}
+            handleChangeCategory={handleChangeCategory}
+            category="todo"
+            >
                 В работе ({props.todoCounter.todo})
-            </button>
-            <button
-                onClick={() => handleChangeCategory('done')}>
-                Сделано ({props.todoCounter.done})
-            </button>
+            </TodoCategory>
+            {/*<button*/}
+            {/*    onClick={() => handleChangeCategory('todo')}>*/}
+            {/*    В работе ({props.todoCounter.todo})*/}
+            {/*</button>*/}
+            {/*<button*/}
+            {/*    onClick={() => handleChangeCategory('done')}>*/}
+            {/*    Сделано ({props.todoCounter.done})*/}
+            {/*</button>*/}
+
+
                     {/*<button*/}
                     {/*    className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}*/}
                     {/*    onClick={() => handleChangeCategory('todo')}>*/}

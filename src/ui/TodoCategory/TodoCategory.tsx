@@ -2,13 +2,17 @@ import React from "react";
 import classes from "./TodoCategory.module.css";
 import styles from "../../components/TodosFilter/TodosFilter.module.css";
 
-const TodoCategory: React.FC<({currentCategory: string, handleChangeCategory: (categoryName: string) => void, todoCounter: {todo: number, inProgress: number, done: number}, text: string, todoCategory: string})> = (props) => {
+type Props = {
+    children: React.ReactNode;
+};
+
+const TodoCategory: React.FC<({currentCategory: string, handleChangeCategory: (categoryName: string) => void, category: string, props: Props})> = (props) => {
     return (
     <button
         className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
-        onClick={() => props.handleChangeCategory(props.todoCategory)}
+        onClick={() => props.handleChangeCategory(props.category)}
     >
-        {props.text} ({props.todoCounter.{props.todoStatus}})
+        {props.children}
     </button>
     )
 };
