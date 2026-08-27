@@ -7,10 +7,9 @@ import styles from "./TodoItem.module.css";
 import editIcon from '../../assets/edit.svg';
 import saveIcon from '../../assets/save.svg';
 import closeIcon from '../../assets/close.svg';
+import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
-    console.log("props.todoData.status")
-    console.log(props.todoData.status)
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
     const onSelectDelete = () => {
@@ -35,8 +34,6 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     }
 
     const onSelectStatus = () => {
-        console.log("props.todoData")
-        console.log(props.todoData.status)
         let newStatus = (props.todoData.status === "todo" ? "done" : "todo");
         changeTodo(props.todoData.id, newStatus, props.todoData.title)
             .then(() => {
@@ -117,11 +114,12 @@ return isEdit ?
                 onClick={() => onEnableEditMode()}>
                 <img className={styles.editIcon} src={editIcon} alt="editIcon" />
             </button>
-            <button
-                className={styles.delBtn}
-                onClick={() => onSelectDelete()}>
-                <FontAwesomeIcon icon={faTrash} />
-            </button>
+            <DeleteButton onDelete={onSelectDelete} />
+            {/*<button*/}
+            {/*    className={styles.delBtn}*/}
+            {/*    onClick={() => onSelectDelete()}>*/}
+            {/*    <FontAwesomeIcon icon={faTrash} />*/}
+            {/*</button>*/}
         </div>
     </div>
 }
