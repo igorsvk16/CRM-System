@@ -17,26 +17,13 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
             >
                 В работе ({props.todoCounter.todo})
             </TodoCategory>
-            {/*<button*/}
-            {/*    onClick={() => handleChangeCategory('todo')}>*/}
-            {/*    В работе ({props.todoCounter.todo})*/}
-            {/*</button>*/}
-            {/*<button*/}
-            {/*    onClick={() => handleChangeCategory('done')}>*/}
-            {/*    Сделано ({props.todoCounter.done})*/}
-            {/*</button>*/}
-
-
-                    {/*<button*/}
-                    {/*    className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}*/}
-                    {/*    onClick={() => handleChangeCategory('todo')}>*/}
-                    {/*    В работе ({props.todoCounter.todo})*/}
-                    {/*</button>*/}
-                    {/*<button*/}
-                    {/*    className={props.currentCategory === 'done' ? styles.todoCategoryActive : styles.todoCategory}*/}
-                    {/*    onClick={() => handleChangeCategory('done')}>*/}
-                    {/*    Сделано ({props.todoCounter.done})*/}
-                    {/*</button>*/}
+            <TodoCategory
+                currentCategory={props.currentCategory}
+                handleChangeCategory={handleChangeCategory}
+                category="done"
+            >
+                Сделано ({props.todoCounter.done})
+            </TodoCategory>
         </div>
     )
 }
