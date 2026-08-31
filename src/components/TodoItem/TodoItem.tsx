@@ -3,11 +3,11 @@ import {changeTodo, deleteTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
 import saveIcon from '../../assets/save.svg';
-import closeIcon from '../../assets/close.svg';
 import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
 import EditButton from "../../ui/EditButton/EditButton.tsx";
 import MarkButton from "../../ui/MarkButton/MarkButton.tsx";
 import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
+import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
@@ -74,23 +74,15 @@ return isEdit ?
                     onChange={(e) => setEditedTodoTitle(e.target.value)}
                     className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
-                <button
-                    type="submit"
-                    className={styles.editBtn}
-                >
-                    <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
-                </button>
+                <SaveButton onSelectStatus={}
+                {/*<button*/}
+                {/*    type="submit"*/}
+                {/*    className={styles.editBtn}*/}
+                {/*>*/}
+                {/*    <img className={styles.editIcon} src={saveIcon} alt="editIcon" />*/}
+                {/*</button>*/}
             </form>
             <CancelButton onSelectCancel={cancelEditTask} />
-            {/*<button className={styles.delBtn} onClick={() =>*/}
-            {/*    cancelEditTask()*/}
-            {/*}>*/}
-            {/*    <img*/}
-            {/*        src={closeIcon}*/}
-            {/*        className={styles.deleteIcon}*/}
-            {/*        alt="closeIcon"*/}
-            {/*    />*/}
-            {/*</button>*/}
         </div>
     </div>
 

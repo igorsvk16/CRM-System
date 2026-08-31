@@ -1,14 +1,19 @@
 import React from "react";
+import saveIcon from '../../assets/save.svg'
 import classes from "./SaveButton.module.css";
 
-const SaveButton: React.FC<({onSelectStatus: () => void, checked: boolean})> = (props) => {
+const SaveButton: React.FC = () => {
     return (
-        <input
-            type="checkbox"
-            className={classes.checkboxStatusTodo}
-            onChange={() => props.onSelectStatus()}
-            checked={props.checked}
-        />
+        <button
+            type="submit"
+            className={classes.editBtn}
+        >
+            <img
+                className={classes.editIcon}
+                src={saveIcon}
+                alt='save icon'
+            />
+        </button>
     )
 };
 
