@@ -7,7 +7,7 @@ import closeIcon from '../../assets/close.svg';
 import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
 import EditButton from "../../ui/EditButton/EditButton.tsx";
 import MarkButton from "../../ui/MarkButton/MarkButton.tsx";
-// import editIcon from "../../assets/edit.svg";
+import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
@@ -81,15 +81,16 @@ return isEdit ?
                     <img className={styles.editIcon} src={saveIcon} alt="editIcon" />
                 </button>
             </form>
-            <button className={styles.delBtn} onClick={() =>
-                cancelEditTask()
-            }>
-                <img
-                    src={closeIcon}
-                    className={styles.deleteIcon}
-                    alt="closeIcon"
-                />
-            </button>
+            <CancelButton onSelectCancel={cancelEditTask} />
+            {/*<button className={styles.delBtn} onClick={() =>*/}
+            {/*    cancelEditTask()*/}
+            {/*}>*/}
+            {/*    <img*/}
+            {/*        src={closeIcon}*/}
+            {/*        className={styles.deleteIcon}*/}
+            {/*        alt="closeIcon"*/}
+            {/*    />*/}
+            {/*</button>*/}
         </div>
     </div>
 
