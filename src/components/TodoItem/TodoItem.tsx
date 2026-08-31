@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
-import saveIcon from '../../assets/save.svg';
 import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
 import EditButton from "../../ui/EditButton/EditButton.tsx";
 import MarkButton from "../../ui/MarkButton/MarkButton.tsx";
@@ -65,7 +64,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
 return isEdit ?
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={props.todoData.id}>
-            <form action={() => onUpdateTodo(editedTodoTitle, props.todoData)}>
+            <form action={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}>
                 <input
                     type="text"
                     value={editedTodoTitle}
@@ -74,7 +73,7 @@ return isEdit ?
                     onChange={(e) => setEditedTodoTitle(e.target.value)}
                     className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
-                <SaveButton onSelectStatus={}
+                <SaveButton />
                 {/*<button*/}
                 {/*    type="submit"*/}
                 {/*    className={styles.editBtn}*/}
