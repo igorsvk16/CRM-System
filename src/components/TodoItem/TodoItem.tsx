@@ -8,7 +8,9 @@ import MarkButton from "../../ui/MarkButton/MarkButton.tsx";
 import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
 import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 
-const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
+const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
+    console.log("props.todoData")
+    console.log(props.todoData)
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
     const onSelectDelete = () => {
@@ -32,11 +34,10 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string;
         props.updateTodos(props.currentCategory);
     }
 
-    const onSelectStatus = (isDone: boolean) => {
-        console.log("onSelectStatus")
-        console.log(isDone)
-        let newStatus = (isDone === false ? "done" : "todo");
-        console.log(newStatus)
+    const onSelectStatus = () => {
+        console.log(props.todoData.status)
+        let newStatus = ((props.todoData.status === "todo") ? "done" : "todo");
+        console.log(newStatus);
         changeTodo(props.todoData.id, newStatus, props.todoData.title)
             .then(() => {
             props.updateTodos(props.currentCategory);
@@ -67,14 +68,14 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string;
 return isEdit ?
     <div className={styles.todoContainer}>
         <div className={styles.todo}>
-            <form action={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.isDone})}>
+            <form action={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}>
                 <input
                     type="text"
                     value={editedTodoTitle}
                     readOnly={false}
                     autoFocus
                     onChange={(e) => setEditedTodoTitle(e.target.value)}
-                    className={props.todoData.isDone === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
+                    className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
                 <SaveButton />
 
@@ -95,13 +96,13 @@ return isEdit ?
         <div className={styles.todo} key={props.todoData.id}>
             <MarkButton
                 onSelectStatus={onSelectStatus}
-                checked={props.todoData.isDone === "todo"}
+                checked={props.todoData.status === "done"}
             />
             <input
                 value={props.todoData.title}
                 type="text"
                 readOnly={true}
-                className={props.todoData.isDone === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
+                className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
             />
             <EditButton onEdit={onEnableEditMode} />
             <DeleteButton onDelete={onSelectDelete} />
