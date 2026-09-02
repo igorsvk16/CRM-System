@@ -32,8 +32,11 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; isDone: string;
         props.updateTodos(props.currentCategory);
     }
 
-    const onSelectStatus = () => {
-        let newStatus = (props.todoData.isDone === "todo" ? "done" : "todo");
+    const onSelectStatus = (isDone: boolean) => {
+        console.log("onSelectStatus")
+        console.log(isDone)
+        let newStatus = (isDone === false ? "done" : "todo");
+        console.log(newStatus)
         changeTodo(props.todoData.id, newStatus, props.todoData.title)
             .then(() => {
             props.updateTodos(props.currentCategory);
@@ -74,6 +77,7 @@ return isEdit ?
                     className={props.todoData.isDone === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
                 <SaveButton />
+
                 {/*<button*/}
                 {/*    type="submit"*/}
                 {/*    className={styles.editBtn}*/}
@@ -91,7 +95,7 @@ return isEdit ?
         <div className={styles.todo} key={props.todoData.id}>
             <MarkButton
                 onSelectStatus={onSelectStatus}
-                checked={props.todoData.isDone === "done"}
+                checked={props.todoData.isDone === "todo"}
             />
             <input
                 value={props.todoData.title}
