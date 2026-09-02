@@ -13,7 +13,7 @@ export default function Todo() {
     }
 
     const [todos, setTodos] = useState({});
-    const [todoCounter, setTodoCounter] = useState<TodoCounterState>({});
+    const [todoCounter, setTodoCounter] = useState<TodoCounterState>();
     const [currentCategory, setCurrentCategory] = useState<string>("todo");
     const [isLoading, setIsLoading] = useState(true);
 

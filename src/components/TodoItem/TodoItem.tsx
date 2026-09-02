@@ -78,13 +78,6 @@ return isEdit ?
                     className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
                 <SaveButton />
-
-                {/*<button*/}
-                {/*    type="submit"*/}
-                {/*    className={styles.editBtn}*/}
-                {/*>*/}
-                {/*    <img className={styles.editIcon} src={saveIcon} alt="editIcon" />*/}
-                {/*</button>*/}
             </form>
             <CancelButton onSelectCancel={cancelEditTask} />
         </div>
