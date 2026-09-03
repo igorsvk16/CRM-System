@@ -65,6 +65,42 @@ export default function Todo() {
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
                 isLoading={isLoading}
+                category="todo"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category='inProgress'
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="review"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="readyForRelease"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="onHold"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="done"
             />
         </main>
     )

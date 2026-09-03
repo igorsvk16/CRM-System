@@ -2,7 +2,7 @@ import TodoItem from '../TodoItem/TodoItem.tsx';
 import styles from "./TodoList.module.css"
 import React from "react";
 
-const TodoList: React.FC<{ todos: any, updateTodos: (text: string) => void, currentCategory: string, isLoading: boolean }> = (props) => {
+const TodoList: React.FC<{ todos: any, updateTodos: (text: string) => void, currentCategory: string, isLoading: boolean, category: string }> = (props) => {
     return (
             <section className={styles.todoListContainer}>
                 {props.isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}

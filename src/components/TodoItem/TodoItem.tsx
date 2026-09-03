@@ -67,7 +67,10 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
 
 return isEdit ?
     <div className={styles.todoContainer}>
-        <div className={styles.todo}>
+        <div
+            className={styles.todo}
+            draggable={true}
+        >
             <form action={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}>
                 <input
                     type="text"
