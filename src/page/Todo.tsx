@@ -9,11 +9,21 @@ export default function Todo() {
     type TodoCounterState = {
         todo: number;
         inProgress: number;
+        review: number;
+        readyForRelease: number;
+        onHold: number;
         done: number;
     }
 
     const [todos, setTodos] = useState({});
-    const [todoCounter, setTodoCounter] = useState<TodoCounterState>();
+    const [todoCounter, setTodoCounter] = useState<TodoCounterState>({
+        todo: 0,
+        inProgress: 0,
+        review: 0,
+        readyForRelease: 0,
+        onHold: 0,
+        done: 0,
+    });
     const [currentCategory, setCurrentCategory] = useState<string>("todo");
     const [isLoading, setIsLoading] = useState(true);
 

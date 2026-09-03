@@ -1,12 +1,10 @@
 export async function getTodos(currentCategory = "todo"){
     const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/?statuses=${currentCategory}`)
     const resData = await response.json();
-
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');
     }
-    console.log("resData")
-    console.log(resData)
+
     return resData;
 }
 
@@ -23,7 +21,6 @@ export async function addTodo(title: string){
         }
     })
     const resData = await response.json();
-    console.log(resData)
     if (!response.ok) {
         throw new Error('Ошибка обновления данных');
     }
