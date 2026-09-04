@@ -1,7 +1,11 @@
 import styles from './TodosFilter.module.css';
 import React from "react";
+import TodoItem from "../TodoItem/TodoItem.tsx";
 
-const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void}> = (props) => {
+const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, todos: any, isLoading: boolean}> = (props) => {
+
+    // console.log("props.todos");
+    // console.log(props.todos);
 
     function handleChangeCategory(categoryName: string) {
         props.setCurrentCategory(categoryName);
@@ -10,17 +14,26 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
     return (
         <>
         <div className={styles.todosCategories}>
-            <div>
+            <div className={styles.tasksColumn}>
             <button
                 className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
                 onClick={() => handleChangeCategory('todo')}>
                 К выполнению ({props.todoCounter.todo})
             </button>
-                <div className={styles.todoContainer}>
-                    <p>tsertet</p>
-                    <p>tsertet</p>
-                    <p>tsertet</p>
-                </div>
+                {props.isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
+                {!props.isLoading && props.todos.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
+                {!props.isLoading && props.todos.length > 0 && (
+                    <section>
+                        {(props.todos).map((todoData: { id: number; title: string; status: string; }) => (
+                            <TodoItem
+                                key={todoData.id}
+                                todoData={todoData}
+                                updateTodos={props.updateTodos}
+                                currentCategory={props.currentCategory}
+                            />
+                        ))}
+                    </section>
+                )}
             </div>
 
             <div>

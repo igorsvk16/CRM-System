@@ -47,7 +47,8 @@
 }
 
 
-.todoColumn {
+.tasksColumn {
     display: flex;
     flex-direction: row;
+    max-width: 50px;
 }

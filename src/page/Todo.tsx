@@ -46,6 +46,7 @@ export default function Todo() {
             }
         )
     }
+    console.log("todos")
     console.log(todos)
 
     return (
@@ -59,49 +60,51 @@ export default function Todo() {
                 todoCounter={todoCounter}
                 setCurrentCategory={setCurrentCategory}
                 updateTodos={updateTodos}
+                todos={todos}
+                isLoading={isLoading}
             />
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="todo"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category='inProgress'*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="review"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="readyForRelease"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="onHold"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="done"*/}
-            {/*/>*/}
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="todo"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category='inProgress'
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="review"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="readyForRelease"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="onHold"
+            />
+            <TodoList
+                todos={todos}
+                updateTodos={updateTodos}
+                currentCategory={currentCategory}
+                isLoading={isLoading}
+                category="done"
+            />
         </main>
     )
 }
