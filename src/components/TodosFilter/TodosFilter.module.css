@@ -49,6 +49,6 @@
 
 .tasksColumn {
     display: flex;
-    flex-direction: row;
-    max-width: 50px;
+    flex-direction: column;
+    max-width: 500px;
 }

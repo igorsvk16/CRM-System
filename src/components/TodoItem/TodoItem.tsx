@@ -9,8 +9,6 @@ import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
 import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
-    console.log("props.todoData")
-    console.log(props.todoData)
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
     const onSelectDelete = () => {

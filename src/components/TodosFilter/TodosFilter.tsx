@@ -4,8 +4,9 @@ import TodoItem from "../TodoItem/TodoItem.tsx";
 
 const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, todos: any, isLoading: boolean}> = (props) => {
 
-    // console.log("props.todos");
-    // console.log(props.todos);
+    console.log("props.todos");
+    console.log(props.todos);
+
 
     function handleChangeCategory(categoryName: string) {
         props.setCurrentCategory(categoryName);
