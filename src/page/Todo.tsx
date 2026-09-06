@@ -6,6 +6,7 @@ import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 import {type} from "node:os";
 import {TaskData} from "../type/interface/TasksData.ts";
 import Header from "../components/Header/Header.tsx";
+import ProjectMenu from "../components/ProjectMenu/ProjectMenu.tsx";
 
 export default function Todo() {
 
@@ -67,6 +68,7 @@ export default function Todo() {
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
             />
+            <ProjectMenu />
             <TodosFilter
                 currentCategory={currentCategory}
                 todoCounter={todoCounter}
