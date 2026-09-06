@@ -5,6 +5,7 @@ import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
 import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 import {type} from "node:os";
 import {TaskData} from "../type/interface/TasksData.ts";
+import Header from "../components/Header/Header.tsx";
 
 export default function Todo() {
 
@@ -61,6 +62,7 @@ export default function Todo() {
     }
     return (
         <main>
+            <Header />
             <TodoAdd
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
