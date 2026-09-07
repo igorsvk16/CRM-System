@@ -7,6 +7,7 @@ import {type} from "node:os";
 import {TaskData} from "../type/interface/TasksData.ts";
 import Header from "../components/Header/Header.tsx";
 import ProjectMenu from "../components/ProjectMenu/ProjectMenu.tsx";
+import classes from "./Todo.module.css";
 
 export default function Todo() {
 
@@ -68,6 +69,7 @@ export default function Todo() {
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
             />
+            <div className={classes.mainContent}>
             <ProjectMenu />
             <TodosFilter
                 currentCategory={currentCategory}
@@ -77,48 +79,7 @@ export default function Todo() {
                 todos={todos}
                 isLoading={isLoading}
             />
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="todo"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category='inProgress'*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="review"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="readyForRelease"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="onHold"*/}
-            {/*/>*/}
-            {/*<TodoList*/}
-            {/*    todos={todos}*/}
-            {/*    updateTodos={updateTodos}*/}
-            {/*    currentCategory={currentCategory}*/}
-            {/*    isLoading={isLoading}*/}
-            {/*    category="done"*/}
-            {/*/>*/}
+            </div>
         </main>
     )
 }
