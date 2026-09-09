@@ -88,18 +88,22 @@ return isEdit ?
 
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={props.todoData.id}>
-            <MarkButton
-                onSelectStatus={onSelectStatus}
-                checked={props.todoData.status === "done"}
-            />
-            <input
-                value={props.todoData.title}
-                type="text"
-                readOnly={true}
-                className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
-            />
-            <EditButton onEdit={onEnableEditMode} />
-            <DeleteButton onDelete={onSelectDelete} />
+            <div>
+                {/*<MarkButton*/}
+                {/*    onSelectStatus={onSelectStatus}*/}
+                {/*    checked={props.todoData.status === "done"}*/}
+                {/*/>*/}
+                <input
+                    value={props.todoData.title}
+                    type="text"
+                    readOnly={true}
+                    className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
+                />
+            </div>
+            <div>
+                <EditButton onEdit={onEnableEditMode} />
+                <DeleteButton onDelete={onSelectDelete} />
+            </div>
         </div>
     </div>
 }

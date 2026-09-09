@@ -50,5 +50,8 @@
 .tasksColumn {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    width: 15rem;
+    /*background-color: #F4F5F7;*/
+    background-color: #e1e1e3;
+    margin-right: 0.5rem;
 }

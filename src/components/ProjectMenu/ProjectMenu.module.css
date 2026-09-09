@@ -1,3 +1,6 @@
 .leftSidebar {
-    background-color: #4b8df7;
+    background-color: #F4F5F7;
+    border-right: #DFE1E6 solid 0.1rem;
+    margin-right: 1rem;
+    width: 12rem;
 }

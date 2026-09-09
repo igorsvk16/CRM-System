@@ -36,7 +36,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                     </section>
                 )}
             </div>
-            <div>
+            <div className={styles.tasksColumn}>
             <button
                 className={props.currentCategory === 'inProgress' ? styles.todoCategoryActive : styles.todoCategory}
                 onClick={() => handleChangeCategory('inProgress')}>
@@ -59,7 +59,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                     </section>
                 )}
             </div>
-            <div>
+            <div className={styles.tasksColumn}>
             <button
                 className={props.currentCategory === 'review' ? styles.todoCategoryActive : styles.todoCategory}
                 onClick={() => handleChangeCategory('review')}>
@@ -82,7 +82,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                     </section>
                 )}
             </div>
-            <div>
+            <div className={styles.tasksColumn}>
             <button
                 className={props.currentCategory === 'readyForRelease' ? styles.todoCategoryActive : styles.todoCategory}
                 onClick={() => handleChangeCategory('readyForRelease')}>
@@ -105,7 +105,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                     </section>
                 )}
             </div>
-            <div>
+            <div className={styles.tasksColumn}>
             <button
                 className={props.currentCategory === 'onHold' ? styles.todoCategoryActive : styles.todoCategory}
                 onClick={() => handleChangeCategory('onHold')}>
@@ -128,7 +128,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                     </section>
                 )}
             </div>
-            <div>
+            <div className={styles.tasksColumn}>
             <button
                 className={props.currentCategory === 'done' ? styles.todoCategoryActive : styles.todoCategory}
                 onClick={() => handleChangeCategory('done')}>

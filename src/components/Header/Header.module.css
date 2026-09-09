@@ -2,8 +2,10 @@
     display: flex;
     flex-direction: row;
     align-content: center;
-    border-bottom: 1px red;
+    border-bottom: 0.1rem #DFE1E6 solid;
     align-items: center;
+    background-color: #FFFFFF;
+    margin-bottom: 1rem;
 }
 
 .headerContainer p, h1 {
@@ -12,12 +14,12 @@
 
 .addButton {
     display: flex;
-    background-color: #4b8df7;
+    background-color: #0052CC;
     border: none;
     padding: 20px;
     width: 5rem;
     height: 1rem;
-    border-radius: 5px;
+    border-radius: 0.2rem;
     color: white;
     text-align: center;
     font-weight: 600;

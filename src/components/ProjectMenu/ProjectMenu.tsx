@@ -3,7 +3,12 @@ import classes from "./ProjectMenu.module.css"
 const ProjectMenu = () => {
     return (
         <div className={classes.leftSidebar}>
-            <p>test77777333</p>
+            <p>Доска</p>
+            <p>Список задач</p>
+            <p>Аналитика</p>
+            <p>Пользователи</p>
+            <h3>НАСТРОЙКИ ПРОЕКТА</h3>
+            <p>Параметры проекта</p>
         </div>
     )
 }

@@ -65,10 +65,10 @@ export default function Todo() {
     return (
         <main>
             <Header />
-            <TodoAdd
-                updateTodos={updateTodos}
-                currentCategory={currentCategory}
-            />
+            {/*<TodoAdd*/}
+            {/*    updateTodos={updateTodos}*/}
+            {/*    currentCategory={currentCategory}*/}
+            {/*/>*/}
             <div className={classes.mainContent}>
             <ProjectMenu />
             <TodosFilter
