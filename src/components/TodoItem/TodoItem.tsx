@@ -87,7 +87,8 @@ return isEdit ?
     :
 
     <div className={styles.todoContainer}>
-        <div className={styles.todo} key={props.todoData.id}>
+        <div className={styles.todo} key={props.todoData.id} draggable
+        onDragStart={}>
             <div>
                 {/*<MarkButton*/}
                 {/*    onSelectStatus={onSelectStatus}*/}
