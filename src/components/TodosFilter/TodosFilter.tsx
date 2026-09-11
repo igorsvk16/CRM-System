@@ -9,11 +9,17 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
     }
+    const handleDragEnter = (group) => {
+        set
+    }
 
     return (
         <>
         <div className={styles.todosCategories}>
-            <div className={styles.tasksColumn}>
+            <div
+                className={styles.tasksColumn}
+                onDragEnter={(e) => handleDragEnter('todo')}>
+            >
             <button
                 className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
                 onClick={() => handleChangeCategory('todo')}>
@@ -22,7 +28,8 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                 {props.isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
                 {!props.isLoading && props.todos.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
                 {!props.isLoading && props.todos.length > 0 && (
-                    <section>
+                    <section
+
                         {(props.todos)
                             .filter(todoData => todoData.status === "todo")
                             .map((todoData: TaskData) => (

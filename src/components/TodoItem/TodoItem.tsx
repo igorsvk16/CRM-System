@@ -7,10 +7,13 @@ import EditButton from "../../ui/EditButton/EditButton.tsx";
 import MarkButton from "../../ui/MarkButton/MarkButton.tsx";
 import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
 import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
+import test from "node:test";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
+    const [ isDragging, setIsDragging ] = useState<string>("");
+
     const onSelectDelete = () => {
         deleteTodo(props.todoData.id)
             .then(() => {
@@ -63,6 +66,12 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
         }
     }
 
+    const handleDragging = (id: number) => {
+        setIsDragging(id)
+    }
+
+
+
 return isEdit ?
     <div className={styles.todoContainer}>
         <div
@@ -88,7 +97,8 @@ return isEdit ?
 
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={props.todoData.id} draggable
-        onDragStart={}>
+             onDragStart={() => handleDragging(props.todoData.id)}
+        >
             <div>
                 {/*<MarkButton*/}
                 {/*    onSelectStatus={onSelectStatus}*/}
