@@ -7,10 +7,10 @@ import {deleteTodo} from "../../api/http.ts";
 
 const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, todos: TasksData, isLoading: boolean}> = (props) => {
 
-    const [ isDragging, setIsDragging ] = useState<number>();
+    const [ isDraggingId, setIsDraggingId ] = useState<number>();
 
 
-    function handleChangeCategory(categoryName: string) {
+    function handleChangeCategory(categoryName: string, isDraggingId: number) {
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
     }
@@ -24,7 +24,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
             >
             <button
                 className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
-                onClick={() => handleChangeCategory('todo')}>
+                onClick={() => handleChangeCategory('todo', isDraggingId)}>
                 К выполнению ({props.todoCounter.todo})
             </button>
                 {props.isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
@@ -39,6 +39,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                                 todoData={todoData}
                                 updateTodos={props.updateTodos}
                                 currentCategory={props.currentCategory}
+                                setIsDragging={setIsDraggingId}
                             />
                         ))}
                     </section>

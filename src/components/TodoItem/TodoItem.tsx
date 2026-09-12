@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
@@ -9,7 +9,8 @@ import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
 import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 import test from "node:test";
 
-const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
+
+const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDragging: Dispatch<SetStateAction<number>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
 
@@ -66,7 +67,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     }
 
     const handleDragging = (id: number) => {
-        setIsDragging(id)
+        props.setIsDraggingId(id);
     }
 
 
