@@ -27,13 +27,13 @@ export async function addTodo(title: string){
     return resData;
 }
 
-export async function changeTodo(id: number, isDone: string, title?: string) {
+export async function changeTodo(id: number, isDone: string, title: string ) {
     const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             title: title,
             executorId: 1,
-            status: isDone
+            status: isDone,
 
         }),
         headers: {

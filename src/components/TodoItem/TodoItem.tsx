@@ -10,7 +10,7 @@ import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 import test from "node:test";
 
 
-const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
+const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
 
@@ -66,8 +66,9 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
         }
     }
 
-    const handleDragging = (id: number) => {
+    const handleDragging = (id: number, title: string) => {
         props.setIsDraggingId(id);
+        props.setCurrentTitle(title)
     }
 
 
@@ -97,7 +98,7 @@ return isEdit ?
 
     <div className={styles.todoContainer}>
         <div className={styles.todo} key={props.todoData.id} draggable
-             onDragStart={() => handleDragging(props.todoData.id)}
+             onDragStart={() => handleDragging(props.todoData.id, props.todoData.title)}
         >
             <div>
                 {/*<MarkButton*/}
