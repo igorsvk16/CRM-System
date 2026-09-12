@@ -1,16 +1,18 @@
+import {useState} from "react";
 import styles from './TodosFilter.module.css';
 import React from "react";
 import TodoItem from "../TodoItem/TodoItem.tsx";
 import {TaskData, TasksData} from "../../type/interface/TasksData.ts";
+import {deleteTodo} from "../../api/http.ts";
 
 const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, todos: TasksData, isLoading: boolean}> = (props) => {
+
+    const [ isDragging, setIsDragging ] = useState<number>();
+
 
     function handleChangeCategory(categoryName: string) {
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
-    }
-    const handleDragEnter = (group) => {
-        set
     }
 
     return (
@@ -18,7 +20,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
         <div className={styles.todosCategories}>
             <div
                 className={styles.tasksColumn}
-                onDragEnter={(e) => handleDragEnter('todo')}>
+                onDragEnter={(e) => handleChangeCategory('todo')}
             >
             <button
                 className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
@@ -28,8 +30,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                 {props.isLoading && <p className={styles.centeredText}>Загрузка задач...</p>}
                 {!props.isLoading && props.todos.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
                 {!props.isLoading && props.todos.length > 0 && (
-                    <section
-
+                    <section>
                         {(props.todos)
                             .filter(todoData => todoData.status === "todo")
                             .map((todoData: TaskData) => (

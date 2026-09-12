@@ -12,7 +12,6 @@ import test from "node:test";
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
-    const [ isDragging, setIsDragging ] = useState<string>("");
 
     const onSelectDelete = () => {
         deleteTodo(props.todoData.id)
