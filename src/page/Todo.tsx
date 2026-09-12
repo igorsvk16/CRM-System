@@ -52,8 +52,6 @@ export default function Todo() {
         getTodos(currentCategory)
             .then(todos => {
                 setTodos(todos.data);
-                console.log("todos.data")
-                console.log(todos.data)
                 setTodoCounter(todos.meta.statusCounts);
                 setIsLoading(false);
             }, reason => {

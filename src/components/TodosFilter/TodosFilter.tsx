@@ -4,15 +4,24 @@ import React from "react";
 import TodoItem from "../TodoItem/TodoItem.tsx";
 import {TaskData, TasksData} from "../../type/interface/TasksData.ts";
 import {deleteTodo} from "../../api/http.ts";
+import {changeTodo} from "../../api/http.ts";
 
 const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, todos: TasksData, isLoading: boolean}> = (props) => {
 
     const [ isDraggingId, setIsDraggingId ] = useState<number>();
 
-
     function handleChangeCategory(categoryName: string, isDraggingId: number) {
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
+        console.log("isDraggingId, categoryName");
+        console.log(isDraggingId, categoryName);
+        changeTodo(isDraggingId, categoryName)
+            .then(() => {
+                props.updateTodos(props.currentCategory);
+            }, reason => {
+                alert("Ошибка обновления статуса задачи");
+                alert(reason);
+            })
     }
 
     return (
@@ -20,7 +29,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
         <div className={styles.todosCategories}>
             <div
                 className={styles.tasksColumn}
-                onDragEnter={(e) => handleChangeCategory('todo')}
+                onDragEnter={(e) => handleChangeCategory('todo', isDraggingId)}
             >
             <button
                 className={props.currentCategory === 'todo' ? styles.todoCategoryActive : styles.todoCategory}
@@ -39,7 +48,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
                                 todoData={todoData}
                                 updateTodos={props.updateTodos}
                                 currentCategory={props.currentCategory}
-                                setIsDragging={setIsDraggingId}
+                                setIsDraggingId={setIsDraggingId}
                             />
                         ))}
                     </section>

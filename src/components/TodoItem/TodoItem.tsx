@@ -10,7 +10,7 @@ import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 import test from "node:test";
 
 
-const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDragging: Dispatch<SetStateAction<number>> }> = (props) => {
+const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
 
