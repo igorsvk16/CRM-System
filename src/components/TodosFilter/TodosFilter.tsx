@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import styles from './TodosFilter.module.css';
 import React from "react";
 import TodoItem from "../TodoItem/TodoItem.tsx";
@@ -7,11 +7,9 @@ import {deleteTodo} from "../../api/http.ts";
 import {changeTodo} from "../../api/http.ts";
 import TodoList from "../TodoList/TodoList.tsx";
 
-const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, todos: TasksData, isLoading: boolean}> = (props) => {
+const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, todos: TasksData, isLoading: boolean, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
 
     const tasksStatuses = ['todo', 'inProgress', "review", "readyForRelease", "onHold", "done"];
-    const tasksStatusesCurrent = '';
-
 
     return (
         <>
@@ -19,14 +17,22 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: {todo: number
             {!props.isLoading && props.todos.length === 0 && <p className={styles.centeredText}>Добавьте свою первую задачу</p>}
             {!props.isLoading && props.todos.length > 0 && (
         <div className={styles.todosCategories}>
-            <TodoList
-                currentCategoryOfTasks={tasksStatuses.map()}
+            {tasksStatuses.map((tasksStatus: string) =>
+                (
+                    <TodoList
+                        key={tasksStatus}
+                currentCategoryOfTasks={tasksStatus}
                 setCurrentCategory={props.setCurrentCategory}
                 updateTodos={props.updateTodos}
                 currentCategory={props.currentCategory}
                 todoCounter={props.todoCounter}
                 todos={props.todos}
-            />
+                        isDraggingId={props.isDraggingId}
+                        currentTitle={props.currentTitle}
+                        setIsDraggingId={props.setIsDraggingId}
+                        setCurrentTitle={props.setCurrentTitle}
+                    />
+                ))
             }
                     {/*<div*/}
                     {/*    className={styles.tasksColumn}*/}

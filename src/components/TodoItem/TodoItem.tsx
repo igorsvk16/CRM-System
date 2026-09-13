@@ -10,9 +10,25 @@ import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 import test from "node:test";
 
 
-const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
+const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDraggingId: Dispatch<SetStateAction<number>>, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
+    // const [ isDraggingId, setIsDraggingId ] = useState<number>();
+    // const [ currentTitle, setCurrentTitle ] = useState<string>();
+
+    // function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
+    //     console.log("categoryName, isDraggingId, title")
+    //     console.log(categoryName, isDraggingId, title)
+    //     props.setCurrentCategory(categoryName);
+    //     props.updateTodos(categoryName);
+    //     changeTodo(isDraggingId, categoryName, title)
+    //         .then(() => {
+    //             props.updateTodos(props.currentCategory);
+    //         }, reason => {
+    //             alert("Ошибка обновления статуса задачи");
+    //             alert(reason);
+    //         })
+    // }
 
     const onSelectDelete = () => {
         deleteTodo(props.todoData.id)
@@ -67,6 +83,8 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     }
 
     const handleDragging = (id: number, title: string) => {
+        console.log('handleDragging')
+        console.log(id, title)
         props.setIsDraggingId(id);
         props.setCurrentTitle(title)
     }
@@ -77,7 +95,6 @@ return isEdit ?
     <div className={styles.todoContainer}>
         <div
             className={styles.todo}
-            draggable={true}
         >
             <form action={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}>
                 <input

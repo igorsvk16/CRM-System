@@ -41,6 +41,9 @@ export default function Todo() {
     const [currentCategory, setCurrentCategory] = useState<string>("todo");
     const [isLoading, setIsLoading] = useState(true);
 
+    const [ isDraggingId, setIsDraggingId ] = useState<number>();
+    const [ currentTitle, setCurrentTitle ] = useState<string>();
+
     useEffect(() => {
         function fetchTodos() {
             updateTodos(currentCategory);
@@ -76,6 +79,10 @@ export default function Todo() {
                 updateTodos={updateTodos}
                 todos={todos}
                 isLoading={isLoading}
+                isDraggingId={isDraggingId}
+                currentTitle={currentTitle}
+                setIsDraggingId={setIsDraggingId}
+                setCurrentTitle={setCurrentTitle}
             />
             </div>
         </main>

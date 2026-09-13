@@ -1,15 +1,17 @@
 import TodoItem from '../TodoItem/TodoItem.tsx';
 import styles from "./TodoList.module.css"
-import React, {useState} from "react";
+import React, {Dispatch, SetStateAction, useState} from "react";
 import {TaskData, TasksData} from "../../type/interface/TasksData.ts";
 import {changeTodo} from "../../api/http.ts";
 
-const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, todos: TasksData }> = (props) => {
+const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: (newState: string) => void, updateTodos: (text: string) => void, currentCategory: string, todoCounter: {todo: number, inProgress: number, review: number, readyForRelease: number, onHold: number,  done: number}, todos: TasksData, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
 
-    const [ isDraggingId, setIsDraggingId ] = useState<number>();
-    const [ currentTitle, setCurrentTitle ] = useState<string>();
-
+    // const [ isDraggingId, setIsDraggingId ] = useState<number>();
+    // const [ currentTitle, setCurrentTitle ] = useState<string>();
+    //
     function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
+        console.log("categoryName, isDraggingId, title")
+        console.log(categoryName, isDraggingId, title)
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
         changeTodo(isDraggingId, categoryName, title)
@@ -24,22 +26,26 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: (
     return (
         <div
             className={styles.tasksColumn}
-            onDragEnter={() => handleChangeCategory('todo', isDraggingId, currentTitle)}
+            onDragEnter={() => handleChangeCategory(props.currentCategoryOfTasks, props.isDraggingId, props.currentTitle)}
         >
             <p className={styles.todoCategory}>
-                К выполнению ({props.todoCounter.todo})
+                К выполнению {props.currentCategoryOfTasks} ({props.todoCounter.todo})
             </p>
             <section>
                 {(props.todos)
-                    .filter(todoData => todoData.status === "todo")
+                    .filter(todoData => todoData.status === props.currentCategoryOfTasks)
                     .map((todoData: TaskData) => (
                         <TodoItem
                             key={todoData.id}
                             todoData={todoData}
                             updateTodos={props.updateTodos}
-                            currentCategory={props.currentCategory}
-                            setIsDraggingId={setIsDraggingId}
-                            setCurrentTitle={setCurrentTitle}
+                            currentCategory={props.currentCategoryOfTasks}
+                            // setIsDraggingId={setIsDraggingId}
+                            // setCurrentTitle={setCurrentTitle}
+                            isDraggingId={props.isDraggingId}
+                            currentTitle={props.currentTitle}
+                            setIsDraggingId={props.setIsDraggingId}
+                            setCurrentTitle={props.setCurrentTitle}
                         />
                     ))}
             </section>
