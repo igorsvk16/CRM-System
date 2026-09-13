@@ -4,31 +4,13 @@ import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
 import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
 import EditButton from "../../ui/EditButton/EditButton.tsx";
-import MarkButton from "../../ui/MarkButton/MarkButton.tsx";
 import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
 import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
-import test from "node:test";
 
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDraggingId: Dispatch<SetStateAction<number>>, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
-    // const [ isDraggingId, setIsDraggingId ] = useState<number>();
-    // const [ currentTitle, setCurrentTitle ] = useState<string>();
-
-    // function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
-    //     console.log("categoryName, isDraggingId, title")
-    //     console.log(categoryName, isDraggingId, title)
-    //     props.setCurrentCategory(categoryName);
-    //     props.updateTodos(categoryName);
-    //     changeTodo(isDraggingId, categoryName, title)
-    //         .then(() => {
-    //             props.updateTodos(props.currentCategory);
-    //         }, reason => {
-    //             alert("Ошибка обновления статуса задачи");
-    //             alert(reason);
-    //         })
-    // }
 
     const onSelectDelete = () => {
         deleteTodo(props.todoData.id)
@@ -49,19 +31,6 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     const cancelEditTask = () => {
         setIsEdit(false);
         props.updateTodos(props.currentCategory);
-    }
-
-    const onSelectStatus = () => {
-        console.log(props.todoData.status)
-        let newStatus = ((props.todoData.status === "todo") ? "done" : "todo");
-        console.log(newStatus);
-        changeTodo(props.todoData.id, newStatus, props.todoData.title)
-            .then(() => {
-            props.updateTodos(props.currentCategory);
-        }, reason => {
-            alert("Ошибка обновления статуса задачи");
-            alert(reason);
-            })
     }
 
     const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: string; }) => {
@@ -88,8 +57,6 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
         props.setIsDraggingId(id);
         props.setCurrentTitle(title)
     }
-
-
 
 return isEdit ?
     <div className={styles.todoContainer}>
@@ -118,10 +85,6 @@ return isEdit ?
              onDragStart={() => handleDragging(props.todoData.id, props.todoData.title)}
         >
             <div>
-                {/*<MarkButton*/}
-                {/*    onSelectStatus={onSelectStatus}*/}
-                {/*    checked={props.todoData.status === "done"}*/}
-                {/*/>*/}
                 <input
                     value={props.todoData.title}
                     type="text"
