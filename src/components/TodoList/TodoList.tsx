@@ -25,7 +25,7 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: D
             onDragEnter={() => handleChangeCategory(props.currentCategoryOfTasks, props.isDraggingId, props.currentTitle)}
         >
             <p className={styles.todoCategory}>
-                К выполнению {props.currentCategoryOfTasks} ({props.todoCounter.todo})
+                К выполнению {props.currentCategoryOfTasks} {props.todoCounter[props.currentCategoryOfTasks as keyof TodoCounter]}
             </p>
             <section>
                 {(props.todos)
