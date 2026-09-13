@@ -7,6 +7,15 @@ import styles from "./TodoList.module.css";
 
 const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: Dispatch<SetStateAction<string>>, updateTodos: (text: string) => void, currentCategory: string, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
 
+    const categoriesTitles = {
+        todo: "К выполнению",
+        inProgress: "В работе",
+        review: "Ревью",
+        readyForRelease: "Готово к релизу",
+        onHold: "На паузе",
+        done: "Выполнено",
+    }
+
     function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
         props.setCurrentCategory(categoryName);
         props.updateTodos(categoryName);
@@ -25,7 +34,7 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: D
             onDragEnter={() => handleChangeCategory(props.currentCategoryOfTasks, props.isDraggingId, props.currentTitle)}
         >
             <p className={styles.todoCategory}>
-                К выполнению {props.currentCategoryOfTasks} {props.todoCounter[props.currentCategoryOfTasks as keyof TodoCounter]}
+                К выполнению {categoriesTitles[props.currentCategoryOfTasks]} {props.currentCategoryOfTasks} {props.todoCounter[props.currentCategoryOfTasks as keyof TodoCounter]}
             </p>
             <section>
                 {(props.todos)
