@@ -3,10 +3,13 @@ import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
 import React = require("react");
+import {inspect} from "node:util";
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
 
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [todoInput, setTodoInput] = useState<string>("");
+    const [todoDescription, setTodoDescription] = useState<string>("");
 
     const fetchAddTodo = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -25,23 +28,49 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                 )
         }
     }
-    return (
-        <form onSubmit={fetchAddTodo} className={classes.todoAdd}>
 
-            <input
-                type="text"
-                id="text"
-                value={todoInput}
-                onChange={(e: { target: { value: SetStateAction<string>; }; }) => {
-                    setTodoInput(e.target.value);
-                }}
-                placeholder="Новая задача..."
-                className={classes.inputNewTodo}
-            />
-            <button className={classes.addButton}>
-                Добавить
-            </button>
-        </form>
+    const toggleOpenAddTaskMenu = () => {
+        setIsAddModalOpen(true)
+    }
+    return (
+        <>
+
+        <button
+            onClick={toggleOpenAddTaskMenu}
+            className={classes.addButton}
+        >
+            Создать
+        </button>
+        {isAddModalOpen && (
+            <div className={classes.modalBackground}>
+                <div className={classes.addTaskModalContainer}>
+                    <form onSubmit={fetchAddTodo} className={classes.todoAdd}>
+                        <input
+                            type="text"
+                            id="text"
+                            value={todoInput}
+                            onChange={(e: { target: { value: SetStateAction<string>; }; }) => {
+                                setTodoInput(e.target.value);
+                            }}
+                            placeholder="Новая задача..."
+                            className={classes.inputNewTodo}
+                        />
+                        <input
+                        type="text"
+                        id="text"
+                        value={todoDescription}
+                        onChange={(e: { target: { value: SetStateAction<string>; }; }) => {
+                            setTodoDescription(e.target.value);
+                        }}
+                        placeholder="Опишите задачу"
+                        className={classes.descriptionNewTodo}
+                        />
+                    </form>
+
+                </div>
+            </div>
+        )}
+        </>
     );
 };
 
