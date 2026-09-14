@@ -65,6 +65,9 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                         placeholder="Опишите задачу"
                         className={classes.descriptionNewTodo}
                         />
+                        <button>
+                            Добавить
+                        </button>
                     </form>
 
                 </div>
