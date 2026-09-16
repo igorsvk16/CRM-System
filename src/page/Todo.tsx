@@ -34,7 +34,6 @@ export default function Todo() {
     const [ currentTitle, setCurrentTitle ] = useState<string>();
     const a = useRef(isDraggingId);
 
-
     useEffect(() => {
         function fetchTodos() {
             updateTodos(currentCategory);
