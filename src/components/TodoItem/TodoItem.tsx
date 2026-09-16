@@ -52,10 +52,10 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     }
 
     const handleDragging = (id: number, title: string) => {
-        console.log('handleDragging')
-        console.log(id, title)
+        console.log('handleDragging');
+        console.log(id, title);
         props.setIsDraggingId(id);
-        props.setCurrentTitle(title)
+        props.setCurrentTitle(title);
     }
 
 return isEdit ?

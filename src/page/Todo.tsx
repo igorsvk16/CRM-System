@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import { getTodos } from "../api/http.ts";
 import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
 import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
@@ -32,6 +32,8 @@ export default function Todo() {
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isDraggingId, setIsDraggingId ] = useState<number>();
     const [ currentTitle, setCurrentTitle ] = useState<string>();
+    const a = useRef(isDraggingId);
+
 
     useEffect(() => {
         function fetchTodos() {
