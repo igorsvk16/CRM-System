@@ -17,8 +17,9 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: D
     }
 
     function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
-        props.setCurrentCategory(categoryName);
-        props.updateTodos(categoryName);
+        // props.setCurrentCategory(categoryName);
+        // props.updateTodos(categoryName);
+
         changeTodo(isDraggingId, categoryName, title)
             .then(() => {
                 props.updateTodos(props.currentCategory);
