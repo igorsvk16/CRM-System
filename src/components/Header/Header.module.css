@@ -6,7 +6,6 @@
     align-items: center;
     background-color: #FFFFFF;
     margin-bottom: 1rem;
-    z-index: 999;
 }
 
 .headerContainer p, h1 {

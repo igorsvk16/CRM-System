@@ -1,3 +1,31 @@
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.4);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    top: 0;
+}
+
+.addTaskModalContainer {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    vertical-align: center;
+    padding: 25px;
+}
+
+
+
 .todoAdd {
     display: flex;
     justify-content: right;
@@ -5,7 +33,6 @@
     flex-direction: row;
     align-content: flex-end;
     background-color: #f3f7fb;
-    z-index: 999;
 }
 
 .inputNewTodo {
@@ -15,7 +42,6 @@
     margin-right: 1rem;
     font-weight: 200;
     color: #201f23;
-    z-index: 999;
 
 }
 
@@ -34,39 +60,8 @@
     font-weight: 600;
     margin: 0;
     line-height: 0;
-    z-index: 999;
-
 }
 
 .addButton:hover {
     background-color: #347bf0;
-    z-index: 999;
-
 }
-
-.modalBackground {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(200, 200, 200, 0.4);
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    z-index: 999;
-    z-index: 999;
-
-}
-
-.addTaskModalContainer {
-    width: 500px;
-    height: 500px;
-    border-radius: 12px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-    z-index: 999;
-}
-

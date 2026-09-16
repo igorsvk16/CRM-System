@@ -54,9 +54,8 @@ export default function Todo() {
         )
     }
     return (
-        <main>
+        <div>
             <Header />
-
             <TodoAdd
                 updateTodos={updateTodos}
                 currentCategory={currentCategory}
@@ -76,6 +75,6 @@ export default function Todo() {
                     setCurrentTitle={setCurrentTitle}
                 />
             </div>
-        </main>
+        </div>
     )
 }

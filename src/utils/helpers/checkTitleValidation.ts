@@ -1,11 +1,15 @@
 import {MAX_LENGTH, MIN_LENGTH} from "../../constants.ts";
 
-export default function checkTitleValidation(todoInput: string) {
-    if (todoInput.trim().length > MAX_LENGTH) {
+export default function checkTitleValidation(todoInput: string): string {
+    const inputTrimmedLength = todoInput.trim().length;
+    
+    if (inputTrimmedLength > MAX_LENGTH) {
         return "Максимальная длина текста 64 символа";
-    } else if (todoInput.trim().length === MIN_LENGTH - 1) {
+    } else if (inputTrimmedLength === MIN_LENGTH - 1) {
         return "Минимальная длина текста 2 символа";
-    } else if (todoInput.trim().length === 0) {
+    } else if (inputTrimmedLength === 0) {
         return "Введите текст, не пробелы";
     }
+
+    return '';
 }
