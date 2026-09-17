@@ -1,3 +1,22 @@
+.addButton {
+    display: flex;
+    background-color: #4b8df7;
+    border: none;
+    padding: 20px;
+    width: 5rem;
+    height: 1rem;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    margin: 0;
+    line-height: 0;
+}
+
+.addButton:hover {
+    background-color: #347bf0;
+}
+
 .modalBackground {
     width: 100vw;
     height: 100vh;
@@ -45,23 +64,3 @@
 
 }
 
-.addButton {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: #4b8df7;
-    border: none;
-    padding: 20px;
-    width: 5rem;
-    height: 1rem;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    font-weight: 600;
-    margin: 0;
-    line-height: 0;
-}
-
-.addButton:hover {
-    background-color: #347bf0;
-}

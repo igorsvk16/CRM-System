@@ -5,3 +5,14 @@
 body {
     margin: 0;
 }
+
+.tasksDashboard {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+.todoAdd {
+    display: flex;
+    justify-content: right;
+}

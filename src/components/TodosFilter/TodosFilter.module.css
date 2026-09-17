@@ -4,6 +4,7 @@
     justify-content: center;
     background-color: #f3f7fb;
     border: none;
+    width: 100%;
 }
 
 .todoCategoryActive {

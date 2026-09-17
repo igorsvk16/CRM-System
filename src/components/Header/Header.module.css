@@ -5,7 +5,7 @@
     border-bottom: 0.1rem #DFE1E6 solid;
     align-items: center;
     background-color: #FFFFFF;
-    margin-bottom: 1rem;
+    /*margin-bottom: 1rem;*/
 }
 
 .headerContainer p, h1 {

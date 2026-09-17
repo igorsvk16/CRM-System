@@ -54,26 +54,30 @@ export default function Todo() {
         )
     }
     return (
-        <div>
+        <div className={classes.content}>
             <Header />
-            <TodoAdd
-                updateTodos={updateTodos}
-                currentCategory={currentCategory}
-            />
             <div className={classes.mainContent}>
                 <ProjectMenu />
-                <TodosFilter
-                    currentCategory={currentCategory}
-                    todoCounter={todoCounter}
-                    setCurrentCategory={setCurrentCategory}
-                    updateTodos={updateTodos}
-                    todos={todos}
-                    isLoading={isLoading}
-                    isDraggingId={isDraggingId}
-                    currentTitle={currentTitle}
-                    setIsDraggingId={setIsDraggingId}
-                    setCurrentTitle={setCurrentTitle}
-                />
+                <div className={classes.tasksDashboard}>
+                    <div className={classes.todoAdd}>
+                        <TodoAdd
+                            updateTodos={updateTodos}
+                            currentCategory={currentCategory}
+                        />
+                    </div>
+                    <TodosFilter
+                        currentCategory={currentCategory}
+                        todoCounter={todoCounter}
+                        setCurrentCategory={setCurrentCategory}
+                        updateTodos={updateTodos}
+                        todos={todos}
+                        isLoading={isLoading}
+                        isDraggingId={isDraggingId}
+                        currentTitle={currentTitle}
+                        setIsDraggingId={setIsDraggingId}
+                        setCurrentTitle={setCurrentTitle}
+                    />
+                </div>
             </div>
         </div>
     )
