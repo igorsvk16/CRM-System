@@ -6,9 +6,9 @@ const Header = () => {
             <h1>
                 Pulse CRM
             </h1>
-            <p>Рабочий стол</p>
-            <p>Задачи</p>
-            <p>Команда</p>
+            <button>Рабочий стол</button>
+            <button>Задачи</button>
+            <button>Команда</button>
             <button className={classes.addButton}>Создать</button>
         </header>
     )

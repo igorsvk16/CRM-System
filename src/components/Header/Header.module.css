@@ -33,3 +33,9 @@
 .addButton:hover {
     background-color: #347bf0;
 }
+
+button {
+    background: none;
+    border: none;
+    padding: 0 1rem;
+}

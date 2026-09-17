@@ -17,8 +17,8 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: D
     }
 
     function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
-        // props.setCurrentCategory(categoryName);
-        // props.updateTodos(categoryName);
+        props.setCurrentCategory(categoryName);
+        props.updateTodos(categoryName);
 
         changeTodo(isDraggingId, categoryName, title)
             .then(() => {
@@ -33,6 +33,7 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: D
         <div
             className={styles.tasksColumn}
             onDragEnter={() => handleChangeCategory(props.currentCategoryOfTasks, props.isDraggingId, props.currentTitle)}
+            onDragOver={(e) => e.preventDefault()}
         >
             <p className={styles.todoCategory}>
                 {categoriesTitles[props.currentCategoryOfTasks as keyof TodoCounter]} {props.todoCounter[props.currentCategoryOfTasks as keyof TodoCounter]}

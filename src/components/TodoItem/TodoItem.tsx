@@ -79,7 +79,10 @@ return isEdit ?
     :
 
     <div className={styles.todoContainer}>
-        <div className={styles.todo} key={props.todoData.id} draggable
+        <div
+            className={styles.todo}
+             key={props.todoData.id}
+             draggable
              onDragStart={() => handleDragging(props.todoData.id, props.todoData.title)}
         >
             <div>
