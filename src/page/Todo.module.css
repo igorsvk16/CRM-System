@@ -10,9 +10,16 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .todoAdd {
     display: flex;
     justify-content: right;
+}
+
+.todoFilter {
+    display: flex;
+    justify-content: end;
 }

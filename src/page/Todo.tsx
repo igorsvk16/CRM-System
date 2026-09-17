@@ -65,18 +65,20 @@ export default function Todo() {
                             currentCategory={currentCategory}
                         />
                     </div>
-                    <TodosFilter
-                        currentCategory={currentCategory}
-                        todoCounter={todoCounter}
-                        setCurrentCategory={setCurrentCategory}
-                        updateTodos={updateTodos}
-                        todos={todos}
-                        isLoading={isLoading}
-                        isDraggingId={isDraggingId}
-                        currentTitle={currentTitle}
-                        setIsDraggingId={setIsDraggingId}
-                        setCurrentTitle={setCurrentTitle}
-                    />
+                    <div className={classes.todoFilter}>
+                        <TodosFilter
+                            currentCategory={currentCategory}
+                            todoCounter={todoCounter}
+                            setCurrentCategory={setCurrentCategory}
+                            updateTodos={updateTodos}
+                            todos={todos}
+                            isLoading={isLoading}
+                            isDraggingId={isDraggingId}
+                            currentTitle={currentTitle}
+                            setIsDraggingId={setIsDraggingId}
+                            setCurrentTitle={setCurrentTitle}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
