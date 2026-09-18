@@ -33,13 +33,15 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
     }
     return (
         <>
-
-        <button
-            onClick={toggleOpenAddTaskMenu}
-            className={classes.addButton}
-        >
-            Создать
-        </button>
+            <div className={classes.addButtonContainer}>
+                 <h3>Доска Pulse CRM</h3>
+                <button
+                    onClick={toggleOpenAddTaskMenu}
+                    className={classes.addButton}
+                >
+                    Создать
+                </button>
+            </div>
         {isAddModalOpen && (
             <div className={classes.modalBackground}>
                 <div className={classes.addTaskModalContainer}>

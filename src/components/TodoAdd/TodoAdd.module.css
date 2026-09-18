@@ -43,10 +43,6 @@
     padding: 25px;
 }
 
-
-
-
-
 .inputNewTodo {
     border: none;
     background-color: #f3f7fb;
@@ -58,10 +54,16 @@
 
 .todoAdd {
     display: flex;
-    justify-content: right;
     margin: 1rem;
     flex-direction: row;
-    align-content: flex-end;
+    align-content: start;
     background-color: white;
 }
 
+.addButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: start;
+    width: 100vw;
+}

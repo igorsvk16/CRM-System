@@ -6,8 +6,10 @@
     background-color: #F4F5F7;
     border-right: #DFE1E6 solid 0.1rem;
     padding: 0 1rem;
+    margin: 0 1.5rem 0 0;
     width: 12rem;
     height: 100vh;
+
 }
 
 .leftSidebar button {
