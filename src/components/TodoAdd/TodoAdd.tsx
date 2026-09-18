@@ -39,13 +39,14 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                     onClick={toggleOpenAddTaskMenu}
                     className={classes.addButton}
                 >
-                    Создать
+                   Создать
                 </button>
             </div>
         {isAddModalOpen && (
             <div className={classes.modalBackground}>
                 <div className={classes.addTaskModalContainer}>
                     <form onSubmit={fetchAddTodo} className={classes.todoAdd}>
+                        <h3>Новая задача</h3>
                         <input
                             type="text"
                             id="text"
