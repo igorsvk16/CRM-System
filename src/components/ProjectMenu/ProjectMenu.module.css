@@ -1,7 +1,15 @@
 .leftSidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
     background-color: #F4F5F7;
     border-right: #DFE1E6 solid 0.1rem;
-    margin-right: 1rem;
-    width: 12rem;
     padding: 0 1rem;
+    width: 12rem;
+    height: 100vh;
+}
+
+.leftSidebar button {
+    padding-bottom: 0.7rem;
 }
