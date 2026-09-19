@@ -73,16 +73,17 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                         <div className={classes.newTodoPersonAndStatus}>
                             <div>
                                 <p>Исполнитель</p>
-                                <input/>
+                                <div className={classes.dropDownMenuExecutor}>
+                                    {users.map(user: User) => (
+                                        <a></a>
+                                        )}
+                                </div>
                             </div>
                             <div>
                                 <p>Статус</p>
                                 <input/>
                             </div>
                         </div>
-
-                        <p>Дедлайн</p>
-                        <input/>
 
                         <div className={classes.saveOrCancelNewTask}>
                             <button>
