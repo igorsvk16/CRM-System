@@ -70,22 +70,29 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                             className={classes.descriptionNewTodo}
                         />
 
-                        <p>Исполнитель</p>
-                        <input/>
-
-                        <p>Статус</p>
-                        <input/>
+                        <div className={classes.newTodoPersonAndStatus}>
+                            <div>
+                                <p>Исполнитель</p>
+                                <input/>
+                            </div>
+                            <div>
+                                <p>Статус</p>
+                                <input/>
+                            </div>
+                        </div>
 
                         <p>Дедлайн</p>
                         <input/>
 
-                        <button>
-                            Отмена
-                        </button>
+                        <div className={classes.saveOrCancelNewTask}>
+                            <button>
+                                Отмена
+                            </button>
 
-                        <button>
-                            Добавить
-                        </button>
+                            <button>
+                                Добавить
+                            </button>
+                        </div>
                     </form>
 
                 </div>
