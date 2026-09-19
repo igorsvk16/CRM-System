@@ -47,26 +47,42 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                 <div className={classes.addTaskModalContainer}>
                     <form onSubmit={fetchAddTodo} className={classes.todoAdd}>
                         <h3>Новая задача</h3>
+                        <p>* Название</p>
+                            <input
+                                type="text"
+                                id="text"
+                                value={todoInput}
+                                onChange={(e: { target: { value: SetStateAction<string>; }; }) => {
+                                    setTodoInput(e.target.value);
+                                }}
+                                className={classes.inputNewTodo}
+                            />
+
+                        <p>Описание</p>
                         <input
                             type="text"
                             id="text"
-                            value={todoInput}
+                            value={todoDescription}
                             onChange={(e: { target: { value: SetStateAction<string>; }; }) => {
-                                setTodoInput(e.target.value);
+                                setTodoDescription(e.target.value);
                             }}
-                            placeholder="Новая задача..."
-                            className={classes.inputNewTodo}
+                            placeholder="Опишите задачу, добавьте заголовки и списки…"
+                            className={classes.descriptionNewTodo}
                         />
-                        <input
-                        type="text"
-                        id="text"
-                        value={todoDescription}
-                        onChange={(e: { target: { value: SetStateAction<string>; }; }) => {
-                            setTodoDescription(e.target.value);
-                        }}
-                        placeholder="Опишите задачу"
-                        className={classes.descriptionNewTodo}
-                        />
+
+                        <p>Исполнитель</p>
+                        <input/>
+
+                        <p>Статус</p>
+                        <input/>
+
+                        <p>Дедлайн</p>
+                        <input/>
+
+                        <button>
+                            Отмена
+                        </button>
+
                         <button>
                             Добавить
                         </button>
