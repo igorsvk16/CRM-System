@@ -58,12 +58,3 @@ export async function deleteTodo(id: number) {
         throw new Error('Ошибка удаления задачи');
     }
 }
-
-export async function getUsers() {
-    const response = await fetch("https://tech-mindset.ru/api/v1/users");
-    const resData = await response.json();
-    if (!response.ok) {
-        throw new Error("Ошибка получения пользователей")
-    }
-    return resData;
-}

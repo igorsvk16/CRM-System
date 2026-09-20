@@ -3,7 +3,6 @@ import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
 import React = require("react");
-import {getUsers} from "../../api/http.js";
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
 
@@ -72,11 +71,11 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                         />
 
                         <div className={classes.saveOrCancelNewTask}>
-                            <button>
+                            <button className={classes.cancelButton} onClick={handleCancel}>
                                 Отмена
                             </button>
 
-                            <button>
+                            <button className={classes.saveButton} type="submit">
                                 Добавить
                             </button>
                         </div>
