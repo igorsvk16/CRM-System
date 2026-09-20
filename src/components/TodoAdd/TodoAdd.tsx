@@ -3,6 +3,7 @@ import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
 import React = require("react");
+import {getUsers} from "../../api/http.js";
 
 const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
 
@@ -29,7 +30,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
     }
 
     const toggleOpenAddTaskMenu = () => {
-        setIsAddModalOpen(true)
+        setIsAddModalOpen(true);
     }
     return (
         <>
@@ -69,21 +70,6 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                             placeholder="Опишите задачу, добавьте заголовки и списки…"
                             className={classes.descriptionNewTodo}
                         />
-
-                        <div className={classes.newTodoPersonAndStatus}>
-                            <div>
-                                <p>Исполнитель</p>
-                                <div className={classes.dropDownMenuExecutor}>
-                                    {users.map(user: User) => (
-                                        <a></a>
-                                        )}
-                                </div>
-                            </div>
-                            <div>
-                                <p>Статус</p>
-                                <input/>
-                            </div>
-                        </div>
 
                         <div className={classes.saveOrCancelNewTask}>
                             <button>

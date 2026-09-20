@@ -41,8 +41,8 @@ export default function Todo() {
         fetchTodos();
     }, [currentCategory]);
 
-    function updateTodos(currentCategory: string) {
-        getTodos(currentCategory)
+    function updateTodos() {
+        getTodos()
             .then(todos => {
                 setTodos(todos.data);
                 setTodoCounter(todos.meta.statusCounts);
