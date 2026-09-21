@@ -1,4 +1,4 @@
-import {useState, SetStateAction, useRef} from "react";
+import {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
