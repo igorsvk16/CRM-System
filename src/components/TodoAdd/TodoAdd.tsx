@@ -1,4 +1,4 @@
-import {useState, SetStateAction} from "react";
+import {useState, SetStateAction, useRef} from "react";
 import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
@@ -29,7 +29,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
     }
 
     const toggleOpenAddTaskMenu = () => {
-        setIsAddModalOpen(true);
+        setIsAddModalOpen(!isAddModalOpen);
     }
     return (
         <>
@@ -44,7 +44,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
             </div>
         {isAddModalOpen && (
             <div className={classes.modalBackground}>
-                <div className={classes.addTaskModalContainer}>
+                <div className={classes.addTaskModalContainer} >
                     <form onSubmit={fetchAddTodo} className={classes.todoAdd}>
                         <h3>Новая задача</h3>
                         <p>* Название</p>
@@ -71,7 +71,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
                         />
 
                         <div className={classes.saveOrCancelNewTask}>
-                            <button className={classes.cancelButton} onClick={handleCancel}>
+                            <button className={classes.cancelButton} onClick={toggleOpenAddTaskMenu}>
                                 Отмена
                             </button>
 
