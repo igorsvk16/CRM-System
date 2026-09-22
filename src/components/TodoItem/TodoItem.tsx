@@ -1,21 +1,20 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
-import styles from "./TodoItem.module.css";
 import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
 import EditButton from "../../ui/EditButton/EditButton.tsx";
 import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
 import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
+import styles from "./TodoItem.module.css";
 
-
-const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: (text: string) => void, currentCategory: string, setIsDraggingId: Dispatch<SetStateAction<number>>, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
+const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: () => void, setIsDraggingId: Dispatch<SetStateAction<number>>, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
     const [ editedTodoTitle, setEditedTodoTitle ] = useState<string>("");
 
     const onSelectDelete = () => {
         deleteTodo(props.todoData.id)
             .then(() => {
-            props.updateTodos(props.currentCategory);
+            props.updateTodos();
         }, reason => {
             alert("Не получилось удалить задачу");
             alert(reason);
@@ -25,12 +24,12 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     const onEnableEditMode = () => {
         setIsEdit(true);
         setEditedTodoTitle(props.todoData.title);
-        props.updateTodos(props.currentCategory);
+        props.updateTodos();
     }
 
     const cancelEditTask = () => {
         setIsEdit(false);
-        props.updateTodos(props.currentCategory);
+        props.updateTodos();
     }
 
     const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: string; }) => {
@@ -42,7 +41,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
                 .then(() => {
                     todoData.title = editedTodoTitle;
                     setIsEdit(false);
-                    props.updateTodos(props.currentCategory);
+                    props.updateTodos();
                     setEditedTodoTitle('');
                 }, reason => {
                     alert("Не получилось отредактировать задачу");

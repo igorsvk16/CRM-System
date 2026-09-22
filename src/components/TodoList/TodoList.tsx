@@ -5,7 +5,7 @@ import { TaskData, TasksData } from "../../type/interface/TasksData.ts";
 import { changeTodo } from "../../api/http.ts";
 import styles from "./TodoList.module.css";
 
-const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: Dispatch<SetStateAction<string>>, updateTodos: (text: string) => void, currentCategory: string, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
+const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => void, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
 
     const categoriesTitles = {
         todo: "К выполнению",
@@ -17,12 +17,11 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: D
     }
 
     function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
-        props.setCurrentCategory(categoryName);
-        props.updateTodos(categoryName);
+        props.updateTodos();
 
         changeTodo(isDraggingId, categoryName, title)
             .then(() => {
-                props.updateTodos(props.currentCategory);
+                props.updateTodos();
             }, reason => {
                 alert("Ошибка обновления статуса задачи");
                 alert(reason);
@@ -46,7 +45,6 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, setCurrentCategory: D
                             key={todoData.id}
                             todoData={todoData}
                             updateTodos={props.updateTodos}
-                            currentCategory={props.currentCategoryOfTasks}
                             isDraggingId={props.isDraggingId}
                             currentTitle={props.currentTitle}
                             setIsDraggingId={props.setIsDraggingId}

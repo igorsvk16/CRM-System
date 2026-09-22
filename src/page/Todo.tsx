@@ -1,8 +1,8 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import { getTodos } from "../api/http.ts";
 import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
 import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
-import {TaskData} from "../type/interface/TasksData.ts";
+import {TasksData} from "../type/interface/TasksData.ts";
 import Header from "../components/Header/Header.tsx";
 import ProjectMenu from "../components/ProjectMenu/ProjectMenu.tsx";
 import {TodoCounter} from "../type/interface/TodoCounter.ts";
@@ -10,16 +10,7 @@ import classes from "./Todo.module.css";
 
 export default function Todo() {
 
-    const [todos, setTodos] = useState<TaskData>({
-        createdAt: "",
-        creator: {name: ""},
-        description: "",
-        executor: {name: ""},
-        id: 0,
-        status: "",
-        title: "",
-        updatedAt: "",
-    });
+    const [todos, setTodos] = useState<TasksData>();
     const [todoCounter, setTodoCounter] = useState<TodoCounter>({
         todo: 0,
         inProgress: 0,
@@ -28,18 +19,17 @@ export default function Todo() {
         onHold: 0,
         done: 0,
     });
-    const [ currentCategory, setCurrentCategory ] = useState<string>("todo");
+
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isDraggingId, setIsDraggingId ] = useState<number>();
     const [ currentTitle, setCurrentTitle ] = useState<string>();
-    const a = useRef(isDraggingId);
 
     useEffect(() => {
         function fetchTodos() {
-            updateTodos(currentCategory);
+            updateTodos();
         }
         fetchTodos();
-    }, [currentCategory]);
+    }, []);
 
     function updateTodos() {
         getTodos()
@@ -62,14 +52,11 @@ export default function Todo() {
                     <div className={classes.todoAdd}>
                         <TodoAdd
                             updateTodos={updateTodos}
-                            currentCategory={currentCategory}
                         />
                     </div>
                     <div className={classes.todoFilter}>
                         <TodosFilter
-                            currentCategory={currentCategory}
                             todoCounter={todoCounter}
-                            setCurrentCategory={setCurrentCategory}
                             updateTodos={updateTodos}
                             todos={todos}
                             isLoading={isLoading}

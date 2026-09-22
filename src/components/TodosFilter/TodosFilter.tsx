@@ -4,7 +4,8 @@ import TodoList from "../TodoList/TodoList.tsx";
 import {TodoCounter} from "../../type/interface/TodoCounter.ts";
 import styles from './TodosFilter.module.css';
 
-const TodosFilter: React.FC<{currentCategory: string, todoCounter: TodoCounter, setCurrentCategory: Dispatch<SetStateAction<string>>, updateTodos: (text: string) => void, todos: TasksData, isLoading: boolean, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
+const TodosFilter: React.FC<{todoCounter: TodoCounter, updateTodos: () => void, todos: TasksData, isLoading: boolean, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
+
 
     const tasksStatuses = ['todo', 'inProgress', "review", "readyForRelease", "onHold", "done"];
 
@@ -19,9 +20,7 @@ const TodosFilter: React.FC<{currentCategory: string, todoCounter: TodoCounter, 
                             <TodoList
                                 key={tasksStatus}
                                 currentCategoryOfTasks={tasksStatus}
-                                setCurrentCategory={props.setCurrentCategory}
                                 updateTodos={props.updateTodos}
-                                currentCategory={props.currentCategory}
                                 todoCounter={props.todoCounter}
                                 todos={props.todos}
                                 isDraggingId={props.isDraggingId}

@@ -4,7 +4,7 @@ import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
 import React = require("react");
 
-const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory: string })> = (props) => {
+const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
 
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [todoInput, setTodoInput] = useState<string>("");
@@ -18,7 +18,7 @@ const TodoAdd: React.FC<({ updateTodos: (text: string) => void, currentCategory:
         } else {
             addTodo(todoInput)
                 .then(() => {
-                        props.updateTodos(props.currentCategory);
+                        props.updateTodos();
                         setTodoInput('');
                     }, reason => {
                         alert("Ошибка при добавлении задачи");
