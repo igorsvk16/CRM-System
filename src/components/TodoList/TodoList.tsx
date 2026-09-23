@@ -5,15 +5,15 @@ import { TaskData, TasksData } from "../../type/interface/TasksData.ts";
 import { changeTodo } from "../../api/http.ts";
 import styles from "./TodoList.module.css";
 
-const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => void, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setIsDraggingId: Dispatch<SetStateAction<number>>, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
+const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => void, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
 
     const categoriesTitles = {
-        todo: "К выполнению",
-        inProgress: "В работе",
-        review: "Ревью",
-        readyForRelease: "Готово к релизу",
-        onHold: "На паузе",
-        done: "Выполнено",
+        todo: "К ВЫПОЛНЕНИЮ ",
+        inProgress: "В РАБОТЕ",
+        review: "РЕВЬЮ",
+        readyForRelease: "ГОТОВО К РЕЛИЗУ",
+        onHold: "НА ПАУЗЕ",
+        done: "ВЫПОЛНЕНО",
     }
 
     function handleChangeCategory(categoryName: string, isDraggingId: number, title: string) {
@@ -34,9 +34,14 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => vo
             onDragEnter={() => handleChangeCategory(props.currentCategoryOfTasks, props.isDraggingId, props.currentTitle)}
             onDragOver={(e) => e.preventDefault()}
         >
-            <p className={styles.todoCategory}>
-                {categoriesTitles[props.currentCategoryOfTasks as keyof TodoCounter]} {props.todoCounter[props.currentCategoryOfTasks as keyof TodoCounter]}
-            </p>
+            <div className={styles.todoCategory}>
+                <p>
+                    {categoriesTitles[props.currentCategoryOfTasks as keyof TodoCounter]}
+                </p>
+                <p className={styles.todoCategoryCounter}>
+                    {props.todoCounter[props.currentCategoryOfTasks as keyof TodoCounter]}
+                </p>
+            </div>
             <section>
                 {(props.todos)
                     .filter(todoData => todoData.status === props.currentCategoryOfTasks)
@@ -47,8 +52,8 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => vo
                             updateTodos={props.updateTodos}
                             isDraggingId={props.isDraggingId}
                             currentTitle={props.currentTitle}
-                            setIsDraggingId={props.setIsDraggingId}
                             setCurrentTitle={props.setCurrentTitle}
+                            setIsDraggingId={props.setIsDraggingId}
                         />
                     ))}
             </section>

@@ -12,7 +12,6 @@ export default function Todo() {
 
     const [todos, setTodos] = useState<TasksData>();
     const [todoCounter, setTodoCounter] = useState<TodoCounter>();
-
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isDraggingId, setIsDraggingId ] = useState<number>();
     const [ currentTitle, setCurrentTitle ] = useState<string>();
@@ -55,8 +54,8 @@ export default function Todo() {
                             isLoading={isLoading}
                             isDraggingId={isDraggingId}
                             currentTitle={currentTitle}
-                            setIsDraggingId={setIsDraggingId}
                             setCurrentTitle={setCurrentTitle}
+                            setIsDraggingId={setIsDraggingId}
                         />
                     </div>
                 </div>
