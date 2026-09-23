@@ -12,6 +12,7 @@
     background-color: #ffffff;
     width: 20rem;
     flex-direction: column;
+    padding: 1rem;
 }
 
 .todo input {
@@ -62,6 +63,19 @@
     width: 20px;
     height: auto;
     display: flex;
+}
+
+.taskButtons {
+    display: flex;
+    justify-content: right;
+    visibility: hidden;
+    opacity: 0;
+
+}
+.todo:hover
+.taskButtons {
+    visibility: visible;
+    opacity: 1;
 }
 
 

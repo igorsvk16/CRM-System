@@ -92,9 +92,11 @@ return isEdit ?
                     className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
             </div>
-            <div>
-                <EditButton onEdit={onEnableEditMode} />
-                <DeleteButton onDelete={onSelectDelete} />
+            <div className={styles.taskButtons}>
+                {/*<EditButton onEdit={onEnableEditMode} />*/}
+                <button onClick={onEnableEditMode} className={styles.editBtn}>Открыть</button>
+                {/*<DeleteButton onDelete={onSelectDelete} />*/}
+                <button onClick={onSelectDelete} className={styles.delBtn}>Удалить</button>
             </div>
         </div>
     </div>
