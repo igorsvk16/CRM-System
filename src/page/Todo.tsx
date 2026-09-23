@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 import { getTodos } from "../api/http.ts";
 import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
 import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
-import {TasksData} from "../type/interface/TasksData.ts";
 import Header from "../components/Header/Header.tsx";
 import ProjectMenu from "../components/ProjectMenu/ProjectMenu.tsx";
+import {TasksData} from "../type/interface/TasksData.ts";
 import {TodoCounter} from "../type/interface/TodoCounter.ts";
 import classes from "./Todo.module.css";
 
