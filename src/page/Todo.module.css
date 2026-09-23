@@ -10,7 +10,6 @@ body {
 .tasksDashboard {
     display: flex;
     flex-direction: column;
-    overflow-x: auto;
     width: 100%;
     height: 100%;
     background-color: white;
@@ -19,10 +18,15 @@ body {
 .todoAdd {
     display: flex;
     justify-content: right;
+    /*max-width: 73rem;*/
 }
 
 .todoFilter {
     display: flex;
     justify-content: end;
+    overflow-x: auto;
+}
 
+.addTaskAndCategories {
+    max-width: 80vw;
 }
