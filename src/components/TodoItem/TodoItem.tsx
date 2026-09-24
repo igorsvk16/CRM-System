@@ -1,10 +1,6 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import {changeTodo, deleteTodo} from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
-import DeleteButton from "../../ui/DeleteButton/DeleteButton.tsx";
-import EditButton from "../../ui/EditButton/EditButton.tsx";
-import CancelButton from "../../ui/CancelButton/CancelButton.tsx";
-import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 import styles from "./TodoItem.module.css";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: () => void, setIsDraggingId: Dispatch<SetStateAction<number>>, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
@@ -69,9 +65,14 @@ return isEdit ?
                     onChange={(e) => setEditedTodoTitle(e.target.value)}
                     className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
-                <SaveButton />
+                {/*<SaveButton />*/}
+                <div className={styles.taskButtons}>
+                    <button className={styles.editBtn} type="submit">Сохранить</button>
+                    <button className={styles.delBtn} onClick={cancelEditTask}>Отмена</button>
+                </div>
             </form>
-            <CancelButton onSelectCancel={cancelEditTask} />
+            {/*<CancelButton onSelectCancel={cancelEditTask} />*/}
+
         </div>
     </div>
 

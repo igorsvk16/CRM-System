@@ -48,13 +48,23 @@
 }
 
 .editBtn {
-    color: inherit;
     border: none;
     font: inherit;
     cursor: pointer;
     outline: inherit;
     padding: 0.5rem;
-    background-color: #4b8df7;
+    color: #4b8df7;
+    border-radius: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+.delBtn {
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 0.5rem;
+    color: rgb(255, 77, 79);
     border-radius: 0.3rem;
     margin: 0.5rem 0;
 }
@@ -68,11 +78,12 @@
 .taskButtons {
     display: flex;
     justify-content: right;
+    font-size: 0.8rem;
     visibility: hidden;
     opacity: 0;
-
+    height: 2rem;
 }
-.todo:hover
+.todo:hover,
 .taskButtons {
     visibility: visible;
     opacity: 1;
