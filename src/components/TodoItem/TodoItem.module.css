@@ -13,6 +13,8 @@
     width: 20rem;
     flex-direction: column;
     padding: 1rem;
+    box-shadow: 10px 5px 5px rgb(225, 227, 237);
+    border-radius: 2px;
 }
 
 .todo input, p {
@@ -84,8 +86,7 @@
     visibility: hidden;
     opacity: 0;
 }
-.todo:hover
-.taskButtons {
+.todo:hover .taskButtons {
     visibility: visible;
     opacity: 1;
 }
