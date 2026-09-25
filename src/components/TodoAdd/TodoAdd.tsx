@@ -75,7 +75,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                                 Отмена
                             </button>
 
-                            <button className={classes.saveButton} type="submit">
+                            <button className={classes.saveButton} type="submit" onClick={toggleOpenAddTaskMenu}>
                                 Добавить
                             </button>
                         </div>
