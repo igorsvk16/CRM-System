@@ -86,12 +86,13 @@ return isEdit ?
              onDragStart={() => handleDragging(props.todoData.id, props.todoData.title)}
         >
             <div>
-                <input
-                    value={props.todoData.title}
-                    type="text"
-                    readOnly={true}
-                    className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
-                />
+                {/*<input*/}
+                {/*    value={props.todoData.title}*/}
+                {/*    type="text"*/}
+                {/*    readOnly={true}*/}
+                {/*    className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}*/}
+                {/*/>*/}
+                <p>{props.todoData.title}</p>
             </div>
             <div className={styles.taskButtons}>
                 {/*<EditButton onEdit={onEnableEditMode} />*/}

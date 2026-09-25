@@ -15,10 +15,11 @@
     padding: 1rem;
 }
 
-.todo input {
+.todo input, p {
     font-weight: 500;
     font-size: 0.8rem;
     font-family: Arial , serif;
+    user-select: text;
 }
 
 .notCheckbox {
@@ -79,14 +80,20 @@
     display: flex;
     justify-content: right;
     font-size: 0.8rem;
+    height: 2rem;
     visibility: hidden;
     opacity: 0;
-    height: 2rem;
 }
-.todo:hover,
+.todo:hover
 .taskButtons {
     visibility: visible;
     opacity: 1;
 }
 
+.taskEditButtons {
+    display: flex;
+    justify-content: right;
+    font-size: 0.8rem;
+    height: 2rem;
+}
 
