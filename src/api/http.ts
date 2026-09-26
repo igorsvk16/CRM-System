@@ -9,6 +9,7 @@ export async function getTodos(){
 }
 
 export async function addTodo(title: string){
+    console.log("addTodo")
     const response = await fetch("https://tech-mindset.ru/api/v1/tasks", {
         method: 'POST',
         body: JSON.stringify({

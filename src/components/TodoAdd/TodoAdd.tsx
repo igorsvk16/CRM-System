@@ -11,6 +11,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
     const [todoDescription, setTodoDescription] = useState<string>("");
 
     const fetchAddTodo = (event: React.SubmitEvent<HTMLFormElement>) => {
+        console.log("fetchAddTodo")
         event.preventDefault();
         const validateTitle = checkTitleValidation(todoInput);
         if (validateTitle) {
@@ -26,6 +27,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                     }
                 )
         }
+        toggleOpenAddTaskMenu();
     }
 
     const toggleOpenAddTaskMenu = () => {
@@ -57,7 +59,6 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                                 }}
                                 className={classes.inputNewTodo}
                             />
-
                         <p>Описание</p>
                         <input
                             type="text"
@@ -74,8 +75,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                             <button className={classes.cancelButton} onClick={toggleOpenAddTaskMenu}>
                                 Отмена
                             </button>
-
-                            <button className={classes.saveButton} type="submit" onClick={toggleOpenAddTaskMenu}>
+                            <button className={classes.saveButton} type="submit">
                                 Добавить
                             </button>
                         </div>
