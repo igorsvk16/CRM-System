@@ -2,11 +2,9 @@
     display: flex;
     background-color: white;
 }
-
 body {
     margin: 0;
 }
-
 .tasksDashboard {
     display: flex;
     flex-direction: column;
@@ -14,19 +12,15 @@ body {
     height: 100%;
     background-color: white;
 }
-
 .todoAdd {
     display: flex;
     justify-content: right;
-    /*max-width: 73rem;*/
 }
-
 .todoFilter {
     display: flex;
     justify-content: end;
     overflow-x: auto;
 }
-
 .addTaskAndCategories {
     max-width: 80vw;
 }

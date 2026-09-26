@@ -1,7 +1,6 @@
 .todoListContainer {
     background-color: #f3f7fb;
 }
-
 .todosCategories {
     display: flex;
     flex-direction: row;
@@ -9,7 +8,6 @@
     background-color: #f3f7fb;
     border: none;
 }
-
 .todoCategory {
     background: none;
     border: none;
@@ -26,16 +24,13 @@
     flex-direction: row;
     justify-content: space-between;
     width: 14rem;
-
 }
-
 .todoCategoryCounter {
     background-color: #dfe1e6;
     width: 1rem;
     text-align: center;
     border-radius: 1rem;
 }
-
 .todoContainer {
     display: flex;
     flex-direction: column;
@@ -43,8 +38,6 @@
     padding-left: 1rem;
     text-align: center;
 }
-
-
 .tasksColumn {
     display: flex;
     flex-direction: column;

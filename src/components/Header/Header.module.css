@@ -5,13 +5,10 @@
     border-bottom: 0.1rem #DFE1E6 solid;
     align-items: center;
     background-color: #FFFFFF;
-    /*margin-bottom: 1rem;*/
 }
-
 .headerContainer p, h1 {
     margin-right: 1rem;
 }
-
 .addButton {
     display: flex;
     background-color: #0052CC;
@@ -29,11 +26,9 @@
     margin: 0;
     line-height: 0;
 }
-
 .addButton:hover {
     background-color: #347bf0;
 }
-
 button {
     background: none;
     border: none;

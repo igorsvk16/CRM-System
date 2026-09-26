@@ -1,10 +1,10 @@
+/* global RequestInit */
 export async function getTodos(){
     const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/`)
     const resData = await response.json();
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');
     }
-
     return resData;
 }
 

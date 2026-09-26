@@ -3,7 +3,6 @@
     justify-content: center;
     max-width: 300px;
 }
-
 .todo {
     display: flex;
     justify-content: center;
@@ -16,23 +15,19 @@
     box-shadow: 10px 5px 5px rgb(225, 227, 237);
     border-radius: 2px;
 }
-
 .todo input, p {
     font-weight: 500;
     font-size: 0.8rem;
     font-family: Arial , serif;
     user-select: text;
 }
-
 .notCheckbox {
     padding: 1.5rem;
 }
-
 .deleteIcon {
     width: 20px;
     height: auto;
 }
-
 .todoTitleDone {
     border: none;
     background-color: #ffffff;
@@ -41,7 +36,6 @@
     text-decoration: line-through;
     color: #201f23;
 }
-
 .todoTitleUndone {
     border: none;
     background-color: #ffffff;
@@ -49,7 +43,6 @@
     font-weight: 200;
     color: #201f23;
 }
-
 .editBtn {
     border: none;
     font: inherit;
@@ -60,7 +53,6 @@
     border-radius: 0.3rem;
     margin: 0.5rem 0;
 }
-
 .delBtn {
     border: none;
     font: inherit;
@@ -71,13 +63,11 @@
     border-radius: 0.3rem;
     margin: 0.5rem 0;
 }
-
 .editIcon {
     width: 20px;
     height: auto;
     display: flex;
 }
-
 .taskButtons {
     display: flex;
     justify-content: right;
@@ -90,7 +80,6 @@
     visibility: visible;
     opacity: 1;
 }
-
 .taskEditButtons {
     display: flex;
     justify-content: right;

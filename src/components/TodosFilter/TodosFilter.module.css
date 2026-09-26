@@ -6,7 +6,6 @@
     border: none;
     width: 100%;
 }
-
 .todoCategory {
     background: none;
     color: inherit;
@@ -19,7 +18,6 @@
     border-bottom: 2px solid #f3f7fb;
     margin: 0.7rem;
 }
-
 .todoContainer {
     display: flex;
     flex-direction: column;
@@ -27,15 +25,12 @@
     padding-left: 1rem;
     text-align: center;
 }
-
-
 .centeredText {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-
 .tasksColumn {
     display: flex;
     flex-direction: column;

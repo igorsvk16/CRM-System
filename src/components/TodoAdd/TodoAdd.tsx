@@ -1,8 +1,8 @@
+import React from "react";
 import {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
-import React = require("react");
 
 const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
 
@@ -11,7 +11,6 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
     const [todoDescription, setTodoDescription] = useState<string>("");
 
     const fetchAddTodo = (event: React.SubmitEvent<HTMLFormElement>) => {
-        console.log("fetchAddTodo")
         event.preventDefault();
         const validateTitle = checkTitleValidation(todoInput);
         if (validateTitle) {
@@ -70,7 +69,6 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                             placeholder="Опишите задачу, добавьте заголовки и списки…"
                             className={classes.descriptionNewTodo}
                         />
-
                         <div className={classes.saveOrCancelNewTask}>
                             <button className={classes.cancelButton} onClick={toggleOpenAddTaskMenu}>
                                 Отмена

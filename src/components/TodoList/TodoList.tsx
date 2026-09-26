@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import TodoItem from '../TodoItem/TodoItem.tsx';
-import {TodoCounter} from "../../type/interface/TodoCounter.ts";
-import { TaskData, TasksData } from "../../type/interface/TasksData.ts";
 import { changeTodo } from "../../api/http.ts";
+import { TodoCounter } from "../../type/interface/TodoCounter.ts";
+import { TaskData, TasksData } from "../../type/interface/TasksData.ts";
 import styles from "./TodoList.module.css";
 
 const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => void, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {

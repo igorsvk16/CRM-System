@@ -10,8 +10,8 @@ import classes from "./Todo.module.css";
 
 export default function Todo() {
 
-    const [todos, setTodos] = useState<TasksData>();
-    const [todoCounter, setTodoCounter] = useState<TodoCounter>();
+    const [ todos, setTodos ] = useState<TasksData>();
+    const [ todoCounter, setTodoCounter ] = useState<TodoCounter>();
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isDraggingId, setIsDraggingId ] = useState<number>();
     const [ currentTitle, setCurrentTitle ] = useState<string>();
@@ -42,9 +42,7 @@ export default function Todo() {
                 <ProjectMenu />
                 <div className={classes.addTaskAndCategories}>
                     <div className={classes.todoAdd}>
-                        <TodoAdd
-                            updateTodos={updateTodos}
-                        />
+                        <TodoAdd updateTodos={updateTodos}/>
                     </div>
                     <div className={classes.tasksDashboard}>
                         <div className={classes.todoFilter}>
@@ -54,9 +52,9 @@ export default function Todo() {
                                 todos={todos}
                                 isLoading={isLoading}
                                 isDraggingId={isDraggingId}
+                                setIsDraggingId={setIsDraggingId}
                                 currentTitle={currentTitle}
                                 setCurrentTitle={setCurrentTitle}
-                                setIsDraggingId={setIsDraggingId}
                             />
                         </div>
                     </div>

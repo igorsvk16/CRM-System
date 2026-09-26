@@ -1,5 +1,5 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
-import {changeTodo, deleteTodo} from "../../api/http.js";
+import { changeTodo, deleteTodo } from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
 
@@ -72,7 +72,6 @@ return isEdit ?
                 </div>
             </form>
             {/*<CancelButton onSelectCancel={cancelEditTask} />*/}
-
         </div>
     </div>
 
