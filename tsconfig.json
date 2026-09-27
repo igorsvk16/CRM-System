@@ -1,8 +1,4 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-  ],
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
@@ -13,6 +9,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["DOM"],
+    "composite": true,
+    "noEmit": true,
     "allowImportingTsExtensions": true,
   },
   "include": ["src/**/*"]

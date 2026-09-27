@@ -10,11 +10,19 @@ import classes from "./Todo.module.css";
 
 export default function Todo() {
 
-    const [ todos, setTodos ] = useState<TasksData>();
-    const [ todoCounter, setTodoCounter ] = useState<TodoCounter>();
+    const [ todos, setTodos ] = useState<TasksData>([]);
     const [ isLoading, setIsLoading ] = useState(true);
-    const [ isDraggingId, setIsDraggingId ] = useState<number>();
-    const [ currentTitle, setCurrentTitle ] = useState<string>();
+    const [ isDraggingId, setIsDraggingId ] = useState<number>(0);
+    const [ currentTitle, setCurrentTitle ] = useState<string>("");
+
+    const [ todoCounter, setTodoCounter ] = useState<TodoCounter>({
+        todo: 0,
+        inProgress: 0,
+        review: 0,
+        readyForRelease: 0,
+        onHold: 0,
+        done: 0,
+    });
 
     useEffect(() => {
         function fetchTodos() {
