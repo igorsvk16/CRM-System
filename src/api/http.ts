@@ -32,7 +32,7 @@ export async function addTodo(title: string){
     return resData;
 }
 
-export async function changeTodo(id: number, isDone: string, title: string ) {
+export async function changeTodo(id: number, isDone: string, title: string ) : Promise<object> {
     const response = await fetch(`${DOMAIN}/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
