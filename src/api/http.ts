@@ -2,7 +2,7 @@
 
 const DOMAIN = import.meta.env.VITE_API_URL;
 
-export async function getTodos(){
+export async function getTodos() : Promise<object>{
     const response = await fetch(DOMAIN)
     const resData = await response.json();
     if (!response.ok) {
@@ -11,7 +11,7 @@ export async function getTodos(){
     return resData;
 }
 
-export async function addTodo(title: string){
+export async function addTodo(title: string) : Promise<object>{
     const response = await fetch(DOMAIN, {
         method: 'POST',
         body: JSON.stringify({
