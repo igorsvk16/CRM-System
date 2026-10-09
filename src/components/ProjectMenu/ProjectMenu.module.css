@@ -4,12 +4,12 @@
     justify-content: start;
     align-items: start;
     background-color: #F4F5F7;
-    border-right: #DFE1E6 solid 0.1rem;
+    border-right: #DFE1E6 solid 1px;
     padding: 0 1rem;
-    margin: 0 1.5rem 0 0;
+    margin: 0 1rem 0 0;
     width: 12rem;
     height: 100vh;
 }
 .leftSidebar button {
-    padding-bottom: 0.7rem;
+    padding-bottom: 1rem;
 }
