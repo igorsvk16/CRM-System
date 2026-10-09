@@ -1,6 +1,9 @@
 /* global RequestInit */
+
+const DOMAIN = import.meta.env.VITE_API_URL;
+
 export async function getTodos(){
-    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/`)
+    const response = await fetch(DOMAIN)
     const resData = await response.json();
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');
@@ -9,13 +12,14 @@ export async function getTodos(){
 }
 
 export async function addTodo(title: string){
-    console.log("addTodo")
-    const response = await fetch("https://tech-mindset.ru/api/v1/tasks", {
+    const response = await fetch(DOMAIN, {
         method: 'POST',
         body: JSON.stringify({
             title: title,
             executorId: 1,
-            status: "todo"
+            status: "todo",
+            // executorId: 1,
+            // status: "todo",
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +33,7 @@ export async function addTodo(title: string){
 }
 
 export async function changeTodo(id: number, isDone: string, title: string ) {
-    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/${id}`, {
+    const response = await fetch(`${DOMAIN}/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             title: title,
@@ -49,7 +53,7 @@ export async function changeTodo(id: number, isDone: string, title: string ) {
 }
 
 export async function deleteTodo(id: number) {
-    const response = await fetch(`https://tech-mindset.ru/api/v1/tasks/${id}`, {
+    const response = await fetch(`${DOMAIN}/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
