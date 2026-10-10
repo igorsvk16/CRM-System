@@ -65,13 +65,11 @@ return isEdit ?
                     onChange={(e) => setEditedTodoTitle(e.target.value)}
                     className={props.todoData.status === "done" ? styles.todoTitleDone : styles.todoTitleUndone}
                 />
-                {/*<SaveButton />*/}
                 <div className={styles.taskEditButtons}>
                     <button className={styles.editBtn} type="submit">Сохранить</button>
                     <button className={styles.delBtn} onClick={cancelEditTask}>Отмена</button>
                 </div>
             </form>
-            {/*<CancelButton onSelectCancel={cancelEditTask} />*/}
         </div>
     </div>
 
@@ -88,9 +86,7 @@ return isEdit ?
                 <p>{props.todoData.title}</p>
             </div>
             <div className={styles.taskButtons}>
-                {/*<EditButton onEdit={onEnableEditMode} />*/}
                 <button onClick={onEnableEditMode} className={styles.editBtn}>Открыть</button>
-                {/*<DeleteButton onDelete={onSelectDelete} />*/}
                 <button onClick={onSelectDelete} className={styles.delBtn}>Удалить</button>
             </div>
         </div>
