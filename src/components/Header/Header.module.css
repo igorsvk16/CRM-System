@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     align-content: center;
-    border-bottom: 1px #DFE1E6 solid;
+    border-bottom: 0.125rem #DFE1E6 solid;
     align-items: center;
     background-color: #FFFFFF;
 }
@@ -16,7 +16,7 @@
     padding: 1rem;
     width: 5rem;
     height: 1rem;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     color: white;
     text-align: center;
     font-weight: 600;
