@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    background-color: #F4F5F7;
-    border-right: #DFE1E6 solid 0.125rem;
+    background-color: var(--gray-background);
+    border-right: var(--border) solid 0.125rem;
     padding: 0 1rem;
     margin: 0 1rem 0 0;
     width: 12rem;
