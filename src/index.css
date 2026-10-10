@@ -1,4 +1,6 @@
 :root {
     --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
     font: 16px/145% var(--sans);
+    --blue-button: #0052CC;
+    --blue-button-hover: #347bf0;
 }

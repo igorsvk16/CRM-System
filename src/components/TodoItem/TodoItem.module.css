@@ -50,7 +50,7 @@
     cursor: pointer;
     outline: inherit;
     padding: 0.5rem;
-    color: #4b8df7;
+    color: var(--blue-button-hover);
     border-radius: 0.125rem;
     margin: 0.5rem 0;
 }

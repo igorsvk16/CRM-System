@@ -11,7 +11,7 @@
 }
 .addButton {
     display: flex;
-    background-color: #0052CC;
+    background-color: var(--blue-button);
     border: none;
     padding: 1rem;
     width: 5rem;
@@ -27,7 +27,7 @@
     line-height: 0;
 }
 .addButton:hover {
-    background-color: #347bf0;
+    background-color: var(--blue-button-hover);
 }
 button {
     background: none;
