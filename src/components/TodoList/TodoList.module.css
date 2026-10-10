@@ -17,9 +17,9 @@
     outline: inherit;
     font-weight: 600;
     border-bottom: 0.125rem solid #f3f7fb;
-    margin: 0.7rem;
+    margin: 1rem;
     color: #5e6c84;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

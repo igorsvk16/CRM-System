@@ -16,7 +16,7 @@
     outline: inherit;
     font-weight: 600;
     border-bottom: 0.125rem solid #f3f7fb;
-    margin: 0.7rem;
+    margin: 0.75rem;
 }
 .todoContainer {
     display: flex;

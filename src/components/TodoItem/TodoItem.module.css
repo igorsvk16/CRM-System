@@ -17,7 +17,7 @@
 }
 .todo input, p {
     font-weight: 500;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-family: Arial , serif;
     user-select: text;
 }
@@ -50,7 +50,7 @@
     outline: inherit;
     padding: 0.5rem;
     color: #4b8df7;
-    border-radius: 0.3rem;
+    border-radius: 0.125rem;
     margin: 0.5rem 0;
 }
 .delBtn {
@@ -60,7 +60,7 @@
     outline: inherit;
     padding: 0.5rem;
     color: rgb(255, 77, 79);
-    border-radius: 0.3rem;
+    border-radius: 0.125rem;
     margin: 0.5rem 0;
 }
 .editIcon {
@@ -71,7 +71,7 @@
 .taskButtons {
     display: flex;
     justify-content: right;
-    font-size: 0.8rem;
+    font-size: 1rem;
     height: 2rem;
     visibility: hidden;
     opacity: 0;
@@ -83,7 +83,7 @@
 .taskEditButtons {
     display: flex;
     justify-content: right;
-    font-size: 0.8rem;
+    font-size: 1rem;
     height: 2rem;
 }
 
