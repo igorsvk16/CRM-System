@@ -14,18 +14,17 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
         event.preventDefault();
         const validateTitle = checkTitleValidation(todoInput);
         if (validateTitle) {
-            alert(validateTitle);
-        } else {
-            addTodo(todoInput)
-                .then(() => {
-                        props.updateTodos();
-                        setTodoInput('');
-                    }, reason => {
-                        alert("Ошибка при добавлении задачи");
-                        alert(reason);
-                    }
-                )
+            return alert(validateTitle);
         }
+        addTodo(todoInput)
+            .then(() => {
+                    props.updateTodos();
+                    setTodoInput('');
+                }, reason => {
+                    alert("Ошибка при добавлении задачи");
+                    alert(reason);
+                }
+            )
         toggleOpenAddTaskMenu();
     }
 

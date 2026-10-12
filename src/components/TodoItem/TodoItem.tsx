@@ -31,19 +31,18 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: string; }) => {
         const validateTitle = checkTitleValidation(editedTodoTitle);
         if (validateTitle) {
-            alert(validateTitle);
-        } else {
-            changeTodo(todoData.id, todoData.isDone, editedTodoTitle)
-                .then(() => {
-                    todoData.title = editedTodoTitle;
-                    setIsEdit(false);
-                    props.updateTodos();
-                    setEditedTodoTitle('');
-                }, reason => {
-                    alert("Не получилось отредактировать задачу");
-                    alert(reason);
-                })
+            return alert(validateTitle);
         }
+        changeTodo(todoData.id, todoData.isDone, editedTodoTitle)
+            .then(() => {
+                todoData.title = editedTodoTitle;
+                setIsEdit(false);
+                props.updateTodos();
+                setEditedTodoTitle('');
+            }, reason => {
+                alert("Не получилось отредактировать задачу");
+                alert(reason);
+            })
     }
 
     const handleDragging = (id: number, title: string) => {
