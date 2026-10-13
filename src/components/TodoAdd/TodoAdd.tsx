@@ -36,12 +36,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
         <>
             <div className={classes.addButtonContainer}>
                  <h3>Доска Pulse CRM</h3>
-                <button
-                    onClick={toggleOpenAddTaskMenu}
-                    className={classes.addButton}
-                >
-                   Создать
-                </button>
+                <SaveButton text={"Создать"} func={toggleOpenAddTaskMenu}></SaveButton>
             </div>
         {isAddModalOpen && (
             <div className={classes.modalBackground}>
@@ -73,7 +68,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                             <button className={classes.cancelButton} onClick={toggleOpenAddTaskMenu}>
                                 Отмена
                             </button>
-                            <SaveButton></SaveButton>
+                            <SaveButton text={'Добавить'}></SaveButton>
                         </div>
                     </form>
 

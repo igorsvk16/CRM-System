@@ -1,4 +1,5 @@
 import classes from "./Header.module.css"
+import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 
 const Header = () => {
     return (
@@ -9,7 +10,7 @@ const Header = () => {
             <button>Рабочий стол</button>
             <button>Задачи</button>
             <button>Команда</button>
-            <button className={classes.addButton}>Создать</button>
+            <SaveButton text={"Создать"}></SaveButton>
         </header>
     )
 }

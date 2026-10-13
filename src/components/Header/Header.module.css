@@ -9,26 +9,6 @@
 .headerContainer p, h1 {
     margin-right: 1rem;
 }
-.addButton {
-    display: flex;
-    background-color: var(--blue-button);
-    border: none;
-    padding: 1rem;
-    width: 5rem;
-    height: 1rem;
-    border-radius: 0.5rem;
-    color: var(--white);
-    text-align: center;
-    font-weight: 600;
-    justify-content: center;
-    align-content: center;
-    vertical-align: middle;
-    margin: 0;
-    line-height: 0;
-}
-.addButton:hover {
-    background-color: var(--blue-button-hover);
-}
 button {
     background: none;
     border: none;
