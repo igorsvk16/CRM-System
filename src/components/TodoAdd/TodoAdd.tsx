@@ -3,6 +3,7 @@ import {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
+import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
 
 const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
 
@@ -72,9 +73,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                             <button className={classes.cancelButton} onClick={toggleOpenAddTaskMenu}>
                                 Отмена
                             </button>
-                            <button className={classes.saveButton} type="submit">
-                                Добавить
-                            </button>
+                            <SaveButton></SaveButton>
                         </div>
                     </form>
 

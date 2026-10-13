@@ -1,18 +1,13 @@
 import React from "react";
-import saveIcon from '../../assets/save.svg'
 import classes from "./SaveButton.module.css";
 
 const SaveButton: React.FC = () => {
     return (
         <button
             type="submit"
-            className={classes.editBtn}
+            className={classes.saveButton}
         >
-            <img
-                className={classes.editIcon}
-                src={saveIcon}
-                alt='save icon'
-            />
+            Добавить
         </button>
     )
 };
