@@ -8,7 +8,7 @@ import {TasksData} from "../type/interface/TasksData.ts";
 import {TodoCounter} from "../type/interface/TodoCounter.ts";
 import classes from "./Todo.module.css";
 
-export default function Todo() {
+export default function TodosPage() {
 
     const [ todos, setTodos ] = useState<TasksData>([]);
     const [ isLoading, setIsLoading ] = useState(true);

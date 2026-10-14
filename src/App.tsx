@@ -1,8 +1,8 @@
-import Todo from "./page/Todo.js";
+import TodosPage from "./page/TodosPage.tsx";
 
 function App() {
     return (
-        <Todo></Todo>
+        <TodosPage></TodosPage>
     )
 }
 

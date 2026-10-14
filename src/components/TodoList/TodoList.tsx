@@ -23,8 +23,7 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => vo
             .then(() => {
                 props.updateTodos();
             }, reason => {
-                alert("Ошибка обновления статуса задачи");
-                alert(reason);
+                alert(`Ошибка обновления статуса задачи, ${reason}`);
             })
     }
 
