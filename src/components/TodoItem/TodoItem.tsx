@@ -56,7 +56,7 @@ return isEdit ?
         <div
             className={styles.todo}
         >
-            <form action={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}>
+            <form onSubmit={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}>
                 <input
                     type="text"
                     value={editedTodoTitle}
