@@ -18,8 +18,6 @@ export async function addTodo(title: string) : Promise<object>{
             title: title,
             executorId: 1,
             status: "todo",
-            // executorId: 1,
-            // status: "todo",
         }),
         headers: {
             'Content-Type': 'application/json'
