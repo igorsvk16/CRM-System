@@ -1,8 +1,8 @@
 import React from "react";
-import classes from "./RedTextButton.module.css";
+import classes from "./CloseButton.css";
 
 
-const RedTextButton: React.FC<({text: string, func?: () => void})> = (props) => {
+const CloseButton: React.FC<({text: string, func?: () => void})> = (props) => {
     return (
         <button
             className={classes.delBtn}
@@ -13,4 +13,4 @@ const RedTextButton: React.FC<({text: string, func?: () => void})> = (props) => 
     )
 };
 
-export default RedTextButton;
+export default CloseButton;

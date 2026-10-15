@@ -1,4 +1,4 @@
-import {MAX_LENGTH, MIN_LENGTH} from "../../constants.ts";
+import {MAX_LENGTH, MIN_LENGTH} from "./constants.ts";
 
 export default function checkTitleValidation(todoInput: string): string {
     const inputTrimmedLength = todoInput.trim().length;

@@ -2,7 +2,7 @@ import React, { useState, Dispatch, SetStateAction } from "react";
 import { changeTodo, deleteTodo } from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
-import RedTextButton from "../../ui/RedTextButton/RedTextButton.tsx";
+import CloseButton from "../../ui/CloseButton/CloseButton.tsx";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: () => void, setIsDraggingId: Dispatch<SetStateAction<number>>, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);
@@ -67,7 +67,7 @@ return isEdit ?
                 />
                 <div className={styles.taskEditButtons}>
                     <button className={styles.editBtn} type="submit">Сохранить</button>
-                    <RedTextButton text={"Отмена"} func={cancelEditTask}></RedTextButton>
+                    <CloseButton text={"Отмена"} func={cancelEditTask}></CloseButton>
                 </div>
             </form>
         </div>
@@ -87,7 +87,7 @@ return isEdit ?
             </div>
             <div className={styles.taskButtons}>
                 <button onClick={onEnableEditMode} className={styles.editBtn}>Открыть</button>
-                <RedTextButton text={"Удалить"} func={onSelectDelete}></RedTextButton>
+                <CloseButton text={"Удалить"} func={onSelectDelete}></CloseButton>
             </div>
         </div>
     </div>
