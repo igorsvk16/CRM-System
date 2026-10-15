@@ -1,5 +1,5 @@
 import classes from "./Header.module.css"
-import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
+import SaveButton from "../ui/SaveButton/SaveButton.tsx";
 
 const Header = () => {
     return (

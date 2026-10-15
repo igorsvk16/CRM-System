@@ -2,7 +2,7 @@ import React, { useState, Dispatch, SetStateAction } from "react";
 import { changeTodo, deleteTodo } from "../../api/http.js";
 import checkTitleValidation from "../../utils/helpers/checkTitleValidation.js";
 import styles from "./TodoItem.module.css";
-import CloseButton from "../../ui/CloseButton/CloseButton.tsx";
+import CloseButton from "../ui/CloseButton/CloseButton.tsx";
 
 const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string; }, updateTodos: () => void, setIsDraggingId: Dispatch<SetStateAction<number>>, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>> }> = (props) => {
     const [ isEdit, setIsEdit ] = useState<boolean>(false);

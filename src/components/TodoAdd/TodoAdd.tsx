@@ -3,7 +3,7 @@ import {useState, SetStateAction} from "react";
 import {addTodo} from "../../api/http.js";
 import checkTitleValidation from '../../utils/helpers/checkTitleValidation.ts';
 import classes from "./TodoAdd.module.css";
-import SaveButton from "../../ui/SaveButton/SaveButton.tsx";
+import SaveButton from "../ui/SaveButton/SaveButton.tsx";
 
 const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
 
