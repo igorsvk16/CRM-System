@@ -22,8 +22,7 @@ const TodoAdd: React.FC<({ updateTodos: () => void })> = (props) => {
                     props.updateTodos();
                     setTodoInput('');
                 }, reason => {
-                    alert("Ошибка при добавлении задачи");
-                    alert(reason);
+                    alert(`Ошибка при добавлении задачи ${reason}`);
                 }
             )
         toggleOpenAddTaskMenu();

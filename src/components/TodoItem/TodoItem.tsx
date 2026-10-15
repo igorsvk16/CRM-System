@@ -13,8 +13,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
             .then(() => {
             props.updateTodos();
         }, reason => {
-            alert("Не получилось удалить задачу");
-            alert(reason);
+            alert(`Не получилось удалить задачу ${reason}`);
         })
     }
 
@@ -41,8 +40,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
                 props.updateTodos();
                 setEditedTodoTitle('');
             }, reason => {
-                alert("Не получилось отредактировать задачу");
-                alert(reason);
+                alert(`Не получилось отредактировать задачу ${reason}`);
             })
     }
 
