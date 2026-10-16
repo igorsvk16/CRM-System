@@ -17,7 +17,6 @@ export async function addTodo(title: string) : Promise<object>{
         body: JSON.stringify({
             title: title,
             executorId: 1,
-            status: "todo",
         }),
         headers: {
             'Content-Type': 'application/json'

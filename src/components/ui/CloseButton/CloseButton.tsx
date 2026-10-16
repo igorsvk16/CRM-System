@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./CloseButton.css";
+import classes from "./CloseButton.module.css";
 
 
 const CloseButton: React.FC<({text: string, func?: () => void})> = (props) => {

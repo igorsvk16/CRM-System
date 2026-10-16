@@ -6,7 +6,7 @@ import styles from './TodosFilter.module.css';
 
 const TodosFilter: React.FC<{todoCounter: TodoCounter, updateTodos: () => void, todos: TasksData, isLoading: boolean, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
 
-    const tasksStatuses = ['todo', 'inProgress', "review", "readyForRelease", "onHold", "done"];
+    const tasksStatuses = ['backlog', 'inProgress', "review", "readyForRelease", "onHold", "done"];
 
     return (
         <>
