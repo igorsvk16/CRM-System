@@ -8,7 +8,7 @@ import styles from "./TodoList.module.css";
 const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => void, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
 
     const categoriesTitles = {
-        todo: "К ВЫПОЛНЕНИЮ ",
+        backlog: "К ВЫПОЛНЕНИЮ ",
         inProgress: "В РАБОТЕ",
         review: "РЕВЬЮ",
         readyForRelease: "ГОТОВО К РЕЛИЗУ",
