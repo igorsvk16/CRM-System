@@ -32,9 +32,10 @@ export default function TodosPage() {
     }, []);
 
     function updateTodos() {
+        console.log(todos)
         getTodos()
             .then(todos => {
-                setTodos(todos.data);
+                    setTodos(todos.data);
                 setTodoCounter(todos.meta.statusCounts);
                 setIsLoading(false);
             }, reason => {
