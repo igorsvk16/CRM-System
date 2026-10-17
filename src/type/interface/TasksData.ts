@@ -5,9 +5,8 @@
 //     meta: object;
 // };
 
-export type TasksData = Partial<TaskData> & {
+export type TasksData = {
     data: TaskData[];
-    // data: Array<TaskData>;
     total: number
     meta: object;
 };

@@ -4,13 +4,13 @@ import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
 import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 import Header from "../components/Header/Header.tsx";
 import ProjectMenu from "../components/ProjectMenu/ProjectMenu.tsx";
-import {TasksData} from "../type/interface/TasksData.ts";
+import {TaskData, TasksData} from "../type/interface/TasksData.ts";
 import {TodoCounter} from "../type/interface/TodoCounter.ts";
 import classes from "./Todo.module.css";
 
 export default function TodosPage() {
 
-    const [ todos, setTodos ] = useState<TasksData>();
+    const [ todos, setTodos ] = useState<TasksData.data>();
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isDraggingId, setIsDraggingId ] = useState<number>(0);
     const [ currentTitle, setCurrentTitle ] = useState<string>("");
@@ -32,15 +32,13 @@ export default function TodosPage() {
     }, []);
 
     function updateTodos() {
-        console.log(todos)
         getTodos()
             .then(todos => {
-                    setTodos(todos.data);
+                setTodos(todos.data);
                 setTodoCounter(todos.meta.statusCounts);
                 setIsLoading(false);
             }, reason => {
-                alert('Ошибка при обновлении задач');
-                alert(reason);
+                alert(`Ошибка при обновлении задач, ${reason}`);
             }
         )
     }

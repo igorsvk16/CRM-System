@@ -1,13 +1,17 @@
 /* global RequestInit */
 
+import {TasksData} from "../type/interface/TasksData.ts";
+
 const DOMAIN = import.meta.env.VITE_API_URL;
 
-export async function getTodos() : Promise<object>{
+export async function getTodos() : Promise<TasksData> {
     const response = await fetch(DOMAIN)
     const resData = await response.json();
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');
     }
+    console.log("resData")
+    console.log(resData)
     return resData;
 }
 
