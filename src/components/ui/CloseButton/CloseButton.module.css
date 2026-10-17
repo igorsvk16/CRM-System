@@ -1,0 +1,10 @@
+.delBtn {
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 0.5rem;
+    color: rgb(255, 77, 79);
+    border-radius: 0.125rem;
+    margin: 0.5rem 0;
+}
