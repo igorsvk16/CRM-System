@@ -16,7 +16,7 @@ export default function TodosPage() {
     const [ currentTitle, setCurrentTitle ] = useState<string>("");
 
     const [ todoCounter, setTodoCounter ] = useState<TodoCounter>({
-        todo: 0,
+        backlog: 0,
         inProgress: 0,
         review: 0,
         readyForRelease: 0,

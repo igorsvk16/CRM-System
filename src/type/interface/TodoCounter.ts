@@ -1,5 +1,5 @@
 export type TodoCounter = {
-    todo: number;
+    backlog: number;
     inProgress: number;
     review: number;
     readyForRelease: number;
