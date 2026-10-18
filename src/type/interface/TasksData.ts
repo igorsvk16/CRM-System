@@ -27,7 +27,6 @@ export type StatusCounts = {
 }
 
 export type TaskData = {
-    data: {
         id: number;
         title: string;
         description: string;
@@ -37,7 +36,6 @@ export type TaskData = {
         deadline: string;
         createdAt: string;
         updatedAt: string;
-    }
 }
 
 export type Author = {

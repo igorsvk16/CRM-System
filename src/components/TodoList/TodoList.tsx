@@ -2,10 +2,10 @@ import React, { Dispatch, SetStateAction } from "react";
 import TodoItem from '../TodoItem/TodoItem.tsx';
 import { changeTodo } from "../../api/http.ts";
 import { TodoCounter } from "../../type/interface/TodoCounter.ts";
-import { TaskData, TasksData } from "../../type/interface/TasksData.ts";
+import {TaskData} from "../../type/interface/TasksData.ts";
 import styles from "./TodoList.module.css";
 
-const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => void, todoCounter: TodoCounter, todos: TasksData, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
+const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => void, todoCounter: TodoCounter, todos: Array<TaskData>, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
 
     const categoriesTitles = {
         backlog: "К ВЫПОЛНЕНИЮ ",
@@ -43,7 +43,7 @@ const TodoList: React.FC<{ currentCategoryOfTasks: string, updateTodos: () => vo
             </div>
             <section>
                 {(props.todos)
-                    .filter(todoData => todoData.status === props.currentCategoryOfTasks)
+                    .filter((todoData: TaskData) => todoData.status === props.currentCategoryOfTasks)
                     .map((todoData: TaskData) => (
                         <TodoItem
                             key={todoData.id}

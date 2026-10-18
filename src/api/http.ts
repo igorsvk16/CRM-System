@@ -1,5 +1,3 @@
-/* global RequestInit */
-
 import {AllTasksData, TaskData} from "../type/interface/TasksData.ts";
 
 const DOMAIN = import.meta.env.VITE_API_URL;

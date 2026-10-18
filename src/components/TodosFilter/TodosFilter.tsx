@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction } from "react";
 import TodoList from "../TodoList/TodoList.tsx";
-import { TasksData } from "../../type/interface/TasksData.ts";
+import { TaskData } from "../../type/interface/TasksData.ts";
 import { TodoCounter } from "../../type/interface/TodoCounter.ts";
 import styles from './TodosFilter.module.css';
 
-const TodosFilter: React.FC<{todoCounter: TodoCounter, updateTodos: () => void, todos: TasksData, isLoading: boolean, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
+const TodosFilter: React.FC<{todoCounter: TodoCounter, updateTodos: () => void, todos: TaskData[], isLoading: boolean, isDraggingId: number, currentTitle: string, setCurrentTitle: Dispatch<SetStateAction<string>>, setIsDraggingId: Dispatch<SetStateAction<number>> }> = (props) => {
 
     const tasksStatuses = ['backlog', 'inProgress', "review", "readyForRelease", "onHold", "done"];
 
