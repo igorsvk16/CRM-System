@@ -4,13 +4,13 @@ import TodoAdd from "../components/TodoAdd/TodoAdd.tsx";
 import TodosFilter from "../components/TodosFilter/TodosFilter.tsx";
 import Header from "../components/Header/Header.tsx";
 import ProjectMenu from "../components/ProjectMenu/ProjectMenu.tsx";
-import {TaskData, TasksData} from "../type/interface/TasksData.ts";
+import {AllTasksData} from "../type/interface/TasksData.ts";
 import {TodoCounter} from "../type/interface/TodoCounter.ts";
 import classes from "./Todo.module.css";
 
 export default function TodosPage() {
 
-    const [ todos, setTodos ] = useState<TasksData.data>();
+    const [ todos, setTodos ] = useState<AllTasksData>();
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isDraggingId, setIsDraggingId ] = useState<number>(0);
     const [ currentTitle, setCurrentTitle ] = useState<string>("");
@@ -34,7 +34,7 @@ export default function TodosPage() {
     function updateTodos() {
         getTodos()
             .then(todos => {
-                setTodos(todos.data);
+                setTodos(todos);
                 setTodoCounter(todos.meta.statusCounts);
                 setIsLoading(false);
             }, reason => {
