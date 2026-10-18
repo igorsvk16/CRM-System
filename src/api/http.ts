@@ -1,6 +1,6 @@
 /* global RequestInit */
 
-import {AllTasksData, TasksData} from "../type/interface/TasksData.ts";
+import {AllTasksData, TaskData} from "../type/interface/TasksData.ts";
 
 const DOMAIN = import.meta.env.VITE_API_URL;
 
@@ -13,7 +13,7 @@ export async function getTodos() : Promise<AllTasksData> {
     return resData;
 }
 
-export async function addTodo(title: string) : Promise<object>{
+export async function addTodo(title: string) : Promise<TaskData>{
     const response = await fetch(DOMAIN, {
         method: 'POST',
         body: JSON.stringify({
@@ -31,14 +31,13 @@ export async function addTodo(title: string) : Promise<object>{
     return resData;
 }
 
-export async function changeTodo(id: number, isDone: string, title: string ) : Promise<object> {
+export async function changeTodo(id: number, isDone: string, title: string ) : Promise<TaskData> {
     const response = await fetch(`${DOMAIN}/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             title: title,
             executorId: 1,
             status: isDone,
-
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -51,7 +50,7 @@ export async function changeTodo(id: number, isDone: string, title: string ) : P
     return resData;
 }
 
-export async function deleteTodo(id: number) {
+export async function deleteTodo(id: number) : Promise<void> {
     const response = await fetch(`${DOMAIN}/${id}`, {
         method: 'DELETE',
         headers: {
