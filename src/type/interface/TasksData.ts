@@ -1,5 +1,5 @@
 export type AllTasksData = {
-    data: TaskData[];
+    data: Array<TaskData>;
     total: number;
     meta: MetaData;
 }
@@ -13,31 +13,31 @@ export type MetaData = {
     executorId: number;
     orderBy: string;
     orderDir: string;
-    statusCounts: {
-        backlog: number;
-        todo: number;
-        inProgress: number;
-        review: number;
-        readyForRelease: number;
-        onHold: number;
-        done: number;
-    }
+    statusCounts: StatusCounts;
 }
 
-// export type TasksData = {
-//     data: TaskData[];
-// };
+export type StatusCounts = {
+    backlog: number;
+    todo: number;
+    inProgress: number;
+    review: number;
+    readyForRelease: number;
+    onHold: number;
+    done: number;
+}
 
 export type TaskData = {
-    id: number;
-    title: string;
-    description: string;
-    executor: Author;
-    creator: Author;
-    status: string;
-    deadline: string;
-    createdAt: string;
-    updatedAt: string;
+    data: {
+        id: number;
+        title: string;
+        description: string;
+        executor: Author;
+        creator: Author;
+        status: string;
+        deadline: string;
+        createdAt: string;
+        updatedAt: string;
+    }
 }
 
 export type Author = {
