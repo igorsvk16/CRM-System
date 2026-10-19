@@ -34,7 +34,6 @@
     background-color: var(--white);
     margin-right: 1rem;
     font-weight: 200;
-    text-decoration: line-through;
     color: #201f23;
 }
 .todoTitleUndone {

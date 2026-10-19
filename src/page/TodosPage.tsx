@@ -10,7 +10,7 @@ import classes from "./Todo.module.css";
 
 export default function TodosPage() {
 
-    const [ todos, setTodos ] = useState<Array<TaskData>>();
+    const [ todos, setTodos ] = useState<Array<TaskData>>([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isDraggingId, setIsDraggingId ] = useState<number>(0);
     const [ currentTitle, setCurrentTitle ] = useState<string>("");
