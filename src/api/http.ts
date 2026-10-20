@@ -45,6 +45,8 @@ export async function changeTodo(id: number, isDone: string, title: string ) : P
     if (!response.ok) {
         throw new Error('Ошибка обновления задачи');
     }
+    console.log("resData")
+    console.log(resData)
     return resData;
 }
 

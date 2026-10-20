@@ -29,6 +29,7 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     }
 
     const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: string; }) => {
+        event.preventDefault();
         const validateTitle = checkTitleValidation(editedTodoTitle);
         if (validateTitle) {
             return alert(validateTitle);
