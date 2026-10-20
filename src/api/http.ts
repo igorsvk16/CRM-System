@@ -1,19 +1,23 @@
-export async function getTodos(status="all"){
-    const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`)
-    const resData = await response.json();
+import {AllTasksData, TaskData} from "../type/interface/TasksData.ts";
 
+const DOMAIN = import.meta.env.VITE_API_URL;
+
+export async function getTodos() : Promise<AllTasksData> {
+    const response = await fetch(DOMAIN)
+    const resData = await response.json();
     if (!response.ok) {
         throw new Error('Ошибка загрузки задач');
     }
     return resData;
 }
 
-export async function addTodo(title, isDone) {
-    const response = await fetch("https://easydev.club/api/v1/todos", {
+export async function addTodo(title: string) : Promise<TaskData>{
+    const response = await fetch(DOMAIN, {
         method: 'POST',
         body: JSON.stringify({
             title: title,
-            isDone: isDone }),
+            executorId: 1,
+        }),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -22,29 +26,32 @@ export async function addTodo(title, isDone) {
     if (!response.ok) {
         throw new Error('Ошибка обновления данных');
     }
-    return resData.data;
+    return resData;
 }
 
-export async function changeTodo(id, isDone, title){
-    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
+export async function changeTodo(id: number, isDone: string, title: string ) : Promise<TaskData> {
+    const response = await fetch(`${DOMAIN}/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
-            isDone: isDone,
-            title: title
+            title: title,
+            executorId: 1,
+            status: isDone,
         }),
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    const resData = await response.json();
+    const resData = response.json();
     if (!response.ok) {
         throw new Error('Ошибка обновления задачи');
     }
-    return resData.data;
+    console.log("resData")
+    console.log(resData)
+    return resData;
 }
 
-export async function deleteTodo(id) {
-    const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {
+export async function deleteTodo(id: number) : Promise<void> {
+    const response = await fetch(`${DOMAIN}/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

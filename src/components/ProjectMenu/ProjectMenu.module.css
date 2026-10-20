@@ -1,0 +1,15 @@
+.leftSidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    background-color: var(--gray-background);
+    border-right: var(--border) solid 0.125rem;
+    padding: 0 1rem;
+    margin: 0 1rem 0 0;
+    width: 12rem;
+    height: 100vh;
+}
+.leftSidebar button {
+    padding-bottom: 1rem;
+}

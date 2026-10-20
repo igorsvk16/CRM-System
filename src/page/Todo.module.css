@@ -1,0 +1,26 @@
+.mainContent {
+    display: flex;
+    background-color: white;
+}
+body {
+    margin: 0;
+}
+.tasksDashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+.todoAdd {
+    display: flex;
+    justify-content: right;
+}
+.todoFilter {
+    display: flex;
+    justify-content: end;
+    overflow-x: auto;
+}
+.addTaskAndCategories {
+    max-width: 80vw;
+}
