@@ -29,7 +29,6 @@ const TodoItem: React.FC<{ todoData: {id: number; title: string; status: string;
     }
 
     const onUpdateTodo = (editedTodoTitle: string, todoData: {id: number; title: string; isDone: string; }) => {
-        event.preventDefault();
         const validateTitle = checkTitleValidation(editedTodoTitle);
         if (validateTitle) {
             return alert(validateTitle);
@@ -55,7 +54,10 @@ return isEdit ?
         <div
             className={styles.todo}
         >
-            <form onSubmit={() => onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                onUpdateTodo(editedTodoTitle, {id: props.todoData.id, title: props.todoData.title, isDone: props.todoData.status})}
+            }>
                 <input
                     type="text"
                     value={editedTodoTitle}
